@@ -11,26 +11,61 @@ namespace PlaceMapADM.Controllers
 {
     public class AccountController : BaseController
     {
-        // GET: /Account
-        [AllowAnonymous]
-        public ActionResult Index(string returnUrl)
+        // GET: Account        
+        public ActionResult Index()
         {
-            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-        
-        public JsonResult ListAll()
-        {
-            var total = 0;
-            var ipl = SingletonIpl.GetInstance<IplAccount>();
-            var data = ipl.ListAll();
 
-            return Json(new
+        [HttpPost]
+        public JsonResult Add(string name, int parentId)
+        {
+            try
             {
-                status = total > 0,
-                Data = data,
-                totalCount = total
-            }, JsonRequestBehavior.AllowGet);
+                var obj = new AccountEntity
+                {                                        
+                    ParentId = parentId,
+                    Type = 1,
+                    DisplayName = "",
+                    UserName = "admin",
+                    Password = "",
+                    Email = "",
+                    DeviceMobile = "",
+                    CreatedDate = DateTime.Now,
+                    Status = true
+                };
+                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var res = ipl.Insert(obj);
+
+                return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult ListAllPaging(int pageIndex, int pageSize)
+        {
+            try
+            {
+                var total = 0;
+                var obj = new AccountEntity();
+                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var res = ipl.ListAllPaging(obj, pageIndex, pageSize, "", "", ref total);
+
+                if (res != null && res.Count > 0)
+                {
+                    return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new { status = res, Data = "" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { status = false, Data = "" }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

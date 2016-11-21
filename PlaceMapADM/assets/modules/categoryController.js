@@ -2,7 +2,7 @@
 if (typeof (CmsShop.Category) == "undefined") CmsShop.Category = {};
 
 CmsShop.Category = {
-    PageSize: 100,
+    PageSize: 10,
     PageIndex:1
 }
 

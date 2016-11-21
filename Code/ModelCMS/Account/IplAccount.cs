@@ -270,11 +270,11 @@ namespace ModelCMS.Account
             try
             {
                 var p = new DynamicParameters();
-                p.Add("@UserName", AccountInfo.UserName);                
+                //p.Add("@UserName", AccountInfo.UserName);                
                 p.Add("@pageIndex", pageIndex);
                 p.Add("@pageSize", pageSize);
-                p.Add("@sortColumn", sortColumn);
-                p.Add("@sortDesc", sortDesc);
+                //p.Add("@sortColumn", sortColumn);
+                //p.Add("@sortDesc", sortDesc);
                 p.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_ListAllPaging", p);
                 totalRow = p.Get<int>("@totalRow");

@@ -236,6 +236,7 @@
     <Content Include="assets\img\sort_desc_disabled.png" />
     <Content Include="assets\img\temp1.png" />
     <Content Include="assets\img\tree-icons.png" />
+    <Content Include="assets\modules\accountController.js" />
     <Content Include="assets\modules\productController.js" />
     <Content Include="assets\modules\categoryController.js" />
     <Content Include="assets\modules\loginController.js" />

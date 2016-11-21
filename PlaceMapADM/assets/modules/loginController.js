@@ -4,7 +4,7 @@
         login();
     });
 
-    $("#btnLogin").keyup(function (event) {
+    $("#Password,#UserName").keyup(function (event) {
         if (event.keyCode == 13) {
             $("#btnLogin").click();
         }

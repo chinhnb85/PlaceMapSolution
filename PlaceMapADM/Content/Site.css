@@ -1,5 +1,7 @@
 ﻿.navbar .navbar-inner .navbar-header .navbar-account .account-area .login-area{min-width:215px;}
+.page-body{padding: 18px 20px 0 20px!important;}
 .page-body .row{margin-top:-13px;}
+.widget{ margin-bottom: 0!important;}
 .navbar .navbar-inner .navbar-header .navbar-account .account-area .login-area .avatar{
     border-left: 0px solid #ed4e2a!important;
     margin-right: 10px!important;
@@ -19,4 +21,17 @@
 }
 .navbar .navbar-inner .navbar-header .navbar-account.setting-open .setting{
     right:210px!important;
+}
+.fieldset {
+    border: 1px solid #ddd !important;
+    padding: 0 10px 15px 10px!important;
+    margin: 0 0 15px 0 !important;
+    -webkit-box-shadow:  0 0 0 0 #000;
+    box-shadow:  0 0 0 0 #000;
+}
+.legend {
+     width:inherit;
+    padding:0 5px;
+    border-bottom:none;
+    font-size: 13px;    
 }

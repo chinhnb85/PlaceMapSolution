@@ -17,8 +17,12 @@ namespace ModelCMS.Account
         public string UserName { get; set; }
 		
 		public string Password { get; set; }
-		
-		public DateTime? CreatedDate { get; set; }
+
+        public string Email { get; set; }
+
+        public string DeviceMobile { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
 
         public bool? Status { get; set; }
 

@@ -1,31 +1,31 @@
 ﻿<style>
     #maps {
         height: 100%;
-        min-height: 450px;
+        min-height: 600px;
       }
     #panorama {
         height: 100%;
-        min-height: 450px;
+        min-height: 600px;
       }
 </style>
 
 <div class="row">
-    <div class="col-lg-4 col-sm-12 col-xs-12">
+    <div class="col-lg-4 col-sm-12 col-xs-12" style="padding: 0; padding-right: 5px;">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-themeprimary">
                 <i class="widget-icon fa fa-tasks themeprimary"></i>
                 <span class="widget-caption themeprimary">Chọn tài khoản</span>
             </div>
-            <div class="widget-body no-padding">
+            <div id="widget-body-user" class="widget-body no-padding">
                 <div class="task-container">
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>
-                                Stt
+                                Id
                             </th>
                             <th id="nameid">
-                                Name
+                                Tên
                             </th>
                         </tr>
                         </thead>
@@ -36,13 +36,13 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-8 col-sm-12 col-xs-12">
+    <div class="col-lg-8 col-sm-12 col-xs-12" style="padding: 0;">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-themesecondary">
                 <i class="widget-icon fa fa-tasks themesecondary"></i>
                 <span class="widget-caption themesecondary">Map xem địa điểm</span>
             </div>
-            <div class="widget-body no-padding">
+            <div id="widget-body-map" class="widget-body no-padding">
                 <div class="task-container">
                     <div id="maps"></div>
                     @*<div id="panorama"></div>*@

@@ -49,9 +49,6 @@
     <Compile Include="Account\AccountEntity.cs" />
     <Compile Include="Account\IAccount.cs" />
     <Compile Include="Account\IplAccount.cs" />
-    <Compile Include="Account2\Account2Entity.cs" />
-    <Compile Include="Account2\IAccount2.cs" />
-    <Compile Include="Account2\IplAccount2.cs" />
     <Compile Include="Base\BaseIpl.cs" />
     <Compile Include="Base\UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

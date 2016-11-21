@@ -18,3 +18,8 @@ F:\Chinhnb\PlaceMapSolution\Code\Dapper\bin\Debug\Dapper.dll
 F:\Chinhnb\PlaceMapSolution\Code\Dapper\bin\Debug\Dapper.pdb
 F:\Chinhnb\PlaceMapSolution\Code\Dapper\obj\Debug\Dapper.dll
 F:\Chinhnb\PlaceMapSolution\Code\Dapper\obj\Debug\Dapper.pdb
+C:\CHINHNB\PlaceMapSolution\Code\Dapper\bin\Debug\Dapper.dll
+C:\CHINHNB\PlaceMapSolution\Code\Dapper\bin\Debug\Dapper.pdb
+C:\CHINHNB\PlaceMapSolution\Code\Dapper\obj\Debug\Dapper.csprojResolveAssemblyReference.cache
+C:\CHINHNB\PlaceMapSolution\Code\Dapper\obj\Debug\Dapper.dll
+C:\CHINHNB\PlaceMapSolution\Code\Dapper\obj\Debug\Dapper.pdb

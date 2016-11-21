@@ -4,6 +4,13 @@ var infowindow;
 var markers = [];
 
 function initMap() {
+    var $maps = $('#maps');
+    var $widgetbodyuser = $('#widget-body-user');
+    var $widgetbodymap = $('#widget-body-map');
+    $maps.css({ height: $(window).height() - 90 });
+    $widgetbodyuser.css({ height: $(window).height() - 90 });
+    $widgetbodymap.css({ height: $(window).height() - 90 });
+
     //get all user
     getAllUser();
 
@@ -14,7 +21,7 @@ function initMap() {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         streetViewControl: true
     };
-    map = new google.maps.Map(document.getElementById("maps"),
+    map = new google.maps.Map($maps[0],
         mapOptions);
 
     var image = {
