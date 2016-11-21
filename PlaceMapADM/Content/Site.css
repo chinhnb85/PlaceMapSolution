@@ -1,0 +1,22 @@
+﻿.navbar .navbar-inner .navbar-header .navbar-account .account-area .login-area{min-width:215px;}
+.page-body .row{margin-top:-13px;}
+.navbar .navbar-inner .navbar-header .navbar-account .account-area .login-area .avatar{
+    border-left: 0px solid #ed4e2a!important;
+    margin-right: 10px!important;
+}
+.navbar .navbar-inner .navbar-header .navbar-account .account-area .login-area .avatar img{
+    border-radius: 100%;
+}
+.navbar .navbar-inner .navbar-header .navbar-account .setting-container{
+    width:auto!important;
+}
+.navbar .navbar-inner .navbar-header .navbar-account .setting-container a{    
+    font-weight:700;
+    text-decoration:none;
+}
+.navbar .navbar-inner .navbar-header .navbar-account .setting-container a:hover{
+    color:#fff!important;
+}
+.navbar .navbar-inner .navbar-header .navbar-account.setting-open .setting{
+    right:210px!important;
+}
