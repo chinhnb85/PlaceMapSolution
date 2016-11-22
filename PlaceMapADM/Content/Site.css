@@ -35,3 +35,73 @@
     border-bottom:none;
     font-size: 13px;    
 }
+
+/*css base*/
+.r {
+    float: right;
+}
+
+.l {
+    float: left;
+}
+
+.btn-blue {
+    background-color: RGB(0,76,146) !important;
+    border-color: RGB(0,76,146) !important;
+}
+
+.btn-danger {
+    background-color: RGB(228,24,25) !important;
+    border-color: RGB(228,24,25) !important;
+}
+
+.dv-loading {
+    z-index: 2000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    opacity: 0.5;
+}
+
+    .dv-loading .process {
+        z-index: 2000;
+        position: fixed;
+        height: 10px;
+        width: 10px;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+.mn-active {
+    background: #03b3b2 !important;
+    color: #fff !important;
+}
+
+
+.error{
+    color: RGB(228, 24, 25) !important ;
+}
+.mail-header{
+    height:auto !important;
+}
+.changepass-text{
+    font-size: 13px;
+    color: #858585;
+}
+.widget-footer{
+    background: #fff;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    color: #555;
+    padding: 12px;
+    text-align: right;
+    margin-top: 1px;
+}
+.wd-footer-button{
+    height:50px;width:100%;padding:5px;
+}

@@ -20,7 +20,13 @@ namespace ModelCMS.Account
 
         public string Email { get; set; }
 
-        public string DeviceMobile { get; set; }
+        public string Phone { get; set; }
+
+        public string Address { get; set; }
+
+        public DateTime? BirthDay { get; set; }
+
+        public string DeviceMobile { get; set; }        
 
         public DateTime? CreatedDate { get; set; }
 

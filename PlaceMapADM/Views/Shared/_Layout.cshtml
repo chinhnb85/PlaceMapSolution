@@ -36,7 +36,13 @@
 
 </head>
 <body>
-    <!-- Loading Container -->
+    <!-- Loading action -->
+    <div class="dv-loading hide">
+        <div class="process">
+            <img src="~/Assets/img/w-loading.gif">
+        </div>
+    </div>
+    <!-- Loading page Container -->
     <div class="loading-container">
         <div class="loader"></div>
     </div>
@@ -663,7 +669,13 @@
 
     @Scripts.Render("~/bundles/editer")
 
-    <!--Page Related Scripts-->
+    @Scripts.Render("~/bundles/base")
+
+    @Scripts.Render("~/bundles/mustache")
+
+    @Scripts.Render("~/bundles/noty")
+
+<!--Page Related Scripts-->
     @RenderSection("PageScripts", required: false)
 
     <script src="~/assets/modules/@(ViewBag.Controller??controller)Controller.js@(version)"></script>

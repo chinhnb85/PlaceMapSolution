@@ -65,21 +65,31 @@ namespace PlaceMapADM
             bundles.Add(new ScriptBundle("~/bundles/datatable").Include(
                 "~/assets/js/datatable/jquery.dataTables.min.js",
                 "~/assets/js/datatable/dataTables.tableTools.min.js",
-                "~/assets/js/datatable/dataTables.bootstrap.min.js",
-                "~/assets/js/datatable/datatables-init.js"));
+                "~/assets/js/datatable/dataTables.bootstrap.min.js"));
 
             bundles.Add(new StyleBundle("~/css/chosen").Include(
-                "~/assets/modules/plugins/chosen/css/chosen.css",
-                "~/assets/modules/plugins/jScrollPane/css/jquery.jscrollpane.css",
-                "~/assets/modules/plugins/tipsy/css/tipsy.css"));
+                "~/assets/plugins/chosen/css/chosen.css",
+                "~/assets/plugins/jScrollPane/css/jquery.jscrollpane.css",
+                "~/assets/plugins/tipsy/css/tipsy.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/chosen").Include(                
-                "~/assets/modules/plugins/chosen/js/chosen.jquery.min.js",
-                "~/assets/modules/plugins/jScrollPane/js/jquery.jscrollpane.min.js",
-                "~/assets/modules/plugins/tipsy/js/jquery.tipsy.js"));
+                "~/assets/plugins/chosen/js/chosen.jquery.min.js",
+                "~/assets/plugins/jScrollPane/js/jquery.jscrollpane.min.js",
+                "~/assets/plugins/tipsy/js/jquery.tipsy.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/editer").Include(
                "~/assets/js/editors/summernote/summernote.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/base").Include(
+               "~/assets/modules/base/common.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/mustache").Include(               
+               "~/assets/plugins/mustache/mustache.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/noty").Include(
+               "~/assets/plugins/noty/jquery.noty.js",
+               "~/assets/plugins/noty/layouts/center.js",
+               "~/assets/plugins/noty/themes/default.js"));
         }
     }
 }
