@@ -22,6 +22,7 @@ namespace PlaceMapADM.Controllers
         {
             try
             {
+                var id= long.Parse(collection["hdAccountId"]);
                 var displayname = collection["txtDisplayName"];
                 var username = collection["txtUserName"];
                 var password = collection["txtPassword"];
@@ -29,21 +30,61 @@ namespace PlaceMapADM.Controllers
                 var birthday = collection["txtBirthDay"];
                 var address = collection["txtAddress"];
                 var phone = collection["txtPhone"];
-                var status = collection["cbxStatus"];
+                var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
                 var account = new AccountEntity
                 {                    
+                    Id=id,
                     DisplayName = displayname,
                     UserName = username,
                     Password = password,
                     Email = email,
-                    BirthDay = Convert.ToDateTime(birthday),
+                    BirthDay = Convert.ToDateTime((birthday==null || birthday == "") ? DateTime.Now.ToString(): birthday),
                     Address = address,
                     Phone = phone,
                     CreatedDate = DateTime.Now,
-                    Status = true
+                    Status = status
                 };
+                var ipl = SingletonIpl.GetInstance<IplAccount>();                
+                if (id == 0)
+                {
+                    id = ipl.Insert(account);
+                    return Json(new { status = true, Data = id }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    var res = ipl.Update(account);
+                    return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
+                }                                
+            }
+            catch
+            {
+                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult GetAccountById(int Id)
+        {
+            try
+            {
                 var ipl = SingletonIpl.GetInstance<IplAccount>();
-                var res = ipl.Insert(account);
+                var res = ipl.ViewDetail(Id);
+
+                return Json(new { status = true, Data = res }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult Delete(int Id)
+        {
+            try
+            {                
+                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var res = ipl.Delete(Id);
 
                 return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
             }

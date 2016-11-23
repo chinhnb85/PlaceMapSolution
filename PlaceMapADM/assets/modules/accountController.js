@@ -9,25 +9,34 @@ CmsShop.Account = {
 CmsShop.Account.Init = function () {
     var p = this;    
 
-    p.LoadAllAccount();
-
-    p.RegisterEvents();
+    p.LoadAllAccount(function () {
+        p.RegisterEvents();
+    });    
 };
 
 CmsShop.Account.RegisterEvents = function () {
     var p = this;
 
     $("#btnAddNewAccount").off("click").on("click", function () {
-        p.AddNewAccount();
+        var $this = $(this);
+        p.AddNewAccount($this.attr('data-id'));
+    });
+    $(".edit").off("click").on("click", function () {
+        var $this = $(this);
+        p.EditAccount($this.attr('data-id'));
+    });
+    $(".delete").off("click").on("click", function () {
+        var $this = $(this);
+        p.DeleteAccount($this.attr('data-id'));
     });
     $("#btnCancel").off("click").on("click", function () {
         p.EmptyAccount();
     });
 };
 
-CmsShop.Account.AddNewAccount = function () {
+CmsShop.Account.AddNewAccount = function (id) {
     var p = this;
-
+    
     var username = $("#txtUserName").val();
     var password= $("#txtPassword").val();
     var displayname = $("#txtDisplayName").val();
@@ -38,7 +47,7 @@ CmsShop.Account.AddNewAccount = function () {
     var status = $("#cbxStatus").is(':checked');
 
     var account = {
-        UserName: username, Password: password, DisplayName: displayname, Email: email,
+        Id: id, UserName: username, Password: password, DisplayName: displayname, Email: email,
         Phone: phone, BirthDay: birthday, Address: address, Status: status
     };
 
@@ -52,12 +61,15 @@ CmsShop.Account.AddNewAccount = function () {
         },
         success: function (response) {
             if (response.status) {
+                logisticJs.msgShowSuccess({ titleHeader: 'Lưu thành công.' });
                 p.EmptyAccount();
                 p.pageIndex = 1;
-                p.LoadAllAccount();
+                p.LoadAllAccount(function () {
+                    p.RegisterEvents();
+                });
             } else {                
                 logisticJs.msgWarning({
-                    text: "Việc thêm tài khoản gặp lỗi.",
+                    text: "Việc lưu tài khoản gặp lỗi.",
                     modal: true
                 });                
             }
@@ -67,6 +79,66 @@ CmsShop.Account.AddNewAccount = function () {
             logisticJs.stopLoading();
         }
     });
+};
+
+CmsShop.Account.EditAccount = function (id) {
+    var p = this;    
+
+    $.ajax({
+        type: "GET",
+        url: "/Account/GetAccountById",
+        data: { Id:id },
+        dataType: "json",
+        beforeSend: function () {
+            logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status) {
+                $("#txtUserName").val(response.Data.UserName);
+                $("#txtPassword").val(response.Data.Password);
+                $("#txtDisplayName").val(response.Data.DisplayName);
+                $("#txtEmail").val(response.Data.Email);
+                $("#txtPhone").val(response.Data.Phone);
+                $("#txtBirthDay").val(response.Data.BirthDay);
+                $("#txtAddress").val(response.Data.Address);
+                $("#cbxStatus").prop('checked', response.Data.Status);
+                $("#btnAddNewAccount").attr('data-id', response.Data.Id);
+                $("#hdAccountId").val(response.Data.Id);
+            }
+            logisticJs.stopLoading();
+        },
+        error: function (status) {
+            logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.Account.DeleteAccount = function (id) {
+    var p = this;
+    logisticJs.msgConfirm({
+        titleHeader:'Bạn có chắc muốn xóa tài khoản này?'
+    }, function () {
+        $.ajax({
+            type: "GET",
+            url: "/Account/Delete",
+            data: { Id: id },
+            dataType: "json",
+            beforeSend: function () {
+                logisticJs.startLoading();
+            },
+            success: function (response) {
+                if (response.status) {                
+                    p.LoadAllAccount(function () {
+                        p.RegisterEvents();
+                    });
+                }
+                logisticJs.stopLoading();
+            },
+            error: function (status) {
+                logisticJs.stopLoading();
+            }
+        });
+    });    
 };
 
 CmsShop.Account.LoadAllAccount = function (callback) {
@@ -97,7 +169,9 @@ CmsShop.Account.LoadAllAccount = function (callback) {
                     $("#listAllAccount").html(render);
                 }                
                 p.WrapPaging(response.totalCount, '#btnNext', '#btnPrevious',response.totalRow, function () {
-                    p.LoadAllAccount();
+                    p.LoadAllAccount(function () {
+                        p.RegisterEvents();
+                    });
                 });
 
             } else {
@@ -107,7 +181,9 @@ CmsShop.Account.LoadAllAccount = function (callback) {
                     modal: true
                 });
                 p.WrapPaging(0, '#btnNext', '#btnPrevious',response.totalRow, function () {
-                    p.LoadAllAccount();
+                    p.LoadAllAccount(function () {
+                        p.RegisterEvents();
+                    });
                 });
             }
             logisticJs.stopLoading();
@@ -171,6 +247,16 @@ CmsShop.Account.WrapPaging = function (total, next, previous, RecordCount, callB
 
 CmsShop.Account.EmptyAccount = function() {
     var p = this;
+    $("#txtUserName").val('');
+    $("#txtPassword").val('');
+    $("#txtDisplayName").val('');
+    $("#txtEmail").val('');
+    $("#txtPhone").val('');
+    $("#txtBirthDay").val('');
+    $("#txtAddress").val('');
+    $("#cbxStatus").prop('checked', false);
+    $("#btnAddNewAccount").attr('data-id', 0);
+    $("#hdAccountId").val(0);
 };
 
 $(function(){
