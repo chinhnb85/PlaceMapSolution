@@ -41,6 +41,17 @@ namespace ModelCMS.Account
             try
             {
                 var p = Param(obj, "edit");
+                p.Add("@ParentId", obj.ParentId);
+                p.Add("@Type", obj.Type);
+                p.Add("@DisplayName", obj.DisplayName);
+                p.Add("@UserName", obj.UserName);
+                p.Add("@Password", obj.Password);
+                p.Add("@Email", obj.Email);
+                p.Add("@Phone", obj.Phone);
+                p.Add("@Address", obj.Address);
+                p.Add("@BirthDay", obj.BirthDay);
+                p.Add("@DeviceMobile", obj.DeviceMobile);
+                p.Add("@Status", obj.Status);
                 var res = unitOfWork.ProcedureExecute("Sp_Account_Update", p);
                 return res;
             }
@@ -54,14 +65,12 @@ namespace ModelCMS.Account
         /// <summary>
         /// Deletes a record from the Account table by its primary key.
         /// </summary>
-        public bool Delete(long iD, long adminId, int adminType)
+        public bool Delete(long id)
         {
             try
             {
                 var p = new DynamicParameters();
-                p.Add("@AccID", iD);
-                p.Add("@AdminId", adminId);
-                p.Add("@AdminType", adminType);
+                p.Add("@Id", id);                
                 var res = unitOfWork.ProcedureExecute("Sp_Account_Delete", p);
                 return res;
             }
@@ -183,7 +192,7 @@ namespace ModelCMS.Account
         /// <summary>
         /// Selects a single record from the Account table.
         /// </summary>
-        public AccountEntity ViewDetail(string id)
+        public AccountEntity ViewDetail(int id)
         {
             try
             {
@@ -295,9 +304,17 @@ namespace ModelCMS.Account
             var p = new DynamicParameters();
             if (action == "add")
             {
+                p.Add("@ParentId", obj.ParentId);
                 p.Add("@Type", obj.Type);
+                p.Add("@DisplayName", obj.DisplayName);
                 p.Add("@UserName", obj.UserName);
                 p.Add("@Password", obj.Password);
+                p.Add("@Email", obj.Email);
+                p.Add("@Phone", obj.Phone);
+                p.Add("@Address", obj.Address);
+                p.Add("@BirthDay", obj.BirthDay);
+                p.Add("@DeviceMobile", obj.DeviceMobile);
+                p.Add("@Status", obj.Status);
                 p.Add("@Id", dbType: DbType.Int64, direction: ParameterDirection.Output);
             }
             else if(action == "edit")
