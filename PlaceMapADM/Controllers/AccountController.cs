@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -38,7 +39,7 @@ namespace PlaceMapADM.Controllers
                     UserName = username,
                     Password = password,
                     Email = email,
-                    BirthDay = Convert.ToDateTime((birthday==null || birthday == "") ? DateTime.Now.ToString(): birthday),
+                    BirthDay = Convert.ToDateTime(string.IsNullOrEmpty(birthday) ? DateTime.Now.ToString(CultureInfo.InvariantCulture): birthday),
                     Address = address,
                     Phone = phone,
                     CreatedDate = DateTime.Now,

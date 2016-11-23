@@ -33,12 +33,10 @@
 
 var logisticJs = $.extend({
     init: function () {
-        //$('#list-Kit, .bootbox-body').niceScroll();
-        $("html").niceScroll({ horizrailenabled: false });
-        $('#Logout').off('click').on('click', function () {
+
+        $('#btnThoat,#btn_logout').off('click').on('click', function () {
             var inteval = setInterval(logisticJs.msgConfirm({
-                text: "Vous pouvez quitter le système?",
-                modal: true,
+                text: "Bạn muốn thoát đăng nhập?"
             }, function () {
                 $.ajax({
                     type: "GET",
@@ -57,170 +55,14 @@ var logisticJs = $.extend({
                 });
             }), 500, function () {
                 clearInterval(inteval);
-            })
+            });
         });
-        $('#Profile').off('click').on('click', function () {
-            var url = window.location.pathname;
-            if (url.indexOf('ClientPage') > 0) {
-                $('#myProfile').modal('hide');
-            }
-            else {
-                $('#myProfile').modal('toggle');
-                var id = $('#hdfProfileAccID').val();
-                $.ajax({
-                    type: "GET",
-                    url: "/Utilisateur/viewDetail",
-                    data: { id: id },
-                    dataType: "json",
-                    beforeSend: function () {
-                        logisticJs.startLoading();
-                    },
-                    success: function (response) {                        
-                        if (response.status == true) {
-                            $('#UserNameProfile').val(response.Data.UserName);
-                            $('#NameProfile').val(response.Data.Name);
-                            $('#LastNameProfile').val(response.Data.LastName);
-                            $('#selectTypeProfile').val(response.Data.Type);
-                            $('#hdfTypeProfile').val(response.Data.Type);
-                            var type = response.Data.Type;
-                            var typeText = "";
-                            switch (type) {
-                                case 1:
-                                    typeText = "Administrateur";
-                                    break;
-                                case 2:
-                                    typeText = "Chauffeur";
-                                    break;
-                                case 3:
-                                    typeText = "Client";
-                                    break;
-                                case 4:
-                                    typeText = "Utilisateur";
-                                    break;
-                            }
-                            $('#lblTypeProfile').html(typeText);
-                            if (response.Data.Type == 2 || response.Data.Type == 3) {
-                                logisticJs.getObjectByType(response.Data.Type, response.Data.ObjectID);
-                                var objID = response.Data.ObjectID;
-                                //$('#selectObjectProfile').removeClass('hide');
-                                $('#hdfObjectProfile').val(objID);
-                                setTimeout(function () {
-                                    $('#selectObjectProfile').val(objID);
-                                }, 500);
+        $('#btnProfile').off('click').on('click', function () {
+            
+        });
+        $('#btnSetting').off('click').on('click', function () {
 
-                            }
-                            else {
-                                $('#selectObjectProfile').addClass('hide');
-                            }
-                            $('#EmailProfile').val(response.Data.Email);
-                            $('#PhoneProfile').val(response.Data.Phone);
-                            var active = response.Data.Active;
-                            if (active == 0) {
-                                $('#chkActiveProfile').prop('checked', false);
-                                $('#hdfActiveProfile').val('false');
-                            }
-                            else {
-                                $('#chkActiveProfile').prop('checked', true);
-                                $('#hdfActiveProfile').val('true');
-                            }
-                            $('#txtPwd, #txtRePwd').val('123456');
-                            //$('.form-control').attr('readonly', 'readonly');
-                            $('#UserNameProfile').attr('readonly', 'readonly');
-                            $('#chkActiveProfile').attr('readonly', 'readonly');
-                            $('#btnUpdateProfile').off('click').on('click', function () {
-                                var accID = $('#hdfProfileAccID').val();
-                                var name = $('#NameProfile').val();
-                                var lastName = $('#LastNameProfile').val();
-                                var email = $('#EmailProfile').val();
-                                var phone = $('#PhoneProfile').val();
-                                var emailReg = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/;
-                                var phoneReg = /^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/;
-                                if ($.trim(name).length <= 0) {
-                                    logisticJs.msgError({
-                                        text: "Le nom est obligatoire",
-                                        modal: true,
-                                        titleHeader: "Lỗi"
-                                    });
-                                    $('#NameProfile').focus();
-                                    return false;
-                                }
-                                if ($.trim(lastName).length <= 0) {
-                                    logisticJs.msgError({
-                                        text: "Le prénom est obligatoire",
-                                        modal: true,
-                                        titleHeader: "Lỗi"
-                                    });
-                                    $('#LastNameProfile').focus();
-                                    return false;
-                                }
-                                if ($.trim(email).length <= 0) {
-                                    logisticJs.msgError({
-                                        text: "Le email est obligatoire",
-                                        modal: true,
-                                        titleHeader: "Lỗi"
-                                    });
-                                    $('#EmailProfile').focus();
-                                    return false;
-                                }
-                                if ($.trim(phone).length <= 0) {
-                                    logisticJs.msgError({
-                                        text: "Le phone est obligatoire",
-                                        modal: true,
-                                        titleHeader: "Lỗi"
-                                    });
-                                    $('#PhoneProfile').focus();
-                                    return false;
-                                }
-                                if (!emailReg.test(email)) {
-                                    logisticJs.msgError({
-                                        text: "Non valide email",
-                                        modal: true,
-                                        titleHeader: "Lỗi"
-                                    });
-                                    $('#EmailProfile').focus();
-                                    return false;
-                                }
-                                if (!phoneReg.test(phone)) {
-                                    logisticJs.msgError({
-                                        text: "Non valide phone",
-                                        modal: true,
-                                        titleHeader: "Lỗi"
-                                    });
-                                    $('#PhoneProfile').focus();
-                                    return false;
-                                }
-                                $.ajax({
-                                    type: "POST",
-                                    url: "/Utilisateur/updateProfile",
-                                    data: { id: accID, name: name, lastName: lastName, email: email, phone: phone },
-                                    dataType: "json",
-                                    beforeSend: function () {
-                                        logisticJs.startLoading();
-                                    },
-                                    success: function (response) {
-                                        //alert(response.status);
-                                        logisticJs.msgAlert({
-                                            text: "Mise à jour profil succès",
-                                            modal: true,
-                                            titleHeader: "Alerte"
-                                        });
-                                        $('#myProfile').modal('hide');
-                                        logisticJs.stopLoading();
-                                    },
-                                    error: function () {
-                                        logisticJs.stopLoading();
-                                    }
-                                })
-                            })
-                            logisticJs.stopLoading();
-                        }
-                    },
-                    error: function () {
-                        logisticJs.stopLoading();
-                    }
-                });
-            }
-        });                
+        });
     },   
     getObjectByType: function (typeId, objectId) {
         $.ajax({
@@ -481,14 +323,14 @@ var logisticJs = $.extend({
         return day + "/" + month + "/" + year + " " + hh + ":" + mm;
     },
     convertDatetimeDMY: function (datetime) {
-        var newdate = new Date(parseInt(datetime));
+        var newdate = new Date(parseInt(datetime.substr(6)));
         var month = newdate.getMonth() + 1;
         var day = newdate.getDate();
-        var year = newdate.getFullYear();
+        var year = newdate.getFullYear();        
         if (month < 10)
             month = "0" + month;
         if (day < 10)
-            day = "0" + day;
+            day = "0" + day;        
         return day + "/" + month + "/" + year;
     },
     formatDateDMY: function (newdate) {
@@ -790,4 +632,4 @@ var logisticJs = $.extend({
         return components.join(".");
     }
 });
-//logisticJs.init();
+logisticJs.init();

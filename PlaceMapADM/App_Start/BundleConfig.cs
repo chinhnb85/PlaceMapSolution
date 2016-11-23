@@ -90,6 +90,9 @@ namespace PlaceMapADM
                "~/assets/plugins/noty/jquery.noty.js",
                "~/assets/plugins/noty/layouts/center.js",
                "~/assets/plugins/noty/themes/default.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datetime").Include(
+               "~/assets/js/datetime/bootstrap-datepicker.js"));
         }
     }
 }

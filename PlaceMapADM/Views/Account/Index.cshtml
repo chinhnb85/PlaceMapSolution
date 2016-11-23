@@ -12,10 +12,10 @@
                 </a>
                 <a href="#" data-toggle="collapse">
                     <i class="fa fa-minus"></i>
-                </a>                
+                </a>
             </div>
         </div>
-        <div class="widget-body">            
+        <div class="widget-body">
             <form role="form" id="insert-account" action="/Account/Add">
                 <fieldset class="fieldset">
                     <legend class="legend">Thêm mới tài khoản</legend>
@@ -93,61 +93,62 @@
                             </div>
                         </div>
                         <div class="col-sm-3">
-                            <div class="form-group">
+                            <div class="form-group" style="margin-top: 5px; margin-bottom: 0;">
                                 <a id="btnAddNewAccount" data-id="0" class="btn btn-info"><i class="fa fa-save"></i> Lưu</a>
                                 <a id="btnCancel" class="btn btn-default"><i class="fa fa-recycle"></i> Hủy bỏ</a>
                                 <input type="hidden" id="hdAccountId" name="hdAccountId" value="0">
                             </div>
                         </div>
-                    </div>                                                            
-                </fieldset>                    
+                    </div>
+                </fieldset>
             </form>
             <div class="dataTables_wrapper form-inline no-footer">
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
-                        <tr role="row">
-                            <th style="width:10%">
-                                Id
-                            </th>
-                            <th>
-                                Tên
-                            </th>
-                            <th>
-                                Username
-                            </th>
-                            <th>
-                                Email
-                            </th>
-                            <th>
-                                DeviceMobile
-                            </th>
-                            <th>
-                                Time
-                            </th>
-                            <th style="width:15%">
-                            </th>
-                        </tr>
+                    <tr role="row">
+                        <th style="width: 10%">
+                            Stt
+                        </th>
+                        <th>
+                            Tên hiển thị
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Điện thoại
+                        </th>
+                        <th>
+                            Ngày tạo
+                        </th>
+                        <th>
+                            Trạng thái
+                        </th>
+                        <th style="width: 15%">
+                        </th>
+                    </tr>
                     </thead>
                     <tbody id="listAllAccount"></tbody>
                     <script id="package-data" type="x-tmpl-mustache">
                         <tr>
                             <td>
-                                {{id}}
+                                {{stt}}
                             </td>
                             <td>
                                 {{displayName}}
                             </td>
                             <td>
-                                {{userName}}
-                            </td>
-                            <td>
                                 {{email}}
                             </td>
                             <td>
-                                {{deviceMobile}}
+                                {{phone}}
                             </td>
                             <td>
                                 {{createdDate}}
+                            </td>
+                            <td style="position:relative;">                                
+                                <input class="checkbox-slider slider-icon colored-success" type="checkbox" {{statusAcc}}>
+                                <span class="text"></span>                                                                                             
                             </td>
                             <td style="text-align:center;">
                                 <a href="javascript:void(0)" class="btn btn-info btn-xs edit" data-id="{{id}}"><i class="fa fa-edit"></i> Sửa</a>
@@ -157,7 +158,14 @@
                     </script>
                 </table>
                 <div class="DTTTFooter">
-                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                        <select class="form-control input-sm" id="sltPageSize" style="width: 60px; height: 34px; margin-bottom: 5px;">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
                     <div class="col-sm-6">
                         <div class="dataTables_paginate paging_bootstrap hide" id="pager">
                             <ul class="pagination">
@@ -167,8 +175,11 @@
                         </div>
                     </div>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
 </div>
+@section PageScripts {
+    @Scripts.Render("~/bundles/datetime")
+}
 

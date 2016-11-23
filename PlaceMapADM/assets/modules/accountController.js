@@ -2,12 +2,14 @@
 if (typeof (CmsShop.Account) == "undefined") CmsShop.Account = {};
 
 CmsShop.Account = {
-    pageSize: 5,
+    pageSize: 10,
     pageIndex: 1
 };
 
 CmsShop.Account.Init = function () {
-    var p = this;    
+    var p = this;
+
+    $("#txtBirthDay").datepicker({ format: 'dd/mm/yyyy'});
 
     p.LoadAllAccount(function () {
         p.RegisterEvents();
@@ -31,6 +33,12 @@ CmsShop.Account.RegisterEvents = function () {
     });
     $("#btnCancel").off("click").on("click", function () {
         p.EmptyAccount();
+    });
+    $("#sltPageSize").off("change").on("change", function () {
+        p.pageSize = $("#sltPageSize").val();
+        p.LoadAllAccount(function () {
+            p.RegisterEvents();
+        });
     });
 };
 
@@ -57,7 +65,7 @@ CmsShop.Account.AddNewAccount = function (id) {
         data: $("#insert-account").serialize(),
         dataType: "json",
         beforeSend: function () {
-            logisticJs.startLoading();
+            //logisticJs.startLoading();
         },
         success: function (response) {
             if (response.status) {
@@ -73,10 +81,10 @@ CmsShop.Account.AddNewAccount = function (id) {
                     modal: true
                 });                
             }
-            logisticJs.stopLoading();
+            //logisticJs.stopLoading();
         },
         error: function (status) {
-            logisticJs.stopLoading();
+            //logisticJs.stopLoading();
         }
     });
 };
@@ -90,7 +98,7 @@ CmsShop.Account.EditAccount = function (id) {
         data: { Id:id },
         dataType: "json",
         beforeSend: function () {
-            logisticJs.startLoading();
+            //logisticJs.startLoading();
         },
         success: function (response) {
             if (response.status) {
@@ -105,10 +113,10 @@ CmsShop.Account.EditAccount = function (id) {
                 $("#btnAddNewAccount").attr('data-id', response.Data.Id);
                 $("#hdAccountId").val(response.Data.Id);
             }
-            logisticJs.stopLoading();
+            //logisticJs.stopLoading();
         },
         error: function (status) {
-            logisticJs.stopLoading();
+            //logisticJs.stopLoading();
         }
     });
 };
@@ -124,7 +132,7 @@ CmsShop.Account.DeleteAccount = function (id) {
             data: { Id: id },
             dataType: "json",
             beforeSend: function () {
-                logisticJs.startLoading();
+                //logisticJs.startLoading();
             },
             success: function (response) {
                 if (response.status) {                
@@ -132,10 +140,10 @@ CmsShop.Account.DeleteAccount = function (id) {
                         p.RegisterEvents();
                     });
                 }
-                logisticJs.stopLoading();
+                //logisticJs.stopLoading();
             },
             error: function (status) {
-                logisticJs.stopLoading();
+                //logisticJs.stopLoading();
             }
         });
     });    
@@ -152,18 +160,21 @@ CmsShop.Account.LoadAllAccount = function (callback) {
         data: dataparam,
         dataType: "json",
         beforeSend: function () {
-            logisticJs.startLoading();
+            //logisticJs.startLoading();
         },
         success: function (response) {
             if (response.status == true && response.totalCount > 0) {
                 $("#listAllAccount").show();
                 var template = $("#package-data").html();
-                var render = "";                
+                var render = "";
+                var i = 1;
                 $.each(response.Data, function (i, item) {
                     render += Mustache.render(template, {
-                        id: item.Id, displayName: item.DisplayName, userName: item.UserName, email: item.Email,
-                        deviceMobile: item.DeviceMobile, createdDate: logisticJs.dateFormatJson(item.CreatedDate)
-                    });                    
+                        stt: i, id: item.Id,
+                        displayName: item.DisplayName, phone: item.Phone, email: item.Email,
+                        statusAcc: item.Status = true ? "checked" : "", createdDate: logisticJs.convertDatetimeDMY(item.CreatedDate)
+                    });
+                    i++;
                 });
                 if (render != undefined) {
                     $("#listAllAccount").html(render);
@@ -186,14 +197,14 @@ CmsShop.Account.LoadAllAccount = function (callback) {
                     });
                 });
             }
-            logisticJs.stopLoading();
+            //logisticJs.stopLoading();
 
             if (typeof (callback) == "function") {
                 callback();
             }
         },
         error: function (status) {
-            logisticJs.stopLoading();
+            //logisticJs.stopLoading();
         }
     });
 };
