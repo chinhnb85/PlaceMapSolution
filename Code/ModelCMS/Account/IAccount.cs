@@ -9,7 +9,7 @@ namespace ModelCMS.Account
 	    bool UpdateAvatar(AccountEntity obj);
         bool Delete(long id);
 		List<AccountEntity> ListAll();
-        List<AccountEntity> ListAllPaging(AccountEntity accountInfo, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
+        List<AccountEntity> ListAllPaging(string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
 		AccountEntity ViewDetail(int id);
 	    bool CheckUserNameExist(string userName);
 	    bool Login(string userName, string password, ref AccountEntity obj);

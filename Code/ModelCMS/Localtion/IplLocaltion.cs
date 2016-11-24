@@ -7,22 +7,22 @@ using LibCore.Data;
 using LibCore.Helper.Logging;
 using ModelCMS.Base;
 
-namespace ModelCMS.Account
+namespace ModelCMS.Localtion
 {
-    public class IplAccount : BaseIpl<ADOProvider>, IAccount
+    public class IplLocaltion : BaseIpl<ADOProvider>, ILocaltion
     {
         #region Methods
 
         /// <summary>
-        /// Saves a record to the Account table.
+        /// Saves a record to the Localtion table.
         /// </summary>
-        public long Insert(AccountEntity obj)
+        public long Insert(LocaltionEntity obj)
         {
             long res;            
             try
             {
                 var p = Param(obj);
-                var flag = unitOfWork.ProcedureExecute("Sp_Account_Insert", p);
+                var flag = unitOfWork.ProcedureExecute("Sp_Localtion_Insert", p);
                 res = flag ? p.Get<long>("@Id") : 0;
             }
             catch (Exception ex)
@@ -34,9 +34,9 @@ namespace ModelCMS.Account
         }
 
         /// <summary>
-        /// Updates a record in the Account table.
+        /// Updates a record in the Localtion table.
         /// </summary>
-        public bool Update(AccountEntity obj)
+        public bool Update(LocaltionEntity obj)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace ModelCMS.Account
                 p.Add("@BirthDay", obj.BirthDay);
                 p.Add("@DeviceMobile", obj.DeviceMobile);
                 p.Add("@Status", obj.Status);
-                var res = unitOfWork.ProcedureExecute("Sp_Account_Update", p);
+                var res = unitOfWork.ProcedureExecute("Sp_Localtion_Update", p);
                 return res;
             }
             catch (Exception ex)
@@ -63,7 +63,7 @@ namespace ModelCMS.Account
         }
 
         /// <summary>
-        /// Deletes a record from the Account table by its primary key.
+        /// Deletes a record from the Localtion table by its primary key.
         /// </summary>
         public bool Delete(long id)
         {
@@ -71,7 +71,7 @@ namespace ModelCMS.Account
             {
                 var p = new DynamicParameters();
                 p.Add("@Id", id);                
-                var res = unitOfWork.ProcedureExecute("Sp_Account_Delete", p);
+                var res = unitOfWork.ProcedureExecute("Sp_Localtion_Delete", p);
                 return res;
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace ModelCMS.Account
             {
                 var p = new DynamicParameters();
                 p.Add("@Id", id);
-                var res = unitOfWork.ProcedureExecute("Sp_Account_UpdateStatus", p);
+                var res = unitOfWork.ProcedureExecute("Sp_Localtion_UpdateStatus", p);
                 return res;
             }
             catch (Exception ex)
@@ -95,13 +95,13 @@ namespace ModelCMS.Account
                 throw;
             }
         }
-        public bool UpdateAvatar(AccountEntity obj)
+        public bool UpdateAvatar(LocaltionEntity obj)
         {
             try
             {
                 var p = new DynamicParameters();
                 p.Add("@Id", obj.Id);                
-                var res = unitOfWork.ProcedureExecute("Sp_Account_UpdateAvatar", p);
+                var res = unitOfWork.ProcedureExecute("Sp_Localtion_UpdateAvatar", p);
                 return res;
             }
             catch (Exception ex)
@@ -110,13 +110,13 @@ namespace ModelCMS.Account
                 return false;
             }
         }
-        public AccountEntity GetAccountByEmail(string email)
+        public LocaltionEntity GetLocaltionByEmail(string email)
         {
             try
             {
                 var p = new DynamicParameters();
                 p.Add("@email", email);
-                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_GetAccountByEmail", p).FirstOrDefault();
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_GetLocaltionByEmail", p).FirstOrDefault();
                 return data;
             }
             catch (Exception ex)
@@ -139,7 +139,7 @@ namespace ModelCMS.Account
                 var p = new DynamicParameters();
                 p.Add("@UserName", userName);
                 p.Add("@Res", dbType: DbType.Boolean, direction: ParameterDirection.Output);
-                unitOfWork.ProcedureExecute("Sp_Account_CheckUserNameExist", p);
+                unitOfWork.ProcedureExecute("Sp_Localtion_CheckUserNameExist", p);
                 var data = p.Get<bool>("@Res");
                 return data;
             }
@@ -157,7 +157,7 @@ namespace ModelCMS.Account
                 p.Add("@Email", email);
                 p.Add("@Id", id);
                 p.Add("@Res", dbType: DbType.Boolean, direction: ParameterDirection.Output);
-                unitOfWork.ProcedureExecute("Sp_Account_CheckEmailExist", p);
+                unitOfWork.ProcedureExecute("Sp_Localtion_CheckEmailExist", p);
                 var data = p.Get<bool>("@Res");
                 return data;
             }
@@ -175,7 +175,7 @@ namespace ModelCMS.Account
                 p.Add("@oldPass", oldPass);
                 p.Add("@email", email);
                 p.Add("@data", dbType: DbType.Boolean, direction: ParameterDirection.Output);
-                unitOfWork.ProcedureExecute("Sp_Account_CheckResetPassword", p);
+                unitOfWork.ProcedureExecute("Sp_Localtion_CheckResetPassword", p);
                 var data = p.Get<bool>("@data");
                 return data;
             }
@@ -193,7 +193,7 @@ namespace ModelCMS.Account
                 p.Add("@email", email);
                 p.Add("@password", password);
                 p.Add("@data", dbType: DbType.Boolean, direction: ParameterDirection.Output);
-                unitOfWork.ProcedureExecute("Sp_Account_ResetPassword", p);
+                unitOfWork.ProcedureExecute("Sp_Localtion_ResetPassword", p);
                 var data = p.Get<bool>("@data");
                 return data;
             }
@@ -205,15 +205,15 @@ namespace ModelCMS.Account
         }
 
         /// <summary>
-        /// Selects a single record from the Account table.
+        /// Selects a single record from the Localtion table.
         /// </summary>
-        public AccountEntity ViewDetail(int id)
+        public LocaltionEntity ViewDetail(int id)
         {
             try
             {
                 var p = new DynamicParameters();
                 p.Add("@Id", id);
-                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_ViewDetail", p).SingleOrDefault();
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_ViewDetail", p).SingleOrDefault();
                 return data;
             }
             catch (Exception ex)
@@ -223,14 +223,14 @@ namespace ModelCMS.Account
             }
         }
 
-        public bool Login(string userName, string password, ref AccountEntity obj)
+        public bool Login(string userName, string password, ref LocaltionEntity obj)
         {
             try
             {
                 var p = new DynamicParameters();
                 p.Add("@UserName", userName);
                 p.Add("@password", password);
-                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_Login", p).SingleOrDefault();                
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_Login", p).SingleOrDefault();                
                 if (data != null)
                 {
                     obj = data;
@@ -258,7 +258,7 @@ namespace ModelCMS.Account
                 p.Add("@Id", id);
                 p.Add("@OldPassword", oldPassword);
                 p.Add("@Password", newPassword);
-                var data = unitOfWork.Procedure<string>("Sp_Account_ChangePassword", p).SingleOrDefault();
+                var data = unitOfWork.Procedure<string>("Sp_Localtion_ChangePassword", p).SingleOrDefault();
                 return data == "SUCCESS";
 
             }
@@ -270,13 +270,13 @@ namespace ModelCMS.Account
         }
 
         /// <summary>
-        /// Selects all records from the Account table.
+        /// Selects all records from the Localtion table.
         /// </summary>
-        public List<AccountEntity> ListAll()
+        public List<LocaltionEntity> ListAll()
         {
             try
             {
-                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_ListAll");
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_ListAll");
                 return data.ToList();
             }
             catch (Exception ex)
@@ -287,9 +287,9 @@ namespace ModelCMS.Account
         }
 
         /// <summary>
-        /// Selects all records from the Account table.
+        /// Selects all records from the Localtion table.
         /// </summary>
-        public List<AccountEntity> ListAllPaging(string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
+        public List<LocaltionEntity> ListAllPaging(string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
         {
             try
             {
@@ -300,7 +300,7 @@ namespace ModelCMS.Account
                 p.Add("@sortColumn", sortColumn);
                 p.Add("@sortDesc", sortDesc);
                 p.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_ListAllPaging", p);
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_ListAllPaging", p);
                 totalRow = p.Get<int>("@totalRow");
                 return data.ToList();
             }
@@ -312,9 +312,9 @@ namespace ModelCMS.Account
         }
 
         /// <summary>
-        /// Saves a record to the Account table.
+        /// Saves a record to the Localtion table.
         /// </summary>
-        private DynamicParameters Param(AccountEntity obj, string action = "add")
+        private DynamicParameters Param(LocaltionEntity obj, string action = "add")
         {
             var p = new DynamicParameters();
             if (action == "add")
