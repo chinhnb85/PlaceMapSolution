@@ -123,7 +123,7 @@ function getAllUser() {
             $("#GetAllUser").append(temp);
         });
 
-        $('table tr').off('click').on('click', function () {
+        $('table #GetAllUser tr').off('click').on('click', function () {
 
             setMapOnAll(null);
 

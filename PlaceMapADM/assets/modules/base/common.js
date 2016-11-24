@@ -82,10 +82,16 @@ var logisticJs = $.extend({
             success: function (response) {
                 if (response.status == true && response.Data!=null) {
                     var $itemuser=$('.login-area.dropdown-toggle');
-                    $('.avatar img',$itemuser).attr('src', response.Data.Avatar);
+                    var $itemdropdown = $('.pull-right.dropdown-menu.dropdown-arrow.dropdown-login-area');
+                    var avatar = "/assets/img/avatars/no-avatar.gif";
+                    if (response.Data.Avatar!=null) {
+                        avatar = response.Data.Avatar;
+                    }
+                    $('.avatar img', $itemuser).attr('src', avatar);
                     $('.profile span', $itemuser).html(response.Data.DisplayName);
-                    $('.email a', $('.pull-right.dropdown-menu.dropdown-arrow.dropdown-login-area')).html(response.Data.Email);
-                    $('.username a', $('.pull-right.dropdown-menu.dropdown-arrow.dropdown-login-area')).html(response.Data.UserName);
+                    $('.email a', $itemdropdown).html(response.Data.Email);
+                    $('.username a', $itemdropdown).html(response.Data.UserName);
+                    $('.avatar-area img', $itemdropdown).attr('src', avatar);
                     logisticJs.sessionUser.userId = response.Data.Id;
                     logisticJs.sessionUser.userName = response.Data.UserName;
                     logisticJs.sessionUser.email = response.Data.Email;

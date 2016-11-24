@@ -5,7 +5,7 @@
 <div class="row">
     <div class="widget">
         <div class="widget-header ">
-            <span class="widget-caption">Quản lý tài khoản</span>
+            <span class="widget-caption">Quản lý địa điểm</span>
             <div class="widget-buttons">
                 <a href="#" data-toggle="maximize">
                     <i class="fa fa-expand"></i>
@@ -17,11 +17,11 @@
         </div>
         <div class="widget-body">
             <div class="form-group">
-                <a id="btnAddNewAccount" class="btn btn-info btn-xs hideform"><i class="fa fa-plus"></i> Tạo tài khoản</a>
+                <a id="btnAddNewLocaltion" class="btn btn-info btn-xs hideform"><i class="fa fa-plus"></i> Thêm địa điểm</a>
             </div>
-            <form role="form" id="insert-account" style="display:none;">
+            <form role="form" id="insert-Localtion" style="display:none;">
                 <fieldset class="fieldset">
-                    <legend class="legend">Tạo tài khoản</legend>
+                    <legend class="legend">Thêm địa điểm</legend>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -97,9 +97,9 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group" style="margin-top: 10px; margin-bottom: 0;">
-                                <a id="btnSaveAccount" data-id="0" class="btn btn-info btn-sm"><i class="fa fa-save"></i> Lưu</a>
+                                <a id="btnSaveLocaltion" data-id="0" class="btn btn-info btn-sm"><i class="fa fa-save"></i> Lưu</a>
                                 <a id="btnCancel" class="btn btn-default btn-sm"><i class="fa fa-recycle"></i> Hủy bỏ</a>
-                                <input type="hidden" id="hdAccountId" name="hdAccountId" value="0">
+                                <input type="hidden" id="hdLocaltionId" name="hdLocaltionId" value="0">
                             </div>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="listAllAccount"></tbody>
+                    <tbody id="listAllLocaltion"></tbody>
                     <script id="package-data" type="x-tmpl-mustache">
                         <tr>
                             <td>

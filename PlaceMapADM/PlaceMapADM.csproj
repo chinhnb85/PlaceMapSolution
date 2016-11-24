@@ -161,6 +161,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\Common.cs" />
     <Compile Include="Code\SessionUtility.cs" />
+    <Compile Include="Controllers\LocaltionController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllers\CategoryApiController.cs" />
     <Compile Include="Controllers\ApiControllers\UserApiController.cs" />
@@ -221,6 +222,7 @@
     <Content Include="assets\img\avatars\Lee-Munroe.jpg" />
     <Content Include="assets\img\avatars\Matt-Cheuvront.jpg" />
     <Content Include="assets\img\avatars\Nicolai-Larson.jpg" />
+    <Content Include="assets\img\avatars\no-avatar.gif" />
     <Content Include="assets\img\avatars\Osvaldus-Valutis.jpg" />
     <Content Include="assets\img\avatars\Sergey-Azovskiy.jpg" />
     <Content Include="assets\img\avatars\Stephanie-Walter.jpg" />
@@ -240,6 +242,7 @@
     <Content Include="assets\img\temp1.png" />
     <Content Include="assets\img\tree-icons.png" />
     <Content Include="assets\img\w-loading.gif" />
+    <Content Include="assets\modules\localtionController.js" />
     <Content Include="assets\modules\accountController.js" />
     <Content Include="assets\modules\base\common.js" />
     <Content Include="assets\modules\productController.js" />
@@ -443,6 +446,7 @@
     <Content Include="Views\Shared\_PageBreadcrumb.cshtml" />
     <Content Include="Views\Product\Created.cshtml" />
     <Content Include="Views\Product\List.cshtml" />
+    <Content Include="Views\Localtion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\LibCore\LibCore.csproj">

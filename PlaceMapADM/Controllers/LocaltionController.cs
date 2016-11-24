@@ -6,13 +6,13 @@ using System.Web;
 using System.Web.Mvc;
 using PlaceMapADM.Controllers.Base;
 using LibCore.EF;
-using ModelCMS.Account;
+using ModelCMS.Localtion;
 
 namespace PlaceMapADM.Controllers
 {
-    public class AccountController : BaseController
+    public class LocaltionController : BaseController
     {
-        // GET: Account        
+        // GET: Localtion        
         public ActionResult Index()
         {
             return View();
@@ -23,7 +23,7 @@ namespace PlaceMapADM.Controllers
         {
             try
             {
-                var id= long.Parse(collection["hdAccountId"]);
+                var id= long.Parse(collection["hdLocaltionId"]);
                 var displayname = collection["txtDisplayName"];
                 var username = collection["txtUserName"];
                 var password = collection["txtPassword"];
@@ -33,7 +33,7 @@ namespace PlaceMapADM.Controllers
                 var address = collection["txtAddress"];
                 var phone = collection["txtPhone"];
                 var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
-                var account = new AccountEntity
+                var Localtion = new LocaltionEntity
                 {                    
                     Id=id,
                     ParentId=null,
@@ -48,15 +48,15 @@ namespace PlaceMapADM.Controllers
                     CreatedDate = DateTime.Now,
                     Status = status
                 };
-                var ipl = SingletonIpl.GetInstance<IplAccount>();                
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();                
                 if (id == 0)
                 {
-                    id = ipl.Insert(account);
+                    id = ipl.Insert(Localtion);
                     return Json(new { status = true, Data = id }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    var res = ipl.Update(account);
+                    var res = ipl.Update(Localtion);
                     return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
                 }                                
             }
@@ -67,11 +67,11 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAccountById(int Id)
+        public JsonResult GetLocaltionById(int Id)
         {
             try
             {
-                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
                 var res = ipl.ViewDetail(Id);
 
                 return Json(new { status = true, Data = res }, JsonRequestBehavior.AllowGet);
@@ -87,7 +87,7 @@ namespace PlaceMapADM.Controllers
         {
             try
             {                
-                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
                 var res = ipl.Delete(Id);
 
                 return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
@@ -103,7 +103,7 @@ namespace PlaceMapADM.Controllers
         {
             try
             {
-                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
                 var res = ipl.UpdateStatus(Id);
 
                 return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
@@ -120,8 +120,8 @@ namespace PlaceMapADM.Controllers
             try
             {
                 var total = 0;
-                var obj = new AccountEntity();
-                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var obj = new LocaltionEntity();
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
                 var res = ipl.ListAllPaging(keySearch, pageIndex, pageSize, "", "", ref total);
 
                 if (res != null && res.Count > 0)
