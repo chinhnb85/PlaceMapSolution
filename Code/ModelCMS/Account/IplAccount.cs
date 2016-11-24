@@ -80,6 +80,21 @@ namespace ModelCMS.Account
                 throw;
             }
         }
+        public bool UpdateStatus(long id)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", id);
+                var res = unitOfWork.ProcedureExecute("Sp_Account_UpdateStatus", p);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
         public bool UpdateAvatar(AccountEntity obj)
         {
             try
@@ -324,7 +339,6 @@ namespace ModelCMS.Account
 
             return p;
         }
-
 
         #endregion
     }
