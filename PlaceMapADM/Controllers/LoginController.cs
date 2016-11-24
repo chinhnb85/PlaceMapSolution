@@ -36,7 +36,8 @@ namespace PlaceMapADM.Controllers
                         UserType = ue.Type,
                         Id = int.Parse(ue.Id.ToString()),
                         DisplayName = ue.DisplayName,
-                        Avatar = ue.Avatar
+                        Avatar = ue.Avatar,
+                        Email=ue.Email
                     };
                     SessionUtility.SetUser(userSess);
                     Session["UserName"] = userName;

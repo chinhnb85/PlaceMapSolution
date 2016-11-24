@@ -19,12 +19,16 @@ CmsShop.Account.Init = function () {
 CmsShop.Account.RegisterEvents = function () {
     var p = this;
 
-    $("#btnAddNewAccount").off("click").on("click", function () {
+    $("#btnSaveAccount").off("click").on("click", function () {
         var $this = $(this);
         p.AddNewAccount($this.attr('data-id'));
     });
     $(".edit").off("click").on("click", function () {
         var $this = $(this);
+        if ($('#btnAddNewAccount').hasClass('hideform')) {
+            $('#insert-account').show(500);
+            $('#btnAddNewAccount').addClass('showform').removeClass('hideform').html('<i class="fa fa-minus"></i> Đóng');
+        }
         p.EditAccount($this.attr('data-id'));
     });
     $(".delete").off("click").on("click", function () {
@@ -39,6 +43,20 @@ CmsShop.Account.RegisterEvents = function () {
         p.LoadAllAccount(function () {
             p.RegisterEvents();
         });
+    });
+    $(".checkbox-slider").off("click").on("click", function () {
+        var $this = $(this);
+        p.UpdateStatusAccount($this.attr('data-id'));
+    });
+    $("#btnAddNewAccount").off("click").on("click", function () {
+        var $this = $(this);
+        if ($this.hasClass('hideform')) {
+            $('#insert-account').show(500);
+            $this.addClass('showform').removeClass('hideform').html('<i class="fa fa-minus"></i> Đóng');
+        } else {
+            $('#insert-account').hide(500);
+            $this.addClass('hideform').removeClass('showform').html('<i class="fa fa-plus"></i> Thêm mới');
+        }
     });
 };
 
@@ -110,7 +128,7 @@ CmsShop.Account.EditAccount = function (id) {
                 $("#txtBirthDay").val(response.Data.BirthDay);
                 $("#txtAddress").val(response.Data.Address);
                 $("#cbxStatus").prop('checked', response.Data.Status);
-                $("#btnAddNewAccount").attr('data-id', response.Data.Id);
+                $("#btnSaveAccount").attr('data-id', response.Data.Id);
                 $("#hdAccountId").val(response.Data.Id);
             }
             //logisticJs.stopLoading();
@@ -123,8 +141,8 @@ CmsShop.Account.EditAccount = function (id) {
 
 CmsShop.Account.DeleteAccount = function (id) {
     var p = this;
-    logisticJs.msgConfirm({
-        titleHeader:'Bạn có chắc muốn xóa tài khoản này?'
+    logisticJs.msgConfirm({        
+        text: 'Bạn có chắc muốn xóa tài khoản này?'
     }, function () {
         $.ajax({
             type: "GET",
@@ -149,6 +167,28 @@ CmsShop.Account.DeleteAccount = function (id) {
     });    
 };
 
+CmsShop.Account.UpdateStatusAccount = function (id) {
+    var p = this;
+    $.ajax({
+        type: "GET",
+        url: "/Account/UpdateStatus",
+        data: { Id: id },
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status) {
+                
+            }
+            //logisticJs.stopLoading();
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
+        }
+    });
+};
+
 CmsShop.Account.LoadAllAccount = function (callback) {
     var p = this;
 
@@ -166,15 +206,16 @@ CmsShop.Account.LoadAllAccount = function (callback) {
             if (response.status == true && response.totalCount > 0) {
                 $("#listAllAccount").show();
                 var template = $("#package-data").html();
-                var render = "";
-                var i = 1;
+                var render = "";                
                 $.each(response.Data, function (i, item) {
+                    var statusacc = "";
+                    if (item.Status) {
+                        statusacc = "checked";
+                    }
                     render += Mustache.render(template, {
-                        stt: i, id: item.Id,
-                        displayName: item.DisplayName, phone: item.Phone, email: item.Email,
-                        statusAcc: item.Status = true ? "checked" : "", createdDate: logisticJs.convertDatetimeDMY(item.CreatedDate)
-                    });
-                    i++;
+                        stt: i+1, id: item.Id, displayName: item.DisplayName, phone: item.Phone, email: item.Email,
+                        statusAcc: statusacc, createdDate: logisticJs.convertDatetimeDMY(item.CreatedDate)
+                    });                    
                 });
                 if (render != undefined) {
                     $("#listAllAccount").html(render);
@@ -266,7 +307,7 @@ CmsShop.Account.EmptyAccount = function() {
     $("#txtBirthDay").val('');
     $("#txtAddress").val('');
     $("#cbxStatus").prop('checked', false);
-    $("#btnAddNewAccount").attr('data-id', 0);
+    $("#btnSaveAccount").attr('data-id', 0);
     $("#hdAccountId").val(0);
 };
 

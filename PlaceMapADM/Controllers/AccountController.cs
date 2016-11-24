@@ -29,6 +29,7 @@ namespace PlaceMapADM.Controllers
                 var password = collection["txtPassword"];
                 var email = collection["txtEmail"];
                 var birthday = collection["txtBirthDay"];
+                DateTime dt = DateTime.ParseExact(string.IsNullOrEmpty(birthday) ? DateTime.Now.ToString("dd/MM/yyyy") : birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 var address = collection["txtAddress"];
                 var phone = collection["txtPhone"];
                 var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
@@ -39,7 +40,7 @@ namespace PlaceMapADM.Controllers
                     UserName = username,
                     Password = password,
                     Email = email,
-                    BirthDay = Convert.ToDateTime(string.IsNullOrEmpty(birthday) ? DateTime.Now.ToString(CultureInfo.InvariantCulture): birthday),
+                    BirthDay = dt,
                     Address = address,
                     Phone = phone,
                     CreatedDate = DateTime.Now,
@@ -57,9 +58,9 @@ namespace PlaceMapADM.Controllers
                     return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
                 }                                
             }
-            catch
+            catch(Exception ex)
             {
-                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { status = false, message=ex.ToString() }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -86,6 +87,22 @@ namespace PlaceMapADM.Controllers
             {                
                 var ipl = SingletonIpl.GetInstance<IplAccount>();
                 var res = ipl.Delete(Id);
+
+                return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult UpdateStatus(int Id)
+        {
+            try
+            {
+                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var res = ipl.UpdateStatus(Id);
 
                 return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
             }
@@ -132,6 +149,21 @@ namespace PlaceMapADM.Controllers
                     totalCount = 0,
                     totalRow = 0
                 }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult getObject()
+        {
+            try
+            {
+                var user = Code.SessionUtility.GetUser();
+
+                return Json(new { status = true, Data = user }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
             }
         }
     }

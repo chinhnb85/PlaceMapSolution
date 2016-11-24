@@ -16,7 +16,10 @@
             </div>
         </div>
         <div class="widget-body">
-            <form role="form" id="insert-account" action="/Account/Add">
+            <div class="form-group">
+                <a id="btnAddNewAccount" class="btn btn-info btn-xs hideform"><i class="fa fa-plus"></i> Thêm mới</a>
+            </div>
+            <form role="form" id="insert-account" style="display:none;">
                 <fieldset class="fieldset">
                     <legend class="legend">Thêm mới tài khoản</legend>
                     <div class="row">
@@ -93,40 +96,53 @@
                             </div>
                         </div>
                         <div class="col-sm-3">
-                            <div class="form-group" style="margin-top: 5px; margin-bottom: 0;">
-                                <a id="btnAddNewAccount" data-id="0" class="btn btn-info"><i class="fa fa-save"></i> Lưu</a>
-                                <a id="btnCancel" class="btn btn-default"><i class="fa fa-recycle"></i> Hủy bỏ</a>
+                            <div class="form-group" style="margin-top: 10px; margin-bottom: 0;">
+                                <a id="btnSaveAccount" data-id="0" class="btn btn-info btn-sm"><i class="fa fa-save"></i> Lưu</a>
+                                <a id="btnCancel" class="btn btn-default btn-sm"><i class="fa fa-recycle"></i> Hủy bỏ</a>
                                 <input type="hidden" id="hdAccountId" name="hdAccountId" value="0">
                             </div>
                         </div>
                     </div>
                 </fieldset>
             </form>
+
+            <fieldset class="fieldset">
+                <legend class="legend">Bộ lọc</legend>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span class="input-icon icon-right">
+                            <input type="text" id="keySearch" name="keySearch" class="form-control" placeholder="Tìm kiếm...">
+                            <i class="glyphicon glyphicon-search circular"></i>
+                        </span>
+                    </div>
+                </div>
+            </fieldset>
+
             <div class="dataTables_wrapper form-inline no-footer">
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
-                    <tr role="row">
-                        <th style="width: 10%">
-                            Stt
-                        </th>
-                        <th>
-                            Tên hiển thị
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            Điện thoại
-                        </th>
-                        <th>
-                            Ngày tạo
-                        </th>
-                        <th>
-                            Trạng thái
-                        </th>
-                        <th style="width: 15%">
-                        </th>
-                    </tr>
+                        <tr role="row">
+                            <th style="width: 10%">
+                                Stt
+                            </th>
+                            <th>
+                                Tên hiển thị
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Điện thoại
+                            </th>
+                            <th>
+                                Ngày tạo
+                            </th>
+                            <th>
+                                Trạng thái
+                            </th>
+                            <th style="width: 15%">
+                            </th>
+                        </tr>
                     </thead>
                     <tbody id="listAllAccount"></tbody>
                     <script id="package-data" type="x-tmpl-mustache">
@@ -146,9 +162,9 @@
                             <td>
                                 {{createdDate}}
                             </td>
-                            <td style="position:relative;">                                
-                                <input class="checkbox-slider slider-icon colored-success" type="checkbox" {{statusAcc}}>
-                                <span class="text"></span>                                                                                             
+                            <td style="position:relative;">
+                                <input class="checkbox-slider slider-icon colored-success" type="checkbox" {{statusAcc}} data-id="{{id}}">
+                                <span class="text"></span>
                             </td>
                             <td style="text-align:center;">
                                 <a href="javascript:void(0)" class="btn btn-info btn-xs edit" data-id="{{id}}"><i class="fa fa-edit"></i> Sửa</a>

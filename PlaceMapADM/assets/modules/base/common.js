@@ -32,10 +32,17 @@
 })(jQuery, window, document);
 
 var logisticJs = $.extend({
+    sessionUser: {
+        userId:0,
+        userName: '',
+        email:'',
+        displayName: ''        
+    },
     init: function () {
+        logisticJs.getObject();
 
         $('#btnThoat,#btn_logout').off('click').on('click', function () {
-            var inteval = setInterval(logisticJs.msgConfirm({
+            var inteval = setInterval(logisticJs.msgConfirm({                
                 text: "Bạn muốn thoát đăng nhập?"
             }, function () {
                 $.ajax({
@@ -64,61 +71,25 @@ var logisticJs = $.extend({
 
         });
     },   
-    getObjectByType: function (typeId, objectId) {
+    getObject: function () {
         $.ajax({
             type: "GET",
-            url: "/Utilisateur/getObject",
-            data: { typeId: typeId },
+            url: "/Account/getObject",            
             dataType: "json",
             beforeSend: function () {
                 logisticJs.startLoading();
             },
             success: function (response) {
-                if (response.status == true) {
-                    if (response.Data != null && response.totalCount > 0) {
-                        $('#divObject').removeClass('hide');
-                        //$('#selectObject').css('display', 'block');
-                        var template = $("#result-ObjectProfile").html();
-                        var render = "<option value=''>Choisissez les données</option>";
-                        var objText = "";
-                        var k = 0;
-                        if (typeId == 2) {
-                            $.each(response.Data, function (i, item) {
-                                render += Mustache.render(template, {
-                                    id: item.idDriver, text: item.name + ' ' + item.lastName
-                                });
-                                if (item.idDriver == objectId) {
-                                    objText = item.name + ' ' + item.lastName;
-                                }
-                                k = k + 1;
-
-                            });
-                            if (render != undefined)
-                                $("#selectObjectProfile").html(render);
-                        }
-                        else if (typeId == 3) {
-                            $.each(response.Data, function (i, item) {
-                                render += Mustache.render(template, {
-                                    id: item.idClient, text: item.name + ' ' + item.lastName
-                                });
-                                if (item.idClient == objectId) {
-                                    objText = item.name + ' ' + item.lastName;
-                                }
-                                k = k + 1;
-                            });
-                            if (render != undefined)
-                                $("#selectObjectProfile").html(render);
-                        }
-                        else {
-                            if (render != undefined)
-                                $("#selectObjectProfile").html(render);
-                        }
-                        $('#lblObjectProfile').html(objText);
-
-                    }
-                    $('#selectObjectProfile').on('change', function () {
-                        $('#hdfObjectProfile').val($('#selectObjectProfile').val());
-                    });
+                if (response.status == true && response.Data!=null) {
+                    var $itemuser=$('.login-area.dropdown-toggle');
+                    $('.avatar img',$itemuser).attr('src', response.Data.Avatar);
+                    $('.profile span', $itemuser).html(response.Data.DisplayName);
+                    $('.email a', $('.pull-right.dropdown-menu.dropdown-arrow.dropdown-login-area')).html(response.Data.Email);
+                    $('.username a', $('.pull-right.dropdown-menu.dropdown-arrow.dropdown-login-area')).html(response.Data.UserName);
+                    logisticJs.sessionUser.userId = response.Data.Id;
+                    logisticJs.sessionUser.userName = response.Data.UserName;
+                    logisticJs.sessionUser.email = response.Data.Email;
+                    logisticJs.sessionUser.displayName = response.Data.DisplayName;
                 }
                 logisticJs.stopLoading();
             },
@@ -283,7 +254,7 @@ var logisticJs = $.extend({
                 focus: true
             }],
             modal: true,
-            titleHeader: 'Confirmation'
+            titleHeader: 'Xác nhận'
         };
         $.extend(true, settings, options);
         this.alert(settings);
