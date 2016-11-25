@@ -6,7 +6,7 @@ namespace ModelCMS.Account
     {
 		long Insert(AccountEntity obj);		
         bool Update(AccountEntity obj);
-	    bool UpdateAvatar(AccountEntity obj);
+	    bool UpdateAvatar(int id, string avatar);
         bool Delete(long id);
 		List<AccountEntity> ListAll();
         List<AccountEntity> ListAllPaging(string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);

@@ -40,18 +40,7 @@ namespace ModelCMS.Account
         {
             try
             {
-                var p = Param(obj, "edit");
-                p.Add("@ParentId", obj.ParentId);
-                p.Add("@Type", obj.Type);
-                p.Add("@DisplayName", obj.DisplayName);
-                p.Add("@UserName", obj.UserName);
-                p.Add("@Password", obj.Password);
-                p.Add("@Email", obj.Email);
-                p.Add("@Phone", obj.Phone);
-                p.Add("@Address", obj.Address);
-                p.Add("@BirthDay", obj.BirthDay);
-                p.Add("@DeviceMobile", obj.DeviceMobile);
-                p.Add("@Status", obj.Status);
+                var p = Param(obj, "edit");                
                 var res = unitOfWork.ProcedureExecute("Sp_Account_Update", p);
                 return res;
             }
@@ -95,12 +84,13 @@ namespace ModelCMS.Account
                 throw;
             }
         }
-        public bool UpdateAvatar(AccountEntity obj)
+        public bool UpdateAvatar(int id,string avatar)
         {
             try
             {
                 var p = new DynamicParameters();
-                p.Add("@Id", obj.Id);                
+                p.Add("@Id", id);
+                p.Add("@Avatar", avatar);
                 var res = unitOfWork.ProcedureExecute("Sp_Account_UpdateAvatar", p);
                 return res;
             }
@@ -317,19 +307,19 @@ namespace ModelCMS.Account
         private DynamicParameters Param(AccountEntity obj, string action = "add")
         {
             var p = new DynamicParameters();
+            p.Add("@ParentId", obj.ParentId);
+            p.Add("@Type", obj.Type);
+            p.Add("@DisplayName", obj.DisplayName);
+            p.Add("@UserName", obj.UserName);
+            p.Add("@Password", obj.Password);
+            p.Add("@Email", obj.Email);
+            p.Add("@Phone", obj.Phone);
+            p.Add("@Address", obj.Address);
+            p.Add("@BirthDay", obj.BirthDay);
+            p.Add("@DeviceMobile", obj.DeviceMobile);
+            p.Add("@Status", obj.Status);
             if (action == "add")
-            {
-                p.Add("@ParentId", obj.ParentId);
-                p.Add("@Type", obj.Type);
-                p.Add("@DisplayName", obj.DisplayName);
-                p.Add("@UserName", obj.UserName);
-                p.Add("@Password", obj.Password);
-                p.Add("@Email", obj.Email);
-                p.Add("@Phone", obj.Phone);
-                p.Add("@Address", obj.Address);
-                p.Add("@BirthDay", obj.BirthDay);
-                p.Add("@DeviceMobile", obj.DeviceMobile);
-                p.Add("@Status", obj.Status);
+            {                
                 p.Add("@Id", dbType: DbType.Int64, direction: ParameterDirection.Output);
             }
             else if(action == "edit")

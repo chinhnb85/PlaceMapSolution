@@ -40,18 +40,7 @@ namespace ModelCMS.Localtion
         {
             try
             {
-                var p = Param(obj, "edit");
-                p.Add("@ParentId", obj.ParentId);
-                p.Add("@Type", obj.Type);
-                p.Add("@DisplayName", obj.DisplayName);
-                p.Add("@UserName", obj.UserName);
-                p.Add("@Password", obj.Password);
-                p.Add("@Email", obj.Email);
-                p.Add("@Phone", obj.Phone);
-                p.Add("@Address", obj.Address);
-                p.Add("@BirthDay", obj.BirthDay);
-                p.Add("@DeviceMobile", obj.DeviceMobile);
-                p.Add("@Status", obj.Status);
+                var p = Param(obj, "edit");                
                 var res = unitOfWork.ProcedureExecute("Sp_Localtion_Update", p);
                 return res;
             }
@@ -126,84 +115,7 @@ namespace ModelCMS.Localtion
             }
 
         }
-
-        /// <summary>
-        /// Check UserName exist
-        /// </summary>
-        /// <param name="userName"></param>
-        /// <returns></returns>
-        public bool CheckUserNameExist(string userName)
-        {
-            try
-            {
-                var p = new DynamicParameters();
-                p.Add("@UserName", userName);
-                p.Add("@Res", dbType: DbType.Boolean, direction: ParameterDirection.Output);
-                unitOfWork.ProcedureExecute("Sp_Localtion_CheckUserNameExist", p);
-                var data = p.Get<bool>("@Res");
-                return data;
-            }
-            catch (Exception ex)
-            {
-                Logging.PutError(ex.Message, ex);
-                return false;
-            }
-        }
-        public bool CheckEmailExist(string email, long id)
-        {
-            try
-            {
-                var p = new DynamicParameters();
-                p.Add("@Email", email);
-                p.Add("@Id", id);
-                p.Add("@Res", dbType: DbType.Boolean, direction: ParameterDirection.Output);
-                unitOfWork.ProcedureExecute("Sp_Localtion_CheckEmailExist", p);
-                var data = p.Get<bool>("@Res");
-                return data;
-            }
-            catch (Exception ex)
-            {
-                Logging.PutError(ex.Message, ex);
-                return false;
-            }
-        }
-        public bool CheckResetPassword(string oldPass, string email)
-        {
-            try
-            {
-                var p = new DynamicParameters();
-                p.Add("@oldPass", oldPass);
-                p.Add("@email", email);
-                p.Add("@data", dbType: DbType.Boolean, direction: ParameterDirection.Output);
-                unitOfWork.ProcedureExecute("Sp_Localtion_CheckResetPassword", p);
-                var data = p.Get<bool>("@data");
-                return data;
-            }
-            catch (Exception ex)
-            {
-                Logging.PutError(ex.Message, ex);
-                return false;
-            }
-        }
-        public bool ResetPassword(string email, string password)
-        {
-            try
-            {
-                var p = new DynamicParameters();
-                p.Add("@email", email);
-                p.Add("@password", password);
-                p.Add("@data", dbType: DbType.Boolean, direction: ParameterDirection.Output);
-                unitOfWork.ProcedureExecute("Sp_Localtion_ResetPassword", p);
-                var data = p.Get<bool>("@data");
-                return data;
-            }
-            catch (Exception ex)
-            {
-                Logging.PutError(ex.Message, ex);
-                return false;
-            }
-        }
-
+        
         /// <summary>
         /// Selects a single record from the Localtion table.
         /// </summary>
@@ -221,53 +133,7 @@ namespace ModelCMS.Localtion
                 Logging.PutError(ex.Message, ex);
                 return null;
             }
-        }
-
-        public bool Login(string userName, string password, ref LocaltionEntity obj)
-        {
-            try
-            {
-                var p = new DynamicParameters();
-                p.Add("@UserName", userName);
-                p.Add("@password", password);
-                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_Login", p).SingleOrDefault();                
-                if (data != null)
-                {
-                    obj = data;
-                    return true;
-                }
-                else
-                {
-                    obj = null;
-                    return false;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Logging.PutError(ex.Message, ex);
-                throw;
-            }
-        }
-
-        public bool ChangePassword(long id, string oldPassword, string newPassword)
-        {
-            try
-            {
-                var p = new DynamicParameters();
-                p.Add("@Id", id);
-                p.Add("@OldPassword", oldPassword);
-                p.Add("@Password", newPassword);
-                var data = unitOfWork.Procedure<string>("Sp_Localtion_ChangePassword", p).SingleOrDefault();
-                return data == "SUCCESS";
-
-            }
-            catch (Exception ex)
-            {
-                Logging.PutError(ex.Message, ex);
-                throw;
-            }
-        }
+        }        
 
         /// <summary>
         /// Selects all records from the Localtion table.
@@ -317,19 +183,18 @@ namespace ModelCMS.Localtion
         private DynamicParameters Param(LocaltionEntity obj, string action = "add")
         {
             var p = new DynamicParameters();
+            p.Add("@Lag", obj.Lag);
+            p.Add("@Lng", obj.Lng);
+            p.Add("@Name", obj.Name);
+            p.Add("@Avatar", obj.Avatar);
+            p.Add("@Email", obj.Email);
+            p.Add("@Phone", obj.Phone);
+            p.Add("@Address", obj.Address);
+            p.Add("@CreatedDate", obj.CreatedDate);
+            p.Add("@Status", obj.Status);
+
             if (action == "add")
-            {
-                p.Add("@ParentId", obj.ParentId);
-                p.Add("@Type", obj.Type);
-                p.Add("@DisplayName", obj.DisplayName);
-                p.Add("@UserName", obj.UserName);
-                p.Add("@Password", obj.Password);
-                p.Add("@Email", obj.Email);
-                p.Add("@Phone", obj.Phone);
-                p.Add("@Address", obj.Address);
-                p.Add("@BirthDay", obj.BirthDay);
-                p.Add("@DeviceMobile", obj.DeviceMobile);
-                p.Add("@Status", obj.Status);
+            {                
                 p.Add("@Id", dbType: DbType.Int64, direction: ParameterDirection.Output);
             }
             else if(action == "edit")

@@ -10,12 +10,7 @@ namespace ModelCMS.Localtion
         bool Delete(long id);
 		List<LocaltionEntity> ListAll();
         List<LocaltionEntity> ListAllPaging(string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
-		LocaltionEntity ViewDetail(int id);
-	    bool CheckUserNameExist(string userName);
-	    bool Login(string userName, string password, ref LocaltionEntity obj);
-        bool ChangePassword(long id, string oldPassword,string newPassword);
-	    bool CheckResetPassword(string oldPass, string email);
-	    bool ResetPassword(string email, string password);
+		LocaltionEntity ViewDetail(int id);	    
 	    LocaltionEntity GetLocaltionByEmail(string email);
 	}
 }
