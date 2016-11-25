@@ -32,6 +32,7 @@
 })(jQuery, window, document);
 
 var logisticJs = $.extend({
+    _URL: window.URL || window.webkitURL,
     sessionUser: {
         userId:0,
         userName: '',
@@ -70,7 +71,53 @@ var logisticJs = $.extend({
         $('#btnSetting').off('click').on('click', function () {
 
         });
-    },   
+        $('#btn_UploadImage').off('click').on('click', function () {
+            $("#f_UploadImage").trigger('click');
+            $("#f_UploadImage").off('change').on('change', function () {
+                var file, img;
+                if ((file = this.files[0])) {
+                    logisticJs.sendFile(file, 'Avatar', function (url) {
+                        var $itemuser = $('.login-area.dropdown-toggle');
+                        var $itemdropdown = $('.pull-right.dropdown-menu.dropdown-arrow.dropdown-login-area');
+                        var avatar = "/assets/img/avatars/no-avatar.gif";
+                        if (url != null) {
+                            avatar = url;
+                        }
+                        $('.avatar img', $itemuser).attr('src', avatar);
+                        $('.avatar-area img', $itemdropdown).attr('src', avatar);
+                        logisticJs.updateAccountAvatar(logisticJs.sessionUser.userId, avatar);
+                    });
+                }
+            });
+        });                
+    },
+    sendFile:function (file,folder,calback) {            
+        var formData = new FormData();
+        formData.append('file', file);
+        formData.append('folder', folder);
+        $.ajax({
+            type: 'post',
+            url: 'Handler/HandlerUpload.ashx',
+            data: formData,
+            beforeSend: function () {
+                //logisticJs.startLoading();                
+            },
+            success: function (url) {
+                if (url != 'error') {
+                    if(typeof(calback)=='function'){
+                        calback(url);
+                    }                    
+                }
+                //logisticJs.stopLoading();
+            },
+            processData: false,
+            contentType: false,
+            error: function () {
+                //logisticJs.stopLoading();
+                logisticJs.msgError({text:'Việc upload xảy ra lỗi. Thử lại!'});
+            }
+        });
+    },    
     getObject: function () {
         $.ajax({
             type: "GET",
@@ -96,6 +143,26 @@ var logisticJs = $.extend({
                     logisticJs.sessionUser.userName = response.Data.UserName;
                     logisticJs.sessionUser.email = response.Data.Email;
                     logisticJs.sessionUser.displayName = response.Data.DisplayName;
+                }
+                logisticJs.stopLoading();
+            },
+            error: function (status) {
+                logisticJs.stopLoading();
+            }
+        });
+    },
+    updateAccountAvatar: function (id,avatar) {
+        $.ajax({
+            type: "GET",
+            url: "/Account/updateAccountAvatar",
+            data:{Id:id, Avatar:avatar},
+            dataType: "json",
+            beforeSend: function () {
+                logisticJs.startLoading();
+            },
+            success: function (response) {
+                if (response.status == true) {
+                    logisticJs.msgShowSuccess({ text: 'Update ảnh thành công.' });
                 }
                 logisticJs.stopLoading();
             },

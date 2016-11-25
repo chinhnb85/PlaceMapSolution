@@ -15,9 +15,10 @@
 .navbar .navbar-inner .navbar-header .navbar-account .setting-container a{    
     font-weight:700;
     text-decoration:none;
+    color:#fff!important;
 }
 .navbar .navbar-inner .navbar-header .navbar-account .setting-container a:hover{
-    color:#fff!important;
+    color:#08c!important;
 }
 .navbar .navbar-inner .navbar-header .navbar-account.setting-open .setting{
     right:210px!important;

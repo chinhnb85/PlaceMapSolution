@@ -160,8 +160,26 @@ namespace PlaceMapADM.Controllers
             try
             {
                 var user = Code.SessionUtility.GetUser();
+                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var res = ipl.ViewDetail(user.Id);
 
-                return Json(new { status = true, Data = user }, JsonRequestBehavior.AllowGet);
+                return Json(new { status = true, Data = res }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult updateAccountAvatar(int Id,string Avatar)
+        {
+            try
+            {
+                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var res = ipl.UpdateAvatar(Id, Avatar);
+
+                return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
             }
             catch
             {

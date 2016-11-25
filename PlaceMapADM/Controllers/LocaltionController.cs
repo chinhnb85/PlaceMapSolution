@@ -24,9 +24,8 @@ namespace PlaceMapADM.Controllers
             try
             {
                 var id= long.Parse(collection["hdLocaltionId"]);
-                var displayname = collection["txtDisplayName"];
-                var username = collection["txtUserName"];
-                var password = collection["txtPassword"];
+                var name = collection["txtDisplayName"];
+                var avatar = collection["txtUserName"];                
                 var email = collection["txtEmail"];
                 var birthday = collection["txtBirthDay"];
                 DateTime dt = DateTime.ParseExact(string.IsNullOrEmpty(birthday) ? DateTime.Now.ToString("dd/MM/yyyy") : birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -36,13 +35,11 @@ namespace PlaceMapADM.Controllers
                 var Localtion = new LocaltionEntity
                 {                    
                     Id=id,
-                    ParentId=null,
-                    Type = null,
-                    DisplayName = displayname,
-                    UserName = username,
-                    Password = password,
-                    Email = email,
-                    BirthDay = dt,
+                    Lag=null,
+                    Lng = null,
+                    Name = name,
+                    Avatar = avatar,                    
+                    Email = email,                                        
                     Address = address,
                     Phone = phone,
                     CreatedDate = DateTime.Now,
