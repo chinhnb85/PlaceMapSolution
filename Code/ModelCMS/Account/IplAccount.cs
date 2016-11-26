@@ -100,6 +100,22 @@ namespace ModelCMS.Account
                 return false;
             }
         }
+        public bool UpdateDevice(long id, string device)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", id);
+                p.Add("@DeviceMobile", device);
+                var res = unitOfWork.ProcedureExecute("Sp_Account_UpdateDevice", p);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                return false;
+            }
+        }
         public AccountEntity GetAccountByEmail(string email)
         {
             try
@@ -221,6 +237,34 @@ namespace ModelCMS.Account
                 p.Add("@UserName", userName);
                 p.Add("@password", password);
                 var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_Login", p).SingleOrDefault();                
+                if (data != null)
+                {
+                    obj = data;
+                    return true;
+                }
+                else
+                {
+                    obj = null;
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
+        public bool LoginDevice(AccountEntity acc, ref AccountEntity obj)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@UserName", acc.UserName);
+                p.Add("@Password", acc.Password);
+                p.Add("@DeviceMobile", acc.DeviceMobile);
+                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_LoginDevice", p).SingleOrDefault();
                 if (data != null)
                 {
                     obj = data;
