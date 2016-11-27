@@ -433,9 +433,14 @@
 
     @Scripts.Render("~/bundles/noty")
 
+    @Scripts.Render("~/bundles/validation")
+
 <!--Page Related Scripts-->
     @RenderSection("PageScripts", required: false)
 
-    <script src="~/assets/modules/@(ViewBag.Controller??controller)Controller.js@(version)"></script>
+    <script src="~/assets/modules/@(ViewBag.Controller ?? controller)Controller.js@(version)"></script>
+
+    @RenderSection("FooterScripts", required: false)
+
 </body>
 </html>

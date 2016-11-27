@@ -253,10 +253,10 @@
     <Content Include="assets\modules\localtionController.js" />
     <Content Include="assets\modules\accountController.js" />
     <Content Include="assets\modules\base\common.js" />
+    <Content Include="assets\modules\homeController.js" />
     <Content Include="assets\modules\productController.js" />
     <Content Include="assets\modules\categoryController.js" />
     <Content Include="assets\modules\loginController.js" />
-    <Content Include="assets\modules\homeController.js" />
     <Content Include="assets\js\beyond.js" />
     <Content Include="assets\js\beyond.min.js" />
     <Content Include="assets\js\bootbox\bootbox.js" />
@@ -378,6 +378,12 @@
     <Content Include="assets\plugins\noty\themes\default.js" />
     <Content Include="assets\plugins\tipsy\css\tipsy.css" />
     <Content Include="assets\plugins\tipsy\js\jquery.tipsy.js" />
+    <Content Include="assets\plugins\validation\additional-methods.js" />
+    <Content Include="assets\plugins\validation\additional-methods.min.js" />
+    <Content Include="assets\plugins\validation\jquery.validate.extend.js" />
+    <Content Include="assets\plugins\validation\jquery.validate.min.js" />
+    <Content Include="assets\plugins\validation\jquery.validate.unobtrusive.js" />
+    <Content Include="assets\plugins\validation\localization\messages.js" />
     <Content Include="assets\sound\alert.mp3" />
     <Content Include="assets\swf\copy_csv_xls.swf" />
     <Content Include="assets\swf\copy_csv_xls_pdf.swf" />

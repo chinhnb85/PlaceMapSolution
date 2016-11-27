@@ -19,40 +19,48 @@
             <div class="form-group">
                 <a id="btnAddNewLocaltion" class="btn btn-info btn-xs hideform"><i class="fa fa-plus"></i> Thêm địa điểm</a>
             </div>
-            <form role="form" id="insert-Localtion" style="display:none;">
+            <form role="form" id="insert-localtion" style="display:none;">
                 <fieldset class="fieldset">
                     <legend class="legend">Thêm địa điểm</legend>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
-                                    <input type="text" id="txtUserName" name="txtUserName" class="form-control" placeholder="Tên đăng nhập">
-                                    <i class="glyphicon glyphicon-user circular"></i>
+                                    <input type="text" id="txtName" name="txtName" class="form-control" placeholder="Tên địa chỉ" />
+                                    <i class="glyphicon glyphicon-map-marker circular"></i>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon icon-right">
+                                    <input type="text" id="txtLag" name="txtLag" class="form-control" placeholder="Kinh độ" />
+                                    <i class="glyphicon glyphicon-tint circular"></i>
                                 </span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <span class="input-icon icon-right">
-                                    <input type="text" id="txtDisplayName" name="txtDisplayName" class="form-control" placeholder="Tên hiển thị">
-                                    <i class="fa fa-user"></i>
-                                </span>
+                                <input type="hidden" id="txtAvatar" name="txtAvatar" value="" />
+                                <div class="viewimg">
+                                    <img id="imgViewAvatar" src="/assets/img/avatars/no-avatar.gif" width="84" />
+                                </div>
+                                <span class="btn btn-default btn-sm" id="btn_AvatarLocaltion">Đổi ảnh địa điểm</span>
+                                <input type="file" class="upload" id="f_AvatarLocaltion" style="display: none;">
                             </div>
-                        </div>
-                    </div>
+                        </div>                        
+                    </div>                    
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
-                                    <input type="password" id="txtPassword" name="txtPassword" class="form-control" placeholder="Mật khẩu">
-                                    <i class="glyphicon glyphicon-user circular"></i>
+                                    <input type="text" id="txtLng" name="txtLng" class="form-control" placeholder="Vĩ độ" />
+                                    <i class="glyphicon glyphicon-tint circular"></i>
                                 </span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
-                                    <input type="text" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email">
+                                    <input type="text" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email" />
                                     <i class="fa fa-envelope-o circular"></i>
                                 </span>
                             </div>
@@ -62,22 +70,24 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
-                                    <input type="text" id="txtPhone" name="txtPhone" class="form-control" placeholder="Phone">
+                                    <input type="text" id="txtPhone" name="txtPhone" class="form-control" placeholder="Phone" />
                                     <i class="glyphicon glyphicon-earphone"></i>
                                 </span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <span class="input-icon icon-right">
-                                    <input type="text" id="txtBirthDay" name="txtBirthDay" class="form-control" placeholder="Ngày sinh">
-                                    <i class="fa fa-calendar"></i>
-                                </span>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="cbxStatus" name="cbxStatus" class="colored-blue"/>
+                                        <span class="text">Trạng thái</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
                                     <input type="text" class="form-control" id="txtAddress" name="txtAddress" placeholder="Địa chỉ">
@@ -85,23 +95,15 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" id="cbxStatus" name="cbxStatus" class="colored-blue">
-                                        <span class="text">Kính hoạt</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group" style="margin-top: 10px; margin-bottom: 0;">
+                    </div>
+                    <div class="row">                        
+                        <div class="col-sm-12">
+                            <div class="form-group" style="margin-top: 10px; text-align: center; margin-bottom: 0;">
                                 <a id="btnSaveLocaltion" data-id="0" class="btn btn-info btn-sm"><i class="fa fa-save"></i> Lưu</a>
                                 <a id="btnCancel" class="btn btn-default btn-sm"><i class="fa fa-recycle"></i> Hủy bỏ</a>
-                                <input type="hidden" id="hdLocaltionId" name="hdLocaltionId" value="0">
+                                <input type="hidden" id="hdLocaltionId" name="hdLocaltionId" value="0"/>
                             </div>
-                        </div>
+                        </div>                        
                     </div>
                 </fieldset>
             </form>
@@ -126,10 +128,10 @@
                                 Stt
                             </th>
                             <th>
-                                Tên hiển thị
+                                Tên địa điểm
                             </th>
                             <th>
-                                Email
+                                Địa chỉ
                             </th>
                             <th>
                                 Điện thoại
@@ -137,10 +139,10 @@
                             <th>
                                 Ngày tạo
                             </th>
-                            <th>
+                            <th style="width: 9%">
                                 Trạng thái
                             </th>
-                            <th style="width: 15%">
+                            <th style="width: 14%">
                             </th>
                         </tr>
                     </thead>
@@ -151,10 +153,10 @@
                                 {{stt}}
                             </td>
                             <td>
-                                {{displayName}}
+                                {{name}}
                             </td>
                             <td>
-                                {{email}}
+                                {{address}}
                             </td>
                             <td>
                                 {{phone}}
@@ -163,7 +165,7 @@
                                 {{createdDate}}
                             </td>
                             <td style="position:relative;">
-                                <input class="checkbox-slider slider-icon colored-success" type="checkbox" {{statusAcc}} data-id="{{id}}">
+                                <input class="checkbox-slider slider-icon colored-success" type="checkbox" {{statusLoc}} data-id="{{id}}">
                                 <span class="text"></span>
                             </td>
                             <td style="text-align:center;">
@@ -195,7 +197,6 @@
         </div>
     </div>
 </div>
-@section PageScripts {
-    @Scripts.Render("~/bundles/datetime")
+@section PageScripts {    
 }
 

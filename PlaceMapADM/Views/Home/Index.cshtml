@@ -15,6 +15,10 @@
             <div class="widget-header bordered-bottom bordered-themeprimary">
                 <i class="widget-icon fa fa-tasks themeprimary"></i>
                 <span class="widget-caption themeprimary">Chọn tài khoản</span>
+                <span class="input-icon icon-right">
+                    <input type="text" id="txtSearch" name="txtSearch" class="form-control" placeholder="Tìm kiếm..." />
+                    <i class="glyphicon glyphicon-search circular"></i>
+                </span>
             </div>
             <div id="widget-body-user" class="widget-body no-padding">
                 <div class="task-container">
@@ -29,9 +33,28 @@
                             </th>
                         </tr>
                         </thead>
-                        <tbody id="GetAllUser">                        
-                        </tbody>
+                        <tbody id="listAllAccount"></tbody>
+                        <script id="package-data" type="x-tmpl-mustache">
+                            <tr {{id}}>
+                                <td>
+                                    {{stt}}
+                                </td>
+                                <td>
+                                    {{displayName}}
+                                </td>                                
+                            </tr>
+                        </script>
                     </table>
+                    <div class="DTTTFooter">                        
+                        <div class="col-sm-12">
+                            <div class="dataTables_paginate paging_bootstrap hide" id="pager">
+                                <ul class="pagination">
+                                    <li class="prev disabled btnPrevious"><a id="btnPrevious" href="javascript:void(0)">Prev</a></li>
+                                    <li class="next btnNext"><a href="javascript:void(0)" id="btnNext">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,5 +74,6 @@
         </div>
     </div>
 </div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmq0TgF9KyKcZSOS0ErMSA7nBlNI8nweI&callback=initMap" async defer></script>
+@section FooterScripts {
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmq0TgF9KyKcZSOS0ErMSA7nBlNI8nweI&callback=CmsShop.Home.InitMap" async defer></script>
+}

@@ -19,14 +19,15 @@
             <div class="form-group">
                 <a id="btnAddNewAccount" class="btn btn-info btn-xs hideform"><i class="fa fa-plus"></i> Tạo tài khoản</a>
             </div>
-            <form role="form" id="insert-account" style="display:none;">
+            <form role="form" id="insert-account" style="display: none;">
                 <fieldset class="fieldset">
                     <legend class="legend">Tạo tài khoản</legend>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
-                                    <input type="text" id="txtUserName" name="txtUserName" class="form-control" placeholder="Tên đăng nhập">
+                                    <input type="text" id="txtUserName" name="txtUserName" class="form-control" placeholder="Tên đăng nhập" 
+                                           data-bv-notempty="true" data-bv-notempty-message="Tên đăng nhập không được để trống" />
                                     <i class="glyphicon glyphicon-user circular"></i>
                                 </span>
                             </div>
@@ -34,7 +35,8 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
-                                    <input type="text" id="txtDisplayName" name="txtDisplayName" class="form-control" placeholder="Tên hiển thị">
+                                    <input type="text" id="txtDisplayName" name="txtDisplayName" class="form-control" placeholder="Tên hiển thị"
+                                           data-bv-notempty="true" data-bv-notempty-message="Tên hiển thị không được để trống" />
                                     <i class="fa fa-user"></i>
                                 </span>
                             </div>
@@ -44,7 +46,8 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
-                                    <input type="password" id="txtPassword" name="txtPassword" class="form-control" placeholder="Mật khẩu">
+                                    <input type="password" id="txtPassword" name="txtPassword" class="form-control" placeholder="Mật khẩu" 
+                                           data-bv-notempty="true" data-bv-notempty-message="Mật khẩu không được để trống" />
                                     <i class="glyphicon glyphicon-user circular"></i>
                                 </span>
                             </div>
@@ -86,8 +89,17 @@
                             </div>
                         </div>
                         <div class="col-sm-3">
+                            <div class="form-group">                                
+                                <select class="form-control" id="sltType" name="sltType" style="border-radius: 0;">
+                                    <option value="0">---Loại tài khoản---</option>
+                                    <option value="1">Web</option>
+                                    <option value="2">Mobile</option>                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
                             <div class="form-group">
-                                <div class="checkbox">
+                                <div class="checkbox" style="margin-top: 5px;">
                                     <label>
                                         <input type="checkbox" id="cbxStatus" name="cbxStatus" class="colored-blue">
                                         <span class="text">Kính hoạt</span>
@@ -95,20 +107,34 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="form-group" style="margin-top: 10px; margin-bottom: 0;">
+                    </div>
+                    <div class="row">                        
+                        <div class="col-sm-12">
+                            <div class="form-group" style="margin-top: 10px; margin-bottom: 0; text-align: center;">
                                 <a id="btnSaveAccount" data-id="0" class="btn btn-info btn-sm"><i class="fa fa-save"></i> Lưu</a>
                                 <a id="btnCancel" class="btn btn-default btn-sm"><i class="fa fa-recycle"></i> Hủy bỏ</a>
                                 <input type="hidden" id="hdAccountId" name="hdAccountId" value="0">
                             </div>
+                        </div>                        
                         </div>
-                    </div>
                 </fieldset>
             </form>
 
             <fieldset class="fieldset">
                 <legend class="legend">Bộ lọc</legend>
                 <div class="row">
+                    <div class="col-sm-4 form-horizontal">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="col-sm-6 control-label no-padding-right">Loại tài khoản</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" id="sltTypeSearch" name="sltTypeSearch" style="border-radius: 0;">
+                                    <option value="0">All</option>
+                                    <option value="1">Web</option>
+                                    <option value="2">Mobile</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-sm-6">
                         <span class="input-icon icon-right">
                             <input type="text" id="keySearch" name="keySearch" class="form-control" placeholder="Tìm kiếm...">
@@ -196,6 +222,6 @@
     </div>
 </div>
 @section PageScripts {
-    @Scripts.Render("~/bundles/datetime")
+    @Scripts.Render("~/bundles/datetime")    
 }
 

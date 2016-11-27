@@ -33,11 +33,12 @@ namespace PlaceMapADM.Controllers
                 var address = collection["txtAddress"];
                 var phone = collection["txtPhone"];
                 var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
+                var type = int.Parse(collection["sltType"]);
                 var account = new AccountEntity
                 {                    
                     Id=id,
                     ParentId=null,
-                    Type = null,
+                    Type = type,
                     DisplayName = displayname,
                     UserName = username,
                     Password = password,
@@ -115,14 +116,14 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpGet]
-        public JsonResult ListAllPaging(string keySearch, int pageIndex, int pageSize)
+        public JsonResult ListAllPaging(int type, string keySearch, int pageIndex, int pageSize)
         {
             try
             {
                 var total = 0;
                 var obj = new AccountEntity();
                 var ipl = SingletonIpl.GetInstance<IplAccount>();
-                var res = ipl.ListAllPaging(keySearch, pageIndex, pageSize, "", "", ref total);
+                var res = ipl.ListAllPaging(type, keySearch, pageIndex, pageSize, "", "", ref total);
 
                 if (res != null && res.Count > 0)
                 {

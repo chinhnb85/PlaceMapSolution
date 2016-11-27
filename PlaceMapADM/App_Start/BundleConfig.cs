@@ -93,6 +93,12 @@ namespace PlaceMapADM
 
             bundles.Add(new ScriptBundle("~/bundles/datetime").Include(
                "~/assets/js/datetime/bootstrap-datepicker.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrapValidator").Include(
+               "~/assets/js/validation/bootstrapValidator.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/validation").Include(                
+               "~/assets/plugins/validation/jquery.validate.min.js"));
         }
     }
 }

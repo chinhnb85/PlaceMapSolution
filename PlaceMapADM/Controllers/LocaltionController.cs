@@ -24,19 +24,19 @@ namespace PlaceMapADM.Controllers
             try
             {
                 var id= long.Parse(collection["hdLocaltionId"]);
-                var name = collection["txtDisplayName"];
-                var avatar = collection["txtUserName"];                
-                var email = collection["txtEmail"];
-                var birthday = collection["txtBirthDay"];
-                DateTime dt = DateTime.ParseExact(string.IsNullOrEmpty(birthday) ? DateTime.Now.ToString("dd/MM/yyyy") : birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var name = collection["txtName"];
+                var lag = collection["txtLag"];
+                var lng = collection["txtLng"];
+                var avatar = collection["txtAvatar"];                
+                var email = collection["txtEmail"];                
                 var address = collection["txtAddress"];
                 var phone = collection["txtPhone"];
                 var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
-                var Localtion = new LocaltionEntity
+                var localtion = new LocaltionEntity
                 {                    
                     Id=id,
-                    Lag=null,
-                    Lng = null,
+                    Lag= lag,
+                    Lng = lng,
                     Name = name,
                     Avatar = avatar,                    
                     Email = email,                                        
@@ -48,12 +48,16 @@ namespace PlaceMapADM.Controllers
                 var ipl = SingletonIpl.GetInstance<IplLocaltion>();                
                 if (id == 0)
                 {
-                    id = ipl.Insert(Localtion);
-                    return Json(new { status = true, Data = id }, JsonRequestBehavior.AllowGet);
+                    id = ipl.Insert(localtion);
+                    if (id != 0)
+                    {
+                        return Json(new { status = true, Data = id }, JsonRequestBehavior.AllowGet);
+                    }
+                    return Json(new { status = false, Data = id }, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    var res = ipl.Update(Localtion);
+                    var res = ipl.Update(localtion);                    
                     return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
                 }                                
             }
@@ -149,21 +153,6 @@ namespace PlaceMapADM.Controllers
                     totalRow = 0
                 }, JsonRequestBehavior.AllowGet);
             }
-        }
-
-        [HttpGet]
-        public JsonResult getObject()
-        {
-            try
-            {
-                var user = Code.SessionUtility.GetUser();
-
-                return Json(new { status = true, Data = user }, JsonRequestBehavior.AllowGet);
-            }
-            catch
-            {
-                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
-            }
-        }
+        }        
     }
 }

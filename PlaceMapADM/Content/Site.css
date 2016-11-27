@@ -1,6 +1,6 @@
 ﻿.navbar .navbar-inner .navbar-header .navbar-account .account-area .login-area{min-width:auto;}
 .page-body{padding: 18px 20px 0 20px!important;}
-.page-body .row{margin-top:-13px;}
+.page-body .row{margin-top:-13px;clear: both;}
 .widget{ margin-bottom: 0!important;}
 .navbar .navbar-inner .navbar-header .navbar-account .account-area .login-area .avatar{
     border-left: 0px solid #ed4e2a!important;
@@ -110,4 +110,21 @@
     font-weight:700;
     margin-bottom:8px;
 }
-table #GetAllUser tr{ cursor: pointer;}
+table #listAllAccount tr{ cursor: pointer;}
+.avatar-area .avatar {
+    height: auto !important;
+}
+.viewimg {
+    width: 84px;
+    height: 84px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.task-container {
+    height: 100%;
+}
+.task-container .DTTTFooter {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

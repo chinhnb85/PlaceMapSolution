@@ -1,63 +1,86 @@
 ﻿if (typeof (CmsShop) == "undefined") CmsShop = {};
-if (typeof (CmsShop.Account) == "undefined") CmsShop.Account = {};
+if (typeof (CmsShop.Localtion) == "undefined") CmsShop.Localtion = {};
 
-CmsShop.Account = {
+CmsShop.Localtion = {
     pageSize: 10,
     pageIndex: 1,
     keySearch:''
 };
 
-CmsShop.Account.Init = function () {
+CmsShop.Localtion.Init = function () {
     var p = this;
 
-    $("#txtBirthDay").datepicker({ format: 'dd/mm/yyyy'});
+    $("#insert-localtion").validate({
+        rules: {            
+            txtName: { required: true },
+            txtLag: { required: true, number: true },
+            txtLng: { required: true, number: true }
+        },
+        errorElement: "span",
+        messages: {           
+            txtName: {
+                required: "Nhập tên địa chỉ"
+            },
+            txtLag: {
+                required: "Nhập kinh độ",
+                number:"Chỉ cho phép nhập số"
+            },
+            txtLng: {
+                required: "Nhập vĩ độ",
+                number: "Chỉ cho phép nhập số"
+            }
+        }
+    });
 
-    p.LoadAllAccount(function () {
+    p.LoadAllLocaltion(function () {
         p.RegisterEvents();
     });    
 };
 
-CmsShop.Account.RegisterEvents = function () {
+CmsShop.Localtion.RegisterEvents = function () {
     var p = this;
 
-    $("#btnSaveAccount").off("click").on("click", function () {
+    $("#btnSaveLocaltion").off("click").on("click", function () {
         var $this = $(this);
-        p.AddNewAccount($this.attr('data-id'));
+
+        if ($("#insert-localtion").valid()) {
+            p.AddNewLocaltion($this.attr('data-id'), "#insert-localtion");
+        }
     });
     $(".edit").off("click").on("click", function () {
         var $this = $(this);
-        if ($('#btnAddNewAccount').hasClass('hideform')) {
-            $('#insert-account').show(500);
-            $('#btnAddNewAccount').addClass('showform').removeClass('hideform').html('<i class="fa fa-minus"></i> Đóng');            
+        if ($('#btnAddNewLocaltion').hasClass('hideform')) {
+            $('#insert-localtion').show(500);
+            $('#btnAddNewLocaltion').addClass('showform').removeClass('hideform').html('<i class="fa fa-minus"></i> Đóng');            
         }
-        p.EditAccount($this.attr('data-id'));
+        p.EditLocaltion($this.attr('data-id'));
     });
     $(".delete").off("click").on("click", function () {
         var $this = $(this);
-        p.DeleteAccount($this.attr('data-id'));
+        p.DeleteLocaltion($this.attr('data-id'));
     });
     $("#btnCancel").off("click").on("click", function () {
-        p.EmptyAccount();
+        p.EmptyLocaltion();
     });
     $("#sltPageSize").off("change").on("change", function () {
         p.pageSize = $("#sltPageSize").val();
         p.pageIndex = 1;
-        p.LoadAllAccount(function () {
+        p.LoadAllLocaltion(function () {
             p.RegisterEvents();
         });
     });
     $(".checkbox-slider").off("click").on("click", function () {
         var $this = $(this);
-        p.UpdateStatusAccount($this.attr('data-id'));
+        p.UpdateStatusLocaltion($this.attr('data-id'));
     });
-    $("#btnAddNewAccount").off("click").on("click", function () {
+    $("#btnAddNewLocaltion").off("click").on("click", function () {
         var $this = $(this);
         if ($this.hasClass('hideform')) {
-            $('#insert-account').show(500);
+            $('#insert-localtion').show(500);
             $this.addClass('showform').removeClass('hideform').html('<i class="fa fa-minus"></i> Đóng');
-            p.EmptyAccount();
+            p.EmptyLocaltion();
         } else {
-            $('#insert-account').hide(500);
+            $('#insert-localtion').hide(500);
             $this.addClass('hideform').removeClass('showform').html('<i class="fa fa-plus"></i> Tạo tài khoản');
         }
     });
@@ -65,20 +88,36 @@ CmsShop.Account.RegisterEvents = function () {
         p.keySearch = $("#keySearch").val();
         if (p.keySearch == "" || p.keySearch.length > 2) {
             p.pageIndex = 1;            
-            p.LoadAllAccount(function() {
+            p.LoadAllLocaltion(function() {
                 p.RegisterEvents();
             });
         }
     });
+    $('#btn_AvatarLocaltion').off('click').on('click', function () {
+        $("#f_AvatarLocaltion").trigger('click');
+        $("#f_AvatarLocaltion").off('change').on('change', function () {
+            var file;
+            if ((file = this.files[0])) {
+                logisticJs.sendFile(file, 'Localtion', function (url) {                   
+                    var avatar = "/assets/img/avatars/no-avatar.gif";
+                    if (url != null) {
+                        avatar = url;
+                    }
+                    $('#imgViewAvatar').attr('src', avatar);
+                    $('#txtAvatar').val(avatar);
+                });
+            }
+        });
+    });
 };
 
-CmsShop.Account.AddNewAccount = function (id) {
+CmsShop.Localtion.AddNewLocaltion = function (id,form) {
     var p = this;
         
     $.ajax({
         type: "POST",
-        url: "/Account/Add",
-        data: $("#insert-account").serialize(),
+        url: "/Localtion/Add",
+        data: $(form).serialize(),
         dataType: "json",
         beforeSend: function () {
             //logisticJs.startLoading();
@@ -86,9 +125,9 @@ CmsShop.Account.AddNewAccount = function (id) {
         success: function (response) {
             if (response.status) {
                 logisticJs.msgShowSuccess({ titleHeader: 'Lưu thành công.' });
-                p.EmptyAccount();
+                p.EmptyLocaltion();
                 p.pageIndex = 1;
-                p.LoadAllAccount(function () {
+                p.LoadAllLocaltion(function () {
                     p.RegisterEvents();
                 });
             } else {                
@@ -105,12 +144,12 @@ CmsShop.Account.AddNewAccount = function (id) {
     });
 };
 
-CmsShop.Account.EditAccount = function (id) {
+CmsShop.Localtion.EditLocaltion = function (id) {
     var p = this;    
 
     $.ajax({
         type: "GET",
-        url: "/Account/GetAccountById",
+        url: "/Localtion/GetLocaltionById",
         data: { Id:id },
         dataType: "json",
         beforeSend: function () {
@@ -118,20 +157,21 @@ CmsShop.Account.EditAccount = function (id) {
         },
         success: function (response) {
             if (response.status) {
-                $("#txtUserName").val(response.Data.UserName);
-                $("#txtPassword").val(response.Data.Password);
-                $("#txtDisplayName").val(response.Data.DisplayName);
+                $("#txtLag").val(response.Data.Lag);
+                $("#txtLng").val(response.Data.Lng);
+                $("#txtName").val(response.Data.Name);
                 $("#txtEmail").val(response.Data.Email);
-                $("#txtPhone").val(response.Data.Phone);
-                var birthday = "";
-                if (response.Data.BirthDay!=null) {
-                    birthday = logisticJs.convertDatetimeDMY(response.Data.BirthDay);
-                }
-                $("#txtBirthDay").val(birthday);
+                $("#txtPhone").val(response.Data.Phone);                
                 $("#txtAddress").val(response.Data.Address);
+                var avatar = "/assets/img/avatars/no-avatar.gif";
+                if (response.Data.Avatar != "") {
+                    avatar = response.Data.Avatar;
+                }
+                $("#txtAvatar").val(avatar);
+                $('#imgViewAvatar').attr('src', avatar);
                 $("#cbxStatus").prop('checked', response.Data.Status);
-                $("#btnSaveAccount").attr('data-id', response.Data.Id);
-                $("#hdAccountId").val(response.Data.Id);
+                $("#btnSaveLocaltion").attr('data-id', response.Data.Id);
+                $("#hdLocaltionId").val(response.Data.Id);
 
                 $('html,body').animate({ scrollTop: 0 });
             }
@@ -143,14 +183,14 @@ CmsShop.Account.EditAccount = function (id) {
     });
 };
 
-CmsShop.Account.DeleteAccount = function (id) {
+CmsShop.Localtion.DeleteLocaltion = function (id) {
     var p = this;
     logisticJs.msgConfirm({        
         text: 'Bạn có chắc muốn xóa tài khoản này?'
     }, function () {
         $.ajax({
             type: "GET",
-            url: "/Account/Delete",
+            url: "/Localtion/Delete",
             data: { Id: id },
             dataType: "json",
             beforeSend: function () {
@@ -158,7 +198,7 @@ CmsShop.Account.DeleteAccount = function (id) {
             },
             success: function (response) {
                 if (response.status) {                
-                    p.LoadAllAccount(function () {
+                    p.LoadAllLocaltion(function () {
                         p.RegisterEvents();
                     });
                 }
@@ -171,11 +211,11 @@ CmsShop.Account.DeleteAccount = function (id) {
     });    
 };
 
-CmsShop.Account.UpdateStatusAccount = function (id) {
+CmsShop.Localtion.UpdateStatusLocaltion = function (id) {
     var p = this;
     $.ajax({
         type: "GET",
-        url: "/Account/UpdateStatus",
+        url: "/Localtion/UpdateStatus",
         data: { Id: id },
         dataType: "json",
         beforeSend: function () {
@@ -193,14 +233,14 @@ CmsShop.Account.UpdateStatusAccount = function (id) {
     });
 };
 
-CmsShop.Account.LoadAllAccount = function (callback) {
+CmsShop.Localtion.LoadAllLocaltion = function (callback) {
     var p = this;
 
     var dataparam = { keySearch:p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
 
     $.ajax({
         type: "GET",
-        url: "/Account/ListAllPaging",
+        url: "/Localtion/ListAllPaging",
         data: dataparam,
         dataType: "json",
         beforeSend: function () {
@@ -211,24 +251,24 @@ CmsShop.Account.LoadAllAccount = function (callback) {
                 var template = $("#package-data").html();
                 var render = "";                
                 $.each(response.Data, function (i, item) {
-                    var statusacc = "";
+                    var statusloc = "";
                     if (item.Status) {
-                        statusacc = "checked";
+                        statusloc = "checked";
                     }
                     var createddate = "";
                     if (item.CreatedDate != null) {
                         createddate = logisticJs.convertDatetimeDMY(item.CreatedDate);
                     }
                     render += Mustache.render(template, {
-                        stt: i+1, id: item.Id, displayName: item.DisplayName, phone: item.Phone, 
-                        email: item.Email, statusAcc: statusacc, createdDate: createddate
+                        stt: i+1, id: item.Id, name: item.Name, phone: item.Phone, 
+                        address: item.Address, statusLoc: statusloc, createdDate: createddate
                     });                    
                 });
                 if (render != undefined) {
-                    $("#listAllAccount").html(render);
+                    $("#listAllLocaltion").html(render);
                 }                
                 p.WrapPaging(response.totalCount, '#btnNext', '#btnPrevious',response.totalRow, function () {
-                    p.LoadAllAccount(function () {
+                    p.LoadAllLocaltion(function () {
                         p.RegisterEvents();
                     });
                 });
@@ -246,7 +286,7 @@ CmsShop.Account.LoadAllAccount = function (callback) {
     });
 };
 
-CmsShop.Account.WrapPaging = function (total, next, previous, RecordCount, callBack) {
+CmsShop.Localtion.WrapPaging = function (total, next, previous, RecordCount, callBack) {
     var p = this;
 
     var size = p.pageIndex * p.pageSize;
@@ -293,20 +333,21 @@ CmsShop.Account.WrapPaging = function (total, next, previous, RecordCount, callB
     });
 };
 
-CmsShop.Account.EmptyAccount = function() {
+CmsShop.Localtion.EmptyLocaltion = function() {
     var p = this;
-    $("#txtUserName").val('');
-    $("#txtPassword").val('');
-    $("#txtDisplayName").val('');
+    $("#txtName").val('');
+    $("#txtLag").val('');
+    $("#txtLng").val('');
     $("#txtEmail").val('');
-    $("#txtPhone").val('');
-    $("#txtBirthDay").val('');
+    $("#txtPhone").val('');    
     $("#txtAddress").val('');
-    $("#cbxStatus").prop('checked', false);
-    $("#btnSaveAccount").attr('data-id', 0);
-    $("#hdAccountId").val(0);
+    $("#txtAvatar").val('');    
+    $('#imgViewAvatar').attr('src', '/assets/img/avatars/no-avatar.gif');
+    $("#cbxStatus").prop('checked', true);
+    $("#btnSaveLocaltion").attr('data-id', 0);
+    $("#hdLocaltionId").val(0);
 };
 
 $(function(){
-    CmsShop.Account.Init();
+    CmsShop.Localtion.Init();
 });

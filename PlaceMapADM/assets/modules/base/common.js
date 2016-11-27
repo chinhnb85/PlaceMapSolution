@@ -74,7 +74,7 @@ var logisticJs = $.extend({
         $('#btn_UploadImage').off('click').on('click', function () {
             $("#f_UploadImage").trigger('click');
             $("#f_UploadImage").off('change').on('change', function () {
-                var file, img;
+                var file;
                 if ((file = this.files[0])) {
                     logisticJs.sendFile(file, 'Avatar', function (url) {
                         var $itemuser = $('.login-area.dropdown-toggle');
