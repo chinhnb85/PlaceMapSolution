@@ -8,9 +8,9 @@ namespace ModelCMS.Localtion
 		
 		public long Id { get; set; }        
 
-        public int? Lag { get; set; }
+        public string Lag { get; set; }
 
-        public int? Lng { get; set; }
+        public string Lng { get; set; }
 
         public string Name { get; set; }
         

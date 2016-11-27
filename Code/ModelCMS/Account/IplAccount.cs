@@ -323,11 +323,12 @@ namespace ModelCMS.Account
         /// <summary>
         /// Selects all records from the Account table.
         /// </summary>
-        public List<AccountEntity> ListAllPaging(string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
+        public List<AccountEntity> ListAllPaging(int type, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
         {
             try
             {
                 var p = new DynamicParameters();
+                p.Add("@type", type);
                 p.Add("@KeySearch", keySearch);                
                 p.Add("@pageIndex", pageIndex);
                 p.Add("@pageSize", pageSize);

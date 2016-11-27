@@ -189,8 +189,7 @@ namespace ModelCMS.Localtion
             p.Add("@Avatar", obj.Avatar);
             p.Add("@Email", obj.Email);
             p.Add("@Phone", obj.Phone);
-            p.Add("@Address", obj.Address);
-            p.Add("@CreatedDate", obj.CreatedDate);
+            p.Add("@Address", obj.Address);            
             p.Add("@Status", obj.Status);
 
             if (action == "add")
