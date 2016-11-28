@@ -273,6 +273,8 @@ CmsShop.Account.LoadAllAccount = function (callback) {
                     });
                 });
 
+            } else {
+                $("#listAllAccount").html('');
             }
             //logisticJs.stopLoading();
 

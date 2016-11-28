@@ -273,6 +273,8 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
                     });
                 });
 
+            } else {
+                $("#listAllLocaltion").html('');
             }
             //logisticJs.stopLoading();
 

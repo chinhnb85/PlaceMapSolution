@@ -50,6 +50,10 @@ CmsShop.Home.InitMap = function () {
     p.AddMarker(myLatLng, '', 'VP VCCORP', image, map);
 
     p.GetAllAccount(map);
+
+    p.LoadAllLocaltion(function () {
+
+    });
 };
 
 CmsShop.Home.AddMarker = function (location, label, title, image, map) {
@@ -147,6 +151,8 @@ CmsShop.Home.GetAllAccount = function(map) {
                     p.GetAllAccount(map);
                 });
 
+            } else {
+                $("#listAllAccount").html('');
             }
             //logisticJs.stopLoading();            
         },
@@ -188,6 +194,57 @@ CmsShop.Home.RegisterEvents = function(map) {
         if (p.keySearch == "" || p.keySearch.length > 2) {
             p.pageIndex = 1;
             p.GetAllAccount(map);
+        }
+    });
+};
+
+CmsShop.Home.LoadAllLocaltion = function (callback) {
+    var p = this;
+
+    var dataparam = { keySearch: p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
+
+    $.ajax({
+        type: "GET",
+        url: "/Localtion/ListAllPaging",
+        data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true && response.totalCount > 0) {
+                var template = $("#package-data-localtion").html();
+                var render = "";
+                $.each(response.Data, function (i, item) {                    
+                    var createddate = "";
+                    if (item.CreatedDate != null) {
+                        createddate = logisticJs.convertDatetimeDMY(item.CreatedDate);
+                    }
+                    render += Mustache.render(template, {
+                        stt: i + 1, id: item.Id, name: item.Name, phone: item.Phone,
+                        address: item.Address, createdDate: createddate
+                    });
+                });
+                if (render != undefined) {
+                    $("#listAllLocaltion").html(render);
+                }
+                p.WrapPaging(response.totalCount, '#btnNextLocaltion', '#btnPreviousLocaltion', response.totalRow, function () {
+                    p.LoadAllLocaltion(function () {
+                        //p.RegisterEvents();
+                    });
+                });
+
+            } else {
+                $("#listAllLocaltion").html('');
+            }
+            //logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
         }
     });
 };
