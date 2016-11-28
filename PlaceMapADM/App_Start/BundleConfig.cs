@@ -99,6 +99,9 @@ namespace PlaceMapADM
 
             bundles.Add(new ScriptBundle("~/bundles/validation").Include(                
                "~/assets/plugins/validation/jquery.validate.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootbox").Include(
+               "~/assets/js/bootbox/bootbox.js"));
         }
     }
 }

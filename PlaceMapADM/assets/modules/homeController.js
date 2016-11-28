@@ -3,10 +3,14 @@ if (typeof (CmsShop.Home) == "undefined") CmsShop.Home = {};
 
 CmsShop.Home = {
     markers: [],
-    pageSize: 15,
+    pageSize: 20,
     pageIndex: 1,
     keySearch: '',
-    type: 2
+    type: 2,
+    pageSizeLocaltion: 50,
+    pageIndexLocaltion: 1,
+    keySearchLocaltion: '',
+    currentUserId:0
 };
 
 CmsShop.Home.InitMap = function () {
@@ -15,9 +19,9 @@ CmsShop.Home.InitMap = function () {
     var $maps = $('#maps');
     var $widgetbodyuser = $('#widget-body-user');
     var $widgetbodymap = $('#widget-body-map');
-    $maps.css({ height: $(window).height() - 90 });
-    $widgetbodyuser.css({ height: $(window).height() - 126 });
-    $widgetbodymap.css({ height: $(window).height() - 90 });    
+    $maps.css({ height: $(window).height() - 95 });
+    $widgetbodyuser.css({ height: $(window).height() - 95 });
+    $widgetbodymap.css({ height: $(window).height() - 95 });    
 
     var myLatLng = new google.maps.LatLng(21.0026, 105.8056);
     var mapOptions = {
@@ -49,11 +53,7 @@ CmsShop.Home.InitMap = function () {
 
     p.AddMarker(myLatLng, '', 'VP VCCORP', image, map);
 
-    p.GetAllAccount(map);
-
-    p.LoadAllLocaltion(function () {
-
-    });
+    p.GetAllAccount(map);    
 };
 
 CmsShop.Home.AddMarker = function (location, label, title, image, map) {
@@ -165,6 +165,19 @@ CmsShop.Home.GetAllAccount = function(map) {
 CmsShop.Home.RegisterEvents = function(map) {
     var p = this;
 
+    $('#btnPreviewListLocaltion').off('click').on('click', function () {
+        var $this = $(this);
+        if ($('i', $this).hasClass('fa-list')) {
+            $('#previewListLocaltion').show(500);
+            $('#maps').hide(500);
+            $('i', $this).addClass('fa-map-marker').removeClass('fa-list');
+        } else {
+            $('#maps').show(500);
+            $('#previewListLocaltion').hide(500);
+            $('i', $this).addClass('fa-list').removeClass('fa-map-marker');
+        }
+    });
+
     $('table #listAllAccount tr').off('click').on('click', function() {
 
         $('table #listAllAccount tr[data-active="1"]').css({ 'background-color': '#fff' });
@@ -174,19 +187,17 @@ CmsShop.Home.RegisterEvents = function(map) {
         $this.css({ 'background-color': '#f5f5f5' });
         $this.attr('data-active', 1);
 
-        p.SetMapOnAll(null);
+        $('#btnAddLocaltionByUser').attr('data-user', $this.attr('data-id'));
+        p.currentUserId = $this.attr('data-id');
 
-        var myLatLng = { lat: 21.026, lng: 105.8056 };
+        p.SetMapOnAll(null);        
 
-        p.AddMarker(myLatLng, '', 'M1', 'default', map);
-
-        var myLatLng2 = { lat: 21.067, lng: 105.786 };
-
-        p.AddMarker(myLatLng2, '', 'M2', 'default', map);
-
-        var myLatLng3 = { lat: 21.067, lng: 105.786 };
-
-        p.AddMarker(myLatLng3, '', 'M3', 'default', map);
+        p.LoadAllLocaltionByUser($this.attr('data-id'), function (data) {
+            $.each(data, function (i, item) {
+                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+                p.AddMarker(myLatLng, '', item.Name, 'default', map);
+            });
+        });
     });
 
     $("#txtSearch").off("change keydown paste input").on("change keydown paste input", function () {
@@ -196,12 +207,48 @@ CmsShop.Home.RegisterEvents = function(map) {
             p.GetAllAccount(map);
         }
     });
+
+    $("#txtSearchLocaltion").off("change keydown paste input").on("change keydown paste input", function () {
+        p.keySearchLocaltion = $("#txtSearchLocaltion").val();
+        if (p.keySearchLocaltion == "" || p.keySearchLocaltion.length > 2) {
+            p.pageIndexLocaltion = 1;
+            p.LoadAllLocaltionByUser(p.currentUserId, function () {
+                
+            });
+        }
+    });
+
+    $('#btnAddLocaltionByUser').off('click').on('click', function () {
+        var $this = $(this);
+        if (p.currentUserId != 0) {
+            bootbox.dialog({
+                message: $("#myModalLocaltion").html(),
+                title: "Danh sách các địa chỉ",
+                className: "modal-primary",
+                buttons: {
+                    success: {
+                        label: "Ok",
+                        className: "btn-info",
+                        callback: function() {}
+                    },
+                    "Hủy bỏ": {
+                        className: "btn-default",
+                        callback: function() {}
+                    }
+                }
+            });
+        } else {
+            logisticJs.msgWarning({
+                text: "Chọn tài khoản trước khi thêm địa điểm."
+            });
+        }
+    });
 };
 
-CmsShop.Home.LoadAllLocaltion = function (callback) {
+CmsShop.Home.LoadAllLocaltionByUser = function (userId, callback) {
     var p = this;
 
-    var dataparam = { keySearch: p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
+    var dataparam = {userId:userId, keySearch: p.keySearchLocaltion, pageIndex: p.pageIndexLocaltion, pageSize: p.pageSizeLocaltion };
 
     $.ajax({
         type: "GET",
@@ -215,21 +262,16 @@ CmsShop.Home.LoadAllLocaltion = function (callback) {
             if (response.status == true && response.totalCount > 0) {
                 var template = $("#package-data-localtion").html();
                 var render = "";
-                $.each(response.Data, function (i, item) {                    
-                    var createddate = "";
-                    if (item.CreatedDate != null) {
-                        createddate = logisticJs.convertDatetimeDMY(item.CreatedDate);
-                    }
+                $.each(response.Data, function (i, item) {                                        
                     render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name, phone: item.Phone,
-                        address: item.Address, createdDate: createddate
-                    });
+                        stt: i + 1, id: item.Id, name: item.Name, phone: item.Phone,address: item.Address
+                    });                    
                 });
                 if (render != undefined) {
                     $("#listAllLocaltion").html(render);
                 }
-                p.WrapPaging(response.totalCount, '#btnNextLocaltion', '#btnPreviousLocaltion', response.totalRow, function () {
-                    p.LoadAllLocaltion(function () {
+                p.WrapPagingLocaltion(response.totalCount, '#btnNextLocaltion', '#btnPreviousLocaltion', response.totalRow, function () {
+                    p.LoadAllLocaltion(userId, function () {
                         //p.RegisterEvents();
                     });
                 });
@@ -240,7 +282,7 @@ CmsShop.Home.LoadAllLocaltion = function (callback) {
             //logisticJs.stopLoading();
 
             if (typeof (callback) == "function") {
-                callback();
+                callback(response.Data);
             }
         },
         error: function (status) {
@@ -249,21 +291,19 @@ CmsShop.Home.LoadAllLocaltion = function (callback) {
     });
 };
 
-CmsShop.Home.WrapPaging = function (total, next, previous, RecordCount, callBack) {
+CmsShop.Home.WrapPaging = function (total, next, previous, recordCount, callBack) {
     var p = this;
-
-    var size = p.pageIndex * p.pageSize;
-    var Totalsize = Math.ceil(RecordCount / p.pageSize);
-    var page = 0;
+    
+    var totalsize = Math.ceil(recordCount / p.pageSize);    
     var pg = "";
-    if (Totalsize > 1)
+    if (totalsize > 1)
         $('#pager').removeClass('hide');
     else
         $('#pager').addClass('hide');
-    pg = logisticJs.paginate(p.pageIndex, RecordCount, p.pageSize);
+    pg = logisticJs.paginate(p.pageIndex, recordCount, p.pageSize);
     $('#pager').find('.pg').remove();
     $('.btnPrevious').after(pg);
-    $('.pg_' + p.pageIndex).addClass('active');
+    $('#pager').find('.pg_' + p.pageIndex).addClass('active');
     if (total >= p.pageSize) {
         $('.btnNext').removeClass('disabled');
     } else {
@@ -287,10 +327,55 @@ CmsShop.Home.WrapPaging = function (total, next, previous, RecordCount, callBack
         return false;
     });
 
-    $('.pg').off('click').on('click', function () {
+    $('#pager').find('.pg').off('click').on('click', function () {
         var curentPage = $(this).attr("data-page");
         p.pageIndex = curentPage;
-        $('.pg').removeClass('active');
+        $('#pager').find('.pg').removeClass('active');
+        $(this).addClass('active');
+        callBack();
+    });
+};
+
+CmsShop.Home.WrapPagingLocaltion = function (total, next, previous, recordCount, callBack) {
+    var p = this;
+
+    var totalsize = Math.ceil(recordCount / p.pageSizeLocaltion);
+    var pg = "";
+    if (totalsize > 1)
+        $('#pagerLocaltion').removeClass('hide');
+    else
+        $('#pagerLocaltion').addClass('hide');
+    pg = logisticJs.paginate(p.pageIndexLocaltion, recordCount, p.pageSizeLocaltion);
+    $('#pagerLocaltion').find('.pg').remove();
+    $('.btnPreviousLocaltion').after(pg);
+    $('#pagerLocaltion').find('.pg_' + p.pageIndexLocaltion).addClass('active');
+    if (total >= p.pageSizeLocaltion) {
+        $('.btnNextLocaltion').removeClass('disabled');
+    } else {
+        $('.btnNextLocaltion').addClass('disabled');
+    }
+    if (p.pageIndexLocaltion > 1) {
+        $('.btnPreviousLocaltion').removeClass('disabled');
+    } else {
+        $('.btnPreviousLocaltion').addClass('disabled');
+    }
+    $(next).off('click').on('click', function () {
+        if ($('.btnNextLocaltion').hasClass('disabled')) return false;
+        p.pageIndexLocaltion++;
+        setTimeout(callBack(), 200);
+        return false;
+    });
+    $(previous).off('click').on('click', function () {
+        if ($('.btnPreviousLocaltion').hasClass('disabled')) return false;
+        p.pageIndexLocaltion--;
+        setTimeout(callBack(), 200);
+        return false;
+    });
+
+    $('#pagerLocaltion').find('.pg').off('click').on('click', function () {
+        var curentPage = $(this).attr("data-page");
+        p.pageIndexLocaltion = curentPage;
+        $('#pagerLocaltion').find('.pg').removeClass('active');
         $(this).addClass('active');
         callBack();
     });
