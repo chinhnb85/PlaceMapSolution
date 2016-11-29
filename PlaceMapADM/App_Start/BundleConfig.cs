@@ -102,6 +102,9 @@ namespace PlaceMapADM
 
             bundles.Add(new ScriptBundle("~/bundles/bootbox").Include(
                "~/assets/js/bootbox/bootbox.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/select2").Include(
+               "~/assets/js/select2/select2.js"));
         }
     }
 }

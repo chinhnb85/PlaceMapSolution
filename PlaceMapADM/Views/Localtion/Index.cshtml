@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input type="hidden" id="txtAvatar" name="txtAvatar" value="" />
+                                <input type="hidden" id="txtAvatar" name="txtAvatar" value="/assets/img/avatars/no-avatar.gif" />
                                 <div class="viewimg">
                                     <img id="imgViewAvatar" src="/assets/img/avatars/no-avatar.gif" width="84" />
                                 </div>
@@ -87,12 +87,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
                                     <input type="text" class="form-control" id="txtAddress" name="txtAddress" placeholder="Địa chỉ">
                                     <i class="glyphicon glyphicon-briefcase"></i>
                                 </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <select id="sltAccount" name="sltAccount" style="border-radius: 0;width: 100%">
+                                    <option value="0">---Chọn tài khoản---</option>
+                                    <script id="data-list-account" type="x-tmpl-mustache">
+                                        <option value="{{id}}">{{displayName}}</option>
+                                    </script>                                    
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -128,13 +138,13 @@
                                 Stt
                             </th>
                             <th>
-                                Tên địa điểm
+                                Ảnh
                             </th>
                             <th>
-                                Địa chỉ
+                                Tên
                             </th>
                             <th>
-                                Điện thoại
+                                Tài khoản
                             </th>
                             <th>
                                 Ngày tạo
@@ -153,13 +163,13 @@
                                 {{stt}}
                             </td>
                             <td>
+                                <img src='{{avatar}}' width="64" />
+                            </td>
+                            <td>
                                 {{name}}
                             </td>
                             <td>
-                                {{address}}
-                            </td>
-                            <td>
-                                {{phone}}
+                                {{userName}}
                             </td>
                             <td>
                                 {{createdDate}}
@@ -197,6 +207,7 @@
         </div>
     </div>
 </div>
-@section PageScripts {    
+@section PageScripts {   
+    @Scripts.Render("~/bundles/select2") 
 }
 

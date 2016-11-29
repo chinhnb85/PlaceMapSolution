@@ -24,6 +24,7 @@ namespace PlaceMapADM.Controllers
             try
             {
                 var id= long.Parse(collection["hdLocaltionId"]);
+                var accountId = int.Parse(collection["sltAccount"]);
                 var name = collection["txtName"];
                 var lag = collection["txtLag"];
                 var lng = collection["txtLng"];
@@ -35,6 +36,7 @@ namespace PlaceMapADM.Controllers
                 var localtion = new LocaltionEntity
                 {                    
                     Id=id,
+                    AccountId = accountId,
                     Lag= lag,
                     Lng = lng,
                     Name = name,
@@ -64,6 +66,25 @@ namespace PlaceMapADM.Controllers
             catch(Exception ex)
             {
                 return Json(new { status = false, message=ex.ToString() }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult AddNew(LocaltionEntity local)
+        {
+            try
+            {                
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+                var id = ipl.Insert(local);
+                if (id != 0)
+                {
+                    return Json(new { status = true, Data = id }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { status = false, Data = id }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = false, message = ex.ToString() }, JsonRequestBehavior.AllowGet);
             }
         }
 

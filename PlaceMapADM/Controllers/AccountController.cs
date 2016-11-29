@@ -187,5 +187,45 @@ namespace PlaceMapADM.Controllers
                 return Json(new { status = false }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpGet]
+        public JsonResult ListAllByType(int type)
+        {
+            try
+            {
+                var total = 0;
+                var obj = new AccountEntity();
+                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var res = ipl.ListAllByType(type);
+
+                if (res != null && res.Count > 0)
+                {
+                    return Json(new
+                    {
+                        status = true,
+                        Data = res,
+                        totalCount = res.Count,
+                        totalRow = 0
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new
+                {
+                    status = true,
+                    Data = res,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    status = false,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

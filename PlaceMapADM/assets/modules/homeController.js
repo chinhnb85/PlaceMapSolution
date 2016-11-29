@@ -10,7 +10,11 @@ CmsShop.Home = {
     pageSizeLocaltion: 50,
     pageIndexLocaltion: 1,
     keySearchLocaltion: '',
-    currentUserId:0
+    currentUserId:0    
+};
+
+CmsShop.Home.Init = function() {
+        
 };
 
 CmsShop.Home.InitMap = function () {
@@ -218,8 +222,7 @@ CmsShop.Home.RegisterEvents = function(map) {
         }
     });
 
-    $('#btnAddLocaltionByUser').off('click').on('click', function () {
-        var $this = $(this);
+    $('#btnAddLocaltionByUser').off('click').on('click', function () {        
         if (p.currentUserId != 0) {
             bootbox.dialog({
                 message: $("#myModalLocaltion").html(),
@@ -227,13 +230,40 @@ CmsShop.Home.RegisterEvents = function(map) {
                 className: "modal-primary",
                 buttons: {
                     success: {
-                        label: "Ok",
+                        label: "Thêm vào",
                         className: "btn-info",
-                        callback: function() {}
+                        callback: function () {
+                            $('#sltAccount').val(p.currentUserId);
+                            
+                            var name = $("#txtName").value;
+                            if (name == "") {
+                                logisticJs.msgWarning({text: "Nhập tên địa điểm."});
+                                return false;
+                            }
+                            var lag = $("#txtLag").value;
+                            if (lag == "") {
+                                logisticJs.msgWarning({ text: "Nhập kinh độ." });
+                                return false;
+                            }
+                            var lng = $("#txtLng").value;
+                            if (lng == "") {
+                                logisticJs.msgWarning({ text: "Nhập vĩ độ." });
+                                return false;
+                            }
+                            var email=$("#txtEmail").val('');
+                            var phone=$("#txtPhone").val('');    
+                            var address=$("#txtAddress").val('');
+                            var avatar=$("#txtAvatar").val('');                                
+                            var status=$("#cbxStatus").is('checked');                                                        
+
+                            var data={Name:name,Lag:lag,Lng:lng,Email:email,Phone:phone,Address:address,Avatar:avatar,Status:status}
+
+                            p.AddNewLocaltion(data);
+                        }
                     },
                     "Hủy bỏ": {
                         className: "btn-default",
-                        callback: function() {}
+                        callback: function () { }
                     }
                 }
             });
@@ -242,7 +272,7 @@ CmsShop.Home.RegisterEvents = function(map) {
                 text: "Chọn tài khoản trước khi thêm địa điểm."
             });
         }
-    });
+    });    
 };
 
 CmsShop.Home.LoadAllLocaltionByUser = function (userId, callback) {
@@ -380,3 +410,36 @@ CmsShop.Home.WrapPagingLocaltion = function (total, next, previous, recordCount,
         callBack();
     });
 };
+
+CmsShop.Home.AddNewLocaltion = function (data) {
+    var p = this;
+
+    $.ajax({
+        type: "POST",
+        url: "/Localtion/AddNew",
+        data: data,
+        dataType: "json",
+        beforeSend: function () {
+            logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status) {
+                logisticJs.msgShowSuccess({ titleHeader: 'Lưu thành công.' });
+                //p.EmptyLocaltion();                
+            } else {
+                logisticJs.msgWarning({
+                    text: "Việc lưu tài khoản gặp lỗi.",
+                    modal: true
+                });
+            }
+            logisticJs.stopLoading();
+        },
+        error: function () {
+            logisticJs.stopLoading();
+        }
+    });
+};
+
+$(function () {
+    CmsShop.Home.Init();
+});

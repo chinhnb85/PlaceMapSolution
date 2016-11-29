@@ -11,13 +11,15 @@ CmsShop.Localtion.Init = function () {
     var p = this;
 
     $("#insert-localtion").validate({
-        rules: {            
+        rules: {
+            sltAccount: { valueNotEquals: "0" },
             txtName: { required: true },
             txtLag: { required: true, number: true },
             txtLng: { required: true, number: true }
         },
         errorElement: "span",
-        messages: {           
+        messages: {
+            sltAccount: { valueNotEquals: "Chọn tài khoản" },
             txtName: {
                 required: "Nhập tên địa chỉ"
             },
@@ -30,6 +32,14 @@ CmsShop.Localtion.Init = function () {
                 number: "Chỉ cho phép nhập số"
             }
         }
+    });
+
+    $.validator.addMethod("valueNotEquals", function (value, element, arg) {
+        return arg != value;
+    }, "Chọn tài khoản");
+
+    p.LoadAllAccountByType(function() {
+        $("#sltAccount").select2();
     });
 
     p.LoadAllLocaltion(function () {
@@ -157,6 +167,7 @@ CmsShop.Localtion.EditLocaltion = function (id) {
         },
         success: function (response) {
             if (response.status) {
+                $("#sltAccount").val(response.Data.AccountId).trigger("change");
                 $("#txtLag").val(response.Data.Lag);
                 $("#txtLng").val(response.Data.Lng);
                 $("#txtName").val(response.Data.Name);
@@ -260,8 +271,8 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
                         createddate = logisticJs.convertDatetimeDMY(item.CreatedDate);
                     }
                     render += Mustache.render(template, {
-                        stt: i+1, id: item.Id, name: item.Name, phone: item.Phone, 
-                        address: item.Address, statusLoc: statusloc, createdDate: createddate
+                        stt: i+1, id: item.Id, name: item.Name, userName: item.UserName, 
+                        avatar: item.Avatar, statusLoc: statusloc, createdDate: createddate
                     });                    
                 });
                 if (render != undefined) {
@@ -337,6 +348,7 @@ CmsShop.Localtion.WrapPaging = function (total, next, previous, RecordCount, cal
 
 CmsShop.Localtion.EmptyLocaltion = function() {
     var p = this;
+    $("#sltAccount").val(0).trigger('change');
     $("#txtName").val('');
     $("#txtLag").val('');
     $("#txtLng").val('');
@@ -348,6 +360,44 @@ CmsShop.Localtion.EmptyLocaltion = function() {
     $("#cbxStatus").prop('checked', true);
     $("#btnSaveLocaltion").attr('data-id', 0);
     $("#hdLocaltionId").val(0);
+};
+
+CmsShop.Localtion.LoadAllAccountByType = function (callback) {
+    var p = this;
+
+    var dataparam = { type: 2};
+
+    $.ajax({
+        type: "GET",
+        url: "/Account/ListAllByType",
+        data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true && response.totalCount > 0) {
+                var template = $("#data-list-account").html();
+                var render = "";
+                $.each(response.Data, function (i, item) {                    
+                    render += Mustache.render(template, {
+                        id: item.Id, displayName: item.DisplayName
+                    });
+                });
+                if (render != undefined) {
+                    $("#sltAccount").append(render);
+                }                
+            }
+            //logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
+        }
+    });
 };
 
 $(function(){
