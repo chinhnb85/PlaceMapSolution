@@ -6,7 +6,9 @@ namespace ModelCMS.Localtion
     {
 		#region Properties
 		
-		public long Id { get; set; }        
+		public long Id { get; set; }
+
+        public int? AccountId { get; set; }
 
         public string Lag { get; set; }
 
@@ -25,6 +27,8 @@ namespace ModelCMS.Localtion
         public DateTime? CreatedDate { get; set; }
 
         public bool? Status { get; set; }
+
+        public string UserName { get; set; }
 
         #endregion
     }

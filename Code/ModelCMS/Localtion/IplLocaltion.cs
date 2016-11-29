@@ -183,6 +183,7 @@ namespace ModelCMS.Localtion
         private DynamicParameters Param(LocaltionEntity obj, string action = "add")
         {
             var p = new DynamicParameters();
+            p.Add("@AccountId", obj.AccountId);
             p.Add("@Lag", obj.Lag);
             p.Add("@Lng", obj.Lng);
             p.Add("@Name", obj.Name);

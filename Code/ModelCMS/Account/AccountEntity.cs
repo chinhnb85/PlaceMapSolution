@@ -10,7 +10,7 @@ namespace ModelCMS.Account
 
         public int? ParentId { get; set; }
 
-        public int? Type { get; set; }
+        public int? Type { get; set; }        
 
         public string DisplayName { get; set; }
 
@@ -32,7 +32,7 @@ namespace ModelCMS.Account
 
         public DateTime? CreatedDate { get; set; }
 
-        public bool? Status { get; set; }
+        public bool? Status { get; set; }       
 
         #endregion
     }

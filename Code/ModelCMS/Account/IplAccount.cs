@@ -320,6 +320,22 @@ namespace ModelCMS.Account
             }
         }
 
+        public List<AccountEntity> ListAllByType(int type)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@type", type);
+                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_ListAllByType",p);
+                return data.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
         /// <summary>
         /// Selects all records from the Account table.
         /// </summary>

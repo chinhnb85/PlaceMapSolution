@@ -10,6 +10,7 @@ namespace ModelCMS.Account
         bool UpdateDevice(long id, string divece);
         bool Delete(long id);
 		List<AccountEntity> ListAll();
+        List<AccountEntity> ListAllByType(int type);
         List<AccountEntity> ListAllPaging(int type, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
 		AccountEntity ViewDetail(int id);
 	    bool CheckUserNameExist(string userName);
