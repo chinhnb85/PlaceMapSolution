@@ -5,7 +5,7 @@ CmsShop.Account = {
     pageSize: 10,
     pageIndex: 1,
     keySearch: '',
-    type: 0
+    type: 2
 };
 
 CmsShop.Account.Init = function () {

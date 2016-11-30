@@ -24,6 +24,7 @@ namespace PlaceMapADM.Controllers
         {
             try
             {
+                password = Common.Encrypt(password);
                 var ipl = SingletonIpl.GetInstance<IplAccount>();
                 var ue = new AccountEntity();
                 var res = ipl.Login(userName, password.Trim(), ref ue);//Md5Util.Md5EnCrypt(password.Trim())
