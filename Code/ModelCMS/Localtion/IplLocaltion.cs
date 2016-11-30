@@ -155,12 +155,11 @@ namespace ModelCMS.Localtion
         /// <summary>
         /// Selects all records from the Localtion table.
         /// </summary>
-        public List<LocaltionEntity> ListAllPaging(int accountId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
+        public List<LocaltionEntity> ListAllPaging(string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
         {
             try
             {
-                var p = new DynamicParameters();
-                p.Add("@AccountId", accountId);
+                var p = new DynamicParameters();                
                 p.Add("@KeySearch", keySearch);                
                 p.Add("@pageIndex", pageIndex);
                 p.Add("@pageSize", pageSize);
