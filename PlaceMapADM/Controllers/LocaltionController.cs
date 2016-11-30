@@ -168,7 +168,7 @@ namespace PlaceMapADM.Controllers
                 var total = 0;
                 var obj = new LocaltionEntity();
                 var ipl = SingletonIpl.GetInstance<IplLocaltion>();
-                var res = ipl.ListAllPaging(0,keySearch, pageIndex, pageSize, "", "", ref total);
+                var res = ipl.ListAllPaging(keySearch, pageIndex, pageSize, "", "", ref total);
 
                 if (res != null && res.Count > 0)
                 {

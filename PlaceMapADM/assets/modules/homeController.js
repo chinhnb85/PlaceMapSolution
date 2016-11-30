@@ -55,7 +55,8 @@ CmsShop.Home.InitMap = function () {
     });
     circle.setMap(map);    
 
-    p.AddMarker(myLatLng, '', 'VP VCCORP', image, map);
+    var data = { Name: "Vị trí hiện tại" };
+    p.AddMarker(myLatLng, data, image, map);
 
     p.GetAllAccount(map);    
 };
@@ -79,8 +80,8 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
     }
     var marker = new google.maps.Marker({
         position: location,
-        label: data.label,
-        title: data.title,
+        label: '',
+        title: data.Name,
         icon: image,
         map: map,
         draggable: true
@@ -91,18 +92,7 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         } else {
             marker.setAnimation(google.maps.Animation.BOUNCE);
         }
-        var contentString = '<div id="content">' +
-                            '<div id="siteNotice">' + 'Nguyễn Bá Chính' +
-                            '</div>' +
-                            '<h1 id="firstHeading" class="firstHeading">VCCorp</h1>' +
-                            '<div id="bodyContent">' +
-                            '<p><b>VCCorp</b>, Công ty có trụ sở chính đặt tại Tầng 17, 19, 20, 21 ' +
-                            'Toà nhà Center Building – Hapulico Complex, số 1 Nguyễn Huy Tưởng, ' +
-                            'phường Thanh Xuân Trung, quận Thanh Xuân, TP Hà Nội.</p>' +
-                            '<p>VCCorp, <a href="https://vccorp.vn/?title=VCCorp"</a> ' +
-                            '(VCCorp Corporation).</p>' +
-                            '</div>' +
-                            '</div>';
+        var contentString = '<p>' + data.Name + '</p>';
 
         var infowindow = new google.maps.InfoWindow({
             content: contentString
@@ -110,8 +100,10 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         infowindow.open(map, marker);
 
     });
-    if (title != 'VP VCCORP')
+
+    if (data.Name != "Vị trí hiện tại")
         p.markers.push(marker);
+        
 };
 
 CmsShop.Home.SetMapOnAll = function(map) {
