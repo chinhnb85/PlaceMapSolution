@@ -70,12 +70,36 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddNew(LocaltionEntity local)
+        public JsonResult AddNew(FormCollection collection)
         {
             try
-            {                
+            {
+                var id = long.Parse(collection["hdLocaltionId"]);
+                var accountId = int.Parse(collection["sltAccount"]);
+                var name = collection["txtName"];
+                var lag = collection["txtLag"];
+                var lng = collection["txtLng"];
+                var avatar = collection["txtAvatar"];
+                var email = collection["txtEmail"];
+                var address = collection["txtAddress"];
+                var phone = collection["txtPhone"];
+                var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
+                var localtion = new LocaltionEntity
+                {
+                    Id = id,
+                    AccountId = accountId,
+                    Lag = lag,
+                    Lng = lng,
+                    Name = name,
+                    Avatar = avatar,
+                    Email = email,
+                    Address = address,
+                    Phone = phone,
+                    CreatedDate = DateTime.Now,
+                    Status = status
+                };
                 var ipl = SingletonIpl.GetInstance<IplLocaltion>();
-                var id = ipl.Insert(local);
+                id = ipl.Insert(localtion);
                 if (id != 0)
                 {
                     return Json(new { status = true, Data = id }, JsonRequestBehavior.AllowGet);
@@ -144,7 +168,7 @@ namespace PlaceMapADM.Controllers
                 var total = 0;
                 var obj = new LocaltionEntity();
                 var ipl = SingletonIpl.GetInstance<IplLocaltion>();
-                var res = ipl.ListAllPaging(keySearch, pageIndex, pageSize, "", "", ref total);
+                var res = ipl.ListAllPaging(0,keySearch, pageIndex, pageSize, "", "", ref total);
 
                 if (res != null && res.Count > 0)
                 {

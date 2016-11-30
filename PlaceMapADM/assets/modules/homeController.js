@@ -60,7 +60,7 @@ CmsShop.Home.InitMap = function () {
     p.GetAllAccount(map);    
 };
 
-CmsShop.Home.AddMarker = function (location, label, title, image, map) {
+CmsShop.Home.AddMarker = function (location, data, image, map) {
     var p = this;
 
     var goldStar = {
@@ -79,8 +79,8 @@ CmsShop.Home.AddMarker = function (location, label, title, image, map) {
     }
     var marker = new google.maps.Marker({
         position: location,
-        label: label,
-        title: title,
+        label: data.label,
+        title: data.title,
         icon: image,
         map: map,
         draggable: true
@@ -196,10 +196,10 @@ CmsShop.Home.RegisterEvents = function(map) {
 
         p.SetMapOnAll(null);        
 
-        p.LoadAllLocaltionByUser($this.attr('data-id'), function (data) {
+        p.LoadAllLocaltionByUser(p.currentUserId, function (data) {
             $.each(data, function (i, item) {
                 var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-                p.AddMarker(myLatLng, '', item.Name, 'default', map);
+                p.AddMarker(myLatLng, item, 'default', map);
             });
         });
     });
@@ -224,55 +224,47 @@ CmsShop.Home.RegisterEvents = function(map) {
 
     $('#btnAddLocaltionByUser').off('click').on('click', function () {        
         if (p.currentUserId != 0) {
-            bootbox.dialog({
-                message: $("#myModalLocaltion").html(),
-                title: "Danh sách các địa chỉ",
-                className: "modal-primary",
-                buttons: {
-                    success: {
-                        label: "Thêm vào",
-                        className: "btn-info",
-                        callback: function () {
-                            $('#sltAccount').val(p.currentUserId);
-                            
-                            var name = $("#txtName").value;
-                            if (name == "") {
-                                logisticJs.msgWarning({text: "Nhập tên địa điểm."});
-                                return false;
-                            }
-                            var lag = $("#txtLag").value;
-                            if (lag == "") {
-                                logisticJs.msgWarning({ text: "Nhập kinh độ." });
-                                return false;
-                            }
-                            var lng = $("#txtLng").value;
-                            if (lng == "") {
-                                logisticJs.msgWarning({ text: "Nhập vĩ độ." });
-                                return false;
-                            }
-                            var email=$("#txtEmail").val('');
-                            var phone=$("#txtPhone").val('');    
-                            var address=$("#txtAddress").val('');
-                            var avatar=$("#txtAvatar").val('');                                
-                            var status=$("#cbxStatus").is('checked');                                                        
-
-                            var data={Name:name,Lag:lag,Lng:lng,Email:email,Phone:phone,Address:address,Avatar:avatar,Status:status}
-
-                            p.AddNewLocaltion(data);
-                        }
-                    },
-                    "Hủy bỏ": {
-                        className: "btn-default",
-                        callback: function () { }
-                    }
-                }
-            });
+            $('#myModalLocaltion').modal('show');            
         } else {
             logisticJs.msgWarning({
                 text: "Chọn tài khoản trước khi thêm địa điểm."
             });
         }
-    });    
+    });
+
+    $('#btnAddNewLocaltion').off('click').on('click', function () {
+
+        $("#insertlocaltion").validate({
+            rules: {                
+                txtName: { required: true },
+                txtLag: { required: true, number: true },
+                txtLng: { required: true, number: true }
+            },
+            errorElement: "span",
+            messages: {                
+                txtName: {
+                    required: "Nhập tên địa chỉ"
+                },
+                txtLag: {
+                    required: "Nhập kinh độ",
+                    number: "Chỉ cho phép nhập số"
+                },
+                txtLng: {
+                    required: "Nhập vĩ độ",
+                    number: "Chỉ cho phép nhập số"
+                }
+            }
+        });
+
+        $('#sltAccount').val(p.currentUserId);
+        
+        if ($("#insertlocaltion").valid()) {
+            
+            p.AddNewLocaltion("#insertlocaltion", function () {
+                $('#myModalLocaltion').modal('hide');
+            });
+        }
+    });
 };
 
 CmsShop.Home.LoadAllLocaltionByUser = function (userId, callback) {
@@ -294,7 +286,7 @@ CmsShop.Home.LoadAllLocaltionByUser = function (userId, callback) {
                 var render = "";
                 $.each(response.Data, function (i, item) {                                        
                     render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name, phone: item.Phone,address: item.Address
+                        stt: i + 1, id: item.Id, name: item.Name, avatar: item.Avatar, address: item.Address
                     });                    
                 });
                 if (render != undefined) {
@@ -411,13 +403,13 @@ CmsShop.Home.WrapPagingLocaltion = function (total, next, previous, recordCount,
     });
 };
 
-CmsShop.Home.AddNewLocaltion = function (data) {
+CmsShop.Home.AddNewLocaltion = function (form,callback) {
     var p = this;
 
     $.ajax({
         type: "POST",
         url: "/Localtion/AddNew",
-        data: data,
+        data: $(form).serialize(),
         dataType: "json",
         beforeSend: function () {
             logisticJs.startLoading();
@@ -425,7 +417,9 @@ CmsShop.Home.AddNewLocaltion = function (data) {
         success: function (response) {
             if (response.status) {
                 logisticJs.msgShowSuccess({ titleHeader: 'Lưu thành công.' });
-                //p.EmptyLocaltion();                
+                if (typeof (callback) == 'function') {
+                    callback();
+                }
             } else {
                 logisticJs.msgWarning({
                     text: "Việc lưu tài khoản gặp lỗi.",
