@@ -29,7 +29,7 @@ CmsShop.Home.InitMap = function () {
 
     var myLatLng = new google.maps.LatLng(21.0026, 105.8056);
     var mapOptions = {
-        zoom: 12,
+        zoom: 14,
         center: myLatLng,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         streetViewControl: true
@@ -51,7 +51,7 @@ CmsShop.Home.InitMap = function () {
         fillColor: '#2dc3e8',
         fillOpacity: 0.35,
         center: myLatLng,
-        radius: Math.sqrt(500) * 100
+        radius: Math.sqrt(10) * 100
     });
     circle.setMap(map);    
 
