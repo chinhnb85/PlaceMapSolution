@@ -27,9 +27,27 @@ CmsShop.Home.InitMap = function () {
     $widgetbodyuser.css({ height: $(window).height() - 95 });
     $widgetbodymap.css({ height: $(window).height() - 95 });    
 
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            map.setCenter(pos);
+        }, function () {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        //handleLocationError(false, infoWindow, map.getCenter());
+    }
+
     var myLatLng = new google.maps.LatLng(21.0026, 105.8056);
     var mapOptions = {
-        zoom: 14,
+        zoom: 13,
         center: myLatLng,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         streetViewControl: true
