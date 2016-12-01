@@ -1,6 +1,0 @@
-F:\Chinhnb\PlaceMapSolution\Code\Dapper\bin\Release\Dapper.dll
-F:\Chinhnb\PlaceMapSolution\Code\Dapper\bin\Release\Dapper.pdb
-F:\Chinhnb\PlaceMapSolution\Code\Dapper\bin\Release\Enyim.Caching.xml
-F:\Chinhnb\PlaceMapSolution\Code\Dapper\obj\Release\Dapper.csprojFakesResolveAssemblyReference.cache
-F:\Chinhnb\PlaceMapSolution\Code\Dapper\obj\Release\Dapper.dll
-F:\Chinhnb\PlaceMapSolution\Code\Dapper\obj\Release\Dapper.pdb

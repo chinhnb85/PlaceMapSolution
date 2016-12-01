@@ -169,13 +169,10 @@
     <Compile Include="Controllers\ApiControllers\LocaltionApiController.cs" />
     <Compile Include="Controllers\LocaltionController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ApiControllers\CategoryApiController.cs" />
     <Compile Include="Controllers\ApiControllers\UserApiController.cs" />
     <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\Base\CultureController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -255,8 +252,6 @@
     <Content Include="assets\modules\accountController.js" />
     <Content Include="assets\modules\base\common.js" />
     <Content Include="assets\modules\homeController.js" />
-    <Content Include="assets\modules\productController.js" />
-    <Content Include="assets\modules\categoryController.js" />
     <Content Include="assets\modules\loginController.js" />
     <Content Include="assets\js\beyond.js" />
     <Content Include="assets\js\beyond.min.js" />
@@ -458,10 +453,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\_SlidebarMenu.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Shared\_PageBreadcrumb.cshtml" />
-    <Content Include="Views\Product\Created.cshtml" />
-    <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Localtion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

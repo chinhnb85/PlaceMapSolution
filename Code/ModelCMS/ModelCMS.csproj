@@ -43,12 +43,6 @@
     <Compile Include="Localtion\LocaltionEntity.cs" />
     <Compile Include="Localtion\ILocaltion.cs" />
     <Compile Include="Localtion\IplLocaltion.cs" />
-    <Compile Include="Product\ProductEntity.cs" />
-    <Compile Include="Product\IProduct.cs" />
-    <Compile Include="Product\IplProduct.cs" />
-    <Compile Include="Category\CategoryEntity.cs" />
-    <Compile Include="Category\ICategory.cs" />
-    <Compile Include="Category\IplCategory.cs" />
     <Compile Include="Account\AccountEntity.cs" />
     <Compile Include="Account\IAccount.cs" />
     <Compile Include="Account\IplAccount.cs" />
