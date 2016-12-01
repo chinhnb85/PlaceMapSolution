@@ -166,6 +166,7 @@
     <Compile Include="Code\Common.cs" />
     <Compile Include="Code\SessionUtility.cs" />
     <Compile Include="Controllers\ApiControllers\AccountApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\LocaltionApiController.cs" />
     <Compile Include="Controllers\LocaltionController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiControllers\CategoryApiController.cs" />

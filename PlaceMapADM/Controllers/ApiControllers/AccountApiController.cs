@@ -3,6 +3,7 @@ using PlaceMapADM.Controllers.Base;
 using System.Collections.Generic;
 using System.Web.Http;
 using ModelCMS.Account;
+using PlaceMapADM.Code;
 
 namespace PlaceMapADM.Controllers.ApiControllers
 {
@@ -30,6 +31,7 @@ namespace PlaceMapADM.Controllers.ApiControllers
         {
             if (acc != null)
             {
+                acc.Password = Common.Encrypt(acc.Password);
                 AccountEntity obj = new AccountEntity();
                 var ipl = SingletonIpl.GetInstance<IplAccount>();
                 var data = ipl.LoginDevice(acc,ref obj);
