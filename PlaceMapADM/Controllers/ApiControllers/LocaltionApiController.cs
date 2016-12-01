@@ -22,7 +22,7 @@ namespace PlaceMapADM.Controllers.ApiControllers
 
         // GET api/LocaltionApi
         [HttpGet]
-        public object GetListByAccountId(int AccountId)
+        public object GetListByAccountId(int accountId)
         {
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
             var data = ipl.ListAll();
@@ -34,10 +34,10 @@ namespace PlaceMapADM.Controllers.ApiControllers
         }
 
         [HttpGet]
-        public object CheckedLocaltion(int LocaltionId, int AccountId)
+        public object CheckedLocaltion(int localtionId, int accountId)
         {
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
-            var data = ipl.UpdateStatus(LocaltionId);
+            var data = ipl.UpdateStatus(localtionId);
             if (data)
             {
                 return Json(new { status = true, message = "Success.", Data = data });

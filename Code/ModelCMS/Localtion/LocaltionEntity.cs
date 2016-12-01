@@ -30,6 +30,8 @@ namespace ModelCMS.Localtion
 
         public string UserName { get; set; }
 
+        public bool? IsCheck { get; set; }
+
         #endregion
     }
 }

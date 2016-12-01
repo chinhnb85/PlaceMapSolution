@@ -129,6 +129,22 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpGet]
+        public JsonResult ViewDetailLocaltionNow(int Id)
+        {
+            try
+            {
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+                var res = ipl.ViewDetailLocaltionNow(Id);
+
+                return Json(new { status = true, Data = res }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
         public JsonResult Delete(int Id)
         {
             try
@@ -161,14 +177,13 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpGet]
-        public JsonResult ListAllPaging(string keySearch, int pageIndex, int pageSize)
+        public JsonResult ListAllPaging(int accountId, string keySearch, int pageIndex, int pageSize)
         {
             try
             {
-                var total = 0;
-                var obj = new LocaltionEntity();
+                var total = 0;                
                 var ipl = SingletonIpl.GetInstance<IplLocaltion>();
-                var res = ipl.ListAllPaging(keySearch, pageIndex, pageSize, "", "", ref total);
+                var res = ipl.ListAllPaging(accountId, keySearch, pageIndex, pageSize, "", "", ref total);
 
                 if (res != null && res.Count > 0)
                 {
@@ -198,6 +213,46 @@ namespace PlaceMapADM.Controllers
                     totalRow = 0
                 }, JsonRequestBehavior.AllowGet);
             }
-        }        
+        }
+
+        [HttpGet]
+        public JsonResult ListAllPagingByStatus(int accountId, string keySearch, int pageIndex, int pageSize)
+        {
+            try
+            {
+                var total = 0;
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+                var res = ipl.ListAllPagingByStatus(accountId, keySearch, pageIndex, pageSize, "", "", ref total);
+
+                if (res != null && res.Count > 0)
+                {
+                    return Json(new
+                    {
+                        status = true,
+                        Data = res,
+                        totalCount = res.Count,
+                        totalRow = total
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new
+                {
+                    status = true,
+                    Data = res,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    status = false,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }

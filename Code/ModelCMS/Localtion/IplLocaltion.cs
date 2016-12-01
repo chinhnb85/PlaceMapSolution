@@ -133,7 +133,23 @@ namespace ModelCMS.Localtion
                 Logging.PutError(ex.Message, ex);
                 return null;
             }
-        }        
+        }
+
+        public LocaltionEntity ViewDetailLocaltionNow(int id)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", id);
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_ViewDetailLocaltionNow", p).SingleOrDefault();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                return null;
+            }
+        }
 
         /// <summary>
         /// Selects all records from the Localtion table.
@@ -155,11 +171,12 @@ namespace ModelCMS.Localtion
         /// <summary>
         /// Selects all records from the Localtion table.
         /// </summary>
-        public List<LocaltionEntity> ListAllPaging(string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
+        public List<LocaltionEntity> ListAllPaging(int accountId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
         {
             try
             {
-                var p = new DynamicParameters();                
+                var p = new DynamicParameters();
+                p.Add("@AccountId", accountId);
                 p.Add("@KeySearch", keySearch);                
                 p.Add("@pageIndex", pageIndex);
                 p.Add("@pageSize", pageSize);
@@ -167,6 +184,29 @@ namespace ModelCMS.Localtion
                 p.Add("@sortDesc", sortDesc);
                 p.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_ListAllPaging", p);
+                totalRow = p.Get<int>("@totalRow");
+                return data.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
+        public List<LocaltionEntity> ListAllPagingByStatus(int accountId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@AccountId", accountId);
+                p.Add("@KeySearch", keySearch);
+                p.Add("@pageIndex", pageIndex);
+                p.Add("@pageSize", pageSize);
+                p.Add("@sortColumn", sortColumn);
+                p.Add("@sortDesc", sortDesc);
+                p.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_ListAllPagingByStatus", p);
                 totalRow = p.Get<int>("@totalRow");
                 return data.ToList();
             }

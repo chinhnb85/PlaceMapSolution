@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ModelCMS.Account;
+using PlaceMapADM.Code;
 
 namespace PlaceMapADM.Controllers.ApiControllers
 {
@@ -24,6 +25,18 @@ namespace PlaceMapADM.Controllers.ApiControllers
         public string Get(int id)
         {
             return "value";
+        }
+
+        [HttpGet]
+        public string GetEncryptMd5(string str)
+        {
+            return Common.Encrypt(str);
+        }
+
+        [HttpGet]
+        public string GetDecryptMd5(string str)
+        {
+            return Common.Decrypt(str);
         }
 
         // POST api/userApi

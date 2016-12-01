@@ -157,6 +157,46 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpGet]
+        public JsonResult ListAllPagingByStatus(int type, string keySearch, int pageIndex, int pageSize)
+        {
+            try
+            {
+                var total = 0;
+                var obj = new AccountEntity();
+                var ipl = SingletonIpl.GetInstance<IplAccount>();
+                var res = ipl.ListAllPagingByStatus(type, keySearch, pageIndex, pageSize, "", "", ref total);
+
+                if (res != null && res.Count > 0)
+                {
+                    return Json(new
+                    {
+                        status = true,
+                        Data = res,
+                        totalCount = res.Count,
+                        totalRow = total
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new
+                {
+                    status = true,
+                    Data = res,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    status = false,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
         public JsonResult getObject()
         {
             try

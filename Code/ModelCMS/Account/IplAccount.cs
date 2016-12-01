@@ -362,6 +362,29 @@ namespace ModelCMS.Account
             }
         }
 
+        public List<AccountEntity> ListAllPagingByStatus(int type, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@type", type);
+                p.Add("@KeySearch", keySearch);
+                p.Add("@pageIndex", pageIndex);
+                p.Add("@pageSize", pageSize);
+                p.Add("@sortColumn", sortColumn);
+                p.Add("@sortDesc", sortDesc);
+                p.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_ListAllPagingByStatus", p);
+                totalRow = p.Get<int>("@totalRow");
+                return data.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
         /// <summary>
         /// Saves a record to the Account table.
         /// </summary>

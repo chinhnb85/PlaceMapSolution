@@ -4,7 +4,8 @@ if (typeof (CmsShop.Localtion) == "undefined") CmsShop.Localtion = {};
 CmsShop.Localtion = {
     pageSize: 10,
     pageIndex: 1,
-    keySearch:''
+    keySearch:'',
+    currentUserId: 0
 };
 
 CmsShop.Localtion.Init = function () {
@@ -247,7 +248,7 @@ CmsShop.Localtion.UpdateStatusLocaltion = function (id) {
 CmsShop.Localtion.LoadAllLocaltion = function (callback) {
     var p = this;
 
-    var dataparam = { keySearch:p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
+    var dataparam = {accountId:p.currentUserId, keySearch:p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
 
     $.ajax({
         type: "GET",
@@ -299,18 +300,16 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
     });
 };
 
-CmsShop.Localtion.WrapPaging = function (total, next, previous, RecordCount, callBack) {
+CmsShop.Localtion.WrapPaging = function (total, next, previous, recordCount, callBack) {
     var p = this;
-
-    var size = p.pageIndex * p.pageSize;
-    var Totalsize = Math.ceil(RecordCount / p.pageSize);
-    var page = 0;
+    
+    var totalsize = Math.ceil(recordCount / p.pageSize);    
     var pg = "";
-    if (Totalsize > 1)
+    if (totalsize > 1)
         $('#pager').removeClass('hide');
     else
         $('#pager').addClass('hide');
-    pg = logisticJs.paginate(p.pageIndex, RecordCount, p.pageSize);
+    pg = logisticJs.paginate(p.pageIndex, recordCount, p.pageSize);
     $('#pager').find('.pg').remove();
     $('.btnPrevious').after(pg);
     $('.pg_' + p.pageIndex).addClass('active');
@@ -346,8 +345,7 @@ CmsShop.Localtion.WrapPaging = function (total, next, previous, RecordCount, cal
     });
 };
 
-CmsShop.Localtion.EmptyLocaltion = function() {
-    var p = this;
+CmsShop.Localtion.EmptyLocaltion = function() {    
     $("#sltAccount").val(0).trigger('change');
     $("#txtName").val('');
     $("#txtLag").val('');
@@ -363,7 +361,6 @@ CmsShop.Localtion.EmptyLocaltion = function() {
 };
 
 CmsShop.Localtion.LoadAllAccountByType = function (callback) {
-    var p = this;
 
     var dataparam = { type: 2};
 

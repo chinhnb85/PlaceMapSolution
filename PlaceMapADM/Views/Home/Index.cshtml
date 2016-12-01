@@ -100,13 +100,18 @@
                                     <td>
                                         {{name}}
                                     </td>
-                                    <td>
+                                    @*<td>
                                         {{address}}
-                                    </td>
+                                    </td>*@
                                     <td>
-                                        <img src='{{avatar}}' width="48" />
+                                        <img src='{{avatar}}' width="32" />
+                                    </td>
+                                    <td style="position:relative;text-align:center;">
+                                        <input readonly class="colored-success" type="checkbox" {{isChecked}}>
+                                        <span class="text">Checked</span>
                                     </td>                                                                           
-                                    <td style="text-align:center;">                                            
+                                    <td style="text-align:center;width:22%;">                                            
+                                        <a href="javascript:void(0)" class="btn btn-danger btn-xs viewdetail" data-id="{{id}}"><i class="fa fa-eye"></i> Xem</a>
                                         <a href="javascript:void(0)" class="btn btn-danger btn-xs delete" data-id="{{id}}"><i class="fa fa-trash-o"></i> Loại bỏ</a>
                                     </td>
                                 </tr>
@@ -128,7 +133,7 @@
         </div>
     </div>
 </div>
-<div id="myModalLocaltion" class="modal fade" role="dialog" style="display:none;">
+<div id="myModalLocaltion" class="modal fade" role="dialog" style="display: none;">
 
     <div class="modal-dialog">
         <div class="modal-content">
@@ -155,9 +160,9 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input type="hidden" id="txtAvatar" name="txtAvatar" value="/assets/img/avatars/no-avatar.gif" />
+                                <input type="hidden" id="txtAvatar" name="txtAvatar" value="/assets/img/avatars/no-avatar.gif"/>
                                 <div class="viewimg">
-                                    <img id="imgViewAvatar" src="/assets/img/avatars/no-avatar.gif" width="84" />
+                                    <img id="imgViewAvatar" src="/assets/img/avatars/no-avatar.gif" width="84"/>
                                 </div>
                                 <span class="btn btn-default btn-sm" id="btn_AvatarLocaltion">Đổi ảnh địa điểm</span>
                                 <input type="file" class="upload" id="f_AvatarLocaltion" style="display: none;">
@@ -195,7 +200,7 @@
                             <div class="form-group">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" id="cbxStatus" name="cbxStatus" class="colored-blue" />
+                                        <input type="checkbox" id="cbxStatus" name="cbxStatus" class="colored-blue"/>
                                         <span class="text">Trạng thái</span>
                                     </label>
                                 </div>
@@ -211,8 +216,8 @@
                                 </span>
                             </div>
                         </div>
-                        <input type="hidden" id="hdLocaltionId" name="hdLocaltionId" value="0" />
-                        <input type="hidden" id="sltAccount" name="sltAccount" value="0" />
+                        <input type="hidden" id="hdLocaltionId" name="hdLocaltionId" value="0"/>
+                        <input type="hidden" id="sltAccount" name="sltAccount" value="0"/>
                     </div>
                 </form>
             </div>
@@ -222,7 +227,35 @@
             </div>
         </div>
     </div>
-    
+
+</div>
+<div id="myModalLocaltionDetail" class="modal fade" role="dialog" style="display:none;">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Chi tiết địa chỉ này hôm nay</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            Tên địa chỉ: <span id="dtvName"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            Địa chỉ: <span id="dtvAddress"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+
 </div>
 @section PageScripts {
     @Scripts.Render("~/bundles/bootbox")

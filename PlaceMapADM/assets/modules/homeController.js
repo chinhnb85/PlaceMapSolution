@@ -27,23 +27,23 @@ CmsShop.Home.InitMap = function () {
     $widgetbodyuser.css({ height: $(window).height() - 95 });
     $widgetbodymap.css({ height: $(window).height() - 95 });    
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
+    //if (navigator.geolocation) {
+    //    navigator.geolocation.getCurrentPosition(function (position) {
+    //        var pos = {
+    //            lat: position.coords.latitude,
+    //            lng: position.coords.longitude
+    //        };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            map.setCenter(pos);
-        }, function () {
-            handleLocationError(true, infoWindow, map.getCenter());
-        });
-    } else {
-        // Browser doesn't support Geolocation
-        //handleLocationError(false, infoWindow, map.getCenter());
-    }
+    //        infoWindow.setPosition(pos);
+    //        infoWindow.setContent('Location found.');
+    //        map.setCenter(pos);
+    //    }, function () {
+    //        handleLocationError(true, infoWindow, map.getCenter());
+    //    });
+    //} else {
+    //    // Browser doesn't support Geolocation
+    //    //handleLocationError(false, infoWindow, map.getCenter());
+    //}
 
     var myLatLng = new google.maps.LatLng(21.0026, 105.8056);
     var mapOptions = {
@@ -76,7 +76,7 @@ CmsShop.Home.InitMap = function () {
     var data = { Name: "Vị trí hiện tại" };
     p.AddMarker(myLatLng, data, image, map);
 
-    p.GetAllAccount(map);    
+    p.GetAllAccountByStatus(map);
 };
 
 CmsShop.Home.AddMarker = function (location, data, image, map) {
@@ -132,14 +132,14 @@ CmsShop.Home.SetMapOnAll = function(map) {
     }
 };
 
-CmsShop.Home.GetAllAccount = function(map) {
+CmsShop.Home.GetAllAccountByStatus = function(map) {
     var p = this;    
 
     var dataparam = { type: p.type, keySearch: p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
 
     $.ajax({
         type: "GET",
-        url: "/Account/ListAllPaging",
+        url: "/Account/ListAllPagingByStatus",
         data: dataparam,
         dataType: "json",
         beforeSend: function() {
@@ -162,7 +162,7 @@ CmsShop.Home.GetAllAccount = function(map) {
                 p.RegisterEvents(map);
 
                 p.WrapPaging(response.totalCount, '#btnNext', '#btnPrevious', response.totalRow, function() {
-                    p.GetAllAccount(map);
+                    p.GetAllAccountByStatus(map);
                 });
 
             } else {
@@ -206,7 +206,7 @@ CmsShop.Home.RegisterEvents = function(map) {
 
         p.SetMapOnAll(null);        
 
-        p.LoadAllLocaltionByUser(p.currentUserId, function (data) {
+        p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
             $.each(data, function (i, item) {
                 var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
                 p.AddMarker(myLatLng, item, 'default', map);
@@ -218,7 +218,7 @@ CmsShop.Home.RegisterEvents = function(map) {
         p.keySearch = $("#txtSearch").val();
         if (p.keySearch == "" || p.keySearch.length > 2) {
             p.pageIndex = 1;
-            p.GetAllAccount(map);
+            p.GetAllAccountByStatus(map);
         }
     });
 
@@ -226,9 +226,7 @@ CmsShop.Home.RegisterEvents = function(map) {
         p.keySearchLocaltion = $("#txtSearchLocaltion").val();
         if (p.keySearchLocaltion == "" || p.keySearchLocaltion.length > 2) {
             p.pageIndexLocaltion = 1;
-            p.LoadAllLocaltionByUser(p.currentUserId, function () {
-                
-            });
+            p.LoadAllLocaltionByUser(p.currentUserId, map);
         }
     });
 
@@ -274,51 +272,72 @@ CmsShop.Home.RegisterEvents = function(map) {
                 $('#myModalLocaltion').modal('hide');
             });
         }
-    });
+    });    
 };
 
-CmsShop.Home.LoadAllLocaltionByUser = function (userId, callback) {
+CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
     var p = this;
 
-    var dataparam = {userId:userId, keySearch: p.keySearchLocaltion, pageIndex: p.pageIndexLocaltion, pageSize: p.pageSizeLocaltion };
+    var dataparam = { accountId: accountId, keySearch: p.keySearchLocaltion, pageIndex: p.pageIndexLocaltion, pageSize: p.pageSizeLocaltion };
 
     $.ajax({
         type: "GET",
-        url: "/Localtion/ListAllPaging",
+        url: "/Localtion/ListAllPagingByStatus",
         data: dataparam,
         dataType: "json",
         beforeSend: function () {
-            //logisticJs.startLoading();
+            logisticJs.startLoading();
         },
         success: function (response) {
             if (response.status == true && response.totalCount > 0) {
                 var template = $("#package-data-localtion").html();
                 var render = "";
-                $.each(response.Data, function (i, item) {                                        
+                $.each(response.Data, function (i, item) {
+                    var isChecked = "";
+                    if (item.IsCheck) {
+                        isChecked = "checked";
+                    }
                     render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name, avatar: item.Avatar, address: item.Address
+                        stt: i + 1, id: item.Id, name: item.Name, avatar: item.Avatar, address: item.Address, isChecked: isChecked
                     });                    
                 });
                 if (render != undefined) {
                     $("#listAllLocaltion").html(render);
                 }
                 p.WrapPagingLocaltion(response.totalCount, '#btnNextLocaltion', '#btnPreviousLocaltion', response.totalRow, function () {
-                    p.LoadAllLocaltion(userId, function () {
-                        //p.RegisterEvents();
+                    p.LoadAllLocaltionByUser(p.currentUserId, map);
+                });
+
+                $(".delete").off("click").on("click", function () {
+                    var $this = $(this);
+                    p.UpdateStatusLocaltion($this.attr('data-id'), function () {
+                        p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
+                            p.SetMapOnAll(null);
+                            $.each(data, function (i, item) {
+                                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+                                p.AddMarker(myLatLng, item, 'default', map);
+                            });
+                        });
+                    });
+                });
+                $(".viewdetail").off("click").on("click", function () {
+                    var $this = $(this);
+                    p.ViewDetailLocaltionNow($this.attr('data-id'), function () {
+                        $('#myModalLocaltionDetail').modal('show');
                     });
                 });
 
             } else {
                 $("#listAllLocaltion").html('');
             }
-            //logisticJs.stopLoading();
+            logisticJs.stopLoading();
 
             if (typeof (callback) == "function") {
                 callback(response.Data);
             }
         },
         error: function (status) {
-            //logisticJs.stopLoading();
+            logisticJs.stopLoading();
         }
     });
 };
@@ -439,6 +458,58 @@ CmsShop.Home.AddNewLocaltion = function (form,callback) {
             logisticJs.stopLoading();
         },
         error: function () {
+            logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.Home.UpdateStatusLocaltion = function (id,callback) {
+    var p = this;
+    $.ajax({
+        type: "GET",
+        url: "/Localtion/UpdateStatus",
+        data: { Id: id },
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status) {
+                if (typeof(callback) == "function") {
+                    callback();
+                }
+            }
+            //logisticJs.stopLoading();
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.Home.ViewDetailLocaltionNow = function (id, callback) {
+    var p = this;
+    $.ajax({
+        type: "GET",
+        url: "/Localtion/ViewDetailLocaltionNow",
+        data: { Id: id },
+        dataType: "json",
+        beforeSend: function () {
+            logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status) {
+                if (response.Data != null) {
+                    $('#dtvName').html(response.Data.Name);
+                    $('#dtvAddress').html(response.Data.Address);
+                }                
+                if (typeof (callback) == "function") {
+                    callback();
+                }
+            }
+            logisticJs.stopLoading();
+        },
+        error: function (status) {
             logisticJs.stopLoading();
         }
     });
