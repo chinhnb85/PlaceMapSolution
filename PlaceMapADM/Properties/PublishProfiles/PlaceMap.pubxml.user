@@ -772,7 +772,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 09:12:27</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Web.dll">
-      <publishTime>07/11/2016 15:15:26</publishTime>
+      <publishTime>12/02/2016 09:12:26</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.WindowsServer.dll">
       <publishTime>12/02/2016 09:12:27</publishTime>
