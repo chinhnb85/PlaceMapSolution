@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using LibCore.Configuration;
+using LibCore.Helper;
 
 namespace LibCore.Data
 {
@@ -16,7 +17,8 @@ namespace LibCore.Data
         /// <returns></returns>
         public static string GetConnectionString(string key = "MSSQLConnection")
         {
-            return Config.GetConfigByKey(key);
+            //return Config.GetConfigByKey(key);
+            return Utility.DecryptMd5(Config.GetConfigByKey(key));
         }
 
         public static string GetSchemaString(string key = "Schema")

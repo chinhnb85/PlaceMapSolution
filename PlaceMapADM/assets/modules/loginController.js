@@ -18,6 +18,13 @@ CmsShop.Login.Init = function () {
             p.checklogin();            
         }
     });
+
+    $('#btnEncryptMd5').off('click').on('click', function () {
+        p.md5();
+    });
+    $('#btnDecryptMd5').off('click').on('click', function () {
+        p.md5();
+    });
 };
 
 CmsShop.Login.checklogin = function () {
@@ -48,6 +55,42 @@ CmsShop.Login.checklogin = function () {
                         modal: true
                     });
                 }
+            },
+            error: function () {
+                logisticJs.stopLoading();
+            }
+        });
+    }
+};
+
+CmsShop.Login.md5 = function () {
+
+    var key = $('#txtKeyMd5').val();
+    if (key.trim().length == 0 || key.trim().length == 0) {
+        logisticJs.msgError({
+            text: "Chưa có key.",
+            modal: true
+        });
+    } else {
+        var dataparam = { key: key};
+        $.ajax({
+            type: "GET",
+            url: "/api/userApi/GetEncryptMd5",
+            data: dataparam,
+            beforeSend: function () {
+                logisticJs.startLoading();
+            },
+            success: function (response) {
+                if (response.status) {
+                    $('#viewMd5').html(response.Data);
+                } else {
+                    logisticJs.stopLoading();
+                    logisticJs.msgError({
+                        text: "Không lấy được Md5!",
+                        modal: true
+                    });
+                }
+                logisticJs.stopLoading();
             },
             error: function () {
                 logisticJs.stopLoading();

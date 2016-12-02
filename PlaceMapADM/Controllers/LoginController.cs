@@ -18,13 +18,17 @@ namespace PlaceMapADM.Controllers
         {
             return View();
         }
+        public ActionResult MD5()
+        {
+            return View();
+        }
 
         [HttpPost]        
         public JsonResult Login(string userName, string password)
         {
             try
             {
-                password = Common.Encrypt(password);
+                password = Common.Encrypt(password.Trim());
                 var ipl = SingletonIpl.GetInstance<IplAccount>();
                 var ue = new AccountEntity();
                 var res = ipl.Login(userName, password.Trim(), ref ue);//Md5Util.Md5EnCrypt(password.Trim())

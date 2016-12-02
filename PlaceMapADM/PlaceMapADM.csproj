@@ -455,6 +455,7 @@
     <Content Include="Views\Shared\_SlidebarMenu.cshtml" />
     <Content Include="Views\Shared\_PageBreadcrumb.cshtml" />
     <Content Include="Views\Localtion\Index.cshtml" />
+    <Content Include="Views\Login\MD5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\LibCore\LibCore.csproj">

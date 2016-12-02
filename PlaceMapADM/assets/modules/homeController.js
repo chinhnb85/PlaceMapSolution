@@ -270,6 +270,13 @@ CmsShop.Home.RegisterEvents = function(map) {
             
             p.AddNewLocaltion("#insertlocaltion", function () {
                 $('#myModalLocaltion').modal('hide');
+                p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
+                    p.SetMapOnAll(null);
+                    $.each(data, function (i, item) {
+                        var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+                        p.AddMarker(myLatLng, item, 'default', map);
+                    });
+                });
             });
         }
     });    

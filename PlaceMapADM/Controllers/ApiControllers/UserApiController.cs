@@ -28,9 +28,10 @@ namespace PlaceMapADM.Controllers.ApiControllers
         }
 
         [HttpGet]
-        public string GetEncryptMd5(string str)
+        public object GetEncryptMd5(string key)
         {
-            return Common.Encrypt(str);
+            return new { status=true,Data=Common.Encrypt(key) };
+
         }
 
         [HttpGet]

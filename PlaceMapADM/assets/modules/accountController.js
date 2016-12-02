@@ -11,6 +11,7 @@ CmsShop.Account = {
 CmsShop.Account.Init = function () {
     var p = this;
 
+    $("#sltTypeSearch").val(p.type);
     $("#txtBirthDay").datepicker({ format: 'dd/mm/yyyy' });
 
     $("#insert-account").validate({
@@ -337,7 +338,7 @@ CmsShop.Account.WrapPaging = function (total, next, previous, RecordCount, callB
 
 CmsShop.Account.EmptyAccount = function() {
     
-    $("#sltType").val(0);
+    $("#sltType").val(2);
     $("#txtUserName").val('');
     $("#txtPassword").val('');
     $("#txtDisplayName").val('');
