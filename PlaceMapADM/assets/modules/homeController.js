@@ -37,11 +37,12 @@ CmsShop.Home.InitMap = function () {
     var map = new google.maps.Map($maps[0],mapOptions);    
     
     //var image = {
-    //    url: '/assets/img/favicon.png',
+    //    url: '/assets/img/iconm.png',
     //    size: new google.maps.Size(20, 32),
     //    origin: new google.maps.Point(0, 0),
     //    anchor: new google.maps.Point(0, 32)
     //}
+    var infoWindow = new google.maps.InfoWindow({ map: map });
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -61,12 +62,12 @@ CmsShop.Home.InitMap = function () {
             circle.setMap(map);
             var data = { Name: "Vị trí hiện tại" };
             p.AddMarker(pos, data, 'currenticon', map);
-        }, function () {
-            handleLocationError(true, infoWindow, map.getCenter());
+        }, function () {            
+            p.HandleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
         // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
+        p.HandleLocationError(false, infoWindow, map.getCenter());
     }
 
     p.GetAllAccountByStatus(map);
@@ -75,8 +76,8 @@ CmsShop.Home.InitMap = function () {
 CmsShop.Home.HandleLocationError = function (browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
-                          'Error: The Geolocation service failed.' :
-                          'Error: Your browser doesn\'t support geolocation.');
+                          'Không lấy được vị trí hiện tại.' :
+                          'Trình duyệt của bạn không được hỗ trợ.');
 };
 
 CmsShop.Home.AddMarker = function (location, data, image, map) {
