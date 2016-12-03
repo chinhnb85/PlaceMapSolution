@@ -26,25 +26,7 @@ CmsShop.Home.InitMap = function () {
     $maps.css({ height: $(window).height() - 95 });
     $widgetbodyuser.css({ height: $(window).height() - 95 });
     $widgetbodymap.css({ height: $(window).height() - 95 });    
-
-    //if (navigator.geolocation) {
-    //    navigator.geolocation.getCurrentPosition(function (position) {
-    //        var pos = {
-    //            lat: position.coords.latitude,
-    //            lng: position.coords.longitude
-    //        };
-
-    //        infoWindow.setPosition(pos);
-    //        infoWindow.setContent('Location found.');
-    //        map.setCenter(pos);
-    //    }, function () {
-    //        handleLocationError(true, infoWindow, map.getCenter());
-    //    });
-    //} else {
-    //    // Browser doesn't support Geolocation
-    //    //handleLocationError(false, infoWindow, map.getCenter());
-    //}
-
+   
     var myLatLng = new google.maps.LatLng(21.0026, 105.8056);
     var mapOptions = {
         zoom: 13,
@@ -53,48 +35,69 @@ CmsShop.Home.InitMap = function () {
         streetViewControl: true
     };
     var map = new google.maps.Map($maps[0],mapOptions);    
+    
+    //var image = {
+    //    url: '/assets/img/favicon.png',
+    //    size: new google.maps.Size(20, 32),
+    //    origin: new google.maps.Point(0, 0),
+    //    anchor: new google.maps.Point(0, 32)
+    //}
 
-    var image = {
-        url: '/assets/img/favicon.png',
-        size: new google.maps.Size(20, 32),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(0, 32)
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+                strokeColor: '#2dc3e8',
+                strokeOpacity: 0.5,
+                strokeWeight: 1,
+                fillColor: '#2dc3e8',
+                fillOpacity: 0.35,
+                center: pos,
+                radius: Math.sqrt(1) * 100
+            });
+            circle.setMap(map);
+            var data = { Name: "Vị trí hiện tại" };
+            p.AddMarker(pos, data, 'currenticon', map);
+        }, function () {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
     }
-    image = '';    
-
-    var circle = new google.maps.Circle({
-        strokeColor: '#2dc3e8',
-        strokeOpacity: 0.8,
-        strokeWeight: 1,
-        fillColor: '#2dc3e8',
-        fillOpacity: 0.35,
-        center: myLatLng,
-        radius: Math.sqrt(10) * 100
-    });
-    circle.setMap(map);    
-
-    var data = { Name: "Vị trí hiện tại" };
-    p.AddMarker(myLatLng, data, image, map);
 
     p.GetAllAccountByStatus(map);
+};
+
+CmsShop.Home.HandleLocationError = function (browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+                          'Error: The Geolocation service failed.' :
+                          'Error: Your browser doesn\'t support geolocation.');
 };
 
 CmsShop.Home.AddMarker = function (location, data, image, map) {
     var p = this;
 
-    var goldStar = {
+    var currentIcon = {
         path: google.maps.SymbolPath.CIRCLE,//'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-        fillColor: '#FF0000',
-        fillOpacity: 0.8,
+        fillColor: 'green',
+        fillOpacity: 0.5,
         scale: 3,
-        strokeColor: '#FF0000',
+        strokeColor: 'green',
         strokeWeight: 14
-    };
+    };    
     if (image == 'default') {
-        image = null;
+        image = 'https://maps.gstatic.com/mapfiles/ms2/micons/red-dot.png';
     }
-    if (image == '') {
-        image = goldStar;
+    if (image == 'checkedicon') {
+        image = 'https://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png';
+    }
+    if (image == 'currenticon') {
+        image = currentIcon;
     }
     var marker = new google.maps.Marker({
         position: location,
@@ -102,7 +105,7 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         title: data.Name,
         icon: image,
         map: map,
-        draggable: true
+        draggable: false
     });
     marker.addListener('click', function () {
         if (marker.getAnimation() !== null) {
@@ -193,7 +196,7 @@ CmsShop.Home.RegisterEvents = function(map) {
     });
 
     $('table #listAllAccount tr').off('click').on('click', function() {
-
+        
         $('table #listAllAccount tr[data-active="1"]').css({ 'background-color': '#fff' });
         $('table #listAllAccount tr[data-active="1"]').attr('data-active', 0);
 
@@ -209,7 +212,11 @@ CmsShop.Home.RegisterEvents = function(map) {
         p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
             $.each(data, function (i, item) {
                 var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-                p.AddMarker(myLatLng, item, 'default', map);
+                if (item.IsCheck) {
+                    p.AddMarker(myLatLng, item, 'checkedicon', map);
+                } else {
+                    p.AddMarker(myLatLng, item, 'default', map);
+                }
             });
         });
     });
@@ -274,7 +281,11 @@ CmsShop.Home.RegisterEvents = function(map) {
                     p.SetMapOnAll(null);
                     $.each(data, function (i, item) {
                         var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-                        p.AddMarker(myLatLng, item, 'default', map);
+                        if (item.IsCheck) {
+                            p.AddMarker(myLatLng, item, 'checkedicon', map);
+                        } else {
+                            p.AddMarker(myLatLng, item, 'default', map);
+                        }                            
                     });
                 });
             });
@@ -304,8 +315,12 @@ CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
                     if (item.IsCheck) {
                         isChecked = "checked";
                     }
+                    var avatar = "/assets/img/avatars/no-avatar.gif";
+                    if (item.Avatar != "") {
+                        avatar = item.Avatar;
+                    }
                     render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name, avatar: item.Avatar, address: item.Address, isChecked: isChecked
+                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar, address: item.Address, isChecked: isChecked
                     });                    
                 });
                 if (render != undefined) {
@@ -322,7 +337,11 @@ CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
                             p.SetMapOnAll(null);
                             $.each(data, function (i, item) {
                                 var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-                                p.AddMarker(myLatLng, item, 'default', map);
+                                if (item.IsCheck) {
+                                    p.AddMarker(myLatLng, item, 'checkedicon', map);
+                                } else {
+                                    p.AddMarker(myLatLng, item, 'default', map);
+                                }
                             });
                         });
                     });
