@@ -507,8 +507,17 @@ CmsShop.Home.ViewDetailLocaltionNow = function (id, callback) {
         success: function (response) {
             if (response.status) {
                 if (response.Data != null) {
-                    $('#dtvName').html(response.Data.Name);
-                    $('#dtvAddress').html(response.Data.Address);
+                    var template = $("#package-data-viewDetailLocaltion").html();
+                    var isChecked = "";
+                    if (response.Data.IsCheck) {
+                        isChecked = "checked";
+                    }
+                    var render = Mustache.render(template, {
+                        id: response.Data.Id, name: response.Data.Name, avatar: response.Data.Avatar,
+                        address: response.Data.Address, isChecked: isChecked, lag: response.Data.Lag,
+                        lng: response.Data.Lng, phone: response.Data.Phone, email: response.Data.Email
+                    });
+                    $('#viewDetailLocaltion').html(render);
                 }                
                 if (typeof (callback) == "function") {
                     callback();
