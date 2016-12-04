@@ -216,6 +216,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/img/favicon.png">
       <publishTime>12/02/2016 09:12:17</publishTime>
     </File>
+    <File Include="assets/img/iconm.png">
+      <publishTime>12/03/2016 11:29:40</publishTime>
+    </File>
     <File Include="assets/img/jquery.minicolors.png">
       <publishTime>12/02/2016 09:12:17</publishTime>
     </File>
@@ -604,7 +607,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2016 14:42:08</publishTime>
     </File>
     <File Include="assets/modules/homeController.js">
-      <publishTime>12/02/2016 11:59:30</publishTime>
+      <publishTime>12/03/2016 11:54:06</publishTime>
     </File>
     <File Include="assets/modules/localtionController.js">
       <publishTime>12/02/2016 09:12:20</publishTime>
@@ -820,7 +823,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 09:12:29</publishTime>
     </File>
     <File Include="bin/PlaceMapADM.dll">
-      <publishTime>12/02/2016 15:00:09</publishTime>
+      <publishTime>12/03/2016 11:49:33</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>12/02/2016 09:12:28</publishTime>
@@ -919,7 +922,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 09:12:16</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>12/02/2016 09:12:21</publishTime>
+      <publishTime>12/02/2016 15:15:02</publishTime>
     </File>
     <File Include="Scripts/ai.0.15.0-build58334.js">
       <publishTime>12/02/2016 09:12:16</publishTime>
@@ -1000,7 +1003,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 09:12:16</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/02/2016 15:00:13</publishTime>
+      <publishTime>12/03/2016 11:49:36</publishTime>
     </File>
   </ItemGroup>
 </Project>
