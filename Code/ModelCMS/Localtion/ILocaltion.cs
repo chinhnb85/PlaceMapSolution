@@ -13,5 +13,6 @@ namespace ModelCMS.Localtion
         List<LocaltionEntity> ListAllPagingByStatus(int accountId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
         LocaltionEntity ViewDetail(int id);	    
 	    LocaltionEntity GetLocaltionByEmail(string email);
-	}
+        List<LocaltionEntity> ListAllByAccountId(long accountId, ref int totalRow);
+    }
 }

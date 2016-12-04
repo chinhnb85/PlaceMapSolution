@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ModelCMS.Account;
 using ModelCMS.Localtion;
 
 namespace PlaceMapADM.Controllers.ApiControllers
@@ -20,20 +21,21 @@ namespace PlaceMapADM.Controllers.ApiControllers
             return data;
         }
 
-        // GET api/LocaltionApi
-        [HttpGet]
-        public object GetListByAccountId(int accountId)
+        // GET api/localtionApi/GetListLocaltionByAccountId
+        [HttpPost]
+        public object GetListLocaltionByAccountId(AccountEntity acc)
         {
+            var total = 0;
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
-            var data = ipl.ListAll();
+            var data = ipl.ListAllByAccountId(acc.Id, ref total);
             if (data != null && data.Count > 0)
             {
-                return Json(new { status = true, message = "Success.", Data = data });
+                return Json(new { status = true, message = "Success.", Total = total, Data = data });
             }
             return Json(new { status = false, message = "Không có bản ghi nào.", Data = data });
         }
 
-        [HttpGet]
+        [HttpPost]
         public object CheckedLocaltion(int localtionId, int accountId)
         {
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
