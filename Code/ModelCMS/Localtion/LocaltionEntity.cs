@@ -8,7 +8,7 @@ namespace ModelCMS.Localtion
 		
 		public long Id { get; set; }
 
-        public int? AccountId { get; set; }
+        public int AccountId { get; set; }
 
         public string Lag { get; set; }
 
@@ -32,6 +32,7 @@ namespace ModelCMS.Localtion
 
         public bool? IsCheck { get; set; }
 
+        public int? PlaceNumberWrong { get; set; }
         #endregion
     }
 }

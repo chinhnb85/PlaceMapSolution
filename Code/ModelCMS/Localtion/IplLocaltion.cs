@@ -119,7 +119,7 @@ namespace ModelCMS.Localtion
         /// <summary>
         /// Selects a single record from the Localtion table.
         /// </summary>
-        public LocaltionEntity ViewDetail(int id)
+        public LocaltionEntity ViewDetail(long id)
         {
             try
             {
@@ -227,6 +227,24 @@ namespace ModelCMS.Localtion
                 var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_ListAllByAccountId", p);
                 totalRow = p.Get<int>("@totalRow");
                 return data.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
+        public bool CheckedLocaltion(LocaltionEntity loc)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", loc.Id);
+                p.Add("@AccountId", loc.AccountId);
+                p.Add("@PlaceNumberWrong", loc.PlaceNumberWrong);
+                var res = unitOfWork.ProcedureExecute("Sp_Localtion_CheckedLocaltion", p);
+                return res;
             }
             catch (Exception ex)
             {

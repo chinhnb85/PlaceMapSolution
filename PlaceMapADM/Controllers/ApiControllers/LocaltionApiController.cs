@@ -36,10 +36,10 @@ namespace PlaceMapADM.Controllers.ApiControllers
         }
 
         [HttpPost]
-        public object CheckedLocaltion(int localtionId, int accountId)
+        public object CheckedLocaltion(LocaltionEntity loc)
         {
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
-            var data = ipl.UpdateStatus(localtionId);
+            var data = ipl.CheckedLocaltion(loc);
             if (data)
             {
                 return Json(new { status = true, message = "Success.", Data = data });
@@ -59,15 +59,28 @@ namespace PlaceMapADM.Controllers.ApiControllers
         }
 
         [HttpPost]
-        public object PostAddNew(LocaltionEntity localtion)
+        public object AddNewLocaltion(LocaltionEntity localtion)
         {
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
             var id = ipl.Insert(localtion);
             if (id != 0)
             {
+                var data = ipl.CheckedLocaltion(localtion);
                 return Json(new { status = true, message = "Success.", Data = id });
             }
             return Json(new { status = false, message = "Lỗi thêm địa chỉ.", Data = id });
+        }
+
+        [HttpPost]
+        public object ViewDetailLocaltion(LocaltionEntity localtion)
+        {
+            var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+            var obj = ipl.ViewDetail(localtion.Id);
+            if (obj != null)
+            {                
+                return Json(new { status = true, message = "Success.", Data = obj });
+            }
+            return Json(new { status = false, message = "Lỗi thêm địa chỉ."});
         }
 
         // PUT api/LocaltionApi/5
