@@ -66,7 +66,7 @@ namespace PlaceMapADM.Controllers.ApiControllers
             if (id != 0)
             {
                 var data = ipl.CheckedLocaltion(localtion);
-                return Json(new { status = true, message = "Success.", Data = id });
+                return Json(new { status = true, message = "Thêm mới thành công.", Data = id });
             }
             return Json(new { status = false, message = "Lỗi thêm địa chỉ.", Data = id });
         }
