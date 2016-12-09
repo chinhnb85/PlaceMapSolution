@@ -135,7 +135,7 @@ namespace ModelCMS.Localtion
             }
         }
 
-        public LocaltionEntity ViewDetailLocaltionNow(int id)
+        public LocaltionEntity ViewDetailLocaltionNow(long id)
         {
             try
             {
