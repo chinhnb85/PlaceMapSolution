@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using ModelCMS.Account;
 using ModelCMS.Localtion;
+using PlaceMapADM.Code;
 
 namespace PlaceMapADM.Controllers.ApiControllers
 {
@@ -39,12 +40,22 @@ namespace PlaceMapADM.Controllers.ApiControllers
         public object CheckedLocaltion(LocaltionEntity loc)
         {
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
-            var data = ipl.CheckedLocaltion(loc);
-            if (data)
+            var locData = ipl.ViewDetail(loc.Id);
+            if (locData != null)
             {
-                return Json(new { status = true, message = "Checked tới địa điểm này thành công.", Data = data });
-            }
-            return Json(new { status = false, message = "Không có bản ghi nào.", Data = data });
+                var ischeck = Common.DistanceBetweenPlaces(Double.Parse(loc.Lag), Double.Parse(loc.Lng), Double.Parse(locData.Lag), Double.Parse(locData.Lng));
+                if (ischeck < 100)
+                {
+                    loc.PlaceNumberWrong = (int)ischeck;
+                    var data = ipl.CheckedLocaltion(loc);
+                    if (data)
+                    {
+                        return Json(new {status = true, message = "Checked địa điểm thành công.", Data = data});
+                    }
+                }
+                return Json(new { status = false, message = "Vị trí của bạn quá xa không phù hợp.",Data= ischeck });
+            }            
+            return Json(new { status = false, message = "Không có bản ghi nào." });
         }
 
         // GET api/LocaltionApi/5
@@ -68,7 +79,7 @@ namespace PlaceMapADM.Controllers.ApiControllers
                 var data = ipl.CheckedLocaltion(localtion);
                 return Json(new { status = true, message = "Thêm mới thành công.", Data = id });
             }
-            return Json(new { status = false, message = "Lỗi thêm địa chỉ.", Data = id });
+            return Json(new { status = false, message = "Vị trí này đã tồn tại. Xin di chuyển đến vị trí khác để thêm.", Data = id });
         }
 
         [HttpPost]

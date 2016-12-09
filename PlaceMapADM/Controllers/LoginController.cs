@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LibCore.Helper;
 using LibCore.Security.Crypt;
 using ModelCMS.Base;
 using PlaceMapADM.Code;
@@ -28,7 +29,7 @@ namespace PlaceMapADM.Controllers
         {
             try
             {
-                password = Common.Encrypt(password.Trim());
+                password = Utility.EncryptMd5(password.Trim());
                 var ipl = SingletonIpl.GetInstance<IplAccount>();
                 var ue = new AccountEntity();
                 var res = ipl.Login(userName, password.Trim(), ref ue);//Md5Util.Md5EnCrypt(password.Trim())

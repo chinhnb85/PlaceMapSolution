@@ -111,7 +111,7 @@ CmsShop.Localtion.RegisterEvents = function () {
             if ((file = this.files[0])) {
                 logisticJs.sendFile(file, 'Localtion', function (url) {                   
                     var avatar = "/assets/img/avatars/no-avatar.gif";
-                    if (url != null) {
+                    if (url != null && url!="") {
                         avatar = url;
                     }
                     $('#imgViewAvatar').attr('src', avatar);
@@ -176,7 +176,7 @@ CmsShop.Localtion.EditLocaltion = function (id) {
                 $("#txtPhone").val(response.Data.Phone);                
                 $("#txtAddress").val(response.Data.Address);
                 var avatar = "/assets/img/avatars/no-avatar.gif";
-                if (response.Data.Avatar != "") {
+                if (response.Data.Avatar != "" && response.Data.Avatar != null) {
                     avatar = response.Data.Avatar;
                 }
                 $("#txtAvatar").val(avatar);
@@ -271,9 +271,13 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
                     if (item.CreatedDate != null) {
                         createddate = logisticJs.convertDatetimeDMY(item.CreatedDate);
                     }
+                    var avatar = "/assets/img/avatars/no-avatar.gif";
+                    if (item.Avatar != "" && item.Avatar!=null) {
+                        avatar = item.Avatar;
+                    }
                     render += Mustache.render(template, {
                         stt: i+1, id: item.Id, name: item.Name, userName: item.UserName, 
-                        avatar: item.Avatar, statusLoc: statusloc, createdDate: createddate
+                        avatar: avatar, statusLoc: statusloc, createdDate: createddate
                     });                    
                 });
                 if (render != undefined) {

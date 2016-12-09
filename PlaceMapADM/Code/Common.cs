@@ -10,10 +10,9 @@ using System.Web;
 namespace PlaceMapADM.Code
 {
     public class Common
-    {
-        private const string initVector = "tu89geji340t89u2";
-
-        private const int keysize = 256;
+    {        
+        const double PIx = 3.141592653589793;
+        const double RADIO = 6378.16;
 
         public static string ConvertTextToUrl(string text)
         {
@@ -42,42 +41,26 @@ namespace PlaceMapADM.Code
             }
             catch { return string.Empty; }
         }
-        
-        public static string Encrypt(string Text, string Key="chinhnb")
-        {
-            byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
-            byte[] plainTextBytes = Encoding.UTF8.GetBytes(Text);
-            PasswordDeriveBytes password = new PasswordDeriveBytes(Key, null);
-            byte[] keyBytes = password.GetBytes(keysize / 8);
-            RijndaelManaged symmetricKey = new RijndaelManaged();
-            symmetricKey.Mode = CipherMode.CBC;
-            ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes);
-            MemoryStream memoryStream = new MemoryStream();
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
-            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-            cryptoStream.FlushFinalBlock();
-            byte[] Encrypted = memoryStream.ToArray();
-            memoryStream.Close();
-            cryptoStream.Close();
-            return Convert.ToBase64String(Encrypted);
-        }
 
-        public static string Decrypt(string EncryptedText, string Key="chinhnb")
+        public static double Radians(double x)
         {
-            byte[] initVectorBytes = Encoding.ASCII.GetBytes(initVector);
-            byte[] DeEncryptedText = Convert.FromBase64String(EncryptedText);
-            PasswordDeriveBytes password = new PasswordDeriveBytes(Key, null);
-            byte[] keyBytes = password.GetBytes(keysize / 8);
-            RijndaelManaged symmetricKey = new RijndaelManaged();
-            symmetricKey.Mode = CipherMode.CBC;
-            ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
-            MemoryStream memoryStream = new MemoryStream(DeEncryptedText);
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
-            byte[] plainTextBytes = new byte[DeEncryptedText.Length];
-            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
-            memoryStream.Close();
-            cryptoStream.Close();
-            return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+            return x * PIx / 180;
+        }
+       
+        public static int DistanceBetweenPlaces(
+            double lon1,
+            double lat1,
+            double lon2,
+            double lat2)
+        {
+            double dlon = Radians(lon2 - lon1);
+            double dlat = Radians(lat2 - lat1);
+
+            double a = (Math.Sin(dlat / 2) * Math.Sin(dlat / 2)) + Math.Cos(Radians(lat1)) * Math.Cos(Radians(lat2)) * (Math.Sin(dlon / 2) * Math.Sin(dlon / 2));
+            double angle = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            //return (angle * RADIO) * 0.62137;//distance in dặm
+            //return (angle*RADIO);//distance in km
+            return (int)((angle * RADIO) * 1000D);//distance in mét
         }
     }
 }

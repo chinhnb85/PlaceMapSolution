@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using PlaceMapADM.Controllers.Base;
 using LibCore.EF;
+using LibCore.Helper;
 using ModelCMS.Account;
 using PlaceMapADM.Code;
 
@@ -27,7 +28,7 @@ namespace PlaceMapADM.Controllers
                 var id= long.Parse(collection["hdAccountId"]);
                 var displayname = collection["txtDisplayName"];
                 var username = collection["txtUserName"];
-                var password = Common.Encrypt(collection["txtPassword"]);
+                var password = Utility.EncryptMd5(collection["txtPassword"]);
                 var email = collection["txtEmail"];
                 var birthday = collection["txtBirthDay"];
                 DateTime dt = DateTime.ParseExact(string.IsNullOrEmpty(birthday) ? DateTime.Now.ToString("dd/MM/yyyy") : birthday, "dd/MM/yyyy", CultureInfo.InvariantCulture);

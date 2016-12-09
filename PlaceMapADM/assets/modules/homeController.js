@@ -317,7 +317,7 @@ CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
                         isChecked = "checked";
                     }
                     var avatar = "/assets/img/avatars/no-avatar.gif";
-                    if (item.Avatar != "") {
+                    if (item.Avatar != "" && item.Avatar!=null) {
                         avatar = item.Avatar;
                     }
                     render += Mustache.render(template, {

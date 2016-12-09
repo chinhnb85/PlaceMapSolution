@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using LibCore.Helper;
 using ModelCMS.Account;
 using PlaceMapADM.Code;
 
@@ -30,14 +31,14 @@ namespace PlaceMapADM.Controllers.ApiControllers
         [HttpGet]
         public object GetEncryptMd5(string key)
         {
-            return new { status=true,Data=Common.Encrypt(key) };
+            return new { status=true,Data= Utility.EncryptMd5(key) };
 
         }
 
         [HttpGet]
         public string GetDecryptMd5(string str)
         {
-            return Common.Decrypt(str);
+            return Utility.DecryptMd5(str);
         }
 
         // POST api/userApi
