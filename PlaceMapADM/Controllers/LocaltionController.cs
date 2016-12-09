@@ -129,7 +129,7 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpGet]
-        public JsonResult ViewDetailLocaltionNow(int Id)
+        public JsonResult ViewDetailLocaltionNow(long Id)
         {
             try
             {

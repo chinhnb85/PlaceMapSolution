@@ -42,7 +42,7 @@ namespace PlaceMapADM.Controllers.ApiControllers
             var data = ipl.CheckedLocaltion(loc);
             if (data)
             {
-                return Json(new { status = true, message = "Success.", Data = data });
+                return Json(new { status = true, message = "Checked tới địa điểm này thành công.", Data = data });
             }
             return Json(new { status = false, message = "Không có bản ghi nào.", Data = data });
         }
@@ -75,12 +75,12 @@ namespace PlaceMapADM.Controllers.ApiControllers
         public object ViewDetailLocaltion(LocaltionEntity localtion)
         {
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
-            var obj = ipl.ViewDetail(localtion.Id);
+            var obj = ipl.ViewDetailLocaltionNow(localtion.Id);
             if (obj != null)
             {                
                 return Json(new { status = true, message = "Success.", Data = obj });
             }
-            return Json(new { status = false, message = "Lỗi thêm địa chỉ."});
+            return Json(new { status = false, message = "Không thể lấy được địa chỉ này."});
         }
 
         // PUT api/LocaltionApi/5
