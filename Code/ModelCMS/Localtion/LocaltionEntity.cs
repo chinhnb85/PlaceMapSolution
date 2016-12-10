@@ -1,3 +1,4 @@
+using LibCore.Configuration;
 using System;
 
 namespace ModelCMS.Localtion
