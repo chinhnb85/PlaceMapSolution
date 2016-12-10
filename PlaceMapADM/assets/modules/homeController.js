@@ -313,15 +313,17 @@ CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
                 var render = "";
                 $.each(response.Data, function (i, item) {
                     var isChecked = "";
+                    var isCheckedName = "Chưa checked"
                     if (item.IsCheck) {
                         isChecked = "checked";
+                        isCheckedName="Đã checked"
                     }
                     var avatar = "/assets/img/avatars/no-avatar.gif";
                     if (item.Avatar != "" && item.Avatar!=null) {
                         avatar = item.Avatar;
                     }
                     render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar, address: item.Address, isChecked: isChecked
+                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar, address: item.Address, isChecked: isChecked, isCheckedName: isCheckedName
                     });                    
                 });
                 if (render != undefined) {
@@ -529,13 +531,16 @@ CmsShop.Home.ViewDetailLocaltionNow = function (id, callback) {
                 if (response.Data != null) {
                     var template = $("#package-data-viewDetailLocaltion").html();
                     var isChecked = "";
+                    var isCheckedName = "Chưa checked";
                     if (response.Data.IsCheck) {
                         isChecked = "checked";
+                        isCheckedName = "Đã checked";
                     }
                     var render = Mustache.render(template, {
                         id: response.Data.Id, name: response.Data.Name, avatar: response.Data.Avatar,
                         address: response.Data.Address, isChecked: isChecked, lag: response.Data.Lag,
-                        lng: response.Data.Lng, phone: response.Data.Phone, email: response.Data.Email
+                        lng: response.Data.Lng, phone: response.Data.Phone, email: response.Data.Email,
+                        isCheckedName: isCheckedName
                     });
                     $('#viewDetailLocaltion').html(render);
                 }                
