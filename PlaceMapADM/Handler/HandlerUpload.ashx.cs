@@ -17,30 +17,30 @@ namespace PlaceMapADM.Handler
             try
             {
                 var folder = "/Upload/";
-                if (context.Request.Params["folder"] != null && !string.IsNullOrEmpty(context.Request.Params["folder"]))
+                if (!string.IsNullOrEmpty(context.Request.Params["folder"]))
                 {
                     folder = folder + context.Request.Params["folder"] + "/";
                 }
-                string dirFullPath = HttpContext.Current.Server.MapPath(folder);
-                string[] files;
-                int numFiles;
-                files = Directory.GetFiles(dirFullPath);
-                numFiles = files.Length;
+                var dirFullPath = HttpContext.Current.Server.MapPath(folder);
+                var files = Directory.GetFiles(dirFullPath);
+                var numFiles = files.Length;
                 numFiles = numFiles + 1;
-                string fileName = "";
+                var fileName = string.Empty;
 
                 foreach (string s in context.Request.Files)
                 {
                     HttpPostedFile file = context.Request.Files[s];
-                    fileName = file.FileName;
-                    string fileExtension = file.ContentType;
-
-                    if (!string.IsNullOrEmpty(fileName))
+                    if (file != null)
                     {
-                        //fileExtension = Path.GetExtension(fileName);
-                        //fileName = "MyPHOTO_" + numFiles.ToString() + fileExtension;
-                        string pathToSave = dirFullPath + fileName;
-                        file.SaveAs(pathToSave);
+                        fileName = file.FileName;
+
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            var fileExtension = Path.GetExtension(fileName);
+                            fileName = fileName.Replace(fileExtension,"") + "_" + numFiles + fileExtension;
+                            var pathToSave = dirFullPath + fileName;
+                            file.SaveAs(pathToSave);
+                        }
                     }
                 }
                 context.Response.ContentType = "text/plain";
@@ -48,7 +48,7 @@ namespace PlaceMapADM.Handler
             }
             catch (Exception ex)
             {
-                context.Response.Write("error");
+                context.Response.Write("error: "+ ex.Message);
             }
         }
 
