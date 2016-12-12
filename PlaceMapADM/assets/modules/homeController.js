@@ -27,14 +27,90 @@ CmsShop.Home.InitMap = function () {
     $widgetbodyuser.css({ height: $(window).height() - 95 });
     $widgetbodymap.css({ height: $(window).height() - 95 });    
    
+    var styledMapType = new google.maps.StyledMapType(
+            [
+              {
+                  "featureType": "administrative",
+                  "elementType": "geometry",
+                  "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                  ]
+              },
+              {
+                  "featureType": "administrative.land_parcel",
+                  "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                  ]
+              },
+              {
+                  "featureType": "administrative.neighborhood",
+                  "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                  ]
+              },
+              {
+                  "featureType": "poi",
+                  "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                  ]
+              },
+              {
+                  "featureType": "road",
+                  "elementType": "labels",
+                  "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                  ]
+              },
+              {
+                  "featureType": "road",
+                  "elementType": "labels.icon",
+                  "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                  ]
+              },
+              {
+                  "featureType": "transit",
+                  "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                  ]
+              },
+              {
+                  "featureType": "water",
+                  "elementType": "labels.text",
+                  "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                  ]
+              }
+            ],
+            { name: 'Styled Map' });
+
     var myLatLng = new google.maps.LatLng(21.0026, 105.8056);
     var mapOptions = {
         zoom: 13,
         center: myLatLng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        //mapTypeId: 'styled_map',//['roadmap', 'styled_map'],//google.maps.MapTypeId.ROADMAP,
         streetViewControl: true
     };
-    var map = new google.maps.Map($maps[0],mapOptions);    
+    var map = new google.maps.Map($maps[0], mapOptions);
+
+    map.mapTypes.set('styled_map', styledMapType);
+    map.setMapTypeId('styled_map');
     
     //var image = {
     //    url: '/assets/img/iconm.png',

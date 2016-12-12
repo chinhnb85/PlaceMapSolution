@@ -133,7 +133,7 @@ CmsShop.Account.AddNewAccount = function (id,form) {
                 });
             } else {                
                 logisticJs.msgWarning({
-                    text: "Việc lưu tài khoản gặp lỗi.",
+                    text: response.message,
                     modal: true
                 });                
             }
@@ -160,6 +160,7 @@ CmsShop.Account.EditAccount = function (id) {
             if (response.status) {
                 $("#sltType").val(response.Data.Type);
                 $("#txtUserName").val(response.Data.UserName);
+                $("#txtUserName").prop("readonly", true);
                 $("#txtPassword").val(response.Data.Password);
                 $("#txtDisplayName").val(response.Data.DisplayName);
                 $("#txtEmail").val(response.Data.Email);
@@ -340,6 +341,7 @@ CmsShop.Account.EmptyAccount = function() {
     
     $("#sltType").val(2);
     $("#txtUserName").val('');
+    $("#txtUserName").prop("readonly", false);
     $("#txtPassword").val('');
     $("#txtDisplayName").val('');
     $("#txtEmail").val('');

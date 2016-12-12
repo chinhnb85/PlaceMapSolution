@@ -51,21 +51,31 @@ namespace PlaceMapADM.Controllers
                     CreatedDate = DateTime.Now,
                     Status = status
                 };
-                var ipl = SingletonIpl.GetInstance<IplAccount>();                
+                var ipl = SingletonIpl.GetInstance<IplAccount>();
+
                 if (id == 0)
                 {
-                    id = ipl.Insert(account);
-                    return Json(new { status = true, Data = id }, JsonRequestBehavior.AllowGet);
+                    var user = ipl.GetAccountByUserName(username);
+                    if (user == null)
+                    {
+                        id = ipl.Insert(account);
+                        return Json(new { status = true, Data = id }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new { status = false, message = "Tài khoản này đã tồn tại." }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {
                     var res = ipl.Update(account);
                     return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
-                }                                
+                }
+                                             
             }
             catch(Exception ex)
             {
-                return Json(new { status = false, message=ex.ToString() }, JsonRequestBehavior.AllowGet);
+                return Json(new { status = false, message="Lỗi không lưu được tài khoản." }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -76,8 +86,13 @@ namespace PlaceMapADM.Controllers
             {
                 var ipl = SingletonIpl.GetInstance<IplAccount>();
                 var res = ipl.ViewDetail(Id);
+                if (res != null)
+                {
+                    res.Password = Utility.DecryptMd5(res.Password);
+                    return Json(new { status = true, Data = res }, JsonRequestBehavior.AllowGet);
+                }
 
-                return Json(new { status = true, Data = res }, JsonRequestBehavior.AllowGet);
+                return Json(new { status = false, Data = res }, JsonRequestBehavior.AllowGet);
             }
             catch
             {

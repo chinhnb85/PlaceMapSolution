@@ -45,7 +45,7 @@ namespace PlaceMapADM.Controllers.ApiControllers
                     }
                     return new { status = true, message = "Đăng nhập thành công.", Data = obj };
                 }
-                return new { status = false, message = "Đăng nhập thất bại.", Data= obj };
+                return new { status = false, message = "Tài khoản or mật khẩu đăng nhập không đúng. Thử lại", Data= obj };
             }
             return new { status = false, message = "Đã có lỗi xảy ra." };
         }
