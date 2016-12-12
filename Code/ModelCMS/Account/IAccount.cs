@@ -20,6 +20,6 @@ namespace ModelCMS.Account
         bool ChangePassword(long id, string oldPassword,string newPassword);
 	    bool CheckResetPassword(string oldPass, string email);
 	    bool ResetPassword(string email, string password);
-	    AccountEntity GetAccountByEmail(string email);
+	    AccountEntity GetAccountByUserName(string username);
 	}
 }

@@ -116,13 +116,13 @@ namespace ModelCMS.Account
                 return false;
             }
         }
-        public AccountEntity GetAccountByEmail(string email)
+        public AccountEntity GetAccountByUserName(string username)
         {
             try
             {
                 var p = new DynamicParameters();
-                p.Add("@email", email);
-                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_GetAccountByEmail", p).FirstOrDefault();
+                p.Add("@UserName", username);
+                var data = unitOfWork.Procedure<AccountEntity>("Sp_Account_GetAccountByUserName", p).FirstOrDefault();
                 return data;
             }
             catch (Exception ex)
