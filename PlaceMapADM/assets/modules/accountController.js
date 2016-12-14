@@ -11,6 +11,8 @@ CmsShop.Account = {
 CmsShop.Account.Init = function () {
     var p = this;
 
+    logisticJs.activeMenuSidebar('/Account');
+
     $("#sltTypeSearch").val(p.type);
     $("#txtBirthDay").datepicker({ format: 'dd/mm/yyyy' });
 

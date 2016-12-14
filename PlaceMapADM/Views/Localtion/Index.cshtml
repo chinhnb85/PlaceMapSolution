@@ -77,12 +77,34 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" id="cbxStatus" name="cbxStatus" class="colored-blue"/>
-                                        <span class="text">Trạng thái</span>
-                                    </label>
-                                </div>
+                                <select id="sltAccount" name="sltAccount" style="border-radius: 0;width: 100%">
+                                    <option value="0">---Chọn tài khoản---</option>
+                                    <script id="data-list-account" type="x-tmpl-mustache">
+                                        <option value="{{id}}">{{displayName}}</option>
+                                    </script>
+                                </select>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <select id="sltQuanHuyen" name="sltQuanHuyen" style="border-radius: 0;width: 100%">
+                                    <option value="0">---Chọn quận/huyện---</option>
+                                    <script id="data-list-quanhuyen" type="x-tmpl-mustache">
+                                        <option value="{{id}}">{{displayName}}</option>
+                                    </script>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <select id="sltTinhThanh" name="sltTinhThanh" style="border-radius: 0;width: 100%">
+                                    <option value="0">---Chọn tỉnh/thành phố---</option>
+                                    <script id="data-list-tinhthanh" type="x-tmpl-mustache">
+                                        <option value="{{id}}">{{displayName}}</option>
+                                    </script>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -97,12 +119,12 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <select id="sltAccount" name="sltAccount" style="border-radius: 0;width: 100%">
-                                    <option value="0">---Chọn tài khoản---</option>
-                                    <script id="data-list-account" type="x-tmpl-mustache">
-                                        <option value="{{id}}">{{displayName}}</option>
-                                    </script>                                    
-                                </select>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="cbxStatus" name="cbxStatus" class="colored-blue" />
+                                        <span class="text">Trạng thái</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -152,7 +174,7 @@
                             <th style="width: 9%">
                                 Trạng thái
                             </th>
-                            <th style="width: 14%">
+                            <th style="width: 20%">
                             </th>
                         </tr>
                     </thead>
@@ -179,6 +201,7 @@
                                 <span class="text"></span>
                             </td>
                             <td style="text-align:center;">
+                                <a href="/?accountId={{accountId}}&lag={{lag}}&lng={{lng}}" class="btn btn-primary btn-xs"><i class="fa fa-map-marker"></i> Map</a>
                                 <a href="javascript:void(0)" class="btn btn-info btn-xs edit" data-id="{{id}}"><i class="fa fa-edit"></i> Sửa</a>
                                 <a href="javascript:void(0)" class="btn btn-danger btn-xs delete" data-id="{{id}}"><i class="fa fa-trash-o"></i> Xóa</a>
                             </td>

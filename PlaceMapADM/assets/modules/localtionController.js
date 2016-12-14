@@ -11,6 +11,8 @@ CmsShop.Localtion = {
 CmsShop.Localtion.Init = function () {
     var p = this;
 
+    logisticJs.activeMenuSidebar('/Localtion');
+
     $("#insert-localtion").validate({
         rules: {
             sltAccount: { valueNotEquals: "0" },
@@ -277,7 +279,8 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
                     }
                     render += Mustache.render(template, {
                         stt: i+1, id: item.Id, name: item.Name, userName: item.UserName, 
-                        avatar: avatar, statusLoc: statusloc, createdDate: createddate
+                        avatar: avatar, statusLoc: statusloc, createdDate: createddate,
+                        accountId:item.AccountId,lag:item.Lag,lng:item.Lng
                     });                    
                 });
                 if (render != undefined) {

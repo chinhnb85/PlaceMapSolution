@@ -171,6 +171,15 @@ var logisticJs = $.extend({
             }
         });
     },
+    activeMenuSidebar: function (currentAction) {
+        $('.nav.sidebar-menu > li').each(function (i) {
+            $(this).removeClass('active');
+            var action = $('a', $(this)).attr('href');
+            if (action == currentAction) {
+                $(this).addClass('active');
+            }            
+        });
+    },
     //--------------Message alert--------------------
     alert: function (options) {
         var titleHeader = "";

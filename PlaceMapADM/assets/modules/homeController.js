@@ -10,15 +10,29 @@ CmsShop.Home = {
     pageSizeLocaltion: 50,
     pageIndexLocaltion: 1,
     keySearchLocaltion: '',
-    currentUserId:0    
+    currentUserId: 0,
+    params: {}
 };
 
-CmsShop.Home.Init = function() {
-        
+CmsShop.Home.Init = function () {
+    var p = this;
+
+    logisticJs.activeMenuSidebar('/');
+
 };
 
 CmsShop.Home.InitMap = function () {
     var p = this;
+
+    if (location.search) {
+        var parts = location.search.substring(1).split('&');
+
+        for (var i = 0; i < parts.length; i++) {
+            var nv = parts[i].split('=');
+            if (!nv[0]) continue;
+            p.params[nv[0]] = nv[1] || true;
+        }
+    }
 
     var $maps = $('#maps');
     var $widgetbodyuser = $('#widget-body-user');
@@ -99,8 +113,11 @@ CmsShop.Home.InitMap = function () {
               }
             ],
             { name: 'Styled Map' });
+    
+    var lag = (p.params.lag == undefined) ? 21.0026 : p.params.lag;
+    var lng = (p.params.lng == undefined) ? 105.8056 : p.params.lng;
 
-    var myLatLng = new google.maps.LatLng(21.0026, 105.8056);
+    var myLatLng = new google.maps.LatLng(lag, lng);
     var mapOptions = {
         zoom: 13,
         center: myLatLng,
@@ -117,37 +134,54 @@ CmsShop.Home.InitMap = function () {
     //    size: new google.maps.Size(20, 32),
     //    origin: new google.maps.Point(0, 0),
     //    anchor: new google.maps.Point(0, 32)
-    //}
-    var infoWindow = new google.maps.InfoWindow({ map: map });
+    //}    
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
-            };
-            var circle = new google.maps.Circle({
-                strokeColor: '#2dc3e8',
-                strokeOpacity: 0.5,
-                strokeWeight: 1,
-                fillColor: '#2dc3e8',
-                fillOpacity: 0.35,
-                center: pos,
-                radius: Math.sqrt(1) * 100
-            });
-            circle.setMap(map);
+            };            
             var data = { Name: "Vị trí hiện tại" };
             p.AddMarker(pos, data, 'currenticon', map);
-        }, function () {            
-            p.HandleLocationError(true, infoWindow, map.getCenter());
+        }, function () {
+            //var infoWindow = new google.maps.InfoWindow({ map: map });
+            //p.HandleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
-        // Browser doesn't support Geolocation
-        p.HandleLocationError(false, infoWindow, map.getCenter());
-    }
+        //var infoWindow = new google.maps.InfoWindow({ map: map });        
+        //p.HandleLocationError(false, infoWindow, map.getCenter());
+    }    
 
-    p.GetAllAccountByStatus(map);
+    p.GetAllAccountByStatus(map, function () {
+        p.GetViewCurrentAccountMap(map);
+    });
 };
+
+CmsShop.Home.GetViewCurrentAccountMap = function (map) {
+    var p = this;
+
+    var accountId = (p.params.accountId == undefined) ? 0 : p.params.accountId;
+    var $this = $('table #listAllAccount tr[data-id="' + accountId + '"]');
+    $this.css({ 'background-color': '#f5f5f5' });
+    $this.attr('data-active', 1);
+
+    $('#btnAddLocaltionByUser').attr('data-user', $this.attr('data-id'));
+    p.currentUserId = $this.attr('data-id');
+
+    p.SetMapOnAll(null);        
+
+    p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
+        $.each(data, function (i, item) {
+            var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+            if (item.IsCheck) {
+                p.AddMarker(myLatLng, item, 'checkedicon', map);
+            } else {
+                p.AddMarker(myLatLng, item, 'default', map);
+            }
+        });
+    });
+}
 
 CmsShop.Home.HandleLocationError = function (browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
@@ -190,14 +224,35 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         } else {
             marker.setAnimation(google.maps.Animation.BOUNCE);
         }
-        var contentString = '<p>' + data.Name + '</p>';
+        var contentString = '<img src="'+data.Avatar+'" class="mapimage" />'+
+            '<p class="maptitle">' + data.Name + '</p>'+
+            '<p class="maplaglng">Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
+            '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
+            '<p class="mapaddress">Đ/c: ' + data.Address +'</p>';
 
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
         infowindow.open(map, marker);
-
     });
+
+    if (p.params.lag != undefined && p.params.lag == location.lat) {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+        var contentString = '<img src="' + data.Avatar + '" class="mapimage" />' +
+            '<p class="maptitle">' + data.Name + '</p>' +
+            '<p class="maplaglng">Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
+            '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
+            '<p class="mapaddress">Đ/c: ' + data.Address + '</p>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        infowindow.open(map, marker);
+    }
 
     if (data.Name != "Vị trí hiện tại")
         p.markers.push(marker);
@@ -212,7 +267,7 @@ CmsShop.Home.SetMapOnAll = function(map) {
     }
 };
 
-CmsShop.Home.GetAllAccountByStatus = function(map) {
+CmsShop.Home.GetAllAccountByStatus = function(map,callback) {
     var p = this;    
 
     var dataparam = { type: p.type, keySearch: p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
@@ -248,7 +303,10 @@ CmsShop.Home.GetAllAccountByStatus = function(map) {
             } else {
                 $("#listAllAccount").html('');
             }
-            //logisticJs.stopLoading();            
+            //logisticJs.stopLoading();  
+            if (typeof (callback) == "function") {
+                callback();
+            }
         },
         error: function(status) {
             //logisticJs.stopLoading();
@@ -616,7 +674,7 @@ CmsShop.Home.ViewDetailLocaltionNow = function (id, callback) {
                         id: response.Data.Id, name: response.Data.Name, avatar: response.Data.Avatar,
                         address: response.Data.Address, isChecked: isChecked, lag: response.Data.Lag,
                         lng: response.Data.Lng, phone: response.Data.Phone, email: response.Data.Email,
-                        isCheckedName: isCheckedName
+                        isCheckedName: isCheckedName,accountId:response.Data.AccountId
                     });
                     $('#viewDetailLocaltion').html(render);
                 }                
