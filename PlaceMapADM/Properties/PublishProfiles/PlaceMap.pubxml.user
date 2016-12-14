@@ -217,7 +217,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:29</publishTime>
     </File>
     <File Include="assets/img/iconm.png">
-      <publishTime>11/21/2016 21:51:29</publishTime>
+      <publishTime>12/06/2016 00:59:59</publishTime>
     </File>
     <File Include="assets/img/jquery.minicolors.png">
       <publishTime>11/21/2016 21:51:29</publishTime>
@@ -607,10 +607,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2016 14:42:08</publishTime>
     </File>
     <File Include="assets/modules/homeController.js">
-      <publishTime>12/04/2016 21:56:59</publishTime>
+      <publishTime>12/10/2016 22:29:25</publishTime>
     </File>
     <File Include="assets/modules/localtionController.js">
-      <publishTime>12/01/2016 22:01:11</publishTime>
+      <publishTime>12/10/2016 00:58:57</publishTime>
     </File>
     <File Include="assets/modules/loginController.js">
       <publishTime>12/02/2016 23:10:08</publishTime>
@@ -808,7 +808,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:20</publishTime>
     </File>
     <File Include="bin/ModelCMS.dll">
-      <publishTime>12/05/2016 23:08:08</publishTime>
+      <publishTime>12/10/2016 23:39:19</publishTime>
     </File>
     <File Include="bin/MongoDB.Bson.dll">
       <publishTime>11/21/2016 21:51:21</publishTime>
@@ -823,7 +823,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:52:01</publishTime>
     </File>
     <File Include="bin/PlaceMapADM.dll">
-      <publishTime>12/05/2016 23:08:15</publishTime>
+      <publishTime>12/11/2016 21:57:17</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>11/21/2016 21:52:01</publishTime>
@@ -964,7 +964,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 10:13:41</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/02/2016 23:47:05</publishTime>
+      <publishTime>12/10/2016 22:29:25</publishTime>
     </File>
     <File Include="Views/Localtion/Index.cshtml">
       <publishTime>12/01/2016 22:36:11</publishTime>
