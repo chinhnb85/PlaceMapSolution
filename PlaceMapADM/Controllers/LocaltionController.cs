@@ -25,6 +25,8 @@ namespace PlaceMapADM.Controllers
             {
                 var id= long.Parse(collection["hdLocaltionId"]);
                 var accountId = int.Parse(collection["sltAccount"]);
+                var provinceId = int.Parse(collection["sltProvince"]);
+                var districtId = int.Parse(collection["sltDistrict"]);
                 var name = collection["txtName"];
                 var lag = collection["txtLag"];
                 var lng = collection["txtLng"];
@@ -37,6 +39,8 @@ namespace PlaceMapADM.Controllers
                 {                    
                     Id=id,
                     AccountId = accountId,
+                    ProvinceId=provinceId,
+                    DistrictId=districtId,
                     Lag= lag,
                     Lng = lng,
                     Name = name,
@@ -76,6 +80,8 @@ namespace PlaceMapADM.Controllers
             {
                 var id = long.Parse(collection["hdLocaltionId"]);
                 var accountId = int.Parse(collection["sltAccount"]);
+                var provinceId = int.Parse(collection["sltProvince"]);
+                var districtId = int.Parse(collection["sltDistrict"]);
                 var name = collection["txtName"];
                 var lag = collection["txtLag"];
                 var lng = collection["txtLng"];
@@ -88,6 +94,8 @@ namespace PlaceMapADM.Controllers
                 {
                     Id = id,
                     AccountId = accountId,
+                    ProvinceId = provinceId,
+                    DistrictId = districtId,
                     Lag = lag,
                     Lng = lng,
                     Name = name,

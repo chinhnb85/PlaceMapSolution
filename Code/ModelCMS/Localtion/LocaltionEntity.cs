@@ -11,6 +11,10 @@ namespace ModelCMS.Localtion
 
         public int AccountId { get; set; }
 
+        public int ProvinceId { get; set; }
+
+        public int DistrictId { get; set; }
+
         public string Lag { get; set; }
 
         public string Lng { get; set; }

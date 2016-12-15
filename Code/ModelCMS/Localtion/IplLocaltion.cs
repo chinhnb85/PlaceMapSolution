@@ -260,6 +260,8 @@ namespace ModelCMS.Localtion
         {
             var p = new DynamicParameters();
             p.Add("@AccountId", obj.AccountId);
+            p.Add("@ProvinceId", obj.ProvinceId);
+            p.Add("@DistrictId", obj.DistrictId);
             p.Add("@Lag", obj.Lag);
             p.Add("@Lng", obj.Lng);
             p.Add("@Name", obj.Name);
