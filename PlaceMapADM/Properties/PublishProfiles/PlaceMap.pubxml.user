@@ -607,10 +607,18 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/12/2016 14:42:08</publishTime>
     </File>
     <File Include="assets/modules/homeController.js">
+<<<<<<< .mine
       <publishTime>12/14/2016 15:01:27</publishTime>
+=======
+      <publishTime>12/10/2016 22:29:25</publishTime>
+>>>>>>> .theirs
     </File>
     <File Include="assets/modules/localtionController.js">
+<<<<<<< .mine
       <publishTime>12/14/2016 13:52:35</publishTime>
+=======
+      <publishTime>12/10/2016 00:58:57</publishTime>
+>>>>>>> .theirs
     </File>
     <File Include="assets/modules/loginController.js">
       <publishTime>12/02/2016 14:56:16</publishTime>
@@ -808,7 +816,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 09:12:13</publishTime>
     </File>
     <File Include="bin/ModelCMS.dll">
+<<<<<<< .mine
       <publishTime>12/12/2016 13:42:58</publishTime>
+=======
+      <publishTime>12/10/2016 23:39:19</publishTime>
+>>>>>>> .theirs
     </File>
     <File Include="bin/MongoDB.Bson.dll">
       <publishTime>12/02/2016 09:12:14</publishTime>
@@ -823,7 +835,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 09:12:29</publishTime>
     </File>
     <File Include="bin/PlaceMapADM.dll">
+<<<<<<< .mine
       <publishTime>12/12/2016 13:43:02</publishTime>
+=======
+      <publishTime>12/11/2016 21:57:17</publishTime>
+>>>>>>> .theirs
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>12/02/2016 09:12:28</publishTime>
@@ -964,7 +980,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 10:13:41</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
+<<<<<<< .mine
       <publishTime>12/14/2016 14:15:47</publishTime>
+=======
+      <publishTime>12/10/2016 22:29:25</publishTime>
+>>>>>>> .theirs
     </File>
     <File Include="Views/Localtion/Index.cshtml">
       <publishTime>12/14/2016 15:08:27</publishTime>
