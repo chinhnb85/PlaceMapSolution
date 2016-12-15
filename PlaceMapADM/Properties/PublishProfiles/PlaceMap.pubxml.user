@@ -601,51 +601,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/14/2016 11:40:53</publishTime>
     </File>
     <File Include="assets/modules/base/common.js">
-      <publishTime>12/14/2016 11:40:36</publishTime>
-    </File>
-    <File Include="assets/modules/categoryController.js">
-      <publishTime>08/12/2016 14:42:08</publishTime>
+      <publishTime>12/15/2016 10:24:16</publishTime>
     </File>
     <File Include="assets/modules/homeController.js">
-<<<<<<< .mine
-      <publishTime>12/14/2016 15:01:27</publishTime>
-=======
-      <publishTime>12/10/2016 22:29:25</publishTime>
->>>>>>> .theirs
+      <publishTime>12/15/2016 10:24:23</publishTime>
     </File>
     <File Include="assets/modules/localtionController.js">
-<<<<<<< .mine
-      <publishTime>12/14/2016 13:52:35</publishTime>
-=======
-      <publishTime>12/10/2016 00:58:57</publishTime>
->>>>>>> .theirs
+      <publishTime>12/15/2016 16:02:20</publishTime>
     </File>
     <File Include="assets/modules/loginController.js">
       <publishTime>12/02/2016 14:56:16</publishTime>
-    </File>
-    <File Include="assets/modules/plugins/chosen/css/chosen.css">
-      <publishTime>08/11/2016 10:25:26</publishTime>
-    </File>
-    <File Include="assets/modules/plugins/chosen/images/chosen-sprite.png">
-      <publishTime>08/11/2016 10:25:26</publishTime>
-    </File>
-    <File Include="assets/modules/plugins/chosen/js/chosen.jquery.min.js">
-      <publishTime>08/11/2016 10:25:26</publishTime>
-    </File>
-    <File Include="assets/modules/plugins/jScrollPane/css/jquery.jscrollpane.css">
-      <publishTime>08/11/2016 10:36:01</publishTime>
-    </File>
-    <File Include="assets/modules/plugins/jScrollPane/js/jquery.jscrollpane.min.js">
-      <publishTime>08/11/2016 10:36:01</publishTime>
-    </File>
-    <File Include="assets/modules/plugins/tipsy/css/tipsy.css">
-      <publishTime>08/11/2016 10:38:41</publishTime>
-    </File>
-    <File Include="assets/modules/plugins/tipsy/js/jquery.tipsy.js">
-      <publishTime>08/11/2016 10:38:41</publishTime>
-    </File>
-    <File Include="assets/modules/productController.js">
-      <publishTime>08/12/2016 16:37:48</publishTime>
     </File>
     <File Include="assets/plugins/chosen/css/chosen.css">
       <publishTime>12/02/2016 09:12:20</publishTime>
@@ -816,11 +781,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 09:12:13</publishTime>
     </File>
     <File Include="bin/ModelCMS.dll">
-<<<<<<< .mine
-      <publishTime>12/12/2016 13:42:58</publishTime>
-=======
-      <publishTime>12/10/2016 23:39:19</publishTime>
->>>>>>> .theirs
+      <publishTime>12/15/2016 16:07:50</publishTime>
     </File>
     <File Include="bin/MongoDB.Bson.dll">
       <publishTime>12/02/2016 09:12:14</publishTime>
@@ -835,11 +796,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 09:12:29</publishTime>
     </File>
     <File Include="bin/PlaceMapADM.dll">
-<<<<<<< .mine
-      <publishTime>12/12/2016 13:43:02</publishTime>
-=======
-      <publishTime>12/11/2016 21:57:17</publishTime>
->>>>>>> .theirs
+      <publishTime>12/15/2016 16:07:54</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>12/02/2016 09:12:28</publishTime>
@@ -917,7 +874,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/02/2016 09:12:16</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>12/14/2016 15:01:13</publishTime>
+      <publishTime>12/15/2016 10:24:30</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>12/02/2016 09:12:21</publishTime>
@@ -976,18 +933,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/Index.cshtml">
       <publishTime>12/02/2016 11:45:08</publishTime>
     </File>
-    <File Include="Views/Category/Index.cshtml">
-      <publishTime>11/21/2016 10:13:41</publishTime>
-    </File>
     <File Include="Views/Home/Index.cshtml">
-<<<<<<< .mine
-      <publishTime>12/14/2016 14:15:47</publishTime>
-=======
-      <publishTime>12/10/2016 22:29:25</publishTime>
->>>>>>> .theirs
+      <publishTime>12/15/2016 10:24:38</publishTime>
     </File>
     <File Include="Views/Localtion/Index.cshtml">
-      <publishTime>12/14/2016 15:08:27</publishTime>
+      <publishTime>12/15/2016 15:22:41</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
       <publishTime>12/02/2016 09:12:16</publishTime>
@@ -995,11 +945,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Login/MD5.cshtml">
       <publishTime>12/02/2016 14:44:44</publishTime>
     </File>
-    <File Include="Views/Product/Created.cshtml">
-      <publishTime>08/12/2016 17:00:54</publishTime>
-    </File>
-    <File Include="Views/Product/List.cshtml">
-      <publishTime>08/12/2016 14:42:08</publishTime>
+    <File Include="Views/Province/Index.cshtml">
+      <publishTime>12/15/2016 15:38:08</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>12/02/2016 09:12:16</publishTime>
@@ -1008,7 +955,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/14/2016 10:56:48</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/14/2016 11:00:19</publishTime>
+      <publishTime>12/15/2016 10:23:54</publishTime>
     </File>
     <File Include="Views/Shared/_PageBreadcrumb.cshtml">
       <publishTime>12/02/2016 09:12:16</publishTime>
