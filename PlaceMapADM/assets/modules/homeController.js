@@ -136,22 +136,22 @@ CmsShop.Home.InitMap = function () {
     //    anchor: new google.maps.Point(0, 32)
     //}    
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };            
-            var data = { Name: "Vị trí hiện tại" };
-            p.AddMarker(pos, data, 'currenticon', map);
-        }, function () {
-            //var infoWindow = new google.maps.InfoWindow({ map: map });
-            //p.HandleLocationError(true, infoWindow, map.getCenter());
-        });
-    } else {
-        //var infoWindow = new google.maps.InfoWindow({ map: map });        
-        //p.HandleLocationError(false, infoWindow, map.getCenter());
-    }    
+    //if (navigator.geolocation) {
+    //    navigator.geolocation.getCurrentPosition(function (position) {
+    //        var pos = {
+    //            lat: position.coords.latitude,
+    //            lng: position.coords.longitude
+    //        };            
+    //        var data = { Name: "Vị trí hiện tại" };
+    //        p.AddMarker(pos, data, 'currenticon', map);
+    //    }, function () {
+    //        //var infoWindow = new google.maps.InfoWindow({ map: map });
+    //        //p.HandleLocationError(true, infoWindow, map.getCenter());
+    //    });
+    //} else {
+    //    //var infoWindow = new google.maps.InfoWindow({ map: map });        
+    //    //p.HandleLocationError(false, infoWindow, map.getCenter());
+    //}    
 
     p.GetAllAccountByStatus(map, function () {
         p.GetViewCurrentAccountMap(map);
