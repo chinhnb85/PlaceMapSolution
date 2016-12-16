@@ -169,6 +169,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\Common.cs" />
     <Compile Include="Code\SessionUtility.cs" />
+    <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Controllers\ApiControllers\AccountApiController.cs" />
     <Compile Include="Controllers\ApiControllers\LocaltionApiController.cs" />
     <Compile Include="Controllers\LocaltionController.cs" />
@@ -461,6 +462,7 @@
     <Content Include="Views\Shared\_PageBreadcrumb.cshtml" />
     <Content Include="Views\Localtion\Index.cshtml" />
     <Content Include="Views\Login\MD5.cshtml" />
+    <Content Include="Views\Province\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\LibCore\LibCore.csproj">

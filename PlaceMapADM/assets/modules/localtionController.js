@@ -11,6 +11,8 @@ CmsShop.Localtion = {
 CmsShop.Localtion.Init = function () {
     var p = this;
 
+    logisticJs.activeMenuSidebar('/Localtion');
+
     $("#insert-localtion").validate({
         rules: {
             sltAccount: { valueNotEquals: "0" },
@@ -42,6 +44,10 @@ CmsShop.Localtion.Init = function () {
     p.LoadAllAccountByType(function() {
         $("#sltAccount").select2();
     });
+
+    p.LoadAllProvince(function () {
+        $("#sltProvince").select2();
+    });    
 
     p.LoadAllLocaltion(function () {
         p.RegisterEvents();
@@ -120,6 +126,13 @@ CmsShop.Localtion.RegisterEvents = function () {
             }
         });
     });
+
+    $("#sltProvince").off("change").on("change", function () {
+        var provinceId = $(this).val();
+        p.LoadAllDistrictByProvinceId(provinceId, function () {
+            $("#sltDistrict").select2();
+        });
+    });
 };
 
 CmsShop.Localtion.AddNewLocaltion = function (id,form) {
@@ -169,6 +182,8 @@ CmsShop.Localtion.EditLocaltion = function (id) {
         success: function (response) {
             if (response.status) {
                 $("#sltAccount").val(response.Data.AccountId).trigger("change");
+                $("#sltProvince").val(response.Data.ProvinceId).trigger("change");
+                $("#sltDistrict").val(response.Data.DistrictId).trigger("change");
                 $("#txtLag").val(response.Data.Lag);
                 $("#txtLng").val(response.Data.Lng);
                 $("#txtName").val(response.Data.Name);
@@ -277,7 +292,8 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
                     }
                     render += Mustache.render(template, {
                         stt: i+1, id: item.Id, name: item.Name, userName: item.UserName, 
-                        avatar: avatar, statusLoc: statusloc, createdDate: createddate
+                        avatar: avatar, statusLoc: statusloc, createdDate: createddate,
+                        accountId:item.AccountId,lag:item.Lag,lng:item.Lng
                     });                    
                 });
                 if (render != undefined) {
@@ -351,6 +367,8 @@ CmsShop.Localtion.WrapPaging = function (total, next, previous, recordCount, cal
 
 CmsShop.Localtion.EmptyLocaltion = function() {    
     $("#sltAccount").val(0).trigger('change');
+    $("#sltProvince").val(0).trigger('change');
+    $("#sltDistrict").val(0).trigger('change');
     $("#txtName").val('');
     $("#txtLag").val('');
     $("#txtLng").val('');
@@ -388,6 +406,80 @@ CmsShop.Localtion.LoadAllAccountByType = function (callback) {
                 if (render != undefined) {
                     $("#sltAccount").append(render);
                 }                
+            }
+            //logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.Localtion.LoadAllProvince = function (callback) {
+
+    var dataparam = {};
+
+    $.ajax({
+        type: "GET",
+        url: "/Province/ListAll",
+        data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true && response.totalCount > 0) {
+                var template = $("#data-list-province").html();
+                var render = "";
+                $.each(response.Data, function (i, item) {
+                    render += Mustache.render(template, {
+                        id: item.Id, name: item.Name
+                    });
+                });
+                if (render != undefined) {
+                    $("#sltProvince").append(render);
+                }
+            }
+            //logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.Localtion.LoadAllDistrictByProvinceId = function (provinceId,callback) {
+
+    var dataparam = { provinceId: provinceId };
+
+    $.ajax({
+        type: "GET",
+        url: "/Province/ListAllDistrictByProvinceId",
+        data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true && response.totalCount > 0) {
+                var template = $("#data-list-district").html();
+                var render = "";
+                $.each(response.Data, function (i, item) {
+                    render += Mustache.render(template, {
+                        id: item.Id, name: item.Name
+                    });
+                });
+                if (render != undefined) {
+                    $("#sltDistrict").append(render);
+                }
             }
             //logisticJs.stopLoading();
 

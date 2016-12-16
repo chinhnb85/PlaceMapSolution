@@ -132,3 +132,50 @@ table #listAllAccount tr{ cursor: pointer;}
     top: 3px;
     right: 3px;
     z-index: 1;}
+#maps {
+    height: 100%;
+    min-height: 600px;
+}
+#panorama {
+    height: 100%;
+    min-height: 600px;
+}
+.mapimage{
+    width:64px;
+    height:auto;
+    float:left;
+    margin-right:10px;
+}
+.maptitle{
+    width:100%;
+    padding-left:75px;
+    display:block;   
+    font-weight:700; 
+    color:#333;
+    font-size:14px; 
+    margin-bottom: 0;
+}
+.maplaglng{
+    width:100%;
+    padding-left:75px;
+    display:block;   
+    color:#888;
+    font-size:10px;
+    margin-bottom: 0; 
+}
+.mapphone{
+    width:100%;
+    padding-left:75px;
+    display:block;   
+    color:#888;
+    font-size:11px;
+    margin-bottom: 0; 
+}
+.mapaddress{
+    width:100%;
+    /*padding-left:75px;*/
+    display:inline-block;   
+    color:#888;
+    font-size:12px;
+    margin-bottom: 0; 
+}

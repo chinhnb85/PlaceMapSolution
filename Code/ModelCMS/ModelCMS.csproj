@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Province\ProvinceEntity.cs" />
+    <Compile Include="Province\IProvince.cs" />
+    <Compile Include="Province\IplProvince.cs" />
     <Compile Include="Localtion\LocaltionEntity.cs" />
     <Compile Include="Localtion\ILocaltion.cs" />
     <Compile Include="Localtion\IplLocaltion.cs" />

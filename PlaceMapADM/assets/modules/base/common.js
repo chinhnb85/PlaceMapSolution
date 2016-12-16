@@ -28,6 +28,7 @@
         }
         $("body").removeClass("hide");
 
+        logisticJs.init();
     });
 })(jQuery, window, document);
 
@@ -169,6 +170,15 @@ var logisticJs = $.extend({
             error: function (status) {
                 logisticJs.stopLoading();
             }
+        });
+    },
+    activeMenuSidebar: function (currentAction) {
+        $('.nav.sidebar-menu > li').each(function (i) {
+            $(this).removeClass('active');
+            var action = $('a', $(this)).attr('href');
+            if (action == currentAction) {
+                $(this).addClass('active');
+            }            
         });
     },
     //--------------Message alert--------------------
@@ -572,8 +582,7 @@ var logisticJs = $.extend({
                 }
             }
             return flag;
-        },
-
+        }
     },
     //----valid----
     valid: {
@@ -596,7 +605,7 @@ var logisticJs = $.extend({
         validCurrency: function (str) {
             var pattern = /^\$?[1-9][0-9]{0,2}(,[0-9]{3})*(\.[0-9]{2})?$/;
             return pattern.test(str);
-        },
+        }
     },
     paginate: function (page, total_items, limit) {
         // How many adjacent pages should be shown on each side?
@@ -667,7 +676,7 @@ var logisticJs = $.extend({
         }
         return pagination;
     },
-    formatNumber: function ReplaceNumberWithCommas(yourNumber) {
+    formatNumber: function(yourNumber) {
         //Seperates the components of the number
         var components = yourNumber.toString().split(".");
         //Comma-fies the first part
@@ -676,4 +685,3 @@ var logisticJs = $.extend({
         return components.join(".");
     }
 });
-logisticJs.init();
