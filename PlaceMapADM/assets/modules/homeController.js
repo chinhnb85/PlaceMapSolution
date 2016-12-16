@@ -167,7 +167,7 @@ CmsShop.Home.GetViewCurrentAccountMap = function (map) {
     $this.attr('data-active', 1);
 
     $('#btnAddLocaltionByUser').attr('data-user', $this.attr('data-id'));
-    p.currentUserId = $this.attr('data-id');
+    p.currentUserId = accountId;
 
     p.SetMapOnAll(null);        
 
@@ -353,6 +353,12 @@ CmsShop.Home.RegisterEvents = function(map) {
                     p.AddMarker(myLatLng, item, 'default', map);
                 }
             });
+            //move map to latlng
+            setTimeout(function () {
+                if (data.length > 0) {
+                    map.panTo(new google.maps.LatLng(parseFloat(data[0].Lag), parseFloat(data[0].Lng)));
+                }
+            }, 500);
         });
     });
 
