@@ -6,7 +6,7 @@ $(function () {
 });
 
 CmsShop.Login.Init = function () {
-    var p = this;
+    var p = this;    
 
     $('#btnLogin').off('click').on('click', function () {
         p.checklogin();

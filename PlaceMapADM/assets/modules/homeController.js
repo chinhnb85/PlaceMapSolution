@@ -15,10 +15,9 @@ CmsShop.Home = {
 };
 
 CmsShop.Home.Init = function () {
-    var p = this;
+    var p = this;    
 
     logisticJs.activeMenuSidebar('/');
-
 };
 
 CmsShop.Home.InitMap = function () {
