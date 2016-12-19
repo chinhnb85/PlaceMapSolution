@@ -47,7 +47,9 @@ CmsShop.Localtion.Init = function () {
 
     p.LoadAllProvince(function () {
         $("#sltProvince").select2();
-    });    
+    });
+
+    $("#sltCustomeType").select2();
 
     p.LoadAllLocaltion(function () {
         p.RegisterEvents();
@@ -133,6 +135,13 @@ CmsShop.Localtion.RegisterEvents = function () {
             $("#sltDistrict").select2();
         });
     });
+
+    $('table #listAllLocaltion tr').off('dblclick').on('dblclick', function () {
+        var $this = $(this);
+        p.ViewDetailLocaltionNow($this.attr('data-id'), function () {
+            $('#myModalLocaltionDetail').modal('show');
+        });
+    });
 };
 
 CmsShop.Localtion.AddNewLocaltion = function (id,form) {
@@ -184,6 +193,7 @@ CmsShop.Localtion.EditLocaltion = function (id) {
                 $("#sltAccount").val(response.Data.AccountId).trigger("change");
                 $("#sltProvince").val(response.Data.ProvinceId).trigger("change");
                 $("#sltDistrict").val(response.Data.DistrictId).trigger("change");
+                $("#sltCustomeType").val(response.Data.CustomeType).trigger("change");
                 $("#txtLag").val(response.Data.Lag);
                 $("#txtLng").val(response.Data.Lng);
                 $("#txtName").val(response.Data.Name);
@@ -369,6 +379,7 @@ CmsShop.Localtion.EmptyLocaltion = function() {
     $("#sltAccount").val(0).trigger('change');
     $("#sltProvince").val(0).trigger('change');
     $("#sltDistrict").val(0).trigger('change');
+    $("#sltCustomeType").val(1).trigger('change');
     $("#txtName").val('');
     $("#txtLag").val('');
     $("#txtLng").val('');
@@ -477,6 +488,7 @@ CmsShop.Localtion.LoadAllDistrictByProvinceId = function (provinceId,callback) {
                         id: item.Id, name: item.Name
                     });
                 });
+                $("#sltDistrict").html('<option value="0">---Chọn quận/huyện---</option>');
                 if (render != undefined) {
                     $("#sltDistrict").append(render);
                 }
@@ -489,6 +501,50 @@ CmsShop.Localtion.LoadAllDistrictByProvinceId = function (provinceId,callback) {
         },
         error: function (status) {
             //logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.Localtion.ViewDetailLocaltionNow = function (id, callback) {
+    var p = this;
+    $.ajax({
+        type: "GET",
+        url: "/Localtion/ViewDetailLocaltionNow",
+        data: { Id: id },
+        dataType: "json",
+        beforeSend: function () {
+            logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status) {
+                if (response.Data != null) {
+                    var template = $("#package-data-viewDetailLocaltion").html();
+                    var isChecked = "";
+                    var isCheckedName = "Chưa checked";
+                    if (response.Data.IsCheck) {
+                        isChecked = "checked";
+                        isCheckedName = "Đã checked";
+                    }
+                    var customeTypeName = "Bán buôn";
+                    if (response.Data.CustomeType == 2) {
+                        customeTypeName = "Bán lẻ";
+                    }
+                    var render = Mustache.render(template, {
+                        id: response.Data.Id, name: response.Data.Name, avatar: response.Data.Avatar,
+                        address: response.Data.Address, isChecked: isChecked, lag: response.Data.Lag,
+                        lng: response.Data.Lng, phone: response.Data.Phone, email: response.Data.Email,
+                        isCheckedName: isCheckedName, accountId: response.Data.AccountId, customeType: customeTypeName
+                    });
+                    $('#viewDetailLocaltion').html(render);
+                }
+                if (typeof (callback) == "function") {
+                    callback();
+                }
+            }
+            logisticJs.stopLoading();
+        },
+        error: function (status) {
+            logisticJs.stopLoading();
         }
     });
 };

@@ -15,6 +15,8 @@ namespace ModelCMS.Localtion
 
         public int DistrictId { get; set; }
 
+        public int CustomeType { get; set; }
+
         public string Lag { get; set; }
 
         public string Lng { get; set; }
@@ -38,6 +40,8 @@ namespace ModelCMS.Localtion
         public bool? IsCheck { get; set; }
 
         public int? PlaceNumberWrong { get; set; }
+
+        public DateTime? CheckDate { get; set; }
         #endregion
     }
 }

@@ -27,6 +27,7 @@ namespace PlaceMapADM.Controllers
                 var accountId = int.Parse(collection["sltAccount"]);
                 var provinceId = int.Parse(collection["sltProvince"]);
                 var districtId = int.Parse(collection["sltDistrict"]);
+                var customeType = int.Parse(collection["sltCustomeType"]);
                 var name = collection["txtName"];
                 var lag = collection["txtLag"];
                 var lng = collection["txtLng"];
@@ -41,6 +42,7 @@ namespace PlaceMapADM.Controllers
                     AccountId = accountId,
                     ProvinceId=provinceId,
                     DistrictId=districtId,
+                    CustomeType=customeType,
                     Lag= lag,
                     Lng = lng,
                     Name = name,
