@@ -170,16 +170,22 @@ CmsShop.Home.GetViewCurrentAccountMap = function (map) {
 
     p.SetMapOnAll(null);        
 
-    p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
-        $.each(data, function (i, item) {
-            var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-            if (item.IsCheck) {
-                p.AddMarker(myLatLng, item, 'checkedicon', map);
-            } else {
-                p.AddMarker(myLatLng, item, 'default', map);
-            }
+    if (p.currentUserId != 0) {
+        p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
+            $.each(data, function (i, item) {
+                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+                if (item.IsCheck) {
+                    p.AddMarker(myLatLng, item, 'checkedicon', map);
+                } else {
+                    if (item.CustomeType == 2) {
+                        p.AddMarker(myLatLng, item, 'default2', map);
+                    } else {
+                        p.AddMarker(myLatLng, item, 'default1', map);
+                    }
+                }
+            });
         });
-    });
+    }
 }
 
 CmsShop.Home.HandleLocationError = function (browserHasGeolocation, infoWindow, pos) {
@@ -200,8 +206,11 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         strokeColor: 'green',
         strokeWeight: 14
     };    
-    if (image == 'default') {
+    if (image == 'default1') {
         image = 'https://maps.gstatic.com/mapfiles/ms2/micons/red-dot.png';
+    }
+    if (image == 'default2') {
+        image = 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
     }
     if (image == 'checkedicon') {
         image = 'https://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png';
@@ -223,10 +232,15 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         } else {
             marker.setAnimation(google.maps.Animation.BOUNCE);
         }
+        var isCheckedName = "<span class='unchecked'>Chưa checked" + "</span>";
+        if (data.IsCheck) {
+            isCheckedName = "<span class='checked'>Đã checked lúc: " + logisticJs.dateFormatJson2(data.CheckDate)+"</span>";
+        }
         var contentString = '<img src="'+data.Avatar+'" class="mapimage" />'+
             '<p class="maptitle">' + data.Name + '</p>'+
-            '<p class="maplaglng">Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
+            '<p class="maplaglng">Khách hàng(<b>'+((data.CustomeType==2)?"Bán lẻ":"Bán buôn")+'</b>) - Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
             '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
+            '<p class="checkeddate">Trạng thái: ' + isCheckedName + '</p>' +
             '<p class="mapaddress">Đ/c: ' + data.Address +'</p>';
 
         var infowindow = new google.maps.InfoWindow({
@@ -243,7 +257,7 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         }
         var contentString = '<img src="' + data.Avatar + '" class="mapimage" />' +
             '<p class="maptitle">' + data.Name + '</p>' +
-            '<p class="maplaglng">Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
+            '<p class="maplaglng">Khách hàng(<b>' + ((data.CustomeType == 2) ? "Bán lẻ" : "Bán buôn") + '</b>) - Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
             '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
             '<p class="mapaddress">Đ/c: ' + data.Address + '</p>';
 
@@ -348,8 +362,12 @@ CmsShop.Home.RegisterEvents = function(map) {
                 var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
                 if (item.IsCheck) {
                     p.AddMarker(myLatLng, item, 'checkedicon', map);
-                } else {
-                    p.AddMarker(myLatLng, item, 'default', map);
+                } else {                    
+                    if (item.CustomeType == 2) {
+                        p.AddMarker(myLatLng, item, 'default2', map);
+                    } else {
+                        p.AddMarker(myLatLng, item, 'default1', map);
+                    }
                 }
             });
             //move map to latlng
@@ -423,8 +441,12 @@ CmsShop.Home.RegisterEvents = function(map) {
                         var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
                         if (item.IsCheck) {
                             p.AddMarker(myLatLng, item, 'checkedicon', map);
-                        } else {
-                            p.AddMarker(myLatLng, item, 'default', map);
+                        } else {                            
+                            if (item.CustomeType == 2) {
+                                p.AddMarker(myLatLng, item, 'default2', map);
+                            } else {
+                                p.AddMarker(myLatLng, item, 'default1', map);
+                            }
                         }                            
                     });
                 });
@@ -455,7 +477,7 @@ CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
                     var isCheckedName = "Chưa checked"
                     if (item.IsCheck) {
                         isChecked = "checked";
-                        isCheckedName="Đã checked"
+                        isCheckedName = "Đã checked lúc " + logisticJs.dateFormatJson2(item.CheckDate)
                     }
                     var avatar = "/assets/img/avatars/no-avatar.gif";
                     if (item.Avatar != "" && item.Avatar!=null) {
@@ -481,8 +503,12 @@ CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
                                 var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
                                 if (item.IsCheck) {
                                     p.AddMarker(myLatLng, item, 'checkedicon', map);
-                                } else {
-                                    p.AddMarker(myLatLng, item, 'default', map);
+                                } else {                                    
+                                    if (item.CustomeType == 2) {
+                                        p.AddMarker(myLatLng, item, 'default2', map);
+                                    } else {
+                                        p.AddMarker(myLatLng, item, 'default1', map);
+                                    }
                                 }
                             });
                         });
@@ -673,13 +699,17 @@ CmsShop.Home.ViewDetailLocaltionNow = function (id, callback) {
                     var isCheckedName = "Chưa checked";
                     if (response.Data.IsCheck) {
                         isChecked = "checked";
-                        isCheckedName = "Đã checked";
+                        isCheckedName = "Đã checked lúc: " + logisticJs.dateFormatJson2(response.Data.CheckDate);
+                    }
+                    var customeTypeName = "Bán buôn";
+                    if (response.Data.CustomeType==2) {
+                        customeTypeName = "Bán lẻ";
                     }
                     var render = Mustache.render(template, {
                         id: response.Data.Id, name: response.Data.Name, avatar: response.Data.Avatar,
                         address: response.Data.Address, isChecked: isChecked, lag: response.Data.Lag,
                         lng: response.Data.Lng, phone: response.Data.Phone, email: response.Data.Email,
-                        isCheckedName: isCheckedName,accountId:response.Data.AccountId
+                        isCheckedName: isCheckedName, accountId: response.Data.AccountId, customeType: customeTypeName
                     });
                     $('#viewDetailLocaltion').html(render);
                 }                
