@@ -154,6 +154,7 @@ table #listAllAccount tr{ cursor: pointer;}
     color:#333;
     font-size:14px; 
     margin-bottom: 0;
+    line-height: 16px;
 }
 .maplaglng{
     width:100%;
@@ -162,6 +163,7 @@ table #listAllAccount tr{ cursor: pointer;}
     color:#888;
     font-size:10px;
     margin-bottom: 0; 
+    line-height: 16px;
 }
 .mapphone{
     width:100%;
@@ -170,6 +172,24 @@ table #listAllAccount tr{ cursor: pointer;}
     color:#888;
     font-size:11px;
     margin-bottom: 0; 
+    line-height: 16px;
+}
+.checkeddate{
+    width:100%;
+    padding-left:75px;
+    display:block;   
+    color:#888;
+    font-size:11px;
+    margin-bottom: 0; 
+    line-height: 16px;
+}
+.checkeddate span.unchecked{
+    font-weight:700;
+    color:#f00;
+}
+.checkeddate span.checked{
+    font-weight:700;
+    color:#53a93f;
 }
 .mapaddress{
     width:100%;
@@ -178,4 +198,5 @@ table #listAllAccount tr{ cursor: pointer;}
     color:#888;
     font-size:12px;
     margin-bottom: 0; 
+    line-height: 16px;
 }

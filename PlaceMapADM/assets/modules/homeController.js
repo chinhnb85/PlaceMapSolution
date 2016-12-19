@@ -232,10 +232,15 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         } else {
             marker.setAnimation(google.maps.Animation.BOUNCE);
         }
+        var isCheckedName = "<span class='unchecked'>Chưa checked" + "</span>";
+        if (data.IsCheck) {
+            isCheckedName = "<span class='checked'>Đã checked lúc: " + logisticJs.dateFormatJson2(data.CheckDate)+"</span>";
+        }
         var contentString = '<img src="'+data.Avatar+'" class="mapimage" />'+
             '<p class="maptitle">' + data.Name + '</p>'+
             '<p class="maplaglng">Khách hàng(<b>'+((data.CustomeType==2)?"Bán lẻ":"Bán buôn")+'</b>) - Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
             '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
+            '<p class="checkeddate">Trạng thái: ' + isCheckedName + '</p>' +
             '<p class="mapaddress">Đ/c: ' + data.Address +'</p>';
 
         var infowindow = new google.maps.InfoWindow({
@@ -472,7 +477,7 @@ CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
                     var isCheckedName = "Chưa checked"
                     if (item.IsCheck) {
                         isChecked = "checked";
-                        isCheckedName="Đã checked"
+                        isCheckedName = "Đã checked lúc " + logisticJs.dateFormatJson2(item.CheckDate)
                     }
                     var avatar = "/assets/img/avatars/no-avatar.gif";
                     if (item.Avatar != "" && item.Avatar!=null) {
