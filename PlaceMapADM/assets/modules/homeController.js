@@ -170,20 +170,22 @@ CmsShop.Home.GetViewCurrentAccountMap = function (map) {
 
     p.SetMapOnAll(null);        
 
-    p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
-        $.each(data, function (i, item) {
-            var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-            if (item.IsCheck) {
-                p.AddMarker(myLatLng, item, 'checkedicon', map);
-            } else {                
-                if (item.CustomeType == 2) {
-                    p.AddMarker(myLatLng, item, 'default2', map);
+    if (p.currentUserId != 0) {
+        p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
+            $.each(data, function (i, item) {
+                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+                if (item.IsCheck) {
+                    p.AddMarker(myLatLng, item, 'checkedicon', map);
                 } else {
-                    p.AddMarker(myLatLng, item, 'default1', map);
+                    if (item.CustomeType == 2) {
+                        p.AddMarker(myLatLng, item, 'default2', map);
+                    } else {
+                        p.AddMarker(myLatLng, item, 'default1', map);
+                    }
                 }
-            }
+            });
         });
-    });
+    }
 }
 
 CmsShop.Home.HandleLocationError = function (browserHasGeolocation, infoWindow, pos) {
@@ -250,7 +252,7 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         }
         var contentString = '<img src="' + data.Avatar + '" class="mapimage" />' +
             '<p class="maptitle">' + data.Name + '</p>' +
-            '<p class="maplaglng">Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
+            '<p class="maplaglng">Khách hàng(<b>' + ((data.CustomeType == 2) ? "Bán lẻ" : "Bán buôn") + '</b>) - Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
             '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
             '<p class="mapaddress">Đ/c: ' + data.Address + '</p>';
 
