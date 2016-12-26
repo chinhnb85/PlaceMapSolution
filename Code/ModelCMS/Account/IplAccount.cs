@@ -392,6 +392,7 @@ namespace ModelCMS.Account
         {
             var p = new DynamicParameters();
             p.Add("@ParentId", obj.ParentId);
+            p.Add("@ProvinceId", obj.ProvinceId);
             p.Add("@Type", obj.Type);
             p.Add("@DisplayName", obj.DisplayName);
             p.Add("@UserName", obj.UserName);

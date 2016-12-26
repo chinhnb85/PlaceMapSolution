@@ -10,6 +10,8 @@ namespace ModelCMS.Account
 
         public int? ParentId { get; set; }
 
+        public int? ProvinceId { get; set; }
+
         public int? Type { get; set; }        
 
         public string DisplayName { get; set; }

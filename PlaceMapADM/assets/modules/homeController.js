@@ -342,6 +342,14 @@ CmsShop.Home.RegisterEvents = function(map) {
             $('i', $this).addClass('fa-list').removeClass('fa-map-marker');
         }
     });
+    //$('.maximize').off('click').on('click', function () {
+    //    var $this = $(this);
+    //    if ($('i', $this).hasClass('fa-compress')) {
+    //        $('#maps').css({ width: $(window).width(),height: $(window).height() - 40});
+    //    } else {
+    //        $('#maps').css({ width: $(window).width(), height: $(window).height() - 40 });
+    //    }
+    //});
 
     $('table #listAllAccount tr').off('click').on('click', function() {
         

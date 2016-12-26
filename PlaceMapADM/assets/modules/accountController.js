@@ -43,6 +43,9 @@ CmsShop.Account.Init = function () {
         return arg != value;
     }, "Chọn loại tài khoản");
 
+    p.LoadAllProvince(function () {
+        $("#sltProvince").select2();
+    });
 
     p.LoadAllAccount(function () {
         p.RegisterEvents();
@@ -161,6 +164,8 @@ CmsShop.Account.EditAccount = function (id) {
         success: function (response) {
             if (response.status) {
                 $("#sltType").val(response.Data.Type);
+                $("#sltParent").val(response.Data.ParentId);
+                $("#sltProvince").val(response.Data.ProvinceId).trigger("change");
                 $("#txtUserName").val(response.Data.UserName);
                 $("#txtUserName").prop("readonly", true);
                 $("#txtPassword").val(response.Data.Password);
@@ -292,6 +297,43 @@ CmsShop.Account.LoadAllAccount = function (callback) {
     });
 };
 
+CmsShop.Account.LoadAllProvince = function (callback) {
+
+    var dataparam = {};
+
+    $.ajax({
+        type: "GET",
+        url: "/Province/ListAll",
+        data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true && response.totalCount > 0) {
+                var template = $("#data-list-province").html();
+                var render = "";
+                $.each(response.Data, function (i, item) {
+                    render += Mustache.render(template, {
+                        id: item.Id, name: item.Name
+                    });
+                });
+                if (render != undefined) {
+                    $("#sltProvince").append(render);
+                }
+            }
+            //logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
+        }
+    });
+};
+
 CmsShop.Account.WrapPaging = function (total, next, previous, RecordCount, callBack) {
     var p = this;
 
@@ -342,6 +384,8 @@ CmsShop.Account.WrapPaging = function (total, next, previous, RecordCount, callB
 CmsShop.Account.EmptyAccount = function() {
     
     $("#sltType").val(2);
+    $("#sltParent").val(0);
+    $("#sltProvince").val(0).trigger('change');
     $("#txtUserName").val('');
     $("#txtUserName").prop("readonly", false);
     $("#txtPassword").val('');

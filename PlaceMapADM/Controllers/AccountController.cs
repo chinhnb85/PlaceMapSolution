@@ -36,10 +36,13 @@ namespace PlaceMapADM.Controllers
                 var phone = collection["txtPhone"];
                 var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
                 var type = int.Parse(collection["sltType"]);
+                var parentId = int.Parse(collection["sltParent"]);
+                var provinceId = int.Parse(collection["sltProvince"]);
                 var account = new AccountEntity
                 {                    
                     Id=id,
-                    ParentId=null,
+                    ParentId= parentId,
+                    ProvinceId = provinceId,
                     Type = type,
                     DisplayName = displayname,
                     UserName = username,
