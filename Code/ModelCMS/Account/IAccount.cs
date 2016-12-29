@@ -11,7 +11,7 @@ namespace ModelCMS.Account
         bool Delete(long id);
 		List<AccountEntity> ListAll();
         List<AccountEntity> ListAllByType(int type);
-        List<AccountEntity> ListAllPaging(int type, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
+        List<AccountEntity> ListAllPaging(int type, int parentId, int provinceId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
         List<AccountEntity> ListAllPagingByStatus(int type, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
         AccountEntity ViewDetail(int id);
 	    bool CheckUserNameExist(string userName);

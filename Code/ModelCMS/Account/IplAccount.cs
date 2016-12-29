@@ -339,12 +339,14 @@ namespace ModelCMS.Account
         /// <summary>
         /// Selects all records from the Account table.
         /// </summary>
-        public List<AccountEntity> ListAllPaging(int type, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
+        public List<AccountEntity> ListAllPaging(int type, int parentId, int provinceId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
         {
             try
             {
                 var p = new DynamicParameters();
                 p.Add("@type", type);
+                p.Add("@parentId", parentId);
+                p.Add("@provinceId", provinceId);
                 p.Add("@KeySearch", keySearch);                
                 p.Add("@pageIndex", pageIndex);
                 p.Add("@pageSize", pageSize);

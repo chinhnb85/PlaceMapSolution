@@ -136,14 +136,14 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpGet]
-        public JsonResult ListAllPaging(int type, string keySearch, int pageIndex, int pageSize)
+        public JsonResult ListAllPaging(int type,int parentId,int provinceId, string keySearch, int pageIndex, int pageSize)
         {
             try
             {
                 var total = 0;
                 var obj = new AccountEntity();
                 var ipl = SingletonIpl.GetInstance<IplAccount>();
-                var res = ipl.ListAllPaging(type, keySearch, pageIndex, pageSize, "", "", ref total);
+                var res = ipl.ListAllPaging(type, parentId,provinceId, keySearch, pageIndex, pageSize, "", "", ref total);
 
                 if (res != null && res.Count > 0)
                 {

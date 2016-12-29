@@ -147,8 +147,8 @@
                 <div class="row">
                     <div class="col-sm-4 form-horizontal">
                         <div class="form-group" style="margin-bottom: 0;">
-                            <label class="col-sm-6 control-label no-padding-right">Loại tài khoản</label>
-                            <div class="col-sm-6">
+                            <label class="col-sm-4 control-label no-padding-right">Loại tài khoản</label>
+                            <div class="col-sm-8">
                                 <select class="form-control" id="sltTypeSearch" name="sltTypeSearch" style="border-radius: 0;">
                                     <option value="0">All</option>
                                     <option value="1">Web</option>
@@ -157,11 +157,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <span class="input-icon icon-right">
                             <input type="text" id="keySearch" name="keySearch" class="form-control" placeholder="Tìm kiếm...">
                             <i class="glyphicon glyphicon-search circular"></i>
                         </span>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <select id="sltParentSearch" name="sltParentSearch" style="border-radius: 0; width: 100%">
+                                <option value="0">--- Chọn Vùng/Miền ---</option>
+                                <option value="1">Miền bắc</option>
+                                <option value="2">Miền trung</option>
+                                <option value="3">Miền nam</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <select id="sltProvinceSearch" name="sltProvinceSearch" style="border-radius: 0;width: 100%">
+                                <option value="0">---Chọn tỉnh/thành phố---</option>
+                                <script id="data-list-province" type="x-tmpl-mustache">
+                                    <option value="{{id}}">{{name}}</option>
+                                </script>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </fieldset>

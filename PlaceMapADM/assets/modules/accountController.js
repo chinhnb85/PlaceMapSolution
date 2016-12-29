@@ -5,7 +5,9 @@ CmsShop.Account = {
     pageSize: 10,
     pageIndex: 1,
     keySearch: '',
-    type: 2
+    type: 2,
+    parentId: 0,
+    provinceId:0
 };
 
 CmsShop.Account.Init = function () {
@@ -45,6 +47,7 @@ CmsShop.Account.Init = function () {
 
     p.LoadAllProvince(function () {
         $("#sltProvince").select2();
+        $("#sltProvinceSearch").select2();
     });
 
     p.LoadAllAccount(function () {
@@ -110,6 +113,20 @@ CmsShop.Account.RegisterEvents = function () {
     });
     $("#sltTypeSearch").off("change").on("change", function () {
         p.type = $("#sltTypeSearch").val();
+        p.pageIndex = 1;
+        p.LoadAllAccount(function () {
+            p.RegisterEvents();
+        });
+    });
+    $("#sltParentSearch").off("change").on("change", function () {
+        p.parentId = $("#sltParentSearch").val();
+        p.pageIndex = 1;
+        p.LoadAllAccount(function () {
+            p.RegisterEvents();
+        });
+    });
+    $("#sltProvinceSearch").off("change").on("change", function () {
+        p.provinceId = $("#sltProvinceSearch").val();
         p.pageIndex = 1;
         p.LoadAllAccount(function () {
             p.RegisterEvents();
@@ -245,7 +262,7 @@ CmsShop.Account.UpdateStatusAccount = function (id) {
 CmsShop.Account.LoadAllAccount = function (callback) {
     var p = this;
 
-    var dataparam = {type:p.type, keySearch:p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
+    var dataparam = {type:p.type,parentId:p.parentId,provinceId:p.provinceId, keySearch:p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
 
     $.ajax({
         type: "GET",
@@ -320,6 +337,7 @@ CmsShop.Account.LoadAllProvince = function (callback) {
                 });
                 if (render != undefined) {
                     $("#sltProvince").append(render);
+                    $("#sltProvinceSearch").append(render);
                 }
             }
             //logisticJs.stopLoading();

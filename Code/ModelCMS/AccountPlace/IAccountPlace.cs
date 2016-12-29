@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace ModelCMS.AccountPlace
@@ -10,6 +11,6 @@ namespace ModelCMS.AccountPlace
 		List<AccountPlaceEntity> ListAll();
         List<AccountPlaceEntity> ListAllPaging(int accountId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);       
         AccountPlaceEntity ViewDetail(long id);	    	    
-        List<AccountPlaceEntity> ListAllByAccountId(long accountId, ref int totalRow);
+        List<AccountPlaceEntity> ListAllByAccountIdAndDatetime(long accountId,DateTime dateTime, ref int totalRow);
     }
 }
