@@ -218,3 +218,30 @@ BEGIN
 	SET NOCOUNT ON;    
 	SELECT * FROM Account where Type=@type and Status=1
 END
+
+GO
+CREATE PROCEDURE [dbo].[Sp_LocaltionAccountCheck_ListAllByAccountId]
+	@AccountId int,
+	@StartDate datetime,
+	@EndDate datetime,
+	@pageIndex int,
+	@pageSize int,	
+	@totalRow int output
+AS
+BEGIN	
+	SET NOCOUNT ON; 
+	DECLARE @UpperBand int, @LowerBand int
+
+SELECT @totalRow = COUNT(*) FROM LocaltionAccountCheck where (AccountId=@AccountId) and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))					
+
+SET @LowerBand  = (@pageIndex - 1) * @PageSize
+SET @UpperBand  = (@pageIndex * @PageSize)
+select * from(	
+	select AC.AccountId,AC.LocaltionId,AC.[Datetime] as CheckDate,A.DisplayName as Name,L.Name as [Address], ROW_NUMBER() OVER(ORDER BY AC.Id DESC) AS RowNumber 
+	from LocaltionAccountCheck as AC 
+	left join Account as A on AC.AccountId=A.Id
+	left join Localtion as L on AC.LocaltionId=L.Id
+	where (AC.AccountId=@AccountId) and (cast(AC.[Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
+)AS temp
+WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand
+END

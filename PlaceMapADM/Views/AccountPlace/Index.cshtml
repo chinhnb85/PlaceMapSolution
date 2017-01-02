@@ -6,7 +6,7 @@
                 <i class="widget-icon fa fa-tasks themeprimary"></i>
                 <span class="widget-caption themeprimary">Xem lịch sử tài khoản </span>
                 <div class="widget-buttons">
-                    <a href="javascript:void(0);" id="btnPreviewListLocaltion">
+                    <a href="javascript:void(0);" id="btnPreviewListAccountPlace">
                         <i class="fa fa-list"></i>
                     </a>                   
                     <a class="sidebar-toggler" href="javascript:void(0);">
@@ -46,9 +46,25 @@
                         </div>
                     </fieldset>
                     <div id="maps"></div>                    
-                    <div id="previewListLocaltion" style="display: none">                                        
+                    <div id="previewListAccountPlace" style="display: none">
                         <table class="table table-striped table-hover table-bordered">
-                            <tbody id="listAllLocaltion"></tbody>
+                            <thead>
+                                <tr role="row">
+                                    <th style="width: 10%">
+                                        Stt
+                                    </th>
+                                    <th>
+                                        Vị trí kinh độ
+                                    </th>
+                                    <th>
+                                        Vị trí vĩ độ
+                                    </th>
+                                    <th>
+                                        Thời gian
+                                    </th>                                    
+                                </tr>
+                            </thead>
+                            <tbody id="listAllAccountPlace"></tbody>
                             <script id="package-data-localtion" type="x-tmpl-mustache">
                                 <tr>
                                     <td style="width:5%">

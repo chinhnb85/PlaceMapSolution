@@ -32,7 +32,7 @@ CmsShop.AccountPlace.InitMap = function () {
     var $widgetbodymap = $('#widget-body-map');
     $maps.css({ height: $(window).height() - 185 });
     
-    $widgetbodymap.css({ height: $(window).height() - 185 });    
+    $widgetbodymap.css({ height: $(window).height() - 95 });    
    
     var styledMapType = new google.maps.StyledMapType(
             [
@@ -106,11 +106,8 @@ CmsShop.AccountPlace.InitMap = function () {
               }
             ],
             { name: 'Styled Map' });
-    
-    var lag = (p.params.lag == undefined) ? 21.0026 : p.params.lag;
-    var lng = (p.params.lng == undefined) ? 105.8056 : p.params.lng;
-
-    var myLatLng = new google.maps.LatLng(lag, lng);
+       
+    var myLatLng = new google.maps.LatLng(21.0026, 105.8056);
     var mapOptions = {
         zoom: 13,
         center: myLatLng,
@@ -144,9 +141,10 @@ CmsShop.AccountPlace.InitMap = function () {
     });
 
     p.GetAllAccountByType(map, function () {
-        $("#sltAccountSearch").select2();        
+        p.currentUserId = (p.params.accountId == undefined) ? 0 : p.params.accountId;
+        $("#sltAccountSearch").val(p.currentUserId).select2();        
     });
-
+    
     $("#sltAccountSearch").off("change").on("change", function () {
 
         p.currentUserId = $("#sltAccountSearch").val();
@@ -214,25 +212,7 @@ CmsShop.AccountPlace.AddMarker = function (location, data, image, map) {
             content: contentString
         });
         infowindow.open(map, marker);
-    });
-
-    if (p.params.lag != undefined && p.params.lag == location.lat) {
-        if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-        } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-        var contentString = '<img src="' + data.Avatar + '" class="mapimage" />' +
-            '<p class="maptitle">' + data.Name + '</p>' +
-            '<p class="maplaglng">Khách hàng(<b>' + ((data.CustomeType == 2) ? "Bán lẻ" : "Bán buôn") + '</b>) - Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
-            '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
-            '<p class="mapaddress">Đ/c: ' + data.Address + '</p>';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-        infowindow.open(map, marker);
-    }
+    });    
 
     if (data.Name != "Vị trí hiện tại")
         p.markers.push(marker);

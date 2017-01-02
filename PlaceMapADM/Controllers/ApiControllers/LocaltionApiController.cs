@@ -12,6 +12,7 @@ using PlaceMapADM.Code;
 using System.IO;
 using System.Web;
 using System.Drawing;
+using ModelCMS.AccountPlace;
 
 namespace PlaceMapADM.Controllers.ApiControllers
 {
@@ -130,7 +131,19 @@ namespace PlaceMapADM.Controllers.ApiControllers
             {
                 return string.Empty;
             }            
-        }        
+        }
+
+        [HttpPost]
+        public object AddNewAccountPlace(AccountPlaceEntity localtion)
+        {
+            var ipl = SingletonIpl.GetInstance<IplAccountPlace>();
+            var id = ipl.Insert(localtion);
+            if (id != 0)
+            {                
+                return Json(new { status = true, message = "Thêm mới thành công.", Data = id });
+            }
+            return Json(new { status = false, message = "Vị trí này đã tồn tại. Xin di chuyển đến vị trí khác để thêm.", Data = id });
+        }
 
         // PUT api/LocaltionApi/5
         public void Put(int id, [FromBody]string value)

@@ -161,6 +161,7 @@
     <Folder Include="Upload\Avatar\" />
     <Folder Include="Upload\File\" />
     <Folder Include="Upload\Localtion\" />
+    <Folder Include="Views\Province\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\Common.cs" />
     <Compile Include="Code\SessionUtility.cs" />
+    <Compile Include="Controllers\AccountCheckedController.cs" />
     <Compile Include="Controllers\AccountPlaceController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Controllers\ApiControllers\AccountApiController.cs" />
@@ -255,6 +257,7 @@
     <Content Include="assets\img\temp1.png" />
     <Content Include="assets\img\tree-icons.png" />
     <Content Include="assets\img\w-loading.gif" />
+    <Content Include="assets\modules\accountcheckedController.js" />
     <Content Include="assets\modules\accountplaceController.js" />
     <Content Include="assets\modules\localtionController.js" />
     <Content Include="assets\modules\accountController.js" />
@@ -464,8 +467,8 @@
     <Content Include="Views\Shared\_PageBreadcrumb.cshtml" />
     <Content Include="Views\Localtion\Index.cshtml" />
     <Content Include="Views\Login\MD5.cshtml" />
-    <Content Include="Views\Province\Index.cshtml" />
     <Content Include="Views\AccountPlace\Index.cshtml" />
+    <Content Include="Views\AccountChecked\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\LibCore\LibCore.csproj">
