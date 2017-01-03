@@ -5,7 +5,8 @@ CmsShop.Localtion = {
     pageSize: 10,
     pageIndex: 1,
     keySearch:'',
-    currentUserId: 0
+    currentUserId: 0,
+    districtId:0
 };
 
 CmsShop.Localtion.Init = function () {
@@ -45,8 +46,13 @@ CmsShop.Localtion.Init = function () {
         $("#sltAccount").select2();
     });
 
-    p.LoadAllProvince(function () {
-        $("#sltProvince").select2();
+    p.LoadAllProvince(function () {        
+        $("#sltProvince").off("change").on("change", function () {
+            var provinceId = $(this).val();
+            p.LoadAllDistrictByProvinceId(provinceId, function () {
+                $("#sltDistrict").val(p.districtId).select2();
+            });
+        }).select2();
     });
 
     $("#sltCustomeType").select2();
@@ -127,14 +133,7 @@ CmsShop.Localtion.RegisterEvents = function () {
                 });
             }
         });
-    });
-
-    $("#sltProvince").off("change").on("change", function () {
-        var provinceId = $(this).val();
-        p.LoadAllDistrictByProvinceId(provinceId, function () {
-            $("#sltDistrict").select2();
-        });
-    });
+    });    
 
     $('table #listAllLocaltion tr').off('dblclick').on('dblclick', function () {
         var $this = $(this);
@@ -186,13 +185,15 @@ CmsShop.Localtion.EditLocaltion = function (id) {
         data: { Id:id },
         dataType: "json",
         beforeSend: function () {
-            //logisticJs.startLoading();
+            logisticJs.startLoading();
         },
         success: function (response) {
             if (response.status) {
+                p.districtId = response.Data.DistrictId;
                 $("#sltAccount").val(response.Data.AccountId).trigger("change");
                 $("#sltProvince").val(response.Data.ProvinceId).trigger("change");
-                $("#sltDistrict").val(response.Data.DistrictId).trigger("change");
+                //$("#sltDistrict").val(response.Data.DistrictId).trigger("change");
+                
                 $("#sltCustomeType").val(response.Data.CustomeType).trigger("change");
                 $("#txtLag").val(response.Data.Lag);
                 $("#txtLng").val(response.Data.Lng);
@@ -200,6 +201,8 @@ CmsShop.Localtion.EditLocaltion = function (id) {
                 $("#txtEmail").val(response.Data.Email);
                 $("#txtPhone").val(response.Data.Phone);                
                 $("#txtAddress").val(response.Data.Address);
+                $("#txtCode").val(response.Data.Code);
+                $("#txtRepresentActive").val(response.Data.RepresentActive);
                 var avatar = "/assets/img/avatars/no-avatar.gif";
                 if (response.Data.Avatar != "" && response.Data.Avatar != null) {
                     avatar = response.Data.Avatar;
@@ -212,10 +215,10 @@ CmsShop.Localtion.EditLocaltion = function (id) {
 
                 $('html,body').animate({ scrollTop: 0 });
             }
-            //logisticJs.stopLoading();
+            logisticJs.stopLoading();
         },
         error: function (status) {
-            //logisticJs.stopLoading();
+            logisticJs.stopLoading();
         }
     });
 };
@@ -303,7 +306,7 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
                     render += Mustache.render(template, {
                         stt: i+1, id: item.Id, name: item.Name, userName: item.UserName, 
                         avatar: avatar, statusLoc: statusloc, createdDate: createddate,
-                        accountId:item.AccountId,lag:item.Lag,lng:item.Lng
+                        accountId: item.AccountId, lag: item.Lag, lng: item.Lng, code: item.Code
                     });                    
                 });
                 if (render != undefined) {
@@ -386,7 +389,9 @@ CmsShop.Localtion.EmptyLocaltion = function() {
     $("#txtEmail").val('');
     $("#txtPhone").val('');    
     $("#txtAddress").val('');
-    $("#txtAvatar").val('');    
+    $("#txtAvatar").val('');
+    $("#txtCode").val('');
+    $("#txtRepresentActive").val('');
     $('#imgViewAvatar').attr('src', '/assets/img/avatars/no-avatar.gif');
     $("#cbxStatus").prop('checked', true);
     $("#btnSaveLocaltion").attr('data-id', 0);
@@ -533,7 +538,8 @@ CmsShop.Localtion.ViewDetailLocaltionNow = function (id, callback) {
                         id: response.Data.Id, name: response.Data.Name, avatar: response.Data.Avatar,
                         address: response.Data.Address, isChecked: isChecked, lag: response.Data.Lag,
                         lng: response.Data.Lng, phone: response.Data.Phone, email: response.Data.Email,
-                        isCheckedName: isCheckedName, accountId: response.Data.AccountId, customeType: customeTypeName
+                        isCheckedName: isCheckedName, accountId: response.Data.AccountId, customeType: customeTypeName,
+                        code:response.Data.Code,representActive:response.Data.RepresentActive
                     });
                     $('#viewDetailLocaltion').html(render);
                 }

@@ -42,6 +42,10 @@ namespace ModelCMS.Localtion
         public int? PlaceNumberWrong { get; set; }
 
         public DateTime? CheckDate { get; set; }
+
+        public string Code { get; set; }
+
+        public string RepresentActive { get; set; }
         #endregion
     }
 }

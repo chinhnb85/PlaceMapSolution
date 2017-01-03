@@ -89,7 +89,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <select id="sltProvince" name="sltProvince" style="border-radius: 0;width: 100%">
+                                <select id="sltProvince" name="sltProvince" style="border-radius: 0; width: 100%">
                                     <option value="0">---Chọn tỉnh/thành phố---</option>
                                     <script id="data-list-province" type="x-tmpl-mustache">
                                         <option value="{{id}}">{{name}}</option>
@@ -99,13 +99,31 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <select id="sltDistrict" name="sltDistrict" style="border-radius: 0;width: 100%">
-                                    <option value="0">---Chọn quận/huyện---</option>                                    
+                                <select id="sltDistrict" name="sltDistrict" style="border-radius: 0; width: 100%">
+                                    <option value="0">---Chọn quận/huyện---</option>
                                 </select>
                                 <script id="data-list-district" type="x-tmpl-mustache">
                                     <option value="{{id}}">{{name}}</option>
                                 </script>
-                            </div>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <span class="input-icon icon-right">
+                                    <input type="text" id="txtCode" name="txtCode" class="form-control" placeholder="Mã khách hàng" />
+                                    <i class="fa fa-qrcode circular"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <span class="input-icon icon-right">
+                                    <input type="text" id="txtRepresentActive" name="txtRepresentActive" class="form-control" placeholder="Người đại diện" />
+                                    <i class="fa fa-user circular"></i>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -169,6 +187,9 @@
                                 Stt
                             </th>
                             <th>
+                                Mã KH
+                            </th>
+                            <th>
                                 Ảnh
                             </th>
                             <th>
@@ -176,7 +197,7 @@
                             </th>
                             <th>
                                 Tài khoản
-                            </th>
+                            </th>                            
                             <th>
                                 Ngày tạo
                             </th>
@@ -194,6 +215,9 @@
                                 {{stt}}
                             </td>
                             <td>
+                                {{code}}
+                            </td>
+                            <td>
                                 <img src='{{avatar}}' width="32" />
                             </td>
                             <td>
@@ -201,7 +225,7 @@
                             </td>
                             <td>
                                 {{userName}}
-                            </td>
+                            </td>                            
                             <td>
                                 {{createdDate}}
                             </td>
@@ -286,6 +310,14 @@
                         <tr>
                             <td>Loại khách hàng: </td>
                             <td>{{customeType}}</td>
+                        </tr>
+                        <tr>
+                            <td>Mã khách hàng: </td>
+                            <td>{{code}}</td>
+                        </tr>
+                        <tr>
+                            <td>Người đại diện: </td>
+                            <td>{{representActive}}</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>

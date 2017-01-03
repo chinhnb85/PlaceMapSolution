@@ -35,6 +35,8 @@ namespace PlaceMapADM.Controllers
                 var email = collection["txtEmail"];                
                 var address = collection["txtAddress"];
                 var phone = collection["txtPhone"];
+                var code = collection["txtCode"];
+                var representActive = collection["txtRepresentActive"];
                 var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
                 var localtion = new LocaltionEntity
                 {                    
@@ -51,7 +53,9 @@ namespace PlaceMapADM.Controllers
                     Address = address,
                     Phone = phone,
                     CreatedDate = DateTime.Now,
-                    Status = status
+                    Status = status,
+                    Code = code,
+                    RepresentActive = representActive
                 };
                 var ipl = SingletonIpl.GetInstance<IplLocaltion>();                
                 if (id == 0)

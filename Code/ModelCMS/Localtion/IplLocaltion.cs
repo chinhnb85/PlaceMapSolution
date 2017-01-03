@@ -293,6 +293,8 @@ namespace ModelCMS.Localtion
             p.Add("@Phone", obj.Phone);
             p.Add("@Address", obj.Address);            
             p.Add("@Status", obj.Status);
+            p.Add("@Code", obj.Code);
+            p.Add("@RepresentActive", obj.RepresentActive);
 
             if (action == "add")
             {                
