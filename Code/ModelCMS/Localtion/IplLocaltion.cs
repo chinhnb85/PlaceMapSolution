@@ -253,6 +253,28 @@ namespace ModelCMS.Localtion
             }
         }
 
+        public List<LocaltionEntity> LocaltionAccountCheckListAllByAccountId(int accountId,DateTime startDate,DateTime endDate, int pageIndex, int pageSize, ref int totalRow)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@AccountId", accountId);
+                p.Add("@StartDate", startDate);
+                p.Add("@EndDate", endDate);
+                p.Add("@pageIndex", pageIndex);
+                p.Add("@pageSize", pageSize);               
+                p.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_LocaltionAccountCheck_ListAllByAccountId", p);
+                totalRow = p.Get<int>("@totalRow");
+                return data.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
         /// <summary>
         /// Saves a record to the Localtion table.
         /// </summary>

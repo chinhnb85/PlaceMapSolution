@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace ModelCMS.Localtion
@@ -14,5 +15,6 @@ namespace ModelCMS.Localtion
         LocaltionEntity ViewDetail(long id);	    
 	    LocaltionEntity GetLocaltionByEmail(string email);
         List<LocaltionEntity> ListAllByAccountId(long accountId, ref int totalRow);
+        List<LocaltionEntity> LocaltionAccountCheckListAllByAccountId(int accountId,DateTime startDate,DateTime endDate, int pageIndex, int pageSize, ref int totalRow);
     }
 }

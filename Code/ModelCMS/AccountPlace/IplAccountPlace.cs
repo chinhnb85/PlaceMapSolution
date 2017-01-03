@@ -132,14 +132,15 @@ namespace ModelCMS.AccountPlace
             }
         }
         
-        public List<AccountPlaceEntity> ListAllByAccountId(long accountId, ref int totalRow)
+        public List<AccountPlaceEntity> ListAllByAccountIdAndDatetime(long accountId,DateTime dateTime, ref int totalRow)
         {
             try
             {
                 var p = new DynamicParameters();
-                p.Add("@AccountId", accountId);                
+                p.Add("@AccountId", accountId);
+                p.Add("@Datetime", dateTime);
                 p.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                var data = unitOfWork.Procedure<AccountPlaceEntity>("Sp_AccountPlace_ListAllByAccountId", p);
+                var data = unitOfWork.Procedure<AccountPlaceEntity>("Sp_AccountPlace_ListAllByAccountIdAndDatetime", p);
                 totalRow = p.Get<int>("@totalRow");
                 return data.ToList();
             }
