@@ -245,3 +245,55 @@ select * from(
 )AS temp
 WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand
 END
+go
+
+ALTER PROCEDURE [dbo].[Sp_Localtion_Insert] 	
+	@AccountId int,
+	@ProvinceId int,
+	@DistrictId int,
+	@CustomeType int,
+ 	@Name nvarchar(50),
+ 	@Lag varchar(50),
+ 	@Lng varchar(50),
+ 	@Email varchar(50),
+ 	@Phone varchar(50),
+ 	@Address nvarchar(250),  	
+	@Avatar varchar(250),	
+	@Status bit,
+	@Code varchar(50),
+ 	@RepresentActive nvarchar(50),
+ 	@Id int output
+AS
+BEGIN		
+	SET NOCOUNT ON;    
+	INSERT INTO Localtion(AccountId,ProvinceId,DistrictId,CustomeType, Name,Lag,Lng,Email,Phone,Address,Avatar,Status,Code,RepresentActive) 
+	values(@AccountId,@ProvinceId, @DistrictId,@CustomeType, @Name,@Lag,@Lng,@Email,@Phone,@Address,@Avatar,@Status,@Code,@RepresentActive)
+	set @Id=SCOPE_IDENTITY()
+END
+
+go
+
+ALTER PROCEDURE [dbo].[Sp_Localtion_Update]
+	@AccountId int,
+	@ProvinceId int,
+	@DistrictId int,
+	@CustomeType int,
+ 	@Name nvarchar(50),
+ 	@Lag varchar(50),
+ 	@Lng varchar(50),
+ 	@Email varchar(50),
+ 	@Phone varchar(50),
+ 	@Address nvarchar(250),  	
+	@Avatar varchar(250),	
+	@Status bit,
+	@Code varchar(50),
+ 	@RepresentActive nvarchar(50),
+ 	@Id int
+AS
+BEGIN	
+	SET NOCOUNT ON;    
+	Update Localtion set AccountId=@AccountId,ProvinceId=@ProvinceId,DistrictId=@DistrictId, 
+						CustomeType=@CustomeType, Name=@Name,Lag=@Lag,Lng=@Lng,Email=@Email,
+						Status=@Status, Phone=@Phone,Address=@Address,Avatar=@Avatar,Code=@Code,RepresentActive=@RepresentActive						
+	where Id=@Id		
+END
