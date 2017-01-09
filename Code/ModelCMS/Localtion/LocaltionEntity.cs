@@ -46,6 +46,8 @@ namespace ModelCMS.Localtion
         public string Code { get; set; }
 
         public string RepresentActive { get; set; }
+
+        public int? CountCheckIn { get; set; }
         #endregion
     }
 }
