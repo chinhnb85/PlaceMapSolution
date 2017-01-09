@@ -525,10 +525,10 @@ CmsShop.Localtion.ViewDetailLocaltionNow = function (id, callback) {
                 if (response.Data != null) {
                     var template = $("#package-data-viewDetailLocaltion").html();
                     var isChecked = "";
-                    var isCheckedName = "Chưa checked";
+                    var isCheckedName = "Chưa checkin";
                     if (response.Data.IsCheck) {
                         isChecked = "checked";
-                        isCheckedName = "Đã checked";
+                        isCheckedName = "Đã checkin";
                     }
                     var customeTypeName = "Bán buôn";
                     if (response.Data.CustomeType == 2) {

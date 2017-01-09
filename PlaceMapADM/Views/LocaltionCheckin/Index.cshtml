@@ -1,11 +1,11 @@
 ﻿@{
-    ViewBag.Title = "Lịch sử tài khoản checkin";
+    ViewBag.Title = "Lịch sử checkin địa điểm";
 }
 
 <div class="row">
     <div class="widget">
         <div class="widget-header ">
-            <span class="widget-caption">Lịch sử tài khoản checkin</span>
+            <span class="widget-caption">Lịch sử checkin địa điểm</span>
             <div class="widget-buttons">
                 <a href="#" data-toggle="maximize">
                     <i class="fa fa-expand"></i>
@@ -21,11 +21,11 @@
                 <div class="row">
                     <div class="col-sm-4 form-horizontal">
                         <div class="form-group" style="margin-bottom: 0;">
-                            <label class="col-sm-4 control-label no-padding-right">Chọn tài khoản</label>
+                            <label class="col-sm-4 control-label no-padding-right">Chọn địa điểm</label>
                             <div class="col-sm-8">
-                                <select id="sltAccountSearch" name="sltAccountSearch" style="border-radius: 0; width: 100%">
-                                    <option value="0">--- Chọn tài khoản ---</option>
-                                    <script id="data-list-account" type="x-tmpl-mustache">
+                                <select id="sltLocaltionSearch" name="sltLocaltionSearch" style="border-radius: 0; width: 100%">
+                                    <option value="0">--- Chọn địa điểm ---</option>
+                                    <script id="data-list-localtion" type="x-tmpl-mustache">
                                         <option value="{{id}}">{{name}}</option>
                                     </script>
                                 </select>
@@ -68,7 +68,7 @@
                                 Stt
                             </th>
                             <th>
-                                Tên địa điểm
+                                Tên tài khoản
                             </th>
                             <th>
                                 Phone
@@ -81,7 +81,7 @@
                             </th>                            
                         </tr>
                     </thead>
-                    <tbody id="listAllAccountChecked"></tbody>
+                    <tbody id="listAllLocaltionCheckin"></tbody>
                     <script id="package-data" type="x-tmpl-mustache">
                         <tr>
                             <td>

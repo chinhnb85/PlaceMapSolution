@@ -598,7 +598,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:34</publishTime>
     </File>
     <File Include="assets/modules/accountcheckedController.js">
-      <publishTime>01/02/2017 23:29:48</publishTime>
+      <publishTime>01/09/2017 22:35:30</publishTime>
     </File>
     <File Include="assets/modules/accountController.js">
       <publishTime>12/29/2016 21:32:41</publishTime>
@@ -612,8 +612,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/modules/homeController.js">
       <publishTime>12/23/2016 23:06:17</publishTime>
     </File>
+    <File Include="assets/modules/localtioncheckinController.js">
+      <publishTime>01/09/2017 22:13:43</publishTime>
+    </File>
     <File Include="assets/modules/localtionController.js">
-      <publishTime>01/03/2017 23:43:25</publishTime>
+      <publishTime>01/09/2017 21:32:03</publishTime>
     </File>
     <File Include="assets/modules/loginController.js">
       <publishTime>12/16/2016 23:07:02</publishTime>
@@ -730,13 +733,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:18</publishTime>
     </File>
     <File Include="bin/Dapper.dll">
-      <publishTime>01/03/2017 00:26:53</publishTime>
+      <publishTime>01/09/2017 23:55:08</publishTime>
     </File>
     <File Include="bin/Enyim.Caching.dll">
       <publishTime>11/21/2016 21:51:18</publishTime>
     </File>
     <File Include="bin/LibCore.dll">
-      <publishTime>01/03/2017 00:26:53</publishTime>
+      <publishTime>01/09/2017 23:55:09</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>11/21/2016 21:51:24</publishTime>
@@ -787,7 +790,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:20</publishTime>
     </File>
     <File Include="bin/ModelCMS.dll">
-      <publishTime>01/03/2017 23:45:09</publishTime>
+      <publishTime>01/09/2017 23:55:09</publishTime>
     </File>
     <File Include="bin/MongoDB.Bson.dll">
       <publishTime>11/21/2016 21:51:21</publishTime>
@@ -802,7 +805,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:52:01</publishTime>
     </File>
     <File Include="bin/PlaceMapADM.dll">
-      <publishTime>01/03/2017 23:45:12</publishTime>
+      <publishTime>01/09/2017 23:55:12</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>11/21/2016 21:52:01</publishTime>
@@ -934,13 +937,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:28</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>01/01/2017 01:22:48</publishTime>
+      <publishTime>01/09/2017 21:42:23</publishTime>
     </File>
     <File Include="Views/Account/Index.cshtml">
       <publishTime>01/03/2017 00:01:22</publishTime>
     </File>
     <File Include="Views/AccountChecked/Index.cshtml">
-      <publishTime>01/02/2017 23:49:13</publishTime>
+      <publishTime>01/09/2017 22:41:14</publishTime>
     </File>
     <File Include="Views/AccountPlace/Index.cshtml">
       <publishTime>12/31/2016 23:26:40</publishTime>
@@ -949,7 +952,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/03/2017 00:08:26</publishTime>
     </File>
     <File Include="Views/Localtion/Index.cshtml">
-      <publishTime>01/03/2017 23:38:13</publishTime>
+      <publishTime>01/10/2017 00:00:10</publishTime>
+    </File>
+    <File Include="Views/LocaltionCheckin/Index.cshtml">
+      <publishTime>01/09/2017 22:41:58</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
       <publishTime>11/21/2016 21:51:28</publishTime>
@@ -973,7 +979,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:28</publishTime>
     </File>
     <File Include="Views/Shared/_SlidebarMenu.cshtml">
-      <publishTime>01/01/2017 01:00:39</publishTime>
+      <publishTime>01/09/2017 21:37:31</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/21/2016 21:51:28</publishTime>

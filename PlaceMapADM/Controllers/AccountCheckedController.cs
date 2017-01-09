@@ -57,6 +57,47 @@ namespace PlaceMapADM.Controllers
                     totalRow = 0
                 }, JsonRequestBehavior.AllowGet);
             }
-        }        
+        }
+
+        [HttpGet]
+        public JsonResult LocaltionAccountCheckListAllByLocaltionId(int localtionId, string startDate, string endDate, int pageIndex, int pageSize)
+        {
+            try
+            {
+                DateTime sDate = DateTime.ParseExact(string.IsNullOrEmpty(startDate) ? DateTime.Now.ToString("dd/MM/yyyy") : startDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                DateTime eDate = DateTime.ParseExact(string.IsNullOrEmpty(endDate) ? DateTime.Now.ToString("dd/MM/yyyy") : endDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var total = 0;
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+                var res = ipl.LocaltionAccountCheckListAllByLocaltionId(localtionId, sDate, eDate, pageIndex, pageSize, ref total);
+
+                if (res != null && res.Count > 0)
+                {
+                    return Json(new
+                    {
+                        status = true,
+                        Data = res,
+                        totalCount = res.Count,
+                        totalRow = total
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new
+                {
+                    status = true,
+                    Data = res,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    status = false,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

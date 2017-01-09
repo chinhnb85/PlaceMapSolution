@@ -1,19 +1,19 @@
 ﻿if (typeof (CmsShop) == "undefined") CmsShop = {};
-if (typeof (CmsShop.AccountChecked) == "undefined") CmsShop.AccountChecked = {};
+if (typeof (CmsShop.LocaltionCheckin) == "undefined") CmsShop.LocaltionCheckin = {};
 
-CmsShop.AccountChecked = {
+CmsShop.LocaltionCheckin = {
     pageSize: 10,
     pageIndex: 1,
-    accountId: 0,
+    localtionId: 0,
     startDate: logisticJs.dateNow(),
     endDate: logisticJs.dateNow(),
     params:[]
 };
 
-CmsShop.AccountChecked.Init = function () {
+CmsShop.LocaltionCheckin.Init = function () {
     var p = this;
 
-    logisticJs.activeMenuSidebar('/AccountChecked');
+    logisticJs.activeMenuSidebar('/LocaltionCheckin');
 
     if (location.search) {
         var parts = location.search.substring(1).split('&');
@@ -28,91 +28,91 @@ CmsShop.AccountChecked.Init = function () {
     $("#txtDatetimeStartSearch").val(p.startDate).datepicker({ format: 'dd/mm/yyyy' });
     $("#txtDatetimeEndSearch").val(p.endDate).datepicker({ format: 'dd/mm/yyyy' });
 
-    p.GetAllAccountByType(function () {
-        p.accountId = (p.params.accountId == undefined) ? 0 : p.params.accountId;
-        $("#sltAccountSearch").val(p.accountId).select2();
+    p.GetAllLocaltion(function () {
+        p.localtionId = (p.params.localtionId == undefined) ? 0 : p.params.localtionId;
+        $("#sltLocaltionSearch").val(p.localtionId).select2();
     });
 
-    p.LoadAllAccountChecked(function () {
+    p.LoadAllLocaltionCheckin(function () {
         p.RegisterEvents();
     });    
 };
 
-CmsShop.AccountChecked.GetAllAccountByType = function (callback) {
+CmsShop.LocaltionCheckin.GetAllLocaltion = function (callback) {
     var p = this;
 
-    var dataparam = { type: 2 };
+    var dataparam = { };
 
     $.ajax({
         type: "GET",
-        url: "/Account/ListAllByType",
+        url: "/Localtion/ListAll",
         data: dataparam,
         dataType: "json",
         beforeSend: function () {
-            //logisticJs.startLoading();
+            logisticJs.startLoading();
         },
         success: function (response) {
             if (response.status == true && response.totalCount > 0) {
-                var template = $("#data-list-account").html();
+                var template = $("#data-list-localtion").html();
                 var render = "";
                 $.each(response.Data, function (i, item) {
                     render += Mustache.render(template, {
                         id: item.Id,
-                        name: item.DisplayName
+                        name: item.Name
                     });
                 });
                 if (render != undefined) {
-                    $("#sltAccountSearch").append(render);
+                    $("#sltLocaltionSearch").append(render);
                 }
                 p.RegisterEvents();
             }
-            //logisticJs.stopLoading();  
+            logisticJs.stopLoading();  
             if (typeof (callback) == "function") {
                 callback();
             }
         },
         error: function (status) {
-            //logisticJs.stopLoading();
+            logisticJs.stopLoading();
         }
     });
 };
 
-CmsShop.AccountChecked.RegisterEvents = function () {
+CmsShop.LocaltionCheckin.RegisterEvents = function () {
     var p = this;
        
     $("#sltPageSize").off("change").on("change", function () {
         p.pageSize = $("#sltPageSize").val();
         p.pageIndex = 1;
-        p.accountId = $("#sltAccountSearch").val();
+        p.localtionId = $("#sltLocaltionSearch").val();
         p.startDate = $("#txtDatetimeStartSearch").val();
         p.endDate = $("#txtDatetimeEndSearch").val();
 
-        p.LoadAllAccountChecked(function () {
+        p.LoadAllLocaltionCheckin(function () {
             p.RegisterEvents();
         });
     });    
    
     $("#btnSearch").off("click").on("click", function () {
-        p.accountId = $("#sltAccountSearch").val();
+        p.localtionId = $("#sltLocaltionSearch").val();
         p.startDate = $("#txtDatetimeStartSearch").val();
         p.endDate = $("#txtDatetimeEndSearch").val();
         p.pageIndex = 1;
 
-        p.LoadAllAccountChecked(function () {
+        p.LoadAllLocaltionCheckin(function () {
             p.RegisterEvents();
         });
     });
        
 };
 
-CmsShop.AccountChecked.LoadAllAccountChecked = function (callback) {
+CmsShop.LocaltionCheckin.LoadAllLocaltionCheckin = function (callback) {
     var p = this;
 
-    var dataparam = {accountId:p.accountId,startDate:p.startDate,endDate:p.endDate,pageIndex: p.pageIndex, pageSize: p.pageSize };
+    var dataparam = {localtionId:p.localtionId,startDate:p.startDate,endDate:p.endDate,pageIndex: p.pageIndex, pageSize: p.pageSize };
 
     $.ajax({
         type: "GET",
-        url: "/AccountChecked/LocaltionAccountCheckListAllByAccountId",
+        url: "/LocaltionCheckin/LocaltionAccountCheckListAllByLocaltionId",
         data: dataparam,
         dataType: "json",
         beforeSend: function () {
@@ -132,16 +132,16 @@ CmsShop.AccountChecked.LoadAllAccountChecked = function (callback) {
                     });                    
                 });
                 if (render != undefined) {
-                    $("#listAllAccountChecked").html(render);
+                    $("#listAllLocaltionCheckin").html(render);
                 }                
                 p.WrapPaging(response.totalCount, '#btnNext', '#btnPrevious',response.totalRow, function () {
-                    p.LoadAllAccountChecked(function () {
+                    p.LoadAllLocaltionCheckin(function () {
                         p.RegisterEvents();
                     });
                 });
 
             } else {
-                $("#listAllAccountChecked").html('');
+                $("#listAllLocaltionCheckin").html('');
             }
             //logisticJs.stopLoading();
 
@@ -155,7 +155,7 @@ CmsShop.AccountChecked.LoadAllAccountChecked = function (callback) {
     });
 };
 
-CmsShop.AccountChecked.WrapPaging = function (total, next, previous, RecordCount, callBack) {
+CmsShop.LocaltionCheckin.WrapPaging = function (total, next, previous, RecordCount, callBack) {
     var p = this;
 
     var size = p.pageIndex * p.pageSize;
@@ -203,5 +203,5 @@ CmsShop.AccountChecked.WrapPaging = function (total, next, previous, RecordCount
 };
 
 $(function(){
-    CmsShop.AccountChecked.Init();
+    CmsShop.LocaltionCheckin.Init();
 });

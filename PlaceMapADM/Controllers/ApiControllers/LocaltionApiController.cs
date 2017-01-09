@@ -35,6 +35,12 @@ namespace PlaceMapADM.Controllers.ApiControllers
             var data = ipl.ListAllByAccountId(acc.Id, ref total);
             if (data != null && data.Count > 0)
             {
+                foreach (LocaltionEntity objEntity in data)
+                {
+                    var countCheckIn = 0;
+                    if(ipl.GetCountCheckIn(objEntity.Id, ref countCheckIn))
+                        objEntity.CountCheckIn = countCheckIn;
+                }
                 return Json(new { status = true, message = "Success.", Total = total, Data = data });
             }
             return Json(new { status = false, message = "Không có bản ghi nào.", Data = data });
