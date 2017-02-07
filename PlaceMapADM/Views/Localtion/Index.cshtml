@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <input type="hidden" id="txtAvatar" name="txtAvatar" value="/assets/img/avatars/no-avatar.gif" />
                                 <div class="viewimg">
-                                    <img id="imgViewAvatar" src="/assets/img/avatars/no-avatar.gif" width="84" />
+                                    <a id="imgViewAvatar" class="example-image-link" href="/assets/img/avatars/no-avatar.gif" data-lightbox="example-1"><img src="/assets/img/avatars/no-avatar.gif" width="84" /></a>
                                 </div>
                                 <span class="btn btn-default btn-sm" id="btn_AvatarLocaltion">Đổi ảnh địa điểm</span>
                                 <input type="file" class="upload" id="f_AvatarLocaltion" style="display: none;">
@@ -293,7 +293,7 @@
                         </tr>
                         <tr>
                             <td>Ảnh: </td>
-                            <td><img src='{{avatar}}' width="64" /></td>
+                            <td><a class="example-image-link" href="{{avatar}}" data-lightbox="example-1"><img src='{{avatar}}' width="64" /></a></td>
                         </tr>
                         <tr>
                             <td>Kinh, Vĩ độ: </td>
@@ -333,6 +333,7 @@
     </div>
 </div>
 @section PageScripts {   
-    @Scripts.Render("~/bundles/select2") 
+    @Scripts.Render("~/bundles/select2")
+    @Scripts.Render("~/bundles/lightbox2") 
 }
 

@@ -369,6 +369,16 @@
     <Content Include="assets\plugins\chosen\js\chosen.jquery.min.js" />
     <Content Include="assets\plugins\jScrollPane\css\jquery.jscrollpane.css" />
     <Content Include="assets\plugins\jScrollPane\js\jquery.jscrollpane.min.js" />
+    <Content Include="assets\plugins\lightbox2\css\lightbox.css" />
+    <Content Include="assets\plugins\lightbox2\css\lightbox.min.css" />
+    <Content Include="assets\plugins\lightbox2\images\close.png" />
+    <Content Include="assets\plugins\lightbox2\images\loading.gif" />
+    <Content Include="assets\plugins\lightbox2\images\next.png" />
+    <Content Include="assets\plugins\lightbox2\images\prev.png" />
+    <Content Include="assets\plugins\lightbox2\js\lightbox-plus-jquery.js" />
+    <Content Include="assets\plugins\lightbox2\js\lightbox-plus-jquery.min.js" />
+    <Content Include="assets\plugins\lightbox2\js\lightbox.js" />
+    <Content Include="assets\plugins\lightbox2\js\lightbox.min.js" />
     <Content Include="assets\plugins\mustache\mustache.js" />
     <Content Include="assets\plugins\noty\jquery.noty.js" />
     <Content Include="assets\plugins\noty\layouts\bottom.js" />
@@ -441,6 +451,8 @@
     <Content Include="assets\js\tagsinput\bootstrap-tagsinput.min.js.map" />
     <Content Include="assets\js\toastr\toastr.min.js.map" />
     <Content Include="Handler\HandlerUpload.ashx" />
+    <Content Include="assets\plugins\lightbox2\js\lightbox-plus-jquery.min.map" />
+    <Content Include="assets\plugins\lightbox2\js\lightbox.min.map" />
     <None Include="Properties\PublishProfiles\PlaceMap.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

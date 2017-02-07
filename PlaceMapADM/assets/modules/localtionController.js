@@ -128,7 +128,8 @@ CmsShop.Localtion.RegisterEvents = function () {
                     if (url != null && url!="") {
                         avatar = url;
                     }
-                    $('#imgViewAvatar').attr('src', avatar);
+                    $('#imgViewAvatar').attr('href', avatar);
+                    $('#imgViewAvatar img').attr('src', avatar);
                     $('#txtAvatar').val(avatar);
                 });
             }
@@ -207,8 +208,9 @@ CmsShop.Localtion.EditLocaltion = function (id) {
                 if (response.Data.Avatar != "" && response.Data.Avatar != null) {
                     avatar = response.Data.Avatar;
                 }
-                $("#txtAvatar").val(avatar);
-                $('#imgViewAvatar').attr('src', avatar);
+                $("#txtAvatar").val(avatar);                
+                $('#imgViewAvatar').attr('href', avatar);
+                $('#imgViewAvatar img').attr('src', avatar);
                 $("#cbxStatus").prop('checked', response.Data.Status);
                 $("#btnSaveLocaltion").attr('data-id', response.Data.Id);
                 $("#hdLocaltionId").val(response.Data.Id);
@@ -391,8 +393,9 @@ CmsShop.Localtion.EmptyLocaltion = function() {
     $("#txtAddress").val('');
     $("#txtAvatar").val('');
     $("#txtCode").val('');
-    $("#txtRepresentActive").val('');
-    $('#imgViewAvatar').attr('src', '/assets/img/avatars/no-avatar.gif');
+    $("#txtRepresentActive").val('');    
+    $('#imgViewAvatar').attr('href', '/assets/img/avatars/no-avatar.gif');
+    $('#imgViewAvatar img').attr('src', '/assets/img/avatars/no-avatar.gif');
     $("#cbxStatus").prop('checked', true);
     $("#btnSaveLocaltion").attr('data-id', 0);
     $("#hdLocaltionId").val(0);

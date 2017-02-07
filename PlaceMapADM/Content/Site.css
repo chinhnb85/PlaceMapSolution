@@ -119,6 +119,8 @@ table #listAllAccount tr{ cursor: pointer;}
     height: 84px;
     display: inline-block;
     margin-right: 10px;
+    overflow: hidden;
+    vertical-align: middle;
 }
 .task-container {
     height: 100%;
@@ -200,3 +202,4 @@ table #listAllAccount tr{ cursor: pointer;}
     margin-bottom: 0; 
     line-height: 16px;
 }
+#listAllLocaltion td img{max-height: 32px;}

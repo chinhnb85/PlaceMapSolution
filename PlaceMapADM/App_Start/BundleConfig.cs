@@ -72,6 +72,9 @@ namespace PlaceMapADM
                 "~/assets/plugins/jScrollPane/css/jquery.jscrollpane.css",
                 "~/assets/plugins/tipsy/css/tipsy.css"));
 
+            bundles.Add(new StyleBundle("~/css/lightbox2").Include(
+                "~/assets/plugins/lightbox2/css/lightbox.min.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/chosen").Include(                
                 "~/assets/plugins/chosen/js/chosen.jquery.min.js",
                 "~/assets/plugins/jScrollPane/js/jquery.jscrollpane.min.js",
@@ -105,6 +108,9 @@ namespace PlaceMapADM
 
             bundles.Add(new ScriptBundle("~/bundles/select2").Include(
                "~/assets/js/select2/select2.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/lightbox2").Include(
+               "~/assets/plugins/lightbox2/js/lightbox.min.js"));
         }
     }
 }
