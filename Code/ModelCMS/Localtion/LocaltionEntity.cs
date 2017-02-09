@@ -48,6 +48,12 @@ namespace ModelCMS.Localtion
         public string RepresentActive { get; set; }
 
         public int? CountCheckIn { get; set; }
+
+        public string ImageCheckin { get; set; }
+
+        public int? MinCheckin { get; set; }
+
+        public bool? StatusEdit { get; set; }
         #endregion
     }
 }

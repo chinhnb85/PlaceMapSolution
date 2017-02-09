@@ -84,6 +84,21 @@ namespace ModelCMS.Localtion
                 throw;
             }
         }
+        public bool UpdateStatusEdit(long id)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", id);
+                var res = unitOfWork.ProcedureExecute("Sp_Localtion_UpdateStatusEdit", p);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
         public bool UpdateAvatar(LocaltionEntity obj)
         {
             try
@@ -335,6 +350,8 @@ namespace ModelCMS.Localtion
             p.Add("@Status", obj.Status);
             p.Add("@Code", obj.Code);
             p.Add("@RepresentActive", obj.RepresentActive);
+            p.Add("@MinCheckin", obj.MinCheckin);
+            p.Add("@StatusEdit", obj.StatusEdit);
 
             if (action == "add")
             {                

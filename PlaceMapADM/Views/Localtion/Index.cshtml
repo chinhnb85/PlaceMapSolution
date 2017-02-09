@@ -117,11 +117,19 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <span class="input-icon icon-right">
                                     <input type="text" id="txtRepresentActive" name="txtRepresentActive" class="form-control" placeholder="Người đại diện" />
                                     <i class="fa fa-user circular"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <span class="input-icon icon-right">
+                                    <input type="text" id="txtMinCheckin" name="txtMinCheckin" class="form-control" placeholder="Số checkin trong tháng" />
+                                    <i class="glyphicon glyphicon-map-marker circular"></i>
                                 </span>
                             </div>
                         </div>
@@ -144,12 +152,22 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-1">
                             <div class="form-group">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" id="cbxStatus" name="cbxStatus" class="colored-blue" />
+                                        <input type="checkbox" id="cbxStatus" name="cbxStatus" class="colored-blue"/>
                                         <span class="text">Trạng thái</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="cbxStatusEdit" name="cbxStatusEdit" class="colored-blue" />
+                                        <span class="text">Trạng thái tài khoản sửa</span>
                                     </label>
                                 </div>
                             </div>
@@ -183,7 +201,7 @@
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr role="row">
-                            <th style="width: 10%">
+                            <th style="width: 6%">
                                 Stt
                             </th>
                             <th>
@@ -197,9 +215,12 @@
                             </th>
                             <th>
                                 Tài khoản
-                            </th>                            
+                            </th>
                             <th>
                                 Ngày tạo
+                            </th>
+                            <th style="width: 9%">
+                                Trạng thái sửa
                             </th>
                             <th style="width: 9%">
                                 Trạng thái
@@ -230,7 +251,11 @@
                                 {{createdDate}}
                             </td>
                             <td style="position:relative;">
-                                <input class="checkbox-slider slider-icon colored-success" type="checkbox" {{statusLoc}} data-id="{{id}}">
+                                <input class="checkbox-slider slider-icon colored-success status-edit-loc" type="checkbox" {{statusEditLoc}} data-id="{{id}}">
+                                <span class="text"></span>
+                            </td>
+                            <td style="position:relative;">
+                                <input class="checkbox-slider slider-icon colored-success status-loc" type="checkbox" {{statusLoc}} data-id="{{id}}">
                                 <span class="text"></span>
                             </td>
                             <td style="text-align:center;">
@@ -318,6 +343,10 @@
                         <tr>
                             <td>Người đại diện: </td>
                             <td>{{representActive}}</td>
+                        </tr>
+                        <tr>
+                            <td>Số lần checkin trong tháng: </td>
+                            <td>{{minCheckin}}</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>

@@ -41,13 +41,19 @@ namespace PlaceMapADM.Handler
                         {
                             var fileExtension = Path.GetExtension(fileName);
                             fileName = fileName.Replace(fileExtension,"") + "_" + numFiles + fileExtension;
-                            var pathToSave = dirFullPath + fileName;
+                            var pathToSave = dirFullPath + fileName;                            
                             //file.SaveAs(pathToSave); //anh goc
 
                             //rezize 600x600
                             Image bm = Image.FromStream(file.InputStream);
                             bm = RezizeImage(bm, 600, 600);
                             bm.Save(pathToSave);
+
+                            //thumb 50x50
+                            var pathThumbToSave = dirFullPath + "thumb/" + fileName;
+                            Image tb = Image.FromStream(file.InputStream);
+                            tb = RezizeImage(tb, 50, 50);
+                            tb.Save(pathThumbToSave);
                         }
                     }
                 }

@@ -94,9 +94,13 @@ CmsShop.Localtion.RegisterEvents = function () {
             p.RegisterEvents();
         });
     });
-    $(".checkbox-slider").off("click").on("click", function () {
+    $(".status-loc").off("click").on("click", function () {
         var $this = $(this);
         p.UpdateStatusLocaltion($this.attr('data-id'));
+    });
+    $(".status-edit-loc").off("click").on("click", function () {
+        var $this = $(this);
+        p.UpdateStatusEditLocaltion($this.attr('data-id'));
     });
     $("#btnAddNewLocaltion").off("click").on("click", function () {
         var $this = $(this);
@@ -204,6 +208,7 @@ CmsShop.Localtion.EditLocaltion = function (id) {
                 $("#txtAddress").val(response.Data.Address);
                 $("#txtCode").val(response.Data.Code);
                 $("#txtRepresentActive").val(response.Data.RepresentActive);
+                $("#txtMinCheckin").val(response.Data.MinCheckin);
                 var avatar = "/assets/img/avatars/no-avatar.gif";
                 if (response.Data.Avatar != "" && response.Data.Avatar != null) {
                     avatar = response.Data.Avatar;
@@ -212,6 +217,7 @@ CmsShop.Localtion.EditLocaltion = function (id) {
                 $('#imgViewAvatar').attr('href', avatar);
                 $('#imgViewAvatar img').attr('src', avatar);
                 $("#cbxStatus").prop('checked', response.Data.Status);
+                $("#cbxStatusEdit").prop('checked', response.Data.StatusEdit);
                 $("#btnSaveLocaltion").attr('data-id', response.Data.Id);
                 $("#hdLocaltionId").val(response.Data.Id);
 
@@ -275,6 +281,28 @@ CmsShop.Localtion.UpdateStatusLocaltion = function (id) {
     });
 };
 
+CmsShop.Localtion.UpdateStatusEditLocaltion = function (id) {
+    var p = this;
+    $.ajax({
+        type: "GET",
+        url: "/Localtion/UpdateStatusEdit",
+        data: { Id: id },
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status) {
+
+            }
+            //logisticJs.stopLoading();
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
+        }
+    });
+};
+
 CmsShop.Localtion.LoadAllLocaltion = function (callback) {
     var p = this;
 
@@ -297,6 +325,10 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
                     if (item.Status) {
                         statusloc = "checked";
                     }
+                    var statuseditloc = "";
+                    if (item.StatusEdit) {
+                        statuseditloc = "checked";
+                    }
                     var createddate = "";
                     if (item.CreatedDate != null) {
                         createddate = logisticJs.convertDatetimeDMY(item.CreatedDate);
@@ -308,7 +340,8 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
                     render += Mustache.render(template, {
                         stt: i+1, id: item.Id, name: item.Name, userName: item.UserName, 
                         avatar: avatar, statusLoc: statusloc, createdDate: createddate,
-                        accountId: item.AccountId, lag: item.Lag, lng: item.Lng, code: item.Code
+                        accountId: item.AccountId, lag: item.Lag, lng: item.Lng, code: item.Code,
+                        statusEditLoc: statuseditloc, minCheckin: item.MinCheckin
                     });                    
                 });
                 if (render != undefined) {
@@ -393,10 +426,12 @@ CmsShop.Localtion.EmptyLocaltion = function() {
     $("#txtAddress").val('');
     $("#txtAvatar").val('');
     $("#txtCode").val('');
-    $("#txtRepresentActive").val('');    
+    $("#txtRepresentActive").val('');
+    $("#txtMinCheckin").val('');
     $('#imgViewAvatar').attr('href', '/assets/img/avatars/no-avatar.gif');
     $('#imgViewAvatar img').attr('src', '/assets/img/avatars/no-avatar.gif');
     $("#cbxStatus").prop('checked', true);
+    $("#cbxStatusEdit").prop('checked', false);
     $("#btnSaveLocaltion").attr('data-id', 0);
     $("#hdLocaltionId").val(0);
 };
@@ -542,7 +577,7 @@ CmsShop.Localtion.ViewDetailLocaltionNow = function (id, callback) {
                         address: response.Data.Address, isChecked: isChecked, lag: response.Data.Lag,
                         lng: response.Data.Lng, phone: response.Data.Phone, email: response.Data.Email,
                         isCheckedName: isCheckedName, accountId: response.Data.AccountId, customeType: customeTypeName,
-                        code:response.Data.Code,representActive:response.Data.RepresentActive
+                        code:response.Data.Code,representActive:response.Data.RepresentActive,minCheckin:response.Data.MinCheckin
                     });
                     $('#viewDetailLocaltion').html(render);
                 }
