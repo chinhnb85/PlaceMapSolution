@@ -71,6 +71,9 @@
                                 Tên địa điểm
                             </th>
                             <th>
+                                Ảnh checkin
+                            </th>
+                            <th>
                                 Phone
                             </th>
                             <th>
@@ -89,6 +92,9 @@
                             </td>
                             <td>
                                 {{name}}
+                            </td>
+                            <td>
+                                <a class="example-image-link" href="{{imagecheckin}}" data-lightbox="example-1"><img src='{{imagecheckin}}' width="32" /></a>
                             </td>
                             <td>
                                 {{phone}}
@@ -127,5 +133,6 @@
 @section PageScripts {
     @Scripts.Render("~/bundles/datetime")
     @Scripts.Render("~/bundles/select2")
+    @Scripts.Render("~/bundles/lightbox2")
 }
 

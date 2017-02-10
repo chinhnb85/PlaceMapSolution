@@ -598,7 +598,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:34</publishTime>
     </File>
     <File Include="assets/modules/accountcheckedController.js">
-      <publishTime>01/09/2017 22:35:30</publishTime>
+      <publishTime>02/11/2017 00:55:03</publishTime>
     </File>
     <File Include="assets/modules/accountController.js">
       <publishTime>12/29/2016 21:32:41</publishTime>
@@ -613,7 +613,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/23/2016 23:06:17</publishTime>
     </File>
     <File Include="assets/modules/localtioncheckinController.js">
-      <publishTime>01/09/2017 22:13:43</publishTime>
+      <publishTime>02/11/2017 00:58:17</publishTime>
     </File>
     <File Include="assets/modules/localtionController.js">
       <publishTime>02/09/2017 23:58:12</publishTime>
@@ -826,7 +826,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:20</publishTime>
     </File>
     <File Include="bin/ModelCMS.dll">
-      <publishTime>02/10/2017 00:06:10</publishTime>
+      <publishTime>02/10/2017 23:35:48</publishTime>
     </File>
     <File Include="bin/MongoDB.Bson.dll">
       <publishTime>11/21/2016 21:51:21</publishTime>
@@ -841,7 +841,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:52:01</publishTime>
     </File>
     <File Include="bin/PlaceMapADM.dll">
-      <publishTime>02/10/2017 00:25:17</publishTime>
+      <publishTime>02/10/2017 23:35:51</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>11/21/2016 21:52:01</publishTime>
@@ -979,7 +979,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/03/2017 00:01:22</publishTime>
     </File>
     <File Include="Views/AccountChecked/Index.cshtml">
-      <publishTime>01/09/2017 22:41:14</publishTime>
+      <publishTime>02/11/2017 00:42:51</publishTime>
     </File>
     <File Include="Views/AccountPlace/Index.cshtml">
       <publishTime>12/31/2016 23:26:40</publishTime>
@@ -991,7 +991,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/09/2017 23:56:44</publishTime>
     </File>
     <File Include="Views/LocaltionCheckin/Index.cshtml">
-      <publishTime>01/09/2017 22:41:58</publishTime>
+      <publishTime>02/11/2017 00:42:39</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
       <publishTime>11/21/2016 21:51:28</publishTime>
