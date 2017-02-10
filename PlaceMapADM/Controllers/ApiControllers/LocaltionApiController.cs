@@ -93,6 +93,18 @@ namespace PlaceMapADM.Controllers.ApiControllers
         }
 
         [HttpPost]
+        public object EditLocaltion(LocaltionEntity localtion)
+        {
+            var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+            var id = ipl.EditLocaltion(localtion);
+            if (id)
+            {                
+                return Json(new { status = true, message = "Cập nhật thành công." });
+            }
+            return Json(new { status = false, message = "Cập nhật địa điểm gặp lỗi, xin thử lại sau."});
+        }
+
+        [HttpPost]
         public object ViewDetailLocaltion(LocaltionEntity localtion)
         {
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();

@@ -51,6 +51,31 @@ namespace ModelCMS.Localtion
             }
         }
 
+        public bool EditLocaltion(LocaltionEntity obj)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", obj.Id);
+                p.Add("@AccountId", obj.AccountId);                               
+                p.Add("@Lag", obj.Lag);
+                p.Add("@Lng", obj.Lng);
+                p.Add("@Name", obj.Name);
+                p.Add("@Avatar", obj.Avatar);                
+                p.Add("@Phone", obj.Phone);
+                p.Add("@Address", obj.Address);                
+                p.Add("@Code", obj.Code);                
+
+                var res = unitOfWork.ProcedureExecute("Sp_Localtion_EditLocaltion", p);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
         /// <summary>
         /// Deletes a record from the Localtion table by its primary key.
         /// </summary>
