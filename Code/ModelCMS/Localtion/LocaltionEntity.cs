@@ -42,6 +42,18 @@ namespace ModelCMS.Localtion
         public int? PlaceNumberWrong { get; set; }
 
         public DateTime? CheckDate { get; set; }
+
+        public string Code { get; set; }
+
+        public string RepresentActive { get; set; }
+
+        public int? CountCheckIn { get; set; }
+
+        public string ImageCheckin { get; set; }
+
+        public int? MinCheckin { get; set; }
+
+        public bool? StatusEdit { get; set; }
         #endregion
     }
 }

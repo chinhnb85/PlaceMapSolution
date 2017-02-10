@@ -35,7 +35,11 @@ namespace PlaceMapADM.Controllers
                 var email = collection["txtEmail"];                
                 var address = collection["txtAddress"];
                 var phone = collection["txtPhone"];
+                var code = collection["txtCode"];
+                var representActive = collection["txtRepresentActive"];
+                var minCheckin = int.Parse(collection["txtMinCheckin"]);
                 var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
+                var statusEdit = (collection["cbxStatusEdit"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
                 var localtion = new LocaltionEntity
                 {                    
                     Id=id,
@@ -51,7 +55,11 @@ namespace PlaceMapADM.Controllers
                     Address = address,
                     Phone = phone,
                     CreatedDate = DateTime.Now,
-                    Status = status
+                    Status = status,
+                    Code = code,
+                    RepresentActive = representActive,
+                    MinCheckin = minCheckin,
+                    StatusEdit = statusEdit
                 };
                 var ipl = SingletonIpl.GetInstance<IplLocaltion>();                
                 if (id == 0)
@@ -92,6 +100,7 @@ namespace PlaceMapADM.Controllers
                 var address = collection["txtAddress"];
                 var phone = collection["txtPhone"];
                 var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
+                var statusEdit = (collection["cbxStatusEdit"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
                 var localtion = new LocaltionEntity
                 {
                     Id = id,
@@ -106,7 +115,8 @@ namespace PlaceMapADM.Controllers
                     Address = address,
                     Phone = phone,
                     CreatedDate = DateTime.Now,
-                    Status = status
+                    Status = status,
+                    StatusEdit = statusEdit
                 };
                 var ipl = SingletonIpl.GetInstance<IplLocaltion>();
                 id = ipl.Insert(localtion);
@@ -183,6 +193,61 @@ namespace PlaceMapADM.Controllers
             catch
             {
                 return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult UpdateStatusEdit(int Id)
+        {
+            try
+            {
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+                var res = ipl.UpdateStatusEdit(Id);
+
+                return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult ListAll()
+        {
+            try
+            {
+                var total = 0;
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+                var res = ipl.ListAll();
+
+                if (res != null && res.Count > 0)
+                {
+                    return Json(new
+                    {
+                        status = true,
+                        Data = res,
+                        totalCount = res.Count,
+                        totalRow = total
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new
+                {
+                    status = true,
+                    Data = res,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    status = false,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
             }
         }
 

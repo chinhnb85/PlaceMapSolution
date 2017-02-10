@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Lịch sử checkin địa điểm";
+}
+
+<div class="row">
+    <div class="widget">
+        <div class="widget-header ">
+            <span class="widget-caption">Lịch sử checkin địa điểm</span>
+            <div class="widget-buttons">
+                <a href="#" data-toggle="maximize">
+                    <i class="fa fa-expand"></i>
+                </a>
+                <a href="#" data-toggle="collapse">
+                    <i class="fa fa-minus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="widget-body">            
+            <fieldset class="fieldset" style="margin-bottom: 0!important;">
+                <legend class="legend">Bộ lọc</legend>
+                <div class="row">
+                    <div class="col-sm-4 form-horizontal">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="col-sm-4 control-label no-padding-right">Chọn địa điểm</label>
+                            <div class="col-sm-8">
+                                <select id="sltLocaltionSearch" name="sltLocaltionSearch" style="border-radius: 0; width: 100%">
+                                    <option value="0">--- Chọn địa điểm ---</option>
+                                    <script id="data-list-localtion" type="x-tmpl-mustache">
+                                        <option value="{{id}}">{{name}}</option>
+                                    </script>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 form-horizontal">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="col-sm-5 control-label no-padding-right">Từ ngày</label>
+                            <div class="col-sm-7">
+                                <span class="input-icon icon-right">
+                                    <input type="text" id="txtDatetimeStartSearch" name="txtDatetimeStartSearch" class="form-control" placeholder="Từ ngày">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 form-horizontal">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="col-sm-5 control-label no-padding-right">Tới ngày</label>
+                            <div class="col-sm-7">
+                                <span class="input-icon icon-right">
+                                    <input type="text" id="txtDatetimeEndSearch" name="txtDatetimeEndSearch" class="form-control" placeholder="Tới ngày">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="button" value="Xem" id="btnSearch" class="btn btn-primary"/>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="dataTables_wrapper form-inline no-footer">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr role="row">
+                            <th style="width: 10%">
+                                Stt
+                            </th>
+                            <th>
+                                Tên tài khoản
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                Địa chỉ
+                            </th>                            
+                            <th>
+                                Ngày checkin
+                            </th>                            
+                        </tr>
+                    </thead>
+                    <tbody id="listAllLocaltionCheckin"></tbody>
+                    <script id="package-data" type="x-tmpl-mustache">
+                        <tr>
+                            <td>
+                                {{stt}}
+                            </td>
+                            <td>
+                                {{name}}
+                            </td>
+                            <td>
+                                {{phone}}
+                            </td>
+                            <td>
+                                {{address}}
+                            </td>                            
+                            <td>
+                                {{checkDate}}
+                            </td>                            
+                        </tr>
+                    </script>
+                </table>
+                <div class="DTTTFooter">
+                    <div class="col-sm-6">
+                        <select class="form-control input-sm" id="sltPageSize" style="width: 60px; height: 34px; margin-bottom: 5px;">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="dataTables_paginate paging_bootstrap hide" id="pager">
+                            <ul class="pagination">
+                                <li class="prev disabled btnPrevious"><a id="btnPrevious" href="javascript:void(0)">Prev</a></li>
+                                <li class="next btnNext"><a href="javascript:void(0)" id="btnNext">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section PageScripts {
+    @Scripts.Render("~/bundles/datetime")
+    @Scripts.Render("~/bundles/select2")
+}
+

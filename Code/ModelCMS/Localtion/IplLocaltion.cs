@@ -84,6 +84,21 @@ namespace ModelCMS.Localtion
                 throw;
             }
         }
+        public bool UpdateStatusEdit(long id)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", id);
+                var res = unitOfWork.ProcedureExecute("Sp_Localtion_UpdateStatusEdit", p);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
         public bool UpdateAvatar(LocaltionEntity obj)
         {
             try
@@ -253,6 +268,24 @@ namespace ModelCMS.Localtion
             }
         }
 
+        public bool GetCountCheckIn(long localtionId, ref int countCheckIn)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@LocaltionId", localtionId);
+                p.Add("@countCheckIn", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var res = unitOfWork.ProcedureExecute("Sp_LocaltionAccountCheck_GetCountCheckIn", p);
+                countCheckIn = p.Get<int>("@countCheckIn");
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
         public List<LocaltionEntity> LocaltionAccountCheckListAllByAccountId(int accountId,DateTime startDate,DateTime endDate, int pageIndex, int pageSize, ref int totalRow)
         {
             try
@@ -265,6 +298,28 @@ namespace ModelCMS.Localtion
                 p.Add("@pageSize", pageSize);               
                 p.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var data = unitOfWork.Procedure<LocaltionEntity>("Sp_LocaltionAccountCheck_ListAllByAccountId", p);
+                totalRow = p.Get<int>("@totalRow");
+                return data.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
+        public List<LocaltionEntity> LocaltionAccountCheckListAllByLocaltionId(int localtionId, DateTime startDate, DateTime endDate, int pageIndex, int pageSize, ref int totalRow)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@LocaltionId", localtionId);
+                p.Add("@StartDate", startDate);
+                p.Add("@EndDate", endDate);
+                p.Add("@pageIndex", pageIndex);
+                p.Add("@pageSize", pageSize);
+                p.Add("@totalRow", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_LocaltionAccountCheck_ListAllByLocaltionId", p);
                 totalRow = p.Get<int>("@totalRow");
                 return data.ToList();
             }
@@ -293,6 +348,10 @@ namespace ModelCMS.Localtion
             p.Add("@Phone", obj.Phone);
             p.Add("@Address", obj.Address);            
             p.Add("@Status", obj.Status);
+            p.Add("@Code", obj.Code);
+            p.Add("@RepresentActive", obj.RepresentActive);
+            p.Add("@MinCheckin", obj.MinCheckin);
+            p.Add("@StatusEdit", obj.StatusEdit);
 
             if (action == "add")
             {                
