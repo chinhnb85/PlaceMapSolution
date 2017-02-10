@@ -258,6 +258,7 @@ namespace ModelCMS.Localtion
                 p.Add("@Id", loc.Id);
                 p.Add("@AccountId", loc.AccountId);
                 p.Add("@PlaceNumberWrong", loc.PlaceNumberWrong);
+                p.Add("@ImageCheckin", loc.ImageCheckin);
                 var res = unitOfWork.ProcedureExecute("Sp_Localtion_CheckedLocaltion", p);
                 return res;
             }
