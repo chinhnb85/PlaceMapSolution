@@ -128,7 +128,7 @@ CmsShop.AccountChecked.LoadAllAccountChecked = function (callback) {
                         checkDate = logisticJs.dateFormatJson2(item.CheckDate);
                     }
                     render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name,phone:item.Phone, address: item.Address, checkDate: checkDate
+                        stt: i + 1, id: item.Id, name: item.Name, imagecheckin: item.ImageCheckin == null ? "/assets/img/avatars/no-avatar.gif" : item.ImageCheckin, phone: item.Phone, address: item.Address, checkDate: checkDate
                     });                    
                 });
                 if (render != undefined) {
