@@ -194,6 +194,26 @@
                             <i class="glyphicon glyphicon-search circular"></i>
                         </span>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <select id="sltParentSearch" name="sltParentSearch" style="border-radius: 0; width: 100%">
+                                <option value="0">--- Chọn Vùng/Miền ---</option>
+                                <option value="1">Miền bắc</option>
+                                <option value="2">Miền trung</option>
+                                <option value="3">Miền nam</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <select id="sltProvinceSearch" name="sltProvinceSearch" style="border-radius: 0;width: 100%">
+                                <option value="0">---Chọn tỉnh/thành phố---</option>
+                                <script id="data-list-province" type="x-tmpl-mustache">
+                                    <option value="{{id}}">{{name}}</option>
+                                </script>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </fieldset>
 

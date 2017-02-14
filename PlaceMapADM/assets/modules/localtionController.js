@@ -6,7 +6,9 @@ CmsShop.Localtion = {
     pageIndex: 1,
     keySearch:'',
     currentUserId: 0,
-    districtId:0
+    districtId:0,
+    parentId: 0,
+    provinceId: 0
 };
 
 CmsShop.Localtion.Init = function () {
@@ -53,6 +55,8 @@ CmsShop.Localtion.Init = function () {
                 $("#sltDistrict").val(p.districtId).select2();
             });
         }).select2();
+
+        $("#sltProvinceSearch").select2();
     });
 
     $("#sltCustomeType").select2();
@@ -121,6 +125,20 @@ CmsShop.Localtion.RegisterEvents = function () {
                 p.RegisterEvents();
             });
         }
+    });
+    $("#sltParentSearch").off("change").on("change", function () {
+        p.parentId = $("#sltParentSearch").val();
+        p.pageIndex = 1;
+        p.LoadAllLocaltion(function () {
+            p.RegisterEvents();
+        });
+    });
+    $("#sltProvinceSearch").off("change").on("change", function () {
+        p.provinceId = $("#sltProvinceSearch").val();
+        p.pageIndex = 1;
+        p.LoadAllLocaltion(function () {
+            p.RegisterEvents();
+        });
     });
     $('#btn_AvatarLocaltion').off('click').on('click', function () {
         $("#f_AvatarLocaltion").trigger('click');
@@ -306,7 +324,7 @@ CmsShop.Localtion.UpdateStatusEditLocaltion = function (id) {
 CmsShop.Localtion.LoadAllLocaltion = function (callback) {
     var p = this;
 
-    var dataparam = {accountId:p.currentUserId, keySearch:p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
+    var dataparam = { accountId: p.currentUserId, parentId: p.parentId, provinceId: p.provinceId, keySearch: p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
 
     $.ajax({
         type: "GET",
@@ -496,6 +514,7 @@ CmsShop.Localtion.LoadAllProvince = function (callback) {
                 });
                 if (render != undefined) {
                     $("#sltProvince").append(render);
+                    $("#sltProvinceSearch").append(render);
                 }
             }
             //logisticJs.stopLoading();
