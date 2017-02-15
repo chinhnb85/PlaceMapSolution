@@ -11,7 +11,7 @@ namespace ModelCMS.Localtion
         bool Delete(long id);
 		List<LocaltionEntity> ListAll();
         List<LocaltionEntity> ListAllPaging(int accountId, int parentId, int provinceId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
-        List<LocaltionEntity> ListAllPagingByStatus(int accountId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
+        List<LocaltionEntity> ListAllPagingByStatus(int accountId, int parentId, int provinceId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow);
         LocaltionEntity ViewDetail(long id);	    
 	    LocaltionEntity GetLocaltionByEmail(string email);
         List<LocaltionEntity> ListAllByAccountId(long accountId, ref int totalRow);
