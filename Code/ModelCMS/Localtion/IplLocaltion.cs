@@ -236,12 +236,14 @@ namespace ModelCMS.Localtion
             }
         }
 
-        public List<LocaltionEntity> ListAllPagingByStatus(int accountId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
+        public List<LocaltionEntity> ListAllPagingByStatus(int accountId, int parentId, int provinceId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
         {
             try
             {
                 var p = new DynamicParameters();
                 p.Add("@AccountId", accountId);
+                p.Add("@parentId", parentId);
+                p.Add("@provinceId", provinceId);
                 p.Add("@KeySearch", keySearch);
                 p.Add("@pageIndex", pageIndex);
                 p.Add("@pageSize", pageSize);

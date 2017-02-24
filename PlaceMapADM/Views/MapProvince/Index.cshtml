@@ -172,6 +172,7 @@
 </div>
 @section PageScripts {
     @Scripts.Render("~/bundles/bootbox")
+    @Scripts.Render("~/bundles/select2")
 }
 @section FooterScripts {    
     <script src="https://maps.googleapis.com/maps/api/js?key=@System.Configuration.ConfigurationManager.AppSettings["keymapapi"]&callback=CmsShop.MapProvince.InitMap"></script>

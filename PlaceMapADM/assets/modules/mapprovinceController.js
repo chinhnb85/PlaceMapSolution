@@ -2,12 +2,13 @@
 if (typeof (CmsShop.MapProvince) == "undefined") CmsShop.MapProvince = {};
 
 CmsShop.MapProvince = {
-    markers: [],    
-    type: 2,
-    pageSizeLocaltion: 50,
-    pageIndexLocaltion: 1,
-    keySearchLocaltion: '',
+    markers: [],        
+    pageSize: 1000,
+    pageIndex: 1,
+    keySearch: '',
     currentUserId: 0,
+    parentId: 0,
+    provinceId: 0,
     params: {}
 };
 
@@ -15,6 +16,10 @@ CmsShop.MapProvince.Init = function () {
     var p = this;    
 
     logisticJs.activeMenuSidebar('/');
+
+    p.LoadAllProvince(function () {        
+        $("#sltProvinceSearch").select2();
+    });
 };
 
 CmsShop.MapProvince.InitMap = function () {
@@ -126,33 +131,6 @@ CmsShop.MapProvince.InitMap = function () {
     p.RegisterEvents(map);
 };
 
-CmsShop.MapProvince.GetViewCurrentAccountMap = function (map) {
-    var p = this;
-
-    var accountId = (p.params.accountId == undefined) ? 0 : p.params.accountId;
-    
-    p.currentUserId = accountId;
-
-    p.SetMapOnAll(null);        
-
-    if (p.currentUserId != 0) {
-        p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
-            $.each(data, function (i, item) {
-                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-                if (item.IsCheck) {
-                    p.AddMarker(myLatLng, item, 'checkedicon', map);
-                } else {
-                    if (item.CustomeType == 2) {
-                        p.AddMarker(myLatLng, item, 'default2', map);
-                    } else {
-                        p.AddMarker(myLatLng, item, 'default1', map);
-                    }
-                }
-            });
-        });
-    }
-}
-
 CmsShop.MapProvince.HandleLocationError = function (browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
@@ -261,20 +239,94 @@ CmsShop.MapProvince.RegisterEvents = function(map) {
         }
     });
     
+    $("#sltParentSearch").off("change").on("change", function () {
+        p.parentId = $("#sltParentSearch").val();
+        p.pageIndex = 1;
+        p.SetMapOnAll(null);
+
+        p.LoadAllLocaltionByProvince(map, function (data) {            
+            $.each(data, function (i, item) {
+                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+                if (item.IsCheck) {
+                    p.AddMarker(myLatLng, item, 'checkedicon', map);
+                } else {
+                    if (item.CustomeType == 2) {
+                        p.AddMarker(myLatLng, item, 'default2', map);
+                    } else {
+                        p.AddMarker(myLatLng, item, 'default1', map);
+                    }
+                }
+            });
+            //move map to latlng
+            setTimeout(function () {
+                if (data.length > 0) {
+                    map.panTo(new google.maps.LatLng(parseFloat(data[0].Lag), parseFloat(data[0].Lng)));
+                }
+            }, 500);
+        });
+    });
+    $("#sltProvinceSearch").off("change").on("change", function () {
+        p.provinceId = $("#sltProvinceSearch").val();
+        p.pageIndex = 1;
+        p.SetMapOnAll(null);
+
+        p.LoadAllLocaltionByProvince(map, function (data) {
+            $.each(data, function (i, item) {
+                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+                if (item.IsCheck) {
+                    p.AddMarker(myLatLng, item, 'checkedicon', map);
+                } else {
+                    if (item.CustomeType == 2) {
+                        p.AddMarker(myLatLng, item, 'default2', map);
+                    } else {
+                        p.AddMarker(myLatLng, item, 'default1', map);
+                    }
+                }
+            });
+            //move map to latlng
+            setTimeout(function () {
+                if (data.length > 0) {
+                    map.panTo(new google.maps.LatLng(parseFloat(data[0].Lag), parseFloat(data[0].Lng)));
+                }
+            }, 500);
+        });
+    });
+    
     $("#txtSearchLocaltion").off("change keydown paste input").on("change keydown paste input", function () {
-        p.keySearchLocaltion = $("#txtSearchLocaltion").val();
-        if (p.keySearchLocaltion == "" || p.keySearchLocaltion.length > 2) {
-            p.pageIndexLocaltion = 1;
-            p.LoadAllLocaltionByUser(p.currentUserId, map);
+        p.keySearch = $("#txtSearchLocaltion").val();
+        if (p.keySearch == "" || p.keySearch.length > 2) {
+            p.pageIndex = 1;
+            p.SetMapOnAll(null);
+
+            p.LoadAllLocaltionByProvince(map, function (data) {
+                $.each(data, function (i, item) {
+                    var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+                    if (item.IsCheck) {
+                        p.AddMarker(myLatLng, item, 'checkedicon', map);
+                    } else {
+                        if (item.CustomeType == 2) {
+                            p.AddMarker(myLatLng, item, 'default2', map);
+                        } else {
+                            p.AddMarker(myLatLng, item, 'default1', map);
+                        }
+                    }
+                });
+                //move map to latlng
+                setTimeout(function () {
+                    if (data.length > 0) {
+                        map.panTo(new google.maps.LatLng(parseFloat(data[0].Lag), parseFloat(data[0].Lng)));
+                    }
+                }, 500);
+            });
         }
     });    
     
 };
 
-CmsShop.MapProvince.LoadAllLocaltionByUser = function (accountId, map, callback) {
+CmsShop.MapProvince.LoadAllLocaltionByProvince = function (map, callback) {
     var p = this;
 
-    var dataparam = { accountId: accountId, keySearch: p.keySearchLocaltion, pageIndex: p.pageIndexLocaltion, pageSize: p.pageSizeLocaltion };
+    var dataparam = { accountId: p.currentUserId, parentId: p.parentId, provinceId: p.provinceId, keySearch: p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
 
     $.ajax({
         type: "GET",
@@ -307,13 +359,13 @@ CmsShop.MapProvince.LoadAllLocaltionByUser = function (accountId, map, callback)
                     $("#listAllLocaltion").html(render);
                 }
                 p.WrapPagingLocaltion(response.totalCount, '#btnNextLocaltion', '#btnPreviousLocaltion', response.totalRow, function () {
-                    p.LoadAllLocaltionByUser(p.currentUserId, map);
+                    p.LoadAllLocaltionByProvince(map);
                 });
 
                 $(".delete").off("click").on("click", function () {
                     var $this = $(this);
                     p.UpdateStatusLocaltion($this.attr('data-id'), function () {
-                        p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
+                        p.LoadAllLocaltionByProvince(map, function (data) {
                             p.SetMapOnAll(null);
                             $.each(data, function (i, item) {
                                 var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
@@ -355,42 +407,42 @@ CmsShop.MapProvince.LoadAllLocaltionByUser = function (accountId, map, callback)
 CmsShop.MapProvince.WrapPagingLocaltion = function (total, next, previous, recordCount, callBack) {
     var p = this;
 
-    var totalsize = Math.ceil(recordCount / p.pageSizeLocaltion);
+    var totalsize = Math.ceil(recordCount / p.pageSize);
     var pg = "";
     if (totalsize > 1)
         $('#pagerLocaltion').removeClass('hide');
     else
         $('#pagerLocaltion').addClass('hide');
-    pg = logisticJs.paginate(p.pageIndexLocaltion, recordCount, p.pageSizeLocaltion);
+    pg = logisticJs.paginate(p.pageIndex, recordCount, p.pageSize);
     $('#pagerLocaltion').find('.pg').remove();
     $('.btnPreviousLocaltion').after(pg);
-    $('#pagerLocaltion').find('.pg_' + p.pageIndexLocaltion).addClass('active');
-    if (total >= p.pageSizeLocaltion) {
+    $('#pagerLocaltion').find('.pg_' + p.pageIndex).addClass('active');
+    if (total >= p.pageSize) {
         $('.btnNextLocaltion').removeClass('disabled');
     } else {
         $('.btnNextLocaltion').addClass('disabled');
     }
-    if (p.pageIndexLocaltion > 1) {
+    if (p.pageIndex > 1) {
         $('.btnPreviousLocaltion').removeClass('disabled');
     } else {
         $('.btnPreviousLocaltion').addClass('disabled');
     }
     $(next).off('click').on('click', function () {
         if ($('.btnNextLocaltion').hasClass('disabled')) return false;
-        p.pageIndexLocaltion++;
+        p.pageIndex++;
         setTimeout(callBack(), 200);
         return false;
     });
     $(previous).off('click').on('click', function () {
         if ($('.btnPreviousLocaltion').hasClass('disabled')) return false;
-        p.pageIndexLocaltion--;
+        p.pageIndex--;
         setTimeout(callBack(), 200);
         return false;
     });
 
     $('#pagerLocaltion').find('.pg').off('click').on('click', function () {
         var curentPage = $(this).attr("data-page");
-        p.pageIndexLocaltion = curentPage;
+        p.pageIndex = curentPage;
         $('#pagerLocaltion').find('.pg').removeClass('active');
         $(this).addClass('active');
         callBack();
@@ -461,6 +513,43 @@ CmsShop.MapProvince.ViewDetailLocaltionNow = function (id, callback) {
         },
         error: function (status) {
             logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.MapProvince.LoadAllProvince = function (callback) {
+
+    var dataparam = {};
+
+    $.ajax({
+        type: "GET",
+        url: "/Province/ListAll",
+        data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true && response.totalCount > 0) {
+                var template = $("#data-list-province").html();
+                var render = "";
+                $.each(response.Data, function (i, item) {
+                    render += Mustache.render(template, {
+                        id: item.Id, name: item.Name
+                    });
+                });
+                if (render != undefined) {                    
+                    $("#sltProvinceSearch").append(render);
+                }
+            }
+            //logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
         }
     });
 };

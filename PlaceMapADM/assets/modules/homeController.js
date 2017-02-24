@@ -11,6 +11,8 @@ CmsShop.Home = {
     pageIndexLocaltion: 1,
     keySearchLocaltion: '',
     currentUserId: 0,
+    parentId: 0,
+    provinceId: 0,
     params: {}
 };
 
@@ -466,7 +468,7 @@ CmsShop.Home.RegisterEvents = function(map) {
 CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
     var p = this;
 
-    var dataparam = { accountId: accountId, keySearch: p.keySearchLocaltion, pageIndex: p.pageIndexLocaltion, pageSize: p.pageSizeLocaltion };
+    var dataparam = { accountId: accountId, parentId: p.parentId, provinceId: p.provinceId, keySearch: p.keySearchLocaltion, pageIndex: p.pageIndexLocaltion, pageSize: p.pageSizeLocaltion };
 
     $.ajax({
         type: "GET",
