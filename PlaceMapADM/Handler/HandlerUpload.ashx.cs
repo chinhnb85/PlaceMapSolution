@@ -52,7 +52,7 @@ namespace PlaceMapADM.Handler
                             //thumb 50x50
                             var pathThumbToSave = dirFullPath + "thumb/" + fileName;
                             Image tb = Image.FromStream(file.InputStream);
-                            tb = RezizeImage(tb, 50, 50);
+                            tb = RezizeImage(tb, 100, 100);
                             tb.Save(pathThumbToSave);
                         }
                     }

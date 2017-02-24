@@ -117,6 +117,9 @@ CmsShop.Localtion.RegisterEvents = function () {
             $this.addClass('hideform').removeClass('showform').html('<i class="fa fa-plus"></i> Tạo tài khoản');
         }
     });
+    $("#btnExportLocaltion").off("click").on("click", function () {
+        p.ExportExcelAllLocaltion();
+    });
     $("#keySearch").off("change keydown paste input").on("change keydown paste input", function () {
         p.keySearch = $("#keySearch").val();
         if (p.keySearch == "" || p.keySearch.length > 2) {
@@ -382,6 +385,38 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
         },
         error: function (status) {
             //logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.Localtion.ExportExcelAllLocaltion = function (callback) {    
+    //var dataparam = { };
+
+    $.ajax({
+        type: "GET",
+        url: "/Localtion/ExportExcelAllLocaltion",
+        //data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true) {
+                logisticJs.msgShowSuccess({ titleHeader: 'Export excel thành công.' });
+            } else {
+                logisticJs.msgWarning({
+                    text: "Việc Export excel gặp lỗi.",
+                    modal: true
+                });
+            }
+            logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            logisticJs.stopLoading();
         }
     });
 };

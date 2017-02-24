@@ -48,6 +48,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Code\Libs\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\Code\Libs\OfficeHelper\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -81,6 +88,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="OfficeHelper">
+      <HintPath>..\Code\Libs\OfficeHelper\OfficeHelper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -157,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Excel\Generate\" />
     <Folder Include="Models\" />
     <Folder Include="Upload\Avatar\" />
     <Folder Include="Upload\File\" />
@@ -185,6 +196,7 @@
     <Compile Include="Controllers\Base\CultureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Excel\OfficeHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -455,6 +467,7 @@
     <Content Include="Handler\HandlerUpload.ashx" />
     <Content Include="assets\plugins\lightbox2\js\lightbox-plus-jquery.min.map" />
     <Content Include="assets\plugins\lightbox2\js\lightbox.min.map" />
+    <Content Include="Excel\Template\template.xlsx" />
     <None Include="Properties\PublishProfiles\PlaceMap.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

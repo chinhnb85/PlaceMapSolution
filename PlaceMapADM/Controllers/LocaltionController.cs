@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using PlaceMapADM.Controllers.Base;
 using LibCore.EF;
 using ModelCMS.Localtion;
+using PlaceMapADM.Excel;
 
 namespace PlaceMapADM.Controllers
 {
@@ -275,6 +276,31 @@ namespace PlaceMapADM.Controllers
                 {
                     status = true,
                     Data = res,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    status = false,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult ExportExcelAllLocaltion()
+        {
+            try
+            {                
+                OfficeHelper.CreateGeneratedFile();                
+                return Json(new
+                {
+                    status = true,
+                    Data = "",
                     totalCount = 0,
                     totalRow = 0
                 }, JsonRequestBehavior.AllowGet);
