@@ -95,5 +95,5 @@
     @Scripts.Render("~/bundles/select2")
 }
 @section FooterScripts {
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmq0TgF9KyKcZSOS0ErMSA7nBlNI8nweI&callback=CmsShop.AccountPlace.InitMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=@System.Configuration.ConfigurationManager.AppSettings["keymapapi"]&callback=CmsShop.AccountPlace.InitMap"></script>
 }
