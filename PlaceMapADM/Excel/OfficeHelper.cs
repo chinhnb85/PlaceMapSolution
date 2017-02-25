@@ -3,65 +3,84 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Aron.Sinoai.OfficeHelper;
+using LibCore.EF;
+using ModelCMS.Localtion;
 
 namespace PlaceMapADM.Excel
 {
     public class OfficeHelper:IDisposable
-    {
-        private const string GENERATED_FILE_NAME = @"C:\CHINHNB\PlaceMapSolution\PlaceMapADM\Excel\Generate\generated.xlsx";
-        private const string TEMPLATE_FILE_NAME = @"C:\CHINHNB\PlaceMapSolution\PlaceMapADM\Excel\Template\template.xlsx";
-
-        public static void CreateGeneratedFile()
+    {        
+        public static ResponseEntity CreateGeneratedFile(int accountId, int parentId, int provinceId, string keySearch)
         {
             try
             {
-                using (var helper = new ExcelHelper(TEMPLATE_FILE_NAME, GENERATED_FILE_NAME))
+                var templateFileName = HttpContext.Current.Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["TEMPLATE_FILE_NAME"]);
+                var fileName= System.Configuration.ConfigurationManager.AppSettings["GENERATED_FILE_NAME"] + "export_" + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + ".xlsx";
+                var generatedFileName = HttpContext.Current.Server.MapPath(fileName);
+
+                using (var helper = new ExcelHelper(templateFileName, generatedFileName))
                 {
                     helper.Direction = ExcelHelper.DirectionType.TOP_TO_DOWN;
-
                     helper.CurrentSheetName = "Sheet1";
-
-                    helper.CurrentPosition = new CellRef("A1");
-
-                    //the template xlsx should contains the named range "header"; use the command "insert"/"name".
-                    helper.InsertRange("header");
-
-                    //the template xlsx should contains the named range "sample1";
-                    //inside this range you should have cells with these values:
-                    //<name> , <value> and <comment>, which will be replaced by the values from the GetSample()
-                    var sample1 = helper.CreateCellRangeTemplate("sample1",
-                        new List<string> {"stt", "ten", "view"});
-
-                    helper.InsertRange(sample1, GetSample());
-
-                    //you could use here other named ranges to insert new cells and call InsertRange as many times you want, 
-                    //it will be copied one after another;
-                    //even you can change direction or the current cell/sheet before you insert
-
-                    //tipically you put all your "template ranges" (the names) on the same sheet and then you just delete it
+                    helper.CurrentPosition = new CellRef("A1");                    
+                    helper.InsertRange("header");  
+                                     
+                    var sample1 = helper.CreateCellRangeTemplate("export", new List<string> {"id","code", "name", "province", "district", "account","lag","lng","email","phone","address","createddate", "representactive","mincheckin","status","view","note" });
+                    helper.InsertRange(sample1, GetExportData(accountId, parentId, provinceId, keySearch));
+                                        
                     helper.DeleteSheet("Sheet2");
+
+                    return new ResponseEntity { Status = true, Data = fileName };//"http://"+HttpContext.Current.Request.Url.Authority
                 }
             }
             catch (Exception ex)
-            {
-                
+            {                
+                return new ResponseEntity { Status = false, Data = ex.Message};
             }
         }
 
-        private static IEnumerable<List<object>> GetSample()
-        {
-            var random = new Random();
-
-            for (int loop = 0; loop < 3000; loop++)
+        private static IEnumerable<List<object>> GetExportData(int accountId, int parentId, int provinceId, string keySearch)
+        {                     
+            var data = new List<List<object>>();
+            try
             {
-                yield return new List<object> { "test", DateTime.Now.AddDays(random.NextDouble() * 100 - 50), loop};
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+                var res = ipl.GetExportData(accountId, parentId, provinceId, keySearch);
+
+                if (res != null && res.Count > 0)
+                {
+                    data.AddRange(res.Select(item => item.CreatedDate != null ? new List<object>
+                    {
+                        item.Id,
+                        item.Code ?? "",
+                        item.Name ?? "",
+                        item.ProvinceName ?? "",
+                        item.DistrictName ?? "",
+                        item.UserName ?? "",
+                        item.Lag ?? "",
+                        item.Lng ?? "",
+                        item.Email ?? "",
+                        item.Phone ?? "",
+                        item.Address ?? "",
+                        item.CreatedDate.Value.ToString("dd/MM/yyyy"),
+                        item.RepresentActive ?? "",
+                        item.MinCheckin ?? 0,
+                        item.Status ?? false,
+                        item.CountCheckIn ?? 0,
+                        ""
+                    } : null));
+                }
+                return data;
             }
+            catch(Exception ex)
+            {
+                return data;
+            }            
 
         }
 
         public void Dispose()
-        {
-            
+        {            
         }
 
     }

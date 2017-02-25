@@ -389,23 +389,26 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
     });
 };
 
-CmsShop.Localtion.ExportExcelAllLocaltion = function (callback) {    
-    //var dataparam = { };
+CmsShop.Localtion.ExportExcelAllLocaltion = function (callback) {
+    var p = this;
+
+    var dataparam = { accountId: p.currentUserId, parentId: p.parentId, provinceId: p.provinceId, keySearch: p.keySearch};
 
     $.ajax({
         type: "GET",
         url: "/Localtion/ExportExcelAllLocaltion",
-        //data: dataparam,
+        data: dataparam,
         dataType: "json",
         beforeSend: function () {
             logisticJs.startLoading();
         },
         success: function (response) {
             if (response.status == true) {
-                logisticJs.msgShowSuccess({ titleHeader: 'Export excel thành công.' });
+                //logisticJs.msgShowSuccess({ titleHeader: 'Export excel thành công.' });
+                window.location.href = response.Data;
             } else {
                 logisticJs.msgWarning({
-                    text: "Việc Export excel gặp lỗi.",
+                    text: "Việc Export excel gặp lỗi.</br>" + response.Data,
                     modal: true
                 });
             }

@@ -292,15 +292,25 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpGet]
-        public JsonResult ExportExcelAllLocaltion()
+        public JsonResult ExportExcelAllLocaltion(int accountId, int parentId, int provinceId, string keySearch)
         {
             try
             {                
-                OfficeHelper.CreateGeneratedFile();                
+                var res=OfficeHelper.CreateGeneratedFile(accountId, parentId, provinceId, keySearch);
+                if (res.Status)
+                {
+                    return Json(new
+                    {
+                        status = true,
+                        Data = res.Data,
+                        totalCount = 0,
+                        totalRow = 0
+                    }, JsonRequestBehavior.AllowGet);
+                }
                 return Json(new
                 {
-                    status = true,
-                    Data = "",
+                    status = false,
+                    Data = res.Data,
                     totalCount = 0,
                     totalRow = 0
                 }, JsonRequestBehavior.AllowGet);

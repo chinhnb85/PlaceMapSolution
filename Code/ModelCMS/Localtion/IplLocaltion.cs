@@ -236,6 +236,25 @@ namespace ModelCMS.Localtion
             }
         }
 
+        public List<LocaltionEntity> GetExportData(int accountId, int parentId, int provinceId, string keySearch)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@AccountId", accountId);
+                p.Add("@parentId", parentId);
+                p.Add("@provinceId", provinceId);
+                p.Add("@KeySearch", keySearch);                                
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_Localtion_GetExportData", p);                
+                return data.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
         public List<LocaltionEntity> ListAllPagingByStatus(int accountId, int parentId, int provinceId, string keySearch, int pageIndex, int pageSize, string sortColumn, string sortDesc, ref int totalRow)
         {
             try
