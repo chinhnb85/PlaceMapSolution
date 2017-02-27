@@ -13,7 +13,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:27</publishTime>
     </File>
     <File Include="appSettings.config">
-      <publishTime>02/24/2017 21:41:04</publishTime>
+      <publishTime>02/25/2017 22:42:14</publishTime>
     </File>
     <File Include="assets/css/4095-rtl.min.css">
       <publishTime>11/21/2016 21:51:29</publishTime>
@@ -610,13 +610,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/24/2017 21:34:14</publishTime>
     </File>
     <File Include="assets/modules/homeController.js">
-      <publishTime>02/24/2017 21:48:44</publishTime>
+      <publishTime>02/28/2017 00:08:21</publishTime>
     </File>
     <File Include="assets/modules/localtioncheckinController.js">
       <publishTime>02/11/2017 00:58:17</publishTime>
     </File>
     <File Include="assets/modules/localtionController.js">
-      <publishTime>02/14/2017 21:49:30</publishTime>
+      <publishTime>02/27/2017 23:21:15</publishTime>
+    </File>
+    <File Include="assets/modules/localtionstatusController.js">
+      <publishTime>02/27/2017 21:21:29</publishTime>
     </File>
     <File Include="assets/modules/loginController.js">
       <publishTime>12/16/2016 23:07:02</publishTime>
@@ -774,6 +777,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Dapper.dll">
       <publishTime>01/09/2017 23:55:08</publishTime>
     </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>06/26/2014 17:15:54</publishTime>
+    </File>
     <File Include="bin/Enyim.Caching.dll">
       <publishTime>11/21/2016 21:51:18</publishTime>
     </File>
@@ -829,7 +835,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:20</publishTime>
     </File>
     <File Include="bin/ModelCMS.dll">
-      <publishTime>02/24/2017 22:31:12</publishTime>
+      <publishTime>02/28/2017 00:32:33</publishTime>
     </File>
     <File Include="bin/MongoDB.Bson.dll">
       <publishTime>11/21/2016 21:51:21</publishTime>
@@ -843,8 +849,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/21/2016 21:52:01</publishTime>
     </File>
+    <File Include="bin/OfficeHelper.dll">
+      <publishTime>06/26/2014 17:15:54</publishTime>
+    </File>
     <File Include="bin/PlaceMapADM.dll">
-      <publishTime>02/24/2017 22:44:41</publishTime>
+      <publishTime>02/28/2017 00:32:36</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>11/21/2016 21:52:01</publishTime>
@@ -922,7 +931,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:27</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>02/07/2017 23:22:11</publishTime>
+      <publishTime>02/27/2017 23:49:55</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>11/21/2016 21:51:38</publishTime>
@@ -976,7 +985,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:28</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>02/14/2017 22:12:52</publishTime>
+      <publishTime>02/27/2017 21:21:29</publishTime>
     </File>
     <File Include="Views/Account/Index.cshtml">
       <publishTime>01/03/2017 00:01:22</publishTime>
@@ -991,10 +1000,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/24/2017 21:32:49</publishTime>
     </File>
     <File Include="Views/Localtion/Index.cshtml">
-      <publishTime>02/14/2017 21:49:30</publishTime>
+      <publishTime>02/27/2017 23:20:03</publishTime>
     </File>
     <File Include="Views/LocaltionCheckin/Index.cshtml">
       <publishTime>02/11/2017 00:42:39</publishTime>
+    </File>
+    <File Include="Views/LocaltionStatus/Index.cshtml">
+      <publishTime>02/27/2017 21:21:29</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
       <publishTime>11/21/2016 21:51:28</publishTime>
@@ -1021,7 +1033,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:28</publishTime>
     </File>
     <File Include="Views/Shared/_SlidebarMenu.cshtml">
-      <publishTime>02/14/2017 22:07:17</publishTime>
+      <publishTime>02/27/2017 21:21:29</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/21/2016 21:51:28</publishTime>
