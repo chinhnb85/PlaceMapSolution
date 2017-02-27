@@ -37,7 +37,9 @@ namespace ModelCMS.Localtion
 
         public DateTime? CreatedDate { get; set; }
 
-        public bool? Status { get; set; }
+        public int? Status { get; set; }
+
+        public string StatusName { get; set; }
 
         public string UserName { get; set; }
 

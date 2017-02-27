@@ -193,6 +193,15 @@ table #listAllAccount tr{ cursor: pointer;}
     font-weight:700;
     color:#53a93f;
 }
+.statusname{
+    width:100%;
+    padding-left:75px;
+    display:block;   
+    color:#888;
+    font-size:11px;
+    margin-bottom: 0; 
+    line-height: 16px;
+}
 .mapaddress{
     width:100%;
     /*padding-left:75px;*/

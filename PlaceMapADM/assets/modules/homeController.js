@@ -228,6 +228,7 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
         map: map,
         draggable: false
     });
+    var prev_infowindow = false;
     marker.addListener('click', function () {
         if (marker.getAnimation() !== null) {
             marker.setAnimation(null);
@@ -242,12 +243,19 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
             '<p class="maptitle">' + data.Name + '</p>'+
             '<p class="maplaglng">Khách hàng(<b>'+((data.CustomeType==2)?"Bán lẻ":"Bán buôn")+'</b>) - Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
             '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
-            '<p class="checkeddate">Trạng thái: ' + isCheckedName + '</p>' +
+            '<p class="checkeddate">Tình trạng: ' + isCheckedName + '</p>' +
+            '<p class="statusname">Trạng thái: ' + data.StatusName + '</p>' +
             '<p class="mapaddress">Đ/c: ' + data.Address +'</p>';
 
         var infowindow = new google.maps.InfoWindow({
             content: contentString
-        });
+        });        
+        
+        if (prev_infowindow) {
+            prev_infowindow.close();
+        }
+
+        prev_infowindow = infowindow;
         infowindow.open(map, marker);
     });
 
@@ -487,7 +495,7 @@ CmsShop.Home.LoadAllLocaltionByUser = function (accountId, map, callback) {
                     var isCheckedName = "Chưa checked"
                     if (item.IsCheck) {
                         isChecked = "checked";
-                        isCheckedName = "Đã checked lúc " + logisticJs.dateFormatJson2(item.CheckDate)
+                        isCheckedName = "Đã checked lúc " + logisticJs.dateFormatJson2(item.CheckDate);
                     }
                     var avatar = "/assets/img/avatars/no-avatar.gif";
                     if (item.Avatar != "" && item.Avatar!=null) {

@@ -65,7 +65,7 @@ namespace PlaceMapADM.Excel
                         item.CreatedDate.Value.ToString("dd/MM/yyyy"),
                         item.RepresentActive ?? "",
                         item.MinCheckin ?? 0,
-                        item.Status ?? false,
+                        item.Status ?? 0,
                         item.CountCheckIn ?? 0,
                         ""
                     } : null));

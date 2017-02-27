@@ -95,3 +95,163 @@ BEGIN
 	SET NOCOUNT ON;    
 	select * from LocaltionStatus where Id=@Id
 END
+go
+
+--new 27022017 23h
+ALTER PROCEDURE [dbo].[Sp_Localtion_Insert] 	
+	@AccountId int,
+	@ProvinceId int,
+	@DistrictId int,
+	@CustomeType int,
+ 	@Name nvarchar(50),
+ 	@Lag varchar(50),
+ 	@Lng varchar(50),
+ 	@Email varchar(50),
+ 	@Phone varchar(50),
+ 	@Address nvarchar(250),  	
+	@Avatar varchar(250),	
+	@Status int,
+	@Code nvarchar(50),
+ 	@RepresentActive nvarchar(50),
+	@MinCheckin int,
+	@StatusEdit bit,
+ 	@Id int output
+AS
+BEGIN		
+	SET NOCOUNT ON;    
+	INSERT INTO Localtion(AccountId,ProvinceId,DistrictId,CustomeType, Name,Lag,Lng,Email,Phone,Address,Avatar,Status,Code,RepresentActive,MinCheckin,StatusEdit) 
+	values(@AccountId,@ProvinceId, @DistrictId,@CustomeType, @Name,@Lag,@Lng,@Email,@Phone,@Address,@Avatar,@Status,@Code,@RepresentActive,@MinCheckin,@StatusEdit)
+	set @Id=SCOPE_IDENTITY()
+END
+
+GO
+ALTER PROCEDURE [dbo].[Sp_Localtion_Update]
+	@AccountId int,
+	@ProvinceId int,
+	@DistrictId int,
+	@CustomeType int,
+ 	@Name nvarchar(50),
+ 	@Lag varchar(50),
+ 	@Lng varchar(50),
+ 	@Email varchar(50),
+ 	@Phone varchar(50),
+ 	@Address nvarchar(250),  	
+	@Avatar varchar(250),	
+	@Status int,
+	@Code nvarchar(50),
+ 	@RepresentActive nvarchar(50),
+	@MinCheckin int,
+	@StatusEdit bit,
+ 	@Id int
+AS
+BEGIN	
+	SET NOCOUNT ON;    
+	Update Localtion set AccountId=@AccountId,ProvinceId=@ProvinceId,DistrictId=@DistrictId, 
+						CustomeType=@CustomeType, Name=@Name,Lag=@Lag,Lng=@Lng,Email=@Email,
+						Status=@Status, Phone=@Phone,Address=@Address,Avatar=@Avatar,Code=@Code,RepresentActive=@RepresentActive,
+						MinCheckin=@MinCheckin,StatusEdit=@StatusEdit												
+	where Id=@Id		
+END
+
+GO
+ALTER procedure [dbo].[Sp_Localtion_ListAllPaging]
+
+(
+@AccountId int,
+@parentId int,
+@provinceId int,
+@KeySearch nvarchar(250),
+@pageIndex int,
+@pageSize int,
+@sortColumn varchar(50),
+@sortDesc varchar(50),
+@totalRow int output
+)
+
+as
+
+set nocount on
+
+IF(@KeySearch <> '')BEGIN
+		SET @KeySearch = '%' + @KeySearch + '%'
+	END
+
+DECLARE @UpperBand int, @LowerBand int
+
+SELECT @totalRow = COUNT(*) FROM Localtion L left join Account A on L.AccountId=A.Id
+where (@KeySearch='' or (@KeySearch<>'' and L.Name like @KeySearch) 
+					or (@KeySearch<>'' and L.Email like @KeySearch) 
+					or (@KeySearch<>'' and L.Phone like @KeySearch))
+					and (@AccountId=0 or (@AccountId<>0 and L.AccountId=@AccountId))	
+					and (@parentId=0 or (@parentId<>0 and A.ParentId=@parentId))
+					and (@provinceId=0 or (@provinceId<>0 and A.ProvinceId=@provinceId))				
+
+SET @LowerBand  = (@pageIndex - 1) * @PageSize
+SET @UpperBand  = (@pageIndex * @PageSize)
+SELECT * FROM (
+SELECT L.*,A.UserName,LS.Name as StatusName,ROW_NUMBER() OVER(ORDER BY L.Id DESC) AS RowNumber 
+FROM Localtion L 
+left join Account A on L.AccountId=A.Id
+left join LocaltionStatus LS on L.Status=LS.Id
+where (@KeySearch='' or (@KeySearch<>'' and L.Name like @KeySearch) 
+					or (@KeySearch<>'' and L.Email like @KeySearch) 
+					or (@KeySearch<>'' and L.Phone like @KeySearch))
+					and (@AccountId=0 or (@AccountId<>0 and L.AccountId=@AccountId))
+					and (@parentId=0 or (@parentId<>0 and A.ParentId=@parentId))
+					and (@provinceId=0 or (@provinceId<>0 and A.ProvinceId=@provinceId))
+) AS temp
+WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand
+
+GO
+ALTER procedure [dbo].[Sp_Localtion_ListAllPagingByStatus]
+
+(
+@AccountId int,
+@parentId int,
+@provinceId int,
+@KeySearch nvarchar(250),
+@pageIndex int,
+@pageSize int,
+@sortColumn varchar(50),
+@sortDesc varchar(50),
+@totalRow int output
+)
+
+as
+
+set nocount on
+
+IF(@KeySearch <> '')BEGIN
+		SET @KeySearch = '%' + @KeySearch + '%'
+	END
+
+DECLARE @UpperBand int, @LowerBand int
+
+SELECT @totalRow = COUNT(*) FROM Localtion L left join Account A on L.AccountId=A.Id
+where (@KeySearch='' or (@KeySearch<>'' and L.Name like @KeySearch) 
+					or (@KeySearch<>'' and L.Email like @KeySearch) 
+					or (@KeySearch<>'' and L.Phone like @KeySearch))
+					and (@AccountId=0 or (@AccountId<>0 and AccountId=@AccountId))
+					and (L.Status=1)		
+					and (@parentId=0 or (@parentId<>0 and A.ParentId=@parentId))
+					and (@provinceId=0 or (@provinceId<>0 and A.ProvinceId=@provinceId))			
+
+SET @LowerBand  = (@pageIndex - 1) * @PageSize
+SET @UpperBand  = (@pageIndex * @PageSize)
+SELECT * FROM (
+SELECT *,ROW_NUMBER() OVER(ORDER BY Id DESC) AS RowNumber FROM (
+SELECT DISTINCT L.*,A.UserName,C.IsCheck,C.[Datetime] as CheckDate,LS.Name as StatusName 
+FROM Localtion L 
+left join Account A on L.AccountId=A.Id
+left join LocaltionStatus LS on L.Status=LS.Id
+left join LocaltionAccountCheck C on L.AccountId=C.AccountId and L.Id=C.LocaltionId and (C.Datetime >= CAST(CURRENT_TIMESTAMP AS DATE) and C.Datetime < DATEADD(DD, 1, CAST(CURRENT_TIMESTAMP AS DATE)))
+where (@KeySearch='' or (@KeySearch<>'' and L.Name like @KeySearch) 
+					or (@KeySearch<>'' and L.Email like @KeySearch) 
+					or (@KeySearch<>'' and L.Phone like @KeySearch))
+					and (@AccountId=0 or (@AccountId<>0 and L.AccountId=@AccountId))
+					and (L.Status=1)
+					and (@parentId=0 or (@parentId<>0 and A.ParentId=@parentId))
+					and (@provinceId=0 or (@provinceId<>0 and A.ProvinceId=@provinceId))
+) AS temp
+) AS temp
+WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand

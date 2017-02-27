@@ -59,6 +59,10 @@ CmsShop.Localtion.Init = function () {
         $("#sltProvinceSearch").select2();
     });
 
+    p.LoadAllLocaltionStatus(function() {
+        $("#sltLocaltionStatus").select2();
+    });
+
     $("#sltCustomeType").select2();
 
     p.LoadAllLocaltion(function () {
@@ -237,7 +241,8 @@ CmsShop.Localtion.EditLocaltion = function (id) {
                 $("#txtAvatar").val(avatar);                
                 $('#imgViewAvatar').attr('href', avatar);
                 $('#imgViewAvatar img').attr('src', avatar);
-                $("#cbxStatus").prop('checked', response.Data.Status);
+                //$("#cbxStatus").prop('checked', response.Data.Status);
+                $("#sltLocaltionStatus").val(response.Data.Status).trigger("change");
                 $("#cbxStatusEdit").prop('checked', response.Data.StatusEdit);
                 $("#btnSaveLocaltion").attr('data-id', response.Data.Id);
                 $("#hdLocaltionId").val(response.Data.Id);
@@ -340,12 +345,10 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
         success: function (response) {
             if (response.status == true && response.totalCount > 0) {                
                 var template = $("#package-data").html();
-                var render = "";                
+                var render = "";            
+                
                 $.each(response.Data, function (i, item) {
-                    var statusloc = "";
-                    if (item.Status) {
-                        statusloc = "checked";
-                    }
+                    
                     var statuseditloc = "";
                     if (item.StatusEdit) {
                         statuseditloc = "checked";
@@ -360,7 +363,7 @@ CmsShop.Localtion.LoadAllLocaltion = function (callback) {
                     }
                     render += Mustache.render(template, {
                         stt: i+1, id: item.Id, name: item.Name, userName: item.UserName, 
-                        avatar: avatar, statusLoc: statusloc, createdDate: createddate,
+                        avatar: avatar, statusName: item.StatusName, createdDate: createddate,
                         accountId: item.AccountId, lag: item.Lag, lng: item.Lng, code: item.Code,
                         statusEditLoc: statuseditloc, minCheckin: item.MinCheckin
                     });                    
@@ -486,7 +489,8 @@ CmsShop.Localtion.EmptyLocaltion = function() {
     $("#txtMinCheckin").val('');
     $('#imgViewAvatar').attr('href', '/assets/img/avatars/no-avatar.gif');
     $('#imgViewAvatar img').attr('src', '/assets/img/avatars/no-avatar.gif');
-    $("#cbxStatus").prop('checked', true);
+    //$("#cbxStatus").prop('checked', true);
+    $("#sltLocaltionStatus").val(1).trigger('change');
     $("#cbxStatusEdit").prop('checked', false);
     $("#btnSaveLocaltion").attr('data-id', 0);
     $("#hdLocaltionId").val(0);
@@ -646,6 +650,43 @@ CmsShop.Localtion.ViewDetailLocaltionNow = function (id, callback) {
         },
         error: function (status) {
             logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.Localtion.LoadAllLocaltionStatus = function (callback) {
+
+    var dataparam = {};
+
+    $.ajax({
+        type: "GET",
+        url: "/LocaltionStatus/ListAll",
+        data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true && response.totalCount > 0) {
+                var template = $("#data-list-localtionstatus").html();
+                var render = "";
+                $.each(response.Data, function (i, item) {
+                    render += Mustache.render(template, {
+                        id: item.Id, name: item.Name
+                    });
+                });                
+                if (render != undefined) {
+                    $("#sltLocaltionStatus").append(render);
+                }
+            }
+            //logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
         }
     });
 };

@@ -39,7 +39,7 @@ namespace PlaceMapADM.Controllers
                 var code = collection["txtCode"];
                 var representActive = collection["txtRepresentActive"];
                 var minCheckin = int.Parse(collection["txtMinCheckin"]);
-                var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
+                var status = int.Parse(collection["sltLocaltionStatus"]);//(collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
                 var statusEdit = (collection["cbxStatusEdit"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
                 var localtion = new LocaltionEntity
                 {                    
@@ -100,7 +100,7 @@ namespace PlaceMapADM.Controllers
                 var email = collection["txtEmail"];
                 var address = collection["txtAddress"];
                 var phone = collection["txtPhone"];
-                var status = (collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
+                var status = int.Parse(collection["sltLocaltionStatus"]);//(collection["cbxStatus"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
                 var statusEdit = (collection["cbxStatusEdit"] ?? "").Equals("on", StringComparison.CurrentCultureIgnoreCase);
                 var localtion = new LocaltionEntity
                 {
