@@ -7,7 +7,7 @@ CmsShop.Home = {
     pageIndex: 1,
     keySearch: '',
     type: 2,
-    pageSizeLocaltion: 50,
+    pageSizeLocaltion: 500,
     pageIndexLocaltion: 1,
     keySearchLocaltion: '',
     currentUserId: 0,

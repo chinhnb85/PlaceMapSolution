@@ -1,3 +1,14 @@
+go
+
+CREATE TABLE [dbo].[LocaltionStatus](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_LocaltionStatus] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
 GO
 
 CREATE PROCEDURE [dbo].[Sp_LocaltionStatus_Delete] 	
@@ -10,12 +21,14 @@ END
 
 GO
 CREATE PROCEDURE [dbo].[Sp_LocaltionStatus_Insert] 	
- 	@Name nvarchar(50)
+ 	@Name nvarchar(50),
+	@Id int output
 AS
 BEGIN	
 	SET NOCOUNT ON;    
 	INSERT INTO LocaltionStatus(Name) 
 	values(@Name)	
+	set @Id=SCOPE_IDENTITY()
 END
 
 GO
