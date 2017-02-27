@@ -255,3 +255,27 @@ where (@KeySearch='' or (@KeySearch<>'' and L.Name like @KeySearch)
 ) AS temp
 ) AS temp
 WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand
+
+GO
+-- =============================================
+-- Author: chinhnb
+-- Create date: 10/08/2016
+-- Description:	
+-- =============================================
+CREATE procedure [dbo].[Sp_Localtion_ListAllByAccountIdAndStatus] --2
+
+(
+@AccountId int,
+@totalRow int output
+)
+
+as
+
+set nocount on
+
+SELECT @totalRow = COUNT(*) FROM Localtion where (@AccountId=0 or (@AccountId<>0 and AccountId=@AccountId)) and (Status=1)					
+
+SELECT DISTINCT L.*,'http://103.47.192.100:8888'+ case when L.Avatar is null then '/assets/img/avatars/no-avatar.gif' else L.Avatar end as Avatar,A.UserName,C.IsCheck
+FROM Localtion L left join Account A on L.AccountId=A.Id
+					left join LocaltionAccountCheck C on L.AccountId=C.AccountId and L.Id=C.LocaltionId and (C.Datetime >= CAST(CURRENT_TIMESTAMP AS DATE) and C.Datetime < DATEADD(DD, 1, CAST(CURRENT_TIMESTAMP AS DATE)))
+where (@AccountId=0 or (@AccountId<>0 and L.AccountId=@AccountId)) and (L.Status<>1)

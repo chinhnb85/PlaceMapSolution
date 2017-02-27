@@ -47,6 +47,25 @@ namespace PlaceMapADM.Controllers.ApiControllers
         }
 
         [HttpPost]
+        public object GetListLocaltionByAccountIdAndStatus(AccountEntity acc)
+        {
+            var total = 0;
+            var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+            var data = ipl.ListAllByAccountIdAndStatus(acc.Id, ref total);
+            if (data != null && data.Count > 0)
+            {
+                foreach (LocaltionEntity objEntity in data)
+                {
+                    var countCheckIn = 0;
+                    if (ipl.GetCountCheckIn(objEntity.Id, ref countCheckIn))
+                        objEntity.CountCheckIn = countCheckIn;
+                }
+                return Json(new { status = true, message = "Success.", Total = total, Data = data });
+            }
+            return Json(new { status = false, message = "Không có bản ghi nào.", Data = data });
+        }
+
+        [HttpPost]
         public object CheckedLocaltion(LocaltionEntity loc)
         {
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
