@@ -43,6 +43,9 @@
     <Compile Include="AccountPlace\IAccountPlace.cs" />
     <Compile Include="AccountPlace\IplAccountPlace.cs" />
     <Compile Include="AccountPlace\AccountPlaceEntity.cs" />
+    <Compile Include="LocaltionStatus\IplLocaltionStatus.cs" />
+    <Compile Include="LocaltionStatus\ILocaltionStatus.cs" />
+    <Compile Include="LocaltionStatus\LocaltionStatusEntity.cs" />
     <Compile Include="Province\ProvinceEntity.cs" />
     <Compile Include="Province\IProvince.cs" />
     <Compile Include="Province\IplProvince.cs" />
