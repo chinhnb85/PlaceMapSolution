@@ -169,6 +169,7 @@ CmsShop.MapProvince.AddMarker = function (location, data, image, map) {
         map: map,
         draggable: false
     });
+    var prev_infowindow = false;
     marker.addListener('click', function () {
         if (marker.getAnimation() !== null) {
             marker.setAnimation(null);
@@ -189,6 +190,10 @@ CmsShop.MapProvince.AddMarker = function (location, data, image, map) {
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
+        if (prev_infowindow) {
+            prev_infowindow.close();
+        }
+        prev_infowindow = infowindow;
         infowindow.open(map, marker);
     });
 

@@ -249,12 +249,10 @@ CmsShop.Home.AddMarker = function (location, data, image, map) {
 
         var infowindow = new google.maps.InfoWindow({
             content: contentString
-        });        
-        
+        });                
         if (prev_infowindow) {
             prev_infowindow.close();
         }
-
         prev_infowindow = infowindow;
         infowindow.open(map, marker);
     });
