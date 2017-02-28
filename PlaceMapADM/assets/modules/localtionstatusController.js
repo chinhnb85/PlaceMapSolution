@@ -146,6 +146,12 @@ CmsShop.LocaltionStatus.EditLocaltionStatus = function (id) {
 
 CmsShop.LocaltionStatus.DeleteLocaltionStatus = function (id) {
     var p = this;
+    if (id == 1 || id == 2) {
+        logisticJs.msgWarning({
+            text:'Trạng thái này không xóa được.'
+        });
+        return;
+    }
     logisticJs.msgConfirm({        
         text: 'Bạn có chắc muốn xóa trạng thái này?'
     }, function () {
