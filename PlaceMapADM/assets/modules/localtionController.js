@@ -486,7 +486,7 @@ CmsShop.Localtion.EmptyLocaltion = function() {
     $("#txtAvatar").val('');
     $("#txtCode").val('');
     $("#txtRepresentActive").val('');
-    $("#txtMinCheckin").val('');
+    $("#txtMinCheckin").val(30);
     $('#imgViewAvatar').attr('href', '/assets/img/avatars/no-avatar.gif');
     $('#imgViewAvatar img').attr('src', '/assets/img/avatars/no-avatar.gif');
     //$("#cbxStatus").prop('checked', true);
