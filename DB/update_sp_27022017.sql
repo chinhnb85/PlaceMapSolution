@@ -377,3 +377,71 @@ BEGIN
 	left join LocaltionAccountCheck C on L.AccountId=C.AccountId and L.Id=C.LocaltionId and (C.Datetime >= CAST(CURRENT_TIMESTAMP AS DATE) and C.Datetime < DATEADD(DD, 1, CAST(CURRENT_TIMESTAMP AS DATE)))
 	where L.Id=@Id
 END
+
+--update 04/03/2017
+
+GO
+ALTER PROCEDURE [dbo].[Sp_Localtion_ViewDetailLocaltionNow] 	 	
+	@Id int
+AS
+BEGIN	
+	SET NOCOUNT ON;    
+	select top(1) L.*,case when L.Avatar is null then '/assets/img/avatars/no-avatar.gif' else L.Avatar end as Avatar,A.UserName,C.IsCheck,C.[Datetime] as CheckDate,LS.Name as StatusName
+	from Localtion L 
+	left join Account A on L.AccountId=A.Id
+	left join LocaltionStatus LS on L.Status=LS.Id
+	left join LocaltionAccountCheck C on L.AccountId=C.AccountId and L.Id=C.LocaltionId and (C.Datetime >= CAST(CURRENT_TIMESTAMP AS DATE) and C.Datetime < DATEADD(DD, 1, CAST(CURRENT_TIMESTAMP AS DATE)))
+	where L.Id=@Id
+END
+
+GO
+-- =============================================
+-- Author: chinhnb
+-- Create date: 10/08/2016
+-- Description:	
+-- =============================================
+ALTER procedure [dbo].[Sp_Localtion_ListAllByAccountId] --2
+
+(
+@AccountId int,
+@totalRow int output
+)
+
+as
+
+set nocount on
+
+SELECT @totalRow = COUNT(*) FROM Localtion where (@AccountId=0 or (@AccountId<>0 and AccountId=@AccountId)) and (Status=1)					
+
+SELECT DISTINCT L.*,case when L.Avatar is null then '/assets/img/avatars/no-avatar.gif' else L.Avatar end as Avatar,A.UserName,C.IsCheck,LS.Name as StatusName
+FROM Localtion L 
+left join Account A on L.AccountId=A.Id
+left join LocaltionStatus LS on L.Status=LS.Id
+left join LocaltionAccountCheck C on L.AccountId=C.AccountId and L.Id=C.LocaltionId and (C.Datetime >= CAST(CURRENT_TIMESTAMP AS DATE) and C.Datetime < DATEADD(DD, 1, CAST(CURRENT_TIMESTAMP AS DATE)))
+where (@AccountId=0 or (@AccountId<>0 and L.AccountId=@AccountId)) and (L.Status=1)
+
+GO
+-- =============================================
+-- Author: chinhnb
+-- Create date: 10/08/2016
+-- Description:	
+-- =============================================
+ALTER procedure [dbo].[Sp_Localtion_ListAllByAccountIdAndStatus] --2
+
+(
+@AccountId int,
+@totalRow int output
+)
+
+as
+
+set nocount on
+
+SELECT @totalRow = COUNT(*) FROM Localtion where (@AccountId=0 or (@AccountId<>0 and AccountId=@AccountId)) and (Status<>2)					
+
+SELECT DISTINCT L.*,case when L.Avatar is null then '/assets/img/avatars/no-avatar.gif' else L.Avatar end as Avatar,A.UserName,C.IsCheck,LS.Name as StatusName
+FROM Localtion L 
+left join Account A on L.AccountId=A.Id
+left join LocaltionStatus LS on L.Status=LS.Id
+left join LocaltionAccountCheck C on L.AccountId=C.AccountId and L.Id=C.LocaltionId and (C.Datetime >= CAST(CURRENT_TIMESTAMP AS DATE) and C.Datetime < DATEADD(DD, 1, CAST(CURRENT_TIMESTAMP AS DATE)))
+where (@AccountId=0 or (@AccountId<>0 and L.AccountId=@AccountId)) and (L.Status<>2)
