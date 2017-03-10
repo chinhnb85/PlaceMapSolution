@@ -101,7 +101,10 @@ namespace PlaceMapADM.Controllers.ApiControllers
         [HttpPost]
         public object AddNewLocaltion(LocaltionEntity localtion)
         {
-            if (localtion != null) { localtion.Status = 1; }
+            if (localtion != null) {
+                localtion.Status = 1;
+                localtion.MinCheckin = 3;
+            }
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
             var id = ipl.Insert(localtion);
             if (id != 0)
@@ -115,7 +118,11 @@ namespace PlaceMapADM.Controllers.ApiControllers
         [HttpPost]
         public object EditLocaltion(LocaltionEntity localtion)
         {
-            if (localtion != null) { localtion.Status = 1; }
+            if (localtion != null)
+            {
+                localtion.Status = 1;
+                localtion.MinCheckin = 3;
+            }
             var ipl = SingletonIpl.GetInstance<IplLocaltion>();
             var id = ipl.EditLocaltion(localtion);
             if (id)
