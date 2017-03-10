@@ -616,7 +616,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/11/2017 00:58:17</publishTime>
     </File>
     <File Include="assets/modules/localtionController.js">
-      <publishTime>03/01/2017 22:03:25</publishTime>
+      <publishTime>03/07/2017 21:23:16</publishTime>
     </File>
     <File Include="assets/modules/localtionstatusController.js">
       <publishTime>02/28/2017 21:48:49</publishTime>
@@ -853,7 +853,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/26/2014 17:15:54</publishTime>
     </File>
     <File Include="bin/PlaceMapADM.dll">
-      <publishTime>03/01/2017 22:18:51</publishTime>
+      <publishTime>03/07/2017 21:29:23</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>11/21/2016 21:52:01</publishTime>

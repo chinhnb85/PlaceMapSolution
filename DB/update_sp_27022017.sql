@@ -1,4 +1,4 @@
-go
+﻿go
 
 CREATE TABLE [dbo].[LocaltionStatus](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -445,3 +445,61 @@ left join Account A on L.AccountId=A.Id
 left join LocaltionStatus LS on L.Status=LS.Id
 left join LocaltionAccountCheck C on L.AccountId=C.AccountId and L.Id=C.LocaltionId and (C.Datetime >= CAST(CURRENT_TIMESTAMP AS DATE) and C.Datetime < DATEADD(DD, 1, CAST(CURRENT_TIMESTAMP AS DATE)))
 where (@AccountId=0 or (@AccountId<>0 and L.AccountId=@AccountId)) and (L.Status<>2)
+
+go
+--update 10032017 23h
+ALTER PROCEDURE [dbo].[Sp_Localtion_Insert]
+	@AccountId int,
+	@ProvinceId int,
+	@DistrictId int,
+	@CustomeType int,
+ 	@Name nvarchar(50),
+ 	@Lag varchar(50),
+ 	@Lng varchar(50),
+ 	@Email varchar(50),
+ 	@Phone varchar(50),
+ 	@Address nvarchar(250),  	
+	@Avatar varchar(250),	
+	@Status int,
+	@Code nvarchar(50),
+ 	@RepresentActive nvarchar(50),
+	@MinCheckin int,
+	@StatusEdit bit,
+ 	@Id int output
+AS
+BEGIN		
+	SET NOCOUNT ON;  
+	if((select count(*) from Localtion where Name=@Name and Lag=@Lag and Lng=@Lng)=0) 
+		BEGIN 
+		INSERT INTO Localtion(AccountId,ProvinceId,DistrictId,CustomeType, Name,Lag,Lng,Email,Phone,Address,Avatar,Status,Code,RepresentActive,MinCheckin,StatusEdit) 
+		values(@AccountId,@ProvinceId, @DistrictId,@CustomeType, @Name,@Lag,@Lng,@Email,@Phone,@Address,@Avatar,@Status,@Code,@RepresentActive,@MinCheckin,@StatusEdit)
+		set @Id=SCOPE_IDENTITY()
+		END
+	else
+		BEGIN
+		set @Id=0
+		END
+END
+
+--declare @Id int
+--exec [dbo].[Sp_Localtion_Insert] 2,1,9,0,'134/15 Quan Nhân','21.1124912','105.7174682','abc@123.com','1323656566','134/15 Quan Nhân, Thanh Xuân, Hà Nội, Việt Nam','/Upload/Localtion/IMG_20170211_001334_78.jpg',1,'C00000001233','Anh K',3,1,@Id out
+--select @Id
+
+go
+ALTER procedure [dbo].[Sp_AccountPlace_ListAllByAccountIdAndDatetime]
+
+(
+@AccountId int,
+@Datetime datetime,
+@totalRow int output
+)
+
+as
+BEGIN
+	SET NOCOUNT ON;
+	SELECT @totalRow = COUNT(*) FROM AccountPlace where (AccountId=@AccountId) and (cast([Datetime] as date)=cast(@Datetime as date))
+
+	SELECT DISTINCT L.*
+	FROM AccountPlace L left join Account A on L.AccountId=A.Id					
+	where (L.AccountId=@AccountId) and (cast([Datetime] as date)=cast(@Datetime as date)) and (Lag<>'0.0' or Lng<>'0.0')
+END
