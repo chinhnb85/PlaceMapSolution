@@ -1,480 +1,232 @@
 ﻿if (typeof (CmsShop) == "undefined") CmsShop = {};
 if (typeof (CmsShop.AccountTransfer) == "undefined") CmsShop.AccountTransfer = {};
 
-CmsShop.AccountTransfer = {
-    markers: [],
-    pageSize: 20,
-    pageIndex: 1,
-    keySearch: '',
+CmsShop.AccountTransfer = {    
+    pageSizeA: 20,
+    pageIndexA: 1,
+    keySearchA: '',
     type: 2,
-    pageSizeLocaltion: 500,
-    pageIndexLocaltion: 1,
-    keySearchLocaltion: '',
-    currentUserId: 0,
+    pageSizeB: 20,
+    pageIndexB: 1,
+    keySearchB: '',
+    userIdA: 0,
+    userIdB: 0,
     parentId: 0,
     provinceId: 0,
-    params: {}
+    listSelectChecked: []
 };
 
 CmsShop.AccountTransfer.Init = function () {
     var p = this;    
 
     logisticJs.activeMenuSidebar('/');
-};
 
-CmsShop.AccountTransfer.InitMap = function () {
-    var p = this;
-
-    if (location.search) {
-        var parts = location.search.substring(1).split('&');
-
-        for (var i = 0; i < parts.length; i++) {
-            var nv = parts[i].split('=');
-            if (!nv[0]) continue;
-            p.params[nv[0]] = nv[1] || true;
-        }
-    }
-
-    var $maps = $('#maps');
-    var $widgetbodyuser = $('#widget-body-user');
-    var $widgetbodymap = $('#widget-body-map');
-    $maps.css({ height: $(window).height() - 95 });
-    $widgetbodyuser.css({ height: $(window).height() - 95 });
-    $widgetbodymap.css({ height: $(window).height() - 95 });    
-   
-    var styledMapType = new google.maps.StyledMapType(
-            [
-              {
-                  "featureType": "administrative",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                  ]
-              },
-              {
-                  "featureType": "administrative.land_parcel",
-                  "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                  ]
-              },
-              {
-                  "featureType": "administrative.neighborhood",
-                  "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                  ]
-              },
-              {
-                  "featureType": "poi",
-                  "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                  ]
-              },
-              {
-                  "featureType": "road",
-                  "elementType": "labels",
-                  "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                  ]
-              },
-              {
-                  "featureType": "road",
-                  "elementType": "labels.icon",
-                  "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                  ]
-              },
-              {
-                  "featureType": "transit",
-                  "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                  ]
-              },
-              {
-                  "featureType": "water",
-                  "elementType": "labels.text",
-                  "stylers": [
-                    {
-                        "visibility": "off"
-                    }
-                  ]
-              }
-            ],
-            { name: 'Styled Map' });
-    
-    var lag = (p.params.lag == undefined) ? 21.0026 : p.params.lag;
-    var lng = (p.params.lng == undefined) ? 105.8056 : p.params.lng;
-
-    var myLatLng = new google.maps.LatLng(lag, lng);
-    var mapOptions = {
-        zoom: 13,
-        center: myLatLng,
-        //mapTypeId: 'styled_map',//['roadmap', 'styled_map'],//google.maps.MapTypeId.ROADMAP,
-        streetViewControl: true
-    };
-    var map = new google.maps.Map($maps[0], mapOptions);
-
-    map.mapTypes.set('styled_map', styledMapType);
-    map.setMapTypeId('styled_map');
-    
-    //var image = {
-    //    url: '/assets/img/iconm.png',
-    //    size: new google.maps.Size(20, 32),
-    //    origin: new google.maps.Point(0, 0),
-    //    anchor: new google.maps.Point(0, 32)
-    //}    
-
-    //if (navigator.geolocation) {
-    //    navigator.geolocation.getCurrentPosition(function (position) {
-    //        var pos = {
-    //            lat: position.coords.latitude,
-    //            lng: position.coords.longitude
-    //        };            
-    //        var data = { Name: "Vị trí hiện tại" };
-    //        p.AddMarker(pos, data, 'currenticon', map);
-    //    }, function () {
-    //        //var infoWindow = new google.maps.InfoWindow({ map: map });
-    //        //p.HandleLocationError(true, infoWindow, map.getCenter());
-    //    });
-    //} else {
-    //    //var infoWindow = new google.maps.InfoWindow({ map: map });        
-    //    //p.HandleLocationError(false, infoWindow, map.getCenter());
-    //}    
-
-    p.GetAllAccountByStatus(map, function () {
-        p.GetViewCurrentAccountMap(map);
-    });
-};
-
-CmsShop.AccountTransfer.GetViewCurrentAccountMap = function (map) {
-    var p = this;
-
-    var accountId = (p.params.accountId == undefined) ? 0 : p.params.accountId;
-    var $this = $('table #listAllAccount tr[data-id="' + accountId + '"]');
-    $this.css({ 'background-color': '#f5f5f5' });
-    $this.attr('data-active', 1);
-
-    $('#btnAddLocaltionByUser').attr('data-user', $this.attr('data-id'));
-    p.currentUserId = accountId;
-
-    p.SetMapOnAll(null);        
-
-    if (p.currentUserId != 0) {
-        p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
-            $.each(data, function (i, item) {
-                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-                if (item.IsCheck) {
-                    p.AddMarker(myLatLng, item, 'checkedicon', map);
-                } else {
-                    if (item.CustomeType == 2) {
-                        p.AddMarker(myLatLng, item, 'default2', map);
-                    } else {
-                        p.AddMarker(myLatLng, item, 'default1', map);
-                    }
-                }
-            });
+    p.LoadAllAccountByType(function () {
+        $("#sltAccountA").select2();
+        $("#sltAccountB").select2();
+        p.LoadAllLocaltionByUserA(function() {
+            p.RegisterEvents();
         });
-    }
-}
-
-CmsShop.AccountTransfer.HandleLocationError = function (browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-                          'Không lấy được vị trí hiện tại.' :
-                          'Trình duyệt của bạn không được hỗ trợ.');
-};
-
-CmsShop.AccountTransfer.AddMarker = function (location, data, image, map) {
-    var p = this;
-
-    var currentIcon = {
-        path: google.maps.SymbolPath.CIRCLE,//'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-        fillColor: 'green',
-        fillOpacity: 0.5,
-        scale: 3,
-        strokeColor: 'green',
-        strokeWeight: 14
-    };    
-    if (image == 'default1') {
-        image = 'https://maps.gstatic.com/mapfiles/ms2/micons/red-dot.png';
-    }
-    if (image == 'default2') {
-        image = 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
-    }
-    if (image == 'checkedicon') {
-        image = 'https://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png';
-    }
-    if (image == 'currenticon') {
-        image = currentIcon;
-    }
-    var marker = new google.maps.Marker({
-        position: location,
-        label: '',
-        title: data.Name,
-        icon: image,
-        map: map,
-        draggable: false
-    });
-    var prev_infowindow = false;
-    marker.addListener('click', function () {
-        if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-        } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-        var isCheckedName = "<span class='unchecked'>Chưa checked" + "</span>";
-        if (data.IsCheck) {
-            isCheckedName = "<span class='checked'>Đã checked lúc: " + logisticJs.dateFormatJson2(data.CheckDate)+"</span>";
-        }
-        var contentString = '<img src="'+data.Avatar+'" class="mapimage" />'+
-            '<p class="maptitle">' + data.Name + '</p>'+
-            '<p class="maplaglng">Khách hàng(<b>'+((data.CustomeType==2)?"Bán lẻ":"Bán buôn")+'</b>) - Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
-            '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
-            '<p class="checkeddate">Tình trạng: ' + isCheckedName + '</p>' +
-            '<p class="statusname">Trạng thái: ' + data.StatusName + '</p>' +
-            '<p class="mapaddress">Đ/c: ' + data.Address +'</p>';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });                
-        if (prev_infowindow) {
-            prev_infowindow.close();
-        }
-        prev_infowindow = infowindow;
-        infowindow.open(map, marker);
+        p.LoadAllLocaltionByUserB();
     });
 
-    if (p.params.lag != undefined && p.params.lag == location.lat) {
-        if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-        } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-        var contentString = '<img src="' + data.Avatar + '" class="mapimage" />' +
-            '<p class="maptitle">' + data.Name + '</p>' +
-            '<p class="maplaglng">Khách hàng(<b>' + ((data.CustomeType == 2) ? "Bán lẻ" : "Bán buôn") + '</b>) - Vị trí: ' + data.Lag + " , " + data.Lng + '</p>' +
-            '<p class="mapphone">Điện thoại: ' + data.Phone + " - Email: " + data.Email + '</p>' +
-            '<p class="mapaddress">Đ/c: ' + data.Address + '</p>';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-        infowindow.open(map, marker);
-    }
-
-    if (data.Name != "Vị trí hiện tại")
-        p.markers.push(marker);
-        
+    p.RegisterEvents();
 };
 
-CmsShop.AccountTransfer.SetMapOnAll = function(map) {
-    var p = this;
+CmsShop.AccountTransfer.LoadAllAccountByType = function (callback) {
 
-    for (var i = 0; i < p.markers.length; i++) {
-        p.markers[i].setMap(map);
-    }
-};
-
-CmsShop.AccountTransfer.GetAllAccountByStatus = function(map,callback) {
-    var p = this;    
-
-    var dataparam = { type: p.type, keySearch: p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
+    var dataparam = { type: 2 };
 
     $.ajax({
         type: "GET",
-        url: "/Account/ListAllPagingByStatus",
+        url: "/Account/ListAllByType",
         data: dataparam,
         dataType: "json",
-        beforeSend: function() {
+        beforeSend: function () {
             //logisticJs.startLoading();
         },
-        success: function(response) {
+        success: function (response) {
             if (response.status == true && response.totalCount > 0) {
-                var template = $("#package-data").html();
+                var template = $("#data-list-account").html();
                 var render = "";
-                $.each(response.Data, function(i, item) {
+                $.each(response.Data, function (i, item) {
                     render += Mustache.render(template, {
-                        stt: i + 1,
-                        id: item.Id,
-                        displayName: item.DisplayName
+                        id: item.Id, displayName: item.DisplayName
                     });
                 });
                 if (render != undefined) {
-                    $("#listAllAccount").html(render);
+                    $("#sltAccountA").append(render);
+                    $("#sltAccountB").append(render);
                 }
-                p.RegisterEvents(map);
-
-                p.WrapPaging(response.totalCount, '#btnNext', '#btnPrevious', response.totalRow, function() {
-                    p.GetAllAccountByStatus(map);
-                });
-
-            } else {
-                $("#listAllAccount").html('');
             }
-            //logisticJs.stopLoading();  
+            //logisticJs.stopLoading();
+
             if (typeof (callback) == "function") {
                 callback();
             }
         },
-        error: function(status) {
+        error: function (status) {
             //logisticJs.stopLoading();
         }
     });
 };
 
-CmsShop.AccountTransfer.RegisterEvents = function(map) {
+CmsShop.AccountTransfer.RegisterEvents = function() {
     var p = this;
 
-    $('#btnPreviewListLocaltion').off('click').on('click', function () {
-        var $this = $(this);
-        if ($('i', $this).hasClass('fa-list')) {
-            $('#previewListLocaltion').show(500);
-            $('#maps').hide(500);
-            $('i', $this).addClass('fa-map-marker').removeClass('fa-list');
+    $("#sltAccountA").off("change").on("change", function () {
+        $('#cbxSelectedAllA').prop('checked', false);
+        p.listSelectChecked = [];
+        p.userIdA = $("#sltAccountA").val();
+        p.LoadAllLocaltionByUserA(function () {
+            p.RegisterEvents();
+        });
+    });
+
+    $("#sltAccountB").off("change").on("change", function () {
+        p.userIdB = $("#sltAccountB").val();
+        p.LoadAllLocaltionByUserB();
+    });
+
+    $('#cbxSelectedAllA').off('click').on('click', function () {        
+        if ($(this).is(":checked")) {            
+            $.each($(".cbxSelectedA"), function (i, item) {
+                if (!$(item).is(":checked")) {
+                    $(item).prop('checked', true);
+                    p.listSelectChecked.push($(item).attr('data-id'));
+                }
+            });
         } else {
-            $('#maps').show(500);
-            $('#previewListLocaltion').hide(500);
-            $('i', $this).addClass('fa-list').removeClass('fa-map-marker');
+            $.each($(".cbxSelectedA"), function (i, item) {
+                if ($(item).is(":checked")) {
+                    $(item).prop('checked', false);
+                    p.listSelectChecked.splice($.inArray($(this).attr('data-id'), p.listSelectChecked), 1);
+                }
+            });
         }
     });
-    //$('.maximize').off('click').on('click', function () {
-    //    var $this = $(this);
-    //    if ($('i', $this).hasClass('fa-compress')) {
-    //        $('#maps').css({ width: $(window).width(),height: $(window).height() - 40});
-    //    } else {
-    //        $('#maps').css({ width: $(window).width(), height: $(window).height() - 40 });
-    //    }
-    //});
 
-    $('table #listAllAccount tr').off('click').on('click', function() {
-        
-        $('table #listAllAccount tr[data-active="1"]').css({ 'background-color': '#fff' });
-        $('table #listAllAccount tr[data-active="1"]').attr('data-active', 0);
+    $('.cbxSelectedA').off('click').on('click', function () {
+        if ($(this).is(":checked")) {
+            $(this).prop('checked', true);
+            p.listSelectChecked.push($(this).attr('data-id'));
+        } else {
+            $(this).prop('checked', false);
+            p.listSelectChecked.splice($.inArray($(this).attr('data-id'), p.listSelectChecked), 1);
+        }
+    });
 
-        var $this = $(this);
-        $this.css({ 'background-color': '#f5f5f5' });
-        $this.attr('data-active', 1);
+    $('#btnUpdateLocaltionByUser').off('click').on('click', function () {
+        if (p.userIdA != 0 && p.userIdB != 0 && p.userIdA != p.userIdB && p.listSelectChecked.length>0) {
 
-        $('#btnAddLocaltionByUser').attr('data-user', $this.attr('data-id'));
-        p.currentUserId = $this.attr('data-id');
+            var dataparam = {isAll:false, userIdA: p.userIdA, userIdB: p.userIdB, listLocaltionId:p.listSelectChecked };
 
-        p.SetMapOnAll(null);        
-
-        p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
-            $.each(data, function (i, item) {
-                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-                if (item.IsCheck) {
-                    p.AddMarker(myLatLng, item, 'checkedicon', map);
-                } else {                    
-                    if (item.CustomeType == 2) {
-                        p.AddMarker(myLatLng, item, 'default2', map);
-                    } else {
-                        p.AddMarker(myLatLng, item, 'default1', map);
+            logisticJs.msgConfirm({
+                text: 'Bạn có chắc muốn điều chuyển?'
+            }, function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Localtion/UpdateLocaltionByAccountId",
+                    data: dataparam,
+                    dataType: "json",
+                    beforeSend: function () {
+                        logisticJs.startLoading();
+                    },
+                    success: function (response) {
+                        if (response.status) {
+                            p.LoadAllLocaltionByUserA(function() {
+                                p.RegisterEvents();
+                            });
+                            p.LoadAllLocaltionByUserB();
+                            logisticJs.msgShowSuccess({ titleHeader: 'Điều chuyển thành công.' });
+                        } else {
+                            logisticJs.msgWarning({
+                                text: "Việc điều chuyển tài khoản gặp lỗi.",
+                                modal: true
+                            });
+                        }
+                        logisticJs.stopLoading();
+                    },
+                    error: function (status) {
+                        logisticJs.stopLoading();
                     }
-                }
-            });
-            //move map to latlng
-            setTimeout(function () {
-                if (data.length > 0) {
-                    map.panTo(new google.maps.LatLng(parseFloat(data[0].Lag), parseFloat(data[0].Lng)));
-                }
-            }, 500);
-        });
-    });
-
-    $("#txtSearch").off("change keydown paste input").on("change keydown paste input", function () {
-        p.keySearch = $("#txtSearch").val();
-        if (p.keySearch == "" || p.keySearch.length > 2) {
-            p.pageIndex = 1;
-            p.GetAllAccountByStatus(map);
-        }
-    });
-
-    $("#txtSearchLocaltion").off("change keydown paste input").on("change keydown paste input", function () {
-        p.keySearchLocaltion = $("#txtSearchLocaltion").val();
-        if (p.keySearchLocaltion == "" || p.keySearchLocaltion.length > 2) {
-            p.pageIndexLocaltion = 1;
-            p.LoadAllLocaltionByUser(p.currentUserId, map);
-        }
-    });
-
-    $('#btnAddLocaltionByUser').off('click').on('click', function () {        
-        if (p.currentUserId != 0) {
-            $('#myModalLocaltion').modal('show');            
-        } else {
-            logisticJs.msgWarning({
-                text: "Chọn tài khoản trước khi thêm địa điểm."
-            });
-        }
-    });
-
-    $('#btnAddNewLocaltion').off('click').on('click', function () {
-
-        $("#insertlocaltion").validate({
-            rules: {                
-                txtName: { required: true },
-                txtLag: { required: true, number: true },
-                txtLng: { required: true, number: true }
-            },
-            errorElement: "span",
-            messages: {                
-                txtName: {
-                    required: "Nhập tên địa chỉ"
-                },
-                txtLag: {
-                    required: "Nhập kinh độ",
-                    number: "Chỉ cho phép nhập số"
-                },
-                txtLng: {
-                    required: "Nhập vĩ độ",
-                    number: "Chỉ cho phép nhập số"
-                }
-            }
-        });
-
-        $('#sltAccount').val(p.currentUserId);
-        
-        if ($("#insertlocaltion").valid()) {
-            
-            p.AddNewLocaltion("#insertlocaltion", function () {
-                $('#myModalLocaltion').modal('hide');
-                p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
-                    p.SetMapOnAll(null);
-                    $.each(data, function (i, item) {
-                        var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-                        if (item.IsCheck) {
-                            p.AddMarker(myLatLng, item, 'checkedicon', map);
-                        } else {                            
-                            if (item.CustomeType == 2) {
-                                p.AddMarker(myLatLng, item, 'default2', map);
-                            } else {
-                                p.AddMarker(myLatLng, item, 'default1', map);
-                            }
-                        }                            
-                    });
                 });
             });
+        } else if (p.listSelectChecked.length == 0) {
+            logisticJs.msgWarning({
+                text: "Chọn địa điểm cần điều chuyển."
+            });        
+        } else if (p.userIdA == 0) {
+            logisticJs.msgWarning({
+                text: "Chọn tài khoản điều chuyển bên A."
+            });
+        } else if (p.userIdB == 0) {
+            logisticJs.msgWarning({
+                text: "Chọn tài khoản điều chuyển bên B."
+            });
+        } else if (p.userIdA == p.userIdB) {
+            logisticJs.msgWarning({
+                text: "Tài khoản điều chuyển bên A giống bên B."
+            });
         }
-    });    
+    });
+
+    $('#btnUpdateLocaltionByAll').off('click').on('click', function () {
+        if (p.userIdA != 0 && p.userIdB != 0 && p.userIdA != p.userIdB) {
+            var dataparam = { isAll: true, userIdA: p.userIdA, userIdB: p.userIdB, listLocaltionId: p.listSelectChecked };
+
+            logisticJs.msgConfirm({
+                text: 'Bạn có chắc muốn điều chuyển?'
+            }, function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Localtion/UpdateLocaltionByAccountId",
+                    data: dataparam,
+                    dataType: "json",
+                    beforeSend: function () {
+                        logisticJs.startLoading();
+                    },
+                    success: function (response) {
+                        if (response.status) {
+                            p.LoadAllLocaltionByUserA(function () {
+                                p.RegisterEvents();
+                            });
+                            p.LoadAllLocaltionByUserB();
+                            logisticJs.msgShowSuccess({ titleHeader: 'Điều chuyển thành công.' });
+                        } else {
+                            logisticJs.msgWarning({
+                                text: "Việc điều chuyển tài khoản gặp lỗi.",
+                                modal: true
+                            });
+                        }
+                        logisticJs.stopLoading();
+                    },
+                    error: function (status) {
+                        logisticJs.stopLoading();
+                    }
+                });
+            });
+
+        } else if (p.userIdA == 0) {
+            logisticJs.msgWarning({
+                text: "Chọn tài khoản điều chuyển bên A."
+            });
+        } else if (p.userIdB == 0) {
+            logisticJs.msgWarning({
+                text: "Chọn tài khoản điều chuyển bên B."
+            });
+        } else if (p.userIdA == p.userIdB) {
+            logisticJs.msgWarning({
+                text: "Tài khoản điều chuyển bên A giống bên B."
+            });
+        }
+    });
 };
 
-CmsShop.AccountTransfer.LoadAllLocaltionByUser = function (accountId, map, callback) {
+CmsShop.AccountTransfer.LoadAllLocaltionByUserA = function (callback) {
     var p = this;
 
-    var dataparam = { accountId: accountId, parentId: p.parentId, provinceId: p.provinceId, keySearch: p.keySearchLocaltion, pageIndex: p.pageIndexLocaltion, pageSize: p.pageSizeLocaltion };
+    var dataparam = { accountId: p.userIdA, parentId: p.parentId, provinceId: p.provinceId, keySearch: p.keySearchA, pageIndex: p.pageIndexA, pageSize: p.pageSizeA };
 
     $.ajax({
         type: "GET",
@@ -486,50 +238,44 @@ CmsShop.AccountTransfer.LoadAllLocaltionByUser = function (accountId, map, callb
         },
         success: function (response) {
             if (response.status == true && response.totalCount > 0) {
-                var template = $("#package-data-localtion").html();
+                var template = $("#package-data-localtion-a").html();
                 var render = "";
-                $.each(response.Data, function (i, item) {
-                    var isChecked = "";
-                    var isCheckedName = "Chưa checked"
-                    if (item.IsCheck) {
-                        isChecked = "checked";
-                        isCheckedName = "Đã checked lúc " + logisticJs.dateFormatJson2(item.CheckDate);
-                    }
+                $.each(response.Data, function (i, item) {                    
                     var avatar = "/assets/img/avatars/no-avatar.gif";
                     if (item.Avatar != "" && item.Avatar!=null) {
                         avatar = item.Avatar;
                     }
                     render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar, address: item.Address, isChecked: isChecked, isCheckedName: isCheckedName
+                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar
                     });                    
                 });
                 if (render != undefined) {
-                    $("#listAllLocaltion").html(render);
+                    $("#listAllLocaltionA").html(render);
                 }
-                p.WrapPagingLocaltion(response.totalCount, '#btnNextLocaltion', '#btnPreviousLocaltion', response.totalRow, function () {
-                    p.LoadAllLocaltionByUser(p.currentUserId, map);
-                });
-
-                $(".delete").off("click").on("click", function () {
-                    var $this = $(this);
-                    p.UpdateStatusLocaltion($this.attr('data-id'), function () {
-                        p.LoadAllLocaltionByUser(p.currentUserId, map, function (data) {
-                            p.SetMapOnAll(null);
-                            $.each(data, function (i, item) {
-                                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
-                                if (item.IsCheck) {
-                                    p.AddMarker(myLatLng, item, 'checkedicon', map);
-                                } else {                                    
-                                    if (item.CustomeType == 2) {
-                                        p.AddMarker(myLatLng, item, 'default2', map);
-                                    } else {
-                                        p.AddMarker(myLatLng, item, 'default1', map);
-                                    }
+                p.WrapPagingA(response.totalCount, '#btnNextLocaltionA', '#btnPreviousLocaltionA', response.totalRow, function () {
+                    $("#cbxSelectedAllA").prop('checked', false);
+                    p.LoadAllLocaltionByUserA(function() {
+                        if (p.listSelectChecked.length > 0) {
+                            var k = 0;
+                            var y = 0;
+                            $.each($(".cbxSelectedA"), function (i, item) {
+                                for (var j = 0; j < p.listSelectChecked.length; j++) {
+                                    if ($(item).attr('data-id') == p.listSelectChecked[j]) {
+                                        $(".cbxSelectedA[data-id=" + p.listSelectChecked[j] + "]").prop('checked', true);
+                                        k++;
+                                    }                                    
                                 }
+                                y++;
                             });
-                        });
+                            if (k == y) {
+                                $("#cbxSelectedAllA").prop('checked', true);
+                            }
+                        }
+
+                        p.RegisterEvents();
                     });
                 });
+                
                 $(".viewdetail").off("click").on("click", function () {
                     var $this = $(this);
                     p.ViewDetailLocaltionNow($this.attr('data-id'), function () {
@@ -538,7 +284,8 @@ CmsShop.AccountTransfer.LoadAllLocaltionByUser = function (accountId, map, callb
                 });
 
             } else {
-                $("#listAllLocaltion").html('');
+                $("#listAllLocaltionA").html('');
+                p.WrapPagingA(0, '#btnNextLocaltionA', '#btnPreviousLocaltionA', 0);
             }
             logisticJs.stopLoading();
 
@@ -552,148 +299,149 @@ CmsShop.AccountTransfer.LoadAllLocaltionByUser = function (accountId, map, callb
     });
 };
 
-CmsShop.AccountTransfer.WrapPaging = function (total, next, previous, recordCount, callBack) {
+CmsShop.AccountTransfer.WrapPagingA = function (total, next, previous, recordCount, callBack) {
     var p = this;
-    
-    var totalsize = Math.ceil(recordCount / p.pageSize);    
+
+    var totalsize = Math.ceil(recordCount / p.pageSizeA);
     var pg = "";
     if (totalsize > 1)
-        $('#pager').removeClass('hide');
+        $('#pagerLocaltionA').removeClass('hide');
     else
-        $('#pager').addClass('hide');
-    pg = logisticJs.paginate(p.pageIndex, recordCount, p.pageSize);
-    $('#pager').find('.pg').remove();
-    $('.btnPrevious').after(pg);
-    $('#pager').find('.pg_' + p.pageIndex).addClass('active');
-    if (total >= p.pageSize) {
-        $('.btnNext').removeClass('disabled');
+        $('#pagerLocaltionA').addClass('hide');
+    pg = logisticJs.paginate(p.pageIndexA, recordCount, p.pageSizeA);
+    $('#pagerLocaltionA').find('.pg').remove();
+    $('.btnPreviousLocaltionA').after(pg);
+    $('#pagerLocaltionA').find('.pg_' + p.pageIndexA).addClass('active');
+    if (total >= p.pageSizeA) {
+        $('.btnNextLocaltionA').removeClass('disabled');
     } else {
-        $('.btnNext').addClass('disabled');
+        $('.btnNextLocaltionA').addClass('disabled');
     }
-    if (p.pageIndex > 1) {
-        $('.btnPrevious').removeClass('disabled');
+    if (p.pageIndexA > 1) {
+        $('.btnPreviousLocaltionA').removeClass('disabled');
     } else {
-        $('.btnPrevious').addClass('disabled');
+        $('.btnPreviousLocaltionA').addClass('disabled');
     }
     $(next).off('click').on('click', function () {
-        if ($('.btnNext').hasClass('disabled')) return false;
-        p.pageIndex++;
+        if ($('.btnNextLocaltionA').hasClass('disabled')) return false;
+        p.pageIndexA++;
         setTimeout(callBack(), 200);
         return false;
     });
     $(previous).off('click').on('click', function () {
-        if ($('.btnPrevious').hasClass('disabled')) return false;
-        p.pageIndex--;
+        if ($('.btnPreviousLocaltionA').hasClass('disabled')) return false;
+        p.pageIndexA--;
         setTimeout(callBack(), 200);
         return false;
     });
 
-    $('#pager').find('.pg').off('click').on('click', function () {
+    $('#pagerLocaltionA').find('.pg').off('click').on('click', function () {
         var curentPage = $(this).attr("data-page");
-        p.pageIndex = curentPage;
-        $('#pager').find('.pg').removeClass('active');
+        p.pageIndexA = curentPage;
+        $('#pagerLocaltionA').find('.pg').removeClass('active');
         $(this).addClass('active');
         callBack();
     });
 };
 
-CmsShop.AccountTransfer.WrapPagingLocaltion = function (total, next, previous, recordCount, callBack) {
+CmsShop.AccountTransfer.LoadAllLocaltionByUserB = function (callback) {
     var p = this;
 
-    var totalsize = Math.ceil(recordCount / p.pageSizeLocaltion);
-    var pg = "";
-    if (totalsize > 1)
-        $('#pagerLocaltion').removeClass('hide');
-    else
-        $('#pagerLocaltion').addClass('hide');
-    pg = logisticJs.paginate(p.pageIndexLocaltion, recordCount, p.pageSizeLocaltion);
-    $('#pagerLocaltion').find('.pg').remove();
-    $('.btnPreviousLocaltion').after(pg);
-    $('#pagerLocaltion').find('.pg_' + p.pageIndexLocaltion).addClass('active');
-    if (total >= p.pageSizeLocaltion) {
-        $('.btnNextLocaltion').removeClass('disabled');
-    } else {
-        $('.btnNextLocaltion').addClass('disabled');
-    }
-    if (p.pageIndexLocaltion > 1) {
-        $('.btnPreviousLocaltion').removeClass('disabled');
-    } else {
-        $('.btnPreviousLocaltion').addClass('disabled');
-    }
-    $(next).off('click').on('click', function () {
-        if ($('.btnNextLocaltion').hasClass('disabled')) return false;
-        p.pageIndexLocaltion++;
-        setTimeout(callBack(), 200);
-        return false;
-    });
-    $(previous).off('click').on('click', function () {
-        if ($('.btnPreviousLocaltion').hasClass('disabled')) return false;
-        p.pageIndexLocaltion--;
-        setTimeout(callBack(), 200);
-        return false;
-    });
-
-    $('#pagerLocaltion').find('.pg').off('click').on('click', function () {
-        var curentPage = $(this).attr("data-page");
-        p.pageIndexLocaltion = curentPage;
-        $('#pagerLocaltion').find('.pg').removeClass('active');
-        $(this).addClass('active');
-        callBack();
-    });
-};
-
-CmsShop.AccountTransfer.AddNewLocaltion = function (form,callback) {
-    var p = this;
+    var dataparam = { accountId: p.userIdB, parentId: p.parentId, provinceId: p.provinceId, keySearch: p.keySearchB, pageIndex: p.pageIndexB, pageSize: p.pageSizeB };
 
     $.ajax({
-        type: "POST",
-        url: "/Localtion/AddNew",
-        data: $(form).serialize(),
+        type: "GET",
+        url: "/Localtion/ListAllPagingByStatus",
+        data: dataparam,
         dataType: "json",
         beforeSend: function () {
             logisticJs.startLoading();
         },
         success: function (response) {
-            if (response.status) {
-                logisticJs.msgShowSuccess({ titleHeader: 'Lưu thành công.' });
-                if (typeof (callback) == 'function') {
-                    callback();
-                }
-            } else {
-                logisticJs.msgWarning({
-                    text: "Việc lưu tài khoản gặp lỗi.",
-                    modal: true
+            if (response.status == true && response.totalCount > 0) {
+                var template = $("#package-data-localtion-b").html();
+                var render = "";
+                $.each(response.Data, function (i, item) {
+                    var avatar = "/assets/img/avatars/no-avatar.gif";
+                    if (item.Avatar != "" && item.Avatar != null) {
+                        avatar = item.Avatar;
+                    }
+                    render += Mustache.render(template, {
+                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar
+                    });
                 });
+                if (render != undefined) {
+                    $("#listAllLocaltionB").html(render);
+                }
+                p.WrapPagingB(response.totalCount, '#btnNextLocaltionB', '#btnPreviousLocaltionB', response.totalRow, function () {
+                    p.LoadAllLocaltionByUserB();
+                });
+
+                $(".viewdetail").off("click").on("click", function () {
+                    var $this = $(this);
+                    p.ViewDetailLocaltionNow($this.attr('data-id'), function () {
+                        $('#myModalLocaltionDetail').modal('show');
+                    });
+                });
+
+            } else {
+                $("#listAllLocaltionB").html('');
+                p.WrapPagingB(0, '#btnNextLocaltionB', '#btnPreviousLocaltionB', 0);
             }
             logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback(response.Data);
+            }
         },
-        error: function () {
+        error: function (status) {
             logisticJs.stopLoading();
         }
     });
 };
 
-CmsShop.AccountTransfer.UpdateStatusLocaltion = function (id,callback) {
+CmsShop.AccountTransfer.WrapPagingB = function (total, next, previous, recordCount, callBack) {
     var p = this;
-    $.ajax({
-        type: "GET",
-        url: "/Localtion/UpdateStatus",
-        data: { Id: id },
-        dataType: "json",
-        beforeSend: function () {
-            //logisticJs.startLoading();
-        },
-        success: function (response) {
-            if (response.status) {
-                if (typeof(callback) == "function") {
-                    callback();
-                }
-            }
-            //logisticJs.stopLoading();
-        },
-        error: function (status) {
-            //logisticJs.stopLoading();
-        }
+
+    var totalsize = Math.ceil(recordCount / p.pageSizeB);
+    var pg = "";
+    if (totalsize > 1)
+        $('#pagerLocaltionB').removeClass('hide');
+    else
+        $('#pagerLocaltionB').addClass('hide');
+    pg = logisticJs.paginate(p.pageIndexB, recordCount, p.pageSizeB);
+    $('#pagerLocaltionB').find('.pg').remove();
+    $('.btnPreviousLocaltionB').after(pg);
+    $('#pagerLocaltionB').find('.pg_' + p.pageIndexB).addClass('active');
+    if (total >= p.pageSizeB) {
+        $('.btnNextLocaltionB').removeClass('disabled');
+    } else {
+        $('.btnNextLocaltionB').addClass('disabled');
+    }
+    if (p.pageIndexB > 1) {
+        $('.btnPreviousLocaltionB').removeClass('disabled');
+    } else {
+        $('.btnPreviousLocaltionB').addClass('disabled');
+    }
+    $(next).off('click').on('click', function () {
+        if ($('.btnNextLocaltionB').hasClass('disabled')) return false;
+        p.pageIndexB++;
+        setTimeout(callBack(), 200);
+        return false;
+    });
+    $(previous).off('click').on('click', function () {
+        if ($('.btnPreviousLocaltionB').hasClass('disabled')) return false;
+        p.pageIndexB--;
+        setTimeout(callBack(), 200);
+        return false;
+    });
+
+    $('#pagerLocaltionB').find('.pg').off('click').on('click', function () {
+        var curentPage = $(this).attr("data-page");
+        p.pageIndexB = curentPage;
+        $('#pagerLocaltionB').find('.pg').removeClass('active');
+        $(this).addClass('active');
+        callBack();
     });
 };
 

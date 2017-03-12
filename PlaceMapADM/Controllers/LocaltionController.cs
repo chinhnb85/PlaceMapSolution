@@ -365,5 +365,36 @@ namespace PlaceMapADM.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult UpdateLocaltionByAccountId(bool isAll,string userIdA,string userIdB,string[] listLocaltionId)
+        {
+            try
+            {
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+                var listId = string.Empty;
+                if (listLocaltionId!=null && listLocaltionId.Length > 0)
+                {
+                    listId = string.Join(",", listLocaltionId);
+                }                
+                var idA = 0;
+                if (!string.IsNullOrEmpty(userIdA))
+                {
+                    int.TryParse(userIdA, out idA);
+                }
+                var idB = 0;
+                if (!string.IsNullOrEmpty(userIdB))
+                {
+                    int.TryParse(userIdB, out idB);
+                }
+                var res = ipl.UpdateLocaltionByAccountId(isAll, idA, idB, listId);
+
+                return Json(new { status = res, Data = res }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new { status = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }

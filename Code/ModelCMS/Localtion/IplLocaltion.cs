@@ -397,6 +397,25 @@ namespace ModelCMS.Localtion
             }
         }
 
+        public bool UpdateLocaltionByAccountId(bool isAll, int userIdA, int userIdB, string listLocaltionId)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@isAll", isAll);
+                p.Add("@userIdA", userIdA);
+                p.Add("@userIdB", userIdB);
+                p.Add("@listLocaltionId", listLocaltionId);
+                var res = unitOfWork.ProcedureExecute("Sp_Localtion_UpdateLocaltionByAccountId", p);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
+
         /// <summary>
         /// Saves a record to the Localtion table.
         /// </summary>

@@ -503,3 +503,56 @@ BEGIN
 	FROM AccountPlace L left join Account A on L.AccountId=A.Id					
 	where (L.AccountId=@AccountId) and (cast([Datetime] as date)=cast(@Datetime as date)) and (Lag<>'0.0' or Lng<>'0.0')
 END
+
+--update 12/03/2017
+
+GO
+CREATE PROCEDURE [dbo].[Sp_Localtion_UpdateLocaltionByAccountId] 	
+ 	@isAll bit,
+	@userIdA int,
+	@userIdB int,
+	@listLocaltionId varchar(50)
+AS
+BEGIN	
+	SET NOCOUNT ON; 	
+	if(@isAll=1)
+	begin
+		Update Localtion set [AccountId] = @userIdB 
+		where [AccountId]=@userIdA
+	end
+	else
+	begin
+		Update Localtion set [AccountId] = @userIdB 
+		where [AccountId]=@userIdA and Id in (Select ParsedString From [dbo].ParseStringList(@listLocaltionId))
+	end
+END
+
+--exec Sp_Localtion_UpdateLocaltionByAccountId 0,2,3,'2046,21,19,16'
+
+go
+
+CREATE Function [dbo].[ParseStringList]  (@StringArray nvarchar(max) )  
+Returns @tbl_string Table  (ParsedString nvarchar(max))  As  
+
+BEGIN 
+
+DECLARE @end Int,
+        @start Int
+
+SET @stringArray =  @StringArray + ',' 
+SET @start=1
+SET @end=1
+
+WHILE @end<Len(@StringArray)
+    BEGIN
+        SET @end = CharIndex(',', @StringArray, @end)
+        INSERT INTO @tbl_string 
+            SELECT
+                Substring(@StringArray, @start, @end-@start)
+
+        SET @start=@end+1
+        SET @end = @end+1
+    END
+
+RETURN
+END

@@ -36,9 +36,9 @@ namespace PlaceMapADM.Controllers.ApiControllers
         }
 
         [HttpGet]
-        public string GetDecryptMd5(string str)
+        public object GetDecryptMd5(string key)
         {
-            return Utility.DecryptMd5(str);
+            return new { status = true, Data = Utility.DecryptMd5(key) };
         }
 
         // POST api/userApi
