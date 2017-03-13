@@ -19,7 +19,7 @@ CmsShop.AccountTransfer = {
 CmsShop.AccountTransfer.Init = function () {
     var p = this;    
 
-    logisticJs.activeMenuSidebar('/');
+    logisticJs.activeMenuSidebar('/AccountTransfer');
 
     p.LoadAllAccountByType(function () {
         $("#sltAccountA").select2();

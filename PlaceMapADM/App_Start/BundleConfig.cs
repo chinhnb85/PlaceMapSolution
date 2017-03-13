@@ -48,6 +48,9 @@ namespace PlaceMapADM
             bundles.Add(new StyleBundle("~/css/datatable").Include(
                 "~/assets/css/dataTables.bootstrap.css"));
 
+            bundles.Add(new StyleBundle("~/css/dhtmlxscheduler").Include(
+                "~/assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/skin").Include(
                 "~/assets/js/skins.min.js"));
             
@@ -111,6 +114,9 @@ namespace PlaceMapADM
 
             bundles.Add(new ScriptBundle("~/bundles/lightbox2").Include(
                "~/assets/plugins/lightbox2/js/lightbox.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dhtmlxscheduler").Include(
+               "~/assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/dhtmlxscheduler.js"));
         }
     }
 }
