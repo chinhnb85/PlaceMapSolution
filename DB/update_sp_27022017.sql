@@ -574,3 +574,60 @@ CREATE TABLE [dbo].[SchedulerCheckin](
 ) ON [PRIMARY]
 
 GO
+
+CREATE PROCEDURE [dbo].[Sp_SchedulerCheckin_GetListScheduleCheckinByUserId]
+	@AccountId int,
+	@StartDate datetime,
+	@EndDate datetime
+AS
+BEGIN	
+	SET NOCOUNT ON; 
+	SELECT * FROM SchedulerCheckin where AccountId=@AccountId
+END
+
+-----15/03/2017
+GO
+CREATE PROCEDURE [dbo].[Sp_SchedulerCheckin_Insert] 	
+ 	@AccountId int,
+	@LocaltionId int,
+	@StartDate datetime,
+	@EndDate datetime,
+	@Description nvarchar(500),
+	@Id int output
+AS
+BEGIN	
+	SET NOCOUNT ON;    
+	INSERT INTO SchedulerCheckin(AccountId,LocaltionId,StartDate,EndDate,[Description]) 
+	values(@AccountId,@LocaltionId,@StartDate,@EndDate,@Description)	
+	set @Id=SCOPE_IDENTITY()
+END
+
+go
+CREATE PROCEDURE [dbo].[Sp_SchedulerCheckin_Update] 
+	@Id int,	
+ 	@AccountId int,
+	@LocaltionId int,
+	@StartDate datetime,
+	@EndDate datetime,
+	@Description nvarchar(500)
+AS
+BEGIN	
+	SET NOCOUNT ON;    
+	Update SchedulerCheckin set AccountId=@AccountId,LocaltionId=@LocaltionId,StartDate=@StartDate,EndDate=@EndDate,[Description]=@Description
+	where AccountId=@AccountId and LocaltionId=@LocaltionId	
+END
+
+GO
+
+CREATE PROCEDURE [dbo].[Sp_SchedulerCheckin_Delete] 	 	
+	@Id int,
+	@AccountId int,
+	@LocaltionId int,
+	@StartDate datetime,
+	@EndDate datetime,
+	@Description nvarchar(500)
+AS
+BEGIN	
+	SET NOCOUNT ON;    
+	delete SchedulerCheckin where AccountId=@AccountId and LocaltionId=@LocaltionId
+END

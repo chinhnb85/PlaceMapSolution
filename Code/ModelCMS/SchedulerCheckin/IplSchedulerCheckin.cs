@@ -54,12 +54,11 @@ namespace ModelCMS.SchedulerCheckin
         /// <summary>
         /// Deletes a record from the SchedulerCheckin table by its primary key.
         /// </summary>
-        public bool Delete(long id)
+        public bool Delete(SchedulerCheckinEntity obj)
         {
             try
             {
-                var p = new DynamicParameters();
-                p.Add("@Id", id);                
+                var p = Param(obj, "edit");
                 var res = unitOfWork.ProcedureExecute("Sp_SchedulerCheckin_Delete", p);
                 return res;
             }

@@ -47,11 +47,17 @@ CmsShop.SchedulerCheckin.Init = function () {
             section_time: "Thời gian"
         }
     }
-    
+
+    scheduler.locale.labels.section_localtion = "Chọn địa điểm:";  //script_path: "/Localtion/ListAllLocaltionByUserId"+"&userId="+p.userId,  
+    scheduler.config.lightbox.sections = [
+        { name: "localtion", options: p.localtions, map_to: "localtion_id", type: "combo", image_path: "../common/dhtmlxCombo/imgs/", height: 30, filtering: true },
+        { name: "description", height: 50, map_to: "text", type: "textarea", focus: true },
+        { name: "time", height: 72, type: "time", map_to: "auto" }
+    ];
+
     scheduler.config.xml_date = "%Y-%m-%d %H:%i";
     scheduler.config.prevent_cache = true;
     scheduler.config.show_loading = true;
-
     scheduler.init('scheduler_here', new Date(), "month");
     
     p.RegisterEvents();
@@ -100,25 +106,17 @@ CmsShop.SchedulerCheckin.RegisterEvents = function() {
     $("#sltAccount").off("change").on("change", function () {
         
         p.userId = $("#sltAccount").val();
-        p.LoadAllLocaltionByUser(function (data) {
-
-            scheduler.clearAll();            
-            scheduler.locale.labels.section_localtion = "Chọn địa điểm:";  //script_path: "/Localtion/ListAllLocaltionByUserId"+"&userId="+p.userId,  
-            scheduler.config.lightbox.sections = [
-                { name: "localtion", options: data, map_to: "localtion_id", type: "combo", image_path: "../common/dhtmlxCombo/imgs/", height: 30, filtering: true },
-                { name: "description", height: 50, map_to: "text", type: "textarea", focus: true },
-                { name: "time", height: 72, type: "time", map_to: "auto" }
-            ];
-            
-        });
+        p.LoadAllLocaltionByUser();
                        
-        //load data vào lịch         
+        //load data vào lịch    
+        scheduler.clearAll();
         var param = "userId=" + p.userId + "&startDate=" + p.startDate + "&endDate=" + p.endDate;
         scheduler.load("/SchedulerCheckin/GetListScheduleCheckinByUserId?"+param,"json");        
 
         //Saving data
-        //var dp = new dataProcessor("/SchedulerCheckin/GetListScheduleCheckinByUserId?" + param);
-        //dp.init(scheduler);        
+        var dp = new dataProcessor("/SchedulerCheckin/UpdateData?userId="+p.userId);
+        dp.init(scheduler);
+        dp.setTransactionMode("POST", true);
     });    
 
     $('#btnUpdateLocaltionByUser').off('click').on('click', function () {        
@@ -139,19 +137,13 @@ CmsShop.SchedulerCheckin.LoadAllLocaltionByUser = function (callback) {
             logisticJs.startLoading();
         },
         success: function (response) {
-            if (response.status == true && response.totalCount > 0) {
-                
+            if (response.status == true && response.totalCount > 0) {                
+                p.localtions.length = 0;
                 $.each(response.Data, function (i, item) {                                        
                     p.localtions.push({key: item.Id, label: item.Name});               
-                });
-
-                //p.WrapPaging(response.totalCount, '#btnNextLocaltion', '#btnPreviousLocaltion', response.totalRow, function () {                    
-                //    p.LoadAllLocaltionByUser();
-                //});                               
-
-            } else {                
-                //p.WrapPaging(0, '#btnNextLocaltion', '#btnPreviousLocaltion', 0);
+                });                                              
             }
+
             logisticJs.stopLoading();
 
             if (typeof (callback) == "function") {
@@ -161,51 +153,6 @@ CmsShop.SchedulerCheckin.LoadAllLocaltionByUser = function (callback) {
         error: function (status) {
             logisticJs.stopLoading();
         }
-    });
-};
-
-CmsShop.SchedulerCheckin.WrapPaging = function (total, next, previous, recordCount, callBack) {
-    var p = this;
-
-    var totalsize = Math.ceil(recordCount / p.pageSizeA);
-    var pg = "";
-    if (totalsize > 1)
-        $('#pagerLocaltion').removeClass('hide');
-    else
-        $('#pagerLocaltion').addClass('hide');
-    pg = logisticJs.paginate(p.pageIndexA, recordCount, p.pageSizeA);
-    $('#pagerLocaltion').find('.pg').remove();
-    $('.btnPreviousLocaltion').after(pg);
-    $('#pagerLocaltion').find('.pg_' + p.pageIndexA).addClass('active');
-    if (total >= p.pageSizeA) {
-        $('.btnNextLocaltion').removeClass('disabled');
-    } else {
-        $('.btnNextLocaltion').addClass('disabled');
-    }
-    if (p.pageIndexA > 1) {
-        $('.btnPreviousLocaltion').removeClass('disabled');
-    } else {
-        $('.btnPreviousLocaltion').addClass('disabled');
-    }
-    $(next).off('click').on('click', function () {
-        if ($('.btnNextLocaltion').hasClass('disabled')) return false;
-        p.pageIndexA++;
-        setTimeout(callBack(), 200);
-        return false;
-    });
-    $(previous).off('click').on('click', function () {
-        if ($('.btnPreviousLocaltion').hasClass('disabled')) return false;
-        p.pageIndexA--;
-        setTimeout(callBack(), 200);
-        return false;
-    });
-
-    $('#pagerLocaltion').find('.pg').off('click').on('click', function () {
-        var curentPage = $(this).attr("data-page");
-        p.pageIndexA = curentPage;
-        $('#pagerLocaltion').find('.pg').removeClass('active');
-        $(this).addClass('active');
-        callBack();
     });
 };
 

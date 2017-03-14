@@ -63,5 +63,100 @@ namespace PlaceMapADM.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpPost]
+        public JsonResult UpdateData(string userId, string editing,FormCollection formCollection)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(editing) && Convert.ToBoolean(editing))
+                {
+                    if (string.IsNullOrEmpty(userId))
+                    {
+                        userId = "0";
+                    }
+                    var ipl = SingletonIpl.GetInstance<IplSchedulerCheckin>();
+
+                    var ids = formCollection.Get("ids");
+                    var status = formCollection.Get(ids+ "_!nativeeditor_status");
+                    var localtionId = formCollection.Get(ids + "_localtion_id");
+                    var text = formCollection.Get(ids + "_text");
+                    var startDate = formCollection.Get(ids + "_start_date");
+                    var endDate = formCollection.Get(ids + "_end_date");
+
+                    if (status.Equals("inserted"))
+                    {
+                        var res = ipl.Insert(new SchedulerCheckinEntity
+                        {
+                            AccountId = Convert.ToInt32(userId),
+                            LocaltionId = Convert.ToInt32(localtionId),
+                            Description = text,
+                            StartDate = Convert.ToDateTime(startDate),
+                            EndDate = Convert.ToDateTime(endDate)
+                        });
+                        if (res != 0)
+                        {
+                            return Json(new
+                            {
+                                data = true
+                            }, JsonRequestBehavior.AllowGet);
+                        }
+                    }else if (status.Equals("updated"))
+                    {
+                        var res = ipl.Update(new SchedulerCheckinEntity
+                        {
+                            Id = 0,
+                            AccountId = Convert.ToInt32(userId),
+                            LocaltionId = Convert.ToInt32(localtionId),
+                            Description = text,
+                            StartDate = Convert.ToDateTime(startDate),
+                            EndDate = Convert.ToDateTime(endDate)
+                        });
+                        if (res)
+                        {
+                            return Json(new
+                            {
+                                data = true
+                            }, JsonRequestBehavior.AllowGet);
+                        }
+                    }
+                    else if (status.Equals("deleted"))
+                    {
+                        var res = ipl.Delete(new SchedulerCheckinEntity
+                        {
+                            Id = 0,
+                            AccountId = Convert.ToInt32(userId),
+                            LocaltionId = Convert.ToInt32(localtionId),
+                            Description = text,
+                            StartDate = Convert.ToDateTime(startDate),
+                            EndDate = Convert.ToDateTime(endDate)
+                        });
+                        if (res)
+                        {
+                            return Json(new
+                            {
+                                data = true
+                            }, JsonRequestBehavior.AllowGet);
+                        }
+                    }
+
+                }
+                return Json(new
+                {
+                    status = true,                    
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    status = false,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }
