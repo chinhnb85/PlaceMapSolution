@@ -396,5 +396,41 @@ namespace PlaceMapADM.Controllers
             }
         }
 
+        [HttpGet]
+        public JsonResult ListAllLocaltionByUserId(int userId)
+        {
+            try
+            {
+                var total = 0;
+                var ipl = SingletonIpl.GetInstance<IplLocaltion>();
+                var res = ipl.ListAllPagingByStatus(userId, 0, 0, "", 0, 1000, "", "", ref total);
+
+                if (res != null && res.Count > 0)
+                {
+                    return Json(new
+                    {                        
+                        data = res.Select(s=>new {
+                            key = s.Id,
+                            label = s.Name
+                        }).ToList()
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new
+                {                    
+                    data = res
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    status = false,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }

@@ -3,7 +3,10 @@ if (typeof (CmsShop.SchedulerCheckin) == "undefined") CmsShop.SchedulerCheckin =
 
 CmsShop.SchedulerCheckin = {        
     type: 2,    
-    userId: 0    
+    userId: 0,
+    startDate: logisticJs.dateNow(),
+    endDate: logisticJs.dateNow(),    
+    localtions: []
 };
 
 CmsShop.SchedulerCheckin.Init = function () {
@@ -44,10 +47,13 @@ CmsShop.SchedulerCheckin.Init = function () {
             section_time: "Thời gian"
         }
     }
+    
     scheduler.config.xml_date = "%Y-%m-%d %H:%i";
     scheduler.config.prevent_cache = true;
-    scheduler.init('scheduler_here', new Date(), "month");
+    scheduler.config.show_loading = true;
 
+    scheduler.init('scheduler_here', new Date(), "month");
+    
     p.RegisterEvents();
 };
 
@@ -91,19 +97,28 @@ CmsShop.SchedulerCheckin.LoadAllAccountByType = function (callback) {
 CmsShop.SchedulerCheckin.RegisterEvents = function() {
     var p = this;
 
-    $("#sltAccount").off("change").on("change", function () {        
+    $("#sltAccount").off("change").on("change", function () {
+        
         p.userId = $("#sltAccount").val();
+        p.LoadAllLocaltionByUser(function (data) {
 
-        //load data vào lịch
-        scheduler.load("data/connector.php");
+            scheduler.clearAll();            
+            scheduler.locale.labels.section_localtion = "Chọn địa điểm:";  //script_path: "/Localtion/ListAllLocaltionByUserId"+"&userId="+p.userId,  
+            scheduler.config.lightbox.sections = [
+                { name: "localtion", options: data, map_to: "localtion_id", type: "combo", image_path: "../common/dhtmlxCombo/imgs/", height: 30, filtering: true },
+                { name: "description", height: 50, map_to: "text", type: "textarea", focus: true },
+                { name: "time", height: 72, type: "time", map_to: "auto" }
+            ];
+            
+        });
+                       
+        //load data vào lịch         
+        var param = "userId=" + p.userId + "&startDate=" + p.startDate + "&endDate=" + p.endDate;
+        scheduler.load("/SchedulerCheckin/GetListScheduleCheckinByUserId?"+param,"json");        
 
         //Saving data
-        var dp = new dataProcessor("data/connector.php");
-        dp.init(scheduler);
-
-        //p.LoadAllLocaltionByUser(function () {
-        //    p.RegisterEvents();
-        //});
+        //var dp = new dataProcessor("/SchedulerCheckin/GetListScheduleCheckinByUserId?" + param);
+        //dp.init(scheduler);        
     });    
 
     $('#btnUpdateLocaltionByUser').off('click').on('click', function () {        
@@ -113,7 +128,7 @@ CmsShop.SchedulerCheckin.RegisterEvents = function() {
 CmsShop.SchedulerCheckin.LoadAllLocaltionByUser = function (callback) {
     var p = this;
 
-    var dataparam = { accountId: p.userId, parentId: p.parentId, provinceId: p.provinceId, keySearch: p.keySearch, pageIndex: p.pageIndex, pageSize: p.pageSize };
+    var dataparam = { accountId: p.userId, parentId: 0, provinceId: 0, keySearch: '', pageIndex: 1, pageSize: 1000 };
 
     $.ajax({
         type: "GET",
@@ -125,41 +140,22 @@ CmsShop.SchedulerCheckin.LoadAllLocaltionByUser = function (callback) {
         },
         success: function (response) {
             if (response.status == true && response.totalCount > 0) {
-                var template = $("#package-data-localtion").html();
-                var render = "";
-                $.each(response.Data, function (i, item) {                    
-                    var avatar = "/assets/img/avatars/no-avatar.gif";
-                    if (item.Avatar != "" && item.Avatar!=null) {
-                        avatar = item.Avatar;
-                    }
-                    render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar
-                    });                    
-                });
-                if (render != undefined) {
-                    $("#listAllLocaltionA").html(render);
-                }
-                p.WrapPaging(response.totalCount, '#btnNextLocaltion', '#btnPreviousLocaltion', response.totalRow, function () {                    
-                    p.LoadAllLocaltionByUser(function() {                        
-                        p.RegisterEvents();
-                    });
-                });
                 
-                $(".viewdetail").off("click").on("click", function () {
-                    var $this = $(this);
-                    p.ViewDetailLocaltionNow($this.attr('data-id'), function () {
-                        $('#myModalLocaltionDetail').modal('show');
-                    });
+                $.each(response.Data, function (i, item) {                                        
+                    p.localtions.push({key: item.Id, label: item.Name});               
                 });
 
-            } else {
-                $("#listAllLocaltionA").html('');
-                p.WrapPagingA(0, '#btnNextLocaltion', '#btnPreviousLocaltion', 0);
+                //p.WrapPaging(response.totalCount, '#btnNextLocaltion', '#btnPreviousLocaltion', response.totalRow, function () {                    
+                //    p.LoadAllLocaltionByUser();
+                //});                               
+
+            } else {                
+                //p.WrapPaging(0, '#btnNextLocaltion', '#btnPreviousLocaltion', 0);
             }
             logisticJs.stopLoading();
 
             if (typeof (callback) == "function") {
-                callback(response.Data);
+                callback(p.localtions);
             }
         },
         error: function (status) {
@@ -210,50 +206,6 @@ CmsShop.SchedulerCheckin.WrapPaging = function (total, next, previous, recordCou
         $('#pagerLocaltion').find('.pg').removeClass('active');
         $(this).addClass('active');
         callBack();
-    });
-};
-
-CmsShop.SchedulerCheckin.ViewDetailLocaltionNow = function (id, callback) {
-    var p = this;
-    $.ajax({
-        type: "GET",
-        url: "/Localtion/ViewDetailLocaltionNow",
-        data: { Id: id },
-        dataType: "json",
-        beforeSend: function () {
-            logisticJs.startLoading();
-        },
-        success: function (response) {
-            if (response.status) {
-                if (response.Data != null) {
-                    var template = $("#package-data-viewDetailLocaltion").html();
-                    var isChecked = "";
-                    var isCheckedName = "Chưa checked";
-                    if (response.Data.IsCheck) {
-                        isChecked = "checked";
-                        isCheckedName = "Đã checked lúc: " + logisticJs.dateFormatJson2(response.Data.CheckDate);
-                    }
-                    var customeTypeName = "Bán buôn";
-                    if (response.Data.CustomeType==2) {
-                        customeTypeName = "Bán lẻ";
-                    }
-                    var render = Mustache.render(template, {
-                        id: response.Data.Id, name: response.Data.Name, avatar: response.Data.Avatar,
-                        address: response.Data.Address, isChecked: isChecked, lag: response.Data.Lag,
-                        lng: response.Data.Lng, phone: response.Data.Phone, email: response.Data.Email,
-                        isCheckedName: isCheckedName, accountId: response.Data.AccountId, customeType: customeTypeName
-                    });
-                    $('#viewDetailLocaltion').html(render);
-                }                
-                if (typeof (callback) == "function") {
-                    callback();
-                }
-            }
-            logisticJs.stopLoading();
-        },
-        error: function (status) {
-            logisticJs.stopLoading();
-        }
     });
 };
 

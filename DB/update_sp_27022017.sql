@@ -564,11 +564,13 @@ CREATE TABLE [dbo].[SchedulerCheckin](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[AccountId] [int] NULL,
 	[LocaltionId] [int] NULL,
-	[Datetime] [datetime] NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+	[Description] [nvarchar](500) NULL,
  CONSTRAINT [PK_SchedulerCheckin] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO

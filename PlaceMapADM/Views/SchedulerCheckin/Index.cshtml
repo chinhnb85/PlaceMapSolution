@@ -2,7 +2,8 @@
     ViewBag.Title = "Lập lịch checkin trong tháng";
 }
 @section cssData{
-    @Styles.Render("~/css/dhtmlxscheduler")    
+    @Styles.Render("~/css/dhtmlxscheduler")   
+    <link rel="stylesheet" type="text/css" href="/assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/skins/dhtmlxcombo_dhx_terrace.css" /> 
 }
 <div class="row">
     <div class="widget">
@@ -62,4 +63,9 @@
 @section PageScripts {
     @Scripts.Render("~/bundles/select2")
     @Scripts.Render("~/bundles/dhtmlxscheduler")
+
+    <script src="/assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_editors.js" type="text/javascript" charset="utf-8"></script>    
+
+    <script src="/assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCommon/dhtmlxcommon.js"></script>
+    <script src="/assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/dhtmlxcombo.js"></script>
 }

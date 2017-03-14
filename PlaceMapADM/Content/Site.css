@@ -212,3 +212,7 @@ table #listAllAccount tr{ cursor: pointer;}
     line-height: 16px;
 }
 #listAllLocaltion td img{max-height: 32px;}
+
+div.dhxcombolist_dhx_terrace{
+    width:608px!important;
+}
