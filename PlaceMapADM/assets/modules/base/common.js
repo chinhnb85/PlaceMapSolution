@@ -440,23 +440,25 @@ var logisticJs = $.extend({
         var d = new Date();
         var year = d.getFullYear();
         var month = d.getMonth() + 1;
-        var firstOfMonth = new Date(d.getFullYear(), d.getMonth(), 1);
+        var firstDay = new Date(year, month, 1);
+        var day = firstDay.getDate();
         if (month < 10)
             month = "0" + month;
-        if (firstOfMonth < 10)
-            firstOfMonth = "0" + firstOfMonth;
-        return firstOfMonth + "/" + month + "/" + year;
+        if (day < 10)
+            day = "0" + day;
+        return day + "/" + month + "/" + year;
     },
     endDateNow: function () {
         var d = new Date();
         var year = d.getFullYear();
         var month = d.getMonth() + 1;
-        var lastOfMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+        var lastDay = new Date(year, month, 0);
+        var day = lastDay.getDate();
         if (month < 10)
             month = "0" + month;
-        if (lastOfMonth < 10)
-            lastOfMonth = "0" + lastOfMonth;
-        return lastOfMonth + "/" + month + "/" + year;
+        if (day < 10)
+            day = "0" + day;
+        return day + "/" + month + "/" + year;
     },
     pad: function (num) {
         num = "0" + num;

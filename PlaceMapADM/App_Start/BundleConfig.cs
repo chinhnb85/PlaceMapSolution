@@ -48,7 +48,7 @@ namespace PlaceMapADM
             bundles.Add(new StyleBundle("~/css/datatable").Include(
                 "~/assets/css/dataTables.bootstrap.css"));
 
-            bundles.Add(new StyleBundle("~/css/dhtmlxscheduler").Include(
+            bundles.Add(new StyleBundle("~/assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler").Include(
                 "~/assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/skin").Include(

@@ -61,6 +61,9 @@
     <Compile Include="SchedulerCheckin\IplSchedulerCheckin.cs" />
     <Compile Include="SchedulerCheckin\ISchedulerCheckin.cs" />
     <Compile Include="SchedulerCheckin\SchedulerCheckinEntity.cs" />
+    <Compile Include="Statistic\IplStatistic.cs" />
+    <Compile Include="Statistic\IStatistic.cs" />
+    <Compile Include="Statistic\StatisticEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dapper\Dapper.csproj">

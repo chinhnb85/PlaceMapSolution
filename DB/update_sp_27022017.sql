@@ -669,53 +669,52 @@ CREATE procedure [dbo].[Sp_Statistic_ListStatisticPaging]
 )
 
 as
-
+begin
 set nocount on
 
 --get tống số khách hàng của từng user
 DECLARE @SumAll TABLE(Id int, SumAll int)
 INSERT @SumAll (Id,SumAll) 
-select A.Id,COUNT(A.Id) as SumAll 
-from Account as A
-left join Localtion as L on L.AccountId=A.Id
-where L.Status=1 and A.Status=1
-group by A.Id
-order by A.Id
+select AccountId,COUNT(AccountId) as SumAll 
+from Localtion
+where [Status]<>2
+group by AccountId
 
 --get tổng số checkin trong tháng của từng user
 DECLARE @SumCheckInMonth TABLE(Id int, SumCheckInMonth int)
 INSERT @SumCheckInMonth (Id,SumCheckInMonth)
 select AccountId, COUNT(AccountId) as SumCheckInMonth 
 from LocaltionAccountCheck
-where IsCheck=1 and AccountId<>0
+where IsCheck=1 and AccountId<>0 and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
 group by AccountId
-order by AccountId
 
 --get những địa điểm đã check in đủ 3/tháng
 DECLARE @MinCheckIn TABLE(Id int, MinCheckIn int)
 INSERT @MinCheckIn (Id,MinCheckIn)
 select LocaltionId, COUNT(LocaltionId) as MinCheckIn 
 from LocaltionAccountCheck
-where IsCheck=1 and LocaltionId<>0
+where IsCheck=1 and LocaltionId<>0 and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
 group by LocaltionId
 having COUNT(LocaltionId)>=3
-order by LocaltionId
 
 --số lần user checin >=3/thang
 DECLARE @FullMinCheckInMonth TABLE(Id int, FullMinCheckInMonth int)
 INSERT @FullMinCheckInMonth (Id,FullMinCheckInMonth)
-select L.AccountId,COUNT(L.AccountId) as FullMinCheckInMonth from @MinCheckIn as M
+select L.AccountId,COUNT(L.AccountId) as FullMinCheckInMonth 
+from @MinCheckIn as M
 left join Localtion as L on M.Id=L.Id
 where L.AccountId is not null
 group by L.AccountId
-order by L.AccountId
 
 --list table
-DECLARE @ALL TABLE(Id int, SumAll int, SumCheckInMonth int, FullMinCheckInMonth int)
-INSERT @All (Id,SumAll,SumCheckInMonth,FullMinCheckInMonth)
-select SA.Id,SA.SumAll,SC.SumCheckInMonth,FM.FullMinCheckInMonth from @SumAll as SA
+DECLARE @ALL TABLE(Id int,UserName varchar(50),FullName nvarchar(50), SumAll int, SumCheckInMonth int, FullMinCheckInMonth int)
+INSERT @All (Id,UserName,FullName,SumAll,SumCheckInMonth,FullMinCheckInMonth)
+select A.Id,A.UserName,A.DisplayName,SA.SumAll,SC.SumCheckInMonth,FM.FullMinCheckInMonth 
+from Account as A
+left join @SumAll as SA on SA.Id=A.Id
 left join @SumCheckInMonth as SC on SC.Id=SA.Id
 left join @FullMinCheckInMonth as FM on FM.Id=SA.Id
+where A.Status=1 and A.Type=2
 
 
 --phan trang
@@ -726,7 +725,64 @@ SELECT @totalRow = COUNT(*) FROM @ALL
 SET @LowerBand  = (@pageIndex - 1) * @PageSize
 SET @UpperBand  = (@pageIndex * @PageSize)
 SELECT * FROM (
-SELECT *,ROW_NUMBER() OVER(ORDER BY A.Id DESC) AS RowNumber 
+SELECT *,ROW_NUMBER() OVER(ORDER BY A.Id ASC) AS RowNumber 
 FROM @ALL A 
 ) AS temp
 WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand
+end
+
+--export thống kê
+GO
+CREATE procedure [dbo].[Sp_Statistic_GetExportData]
+
+(
+@startDate datetime,
+@endDate datetime
+)
+
+as
+begin
+set nocount on
+
+--get tống số khách hàng của từng user
+DECLARE @SumAll TABLE(Id int, SumAll int)
+INSERT @SumAll (Id,SumAll) 
+select AccountId,COUNT(AccountId) as SumAll 
+from Localtion
+where [Status]<>2
+group by AccountId
+
+--get tổng số checkin trong tháng của từng user
+DECLARE @SumCheckInMonth TABLE(Id int, SumCheckInMonth int)
+INSERT @SumCheckInMonth (Id,SumCheckInMonth)
+select AccountId, COUNT(AccountId) as SumCheckInMonth 
+from LocaltionAccountCheck
+where IsCheck=1 and AccountId<>0 and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
+group by AccountId
+
+--get những địa điểm đã check in đủ 3/tháng
+DECLARE @MinCheckIn TABLE(Id int, MinCheckIn int)
+INSERT @MinCheckIn (Id,MinCheckIn)
+select LocaltionId, COUNT(LocaltionId) as MinCheckIn 
+from LocaltionAccountCheck
+where IsCheck=1 and LocaltionId<>0 and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
+group by LocaltionId
+having COUNT(LocaltionId)>=3
+
+--số lần user checin >=3/thang
+DECLARE @FullMinCheckInMonth TABLE(Id int, FullMinCheckInMonth int)
+INSERT @FullMinCheckInMonth (Id,FullMinCheckInMonth)
+select L.AccountId,COUNT(L.AccountId) as FullMinCheckInMonth 
+from @MinCheckIn as M
+left join Localtion as L on M.Id=L.Id
+where L.AccountId is not null
+group by L.AccountId
+
+--list table
+select A.Id,A.UserName,A.DisplayName as FullName,SA.SumAll,SC.SumCheckInMonth,FM.FullMinCheckInMonth 
+from Account as A
+left join @SumAll as SA on SA.Id=A.Id
+left join @SumCheckInMonth as SC on SC.Id=SA.Id
+left join @FullMinCheckInMonth as FM on FM.Id=SA.Id
+where A.Status=1 and A.Type=2
+end
