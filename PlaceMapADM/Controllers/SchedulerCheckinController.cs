@@ -40,7 +40,8 @@ namespace PlaceMapADM.Controllers
                             end_date = s.EndDate.ToString("yyyy-MM-dd hh:mm:ss"),
                             text = s.Description,
                             details = s.Description,
-                            localtion_id=s.LocaltionId.ToString()
+                            localtion_id=s.LocaltionId.ToString(),
+                            account_id = s.AccountId.ToString()
                         }).ToList()                        
                     }, JsonRequestBehavior.AllowGet);
                 }
@@ -65,21 +66,18 @@ namespace PlaceMapADM.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateData(string userId, string editing,FormCollection formCollection)
+        public JsonResult UpdateData(string editing,FormCollection formCollection)
         {
             try
             {
                 if (!string.IsNullOrEmpty(editing) && Convert.ToBoolean(editing))
-                {
-                    if (string.IsNullOrEmpty(userId))
-                    {
-                        userId = "0";
-                    }
+                {                    
                     var ipl = SingletonIpl.GetInstance<IplSchedulerCheckin>();
 
                     var ids = formCollection.Get("ids");
                     var status = formCollection.Get(ids+ "_!nativeeditor_status");
                     var localtionId = formCollection.Get(ids + "_localtion_id");
+                    var accountId = formCollection.Get(ids + "_account_id");
                     var text = formCollection.Get(ids + "_text");
                     var startDate = formCollection.Get(ids + "_start_date");
                     var endDate = formCollection.Get(ids + "_end_date");
@@ -88,7 +86,7 @@ namespace PlaceMapADM.Controllers
                     {
                         var res = ipl.Insert(new SchedulerCheckinEntity
                         {
-                            AccountId = Convert.ToInt32(userId),
+                            AccountId = Convert.ToInt32(accountId),
                             LocaltionId = Convert.ToInt32(localtionId),
                             Description = text,
                             StartDate = Convert.ToDateTime(startDate),
@@ -105,8 +103,8 @@ namespace PlaceMapADM.Controllers
                     {
                         var res = ipl.Update(new SchedulerCheckinEntity
                         {
-                            Id = 0,
-                            AccountId = Convert.ToInt32(userId),
+                            Id = Convert.ToInt32(ids),
+                            AccountId = Convert.ToInt32(accountId),
                             LocaltionId = Convert.ToInt32(localtionId),
                             Description = text,
                             StartDate = Convert.ToDateTime(startDate),
@@ -122,15 +120,7 @@ namespace PlaceMapADM.Controllers
                     }
                     else if (status.Equals("deleted"))
                     {
-                        var res = ipl.Delete(new SchedulerCheckinEntity
-                        {
-                            Id = 0,
-                            AccountId = Convert.ToInt32(userId),
-                            LocaltionId = Convert.ToInt32(localtionId),
-                            Description = text,
-                            StartDate = Convert.ToDateTime(startDate),
-                            EndDate = Convert.ToDateTime(endDate)
-                        });
+                        var res = ipl.Delete(Convert.ToInt32(ids));
                         if (res)
                         {
                             return Json(new

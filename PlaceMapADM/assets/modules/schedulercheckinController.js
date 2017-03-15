@@ -48,18 +48,35 @@ CmsShop.SchedulerCheckin.Init = function () {
         }
     }
 
-    scheduler.locale.labels.section_localtion = "Chọn địa điểm:";  //script_path: "/Localtion/ListAllLocaltionByUserId"+"&userId="+p.userId,  
+    scheduler.locale.labels.section_account = "Mã tài khoản: ";
+    scheduler.locale.labels.section_localtion = "Chọn địa điểm: ";
     scheduler.config.lightbox.sections = [
+        { name: "account", height: 30, map_to: "account_id", type: "textarea", default_value: p.userId + "" },
         { name: "localtion", options: p.localtions, map_to: "localtion_id", type: "combo", image_path: "../common/dhtmlxCombo/imgs/", height: 30, filtering: true },
-        { name: "description", height: 50, map_to: "text", type: "textarea", focus: true },
+        { name: "description", height: 100, map_to: "text", type: "textarea", focus: true },
         { name: "time", height: 72, type: "time", map_to: "auto" }
     ];
+    scheduler.attachEvent("onLightbox", function () {
+        var section = scheduler.formSection("account");
+        section.control.disabled = true;
+        section.control.value = p.userId + "";
+    });    
 
     scheduler.config.xml_date = "%Y-%m-%d %H:%i";
     scheduler.config.prevent_cache = true;
     scheduler.config.show_loading = true;
     scheduler.init('scheduler_here', new Date(), "month");
     
+    //Saving data
+    var dp = new dataProcessor("/SchedulerCheckin/UpdateData");
+    dp.init(scheduler);
+    dp.attachEvent("onAfterUpdateFinish", function () {
+        //load data vào lịch    
+        scheduler.clearAll();
+        var param = "userId=" + p.userId + "&startDate=" + p.startDate + "&endDate=" + p.endDate;
+        scheduler.load("/SchedulerCheckin/GetListScheduleCheckinByUserId?" + param, "json");
+    })
+   
     p.RegisterEvents();
 };
 
@@ -106,17 +123,12 @@ CmsShop.SchedulerCheckin.RegisterEvents = function() {
     $("#sltAccount").off("change").on("change", function () {
         
         p.userId = $("#sltAccount").val();
-        p.LoadAllLocaltionByUser();
-                       
+        p.LoadAllLocaltionByUser();                               
+
         //load data vào lịch    
         scheduler.clearAll();
         var param = "userId=" + p.userId + "&startDate=" + p.startDate + "&endDate=" + p.endDate;
         scheduler.load("/SchedulerCheckin/GetListScheduleCheckinByUserId?"+param,"json");        
-
-        //Saving data
-        var dp = new dataProcessor("/SchedulerCheckin/UpdateData?userId="+p.userId);
-        dp.init(scheduler);
-        dp.setTransactionMode("POST", true);
     });    
 
     $('#btnUpdateLocaltionByUser').off('click').on('click', function () {        

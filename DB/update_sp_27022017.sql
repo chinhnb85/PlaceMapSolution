@@ -631,3 +631,27 @@ BEGIN
 	SET NOCOUNT ON;    
 	delete SchedulerCheckin where AccountId=@AccountId and LocaltionId=@LocaltionId
 END
+
+go
+ALTER PROCEDURE [dbo].[Sp_SchedulerCheckin_Update] 
+	@Id int,	
+ 	@AccountId int,
+	@LocaltionId int,
+	@StartDate datetime,
+	@EndDate datetime,
+	@Description nvarchar(500)
+AS
+BEGIN	
+	SET NOCOUNT ON;    
+	Update SchedulerCheckin set AccountId=@AccountId,LocaltionId=@LocaltionId,StartDate=@StartDate,EndDate=@EndDate,[Description]=@Description
+	where Id=@Id
+END
+
+go
+ALTER PROCEDURE [dbo].[Sp_SchedulerCheckin_Delete] 	 	
+	@Id int
+AS
+BEGIN	
+	SET NOCOUNT ON;    
+	delete SchedulerCheckin where Id=@Id
+END
