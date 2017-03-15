@@ -436,6 +436,28 @@ var logisticJs = $.extend({
             day = "0" + day;
         return  month  + "/" + day + "/" + year;
     },
+    startDateNow: function () {
+        var d = new Date();
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1;
+        var firstOfMonth = new Date(d.getFullYear(), d.getMonth(), 1);
+        if (month < 10)
+            month = "0" + month;
+        if (firstOfMonth < 10)
+            firstOfMonth = "0" + firstOfMonth;
+        return firstOfMonth + "/" + month + "/" + year;
+    },
+    endDateNow: function () {
+        var d = new Date();
+        var year = d.getFullYear();
+        var month = d.getMonth() + 1;
+        var lastOfMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+        if (month < 10)
+            month = "0" + month;
+        if (lastOfMonth < 10)
+            lastOfMonth = "0" + lastOfMonth;
+        return lastOfMonth + "/" + month + "/" + year;
+    },
     pad: function (num) {
         num = "0" + num;
         return num.slice(-2);

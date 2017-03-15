@@ -655,3 +655,78 @@ BEGIN
 	SET NOCOUNT ON;    
 	delete SchedulerCheckin where Id=@Id
 END
+
+--thống kê
+GO
+CREATE procedure [dbo].[Sp_Statistic_ListStatisticPaging]
+
+(
+@startDate datetime,
+@endDate datetime,
+@pageIndex int,
+@pageSize int,
+@totalRow int output
+)
+
+as
+
+set nocount on
+
+--get tống số khách hàng của từng user
+DECLARE @SumAll TABLE(Id int, SumAll int)
+INSERT @SumAll (Id,SumAll) 
+select A.Id,COUNT(A.Id) as SumAll 
+from Account as A
+left join Localtion as L on L.AccountId=A.Id
+where L.Status=1 and A.Status=1
+group by A.Id
+order by A.Id
+
+--get tổng số checkin trong tháng của từng user
+DECLARE @SumCheckInMonth TABLE(Id int, SumCheckInMonth int)
+INSERT @SumCheckInMonth (Id,SumCheckInMonth)
+select AccountId, COUNT(AccountId) as SumCheckInMonth 
+from LocaltionAccountCheck
+where IsCheck=1 and AccountId<>0
+group by AccountId
+order by AccountId
+
+--get những địa điểm đã check in đủ 3/tháng
+DECLARE @MinCheckIn TABLE(Id int, MinCheckIn int)
+INSERT @MinCheckIn (Id,MinCheckIn)
+select LocaltionId, COUNT(LocaltionId) as MinCheckIn 
+from LocaltionAccountCheck
+where IsCheck=1 and LocaltionId<>0
+group by LocaltionId
+having COUNT(LocaltionId)>=3
+order by LocaltionId
+
+--số lần user checin >=3/thang
+DECLARE @FullMinCheckInMonth TABLE(Id int, FullMinCheckInMonth int)
+INSERT @FullMinCheckInMonth (Id,FullMinCheckInMonth)
+select L.AccountId,COUNT(L.AccountId) as FullMinCheckInMonth from @MinCheckIn as M
+left join Localtion as L on M.Id=L.Id
+where L.AccountId is not null
+group by L.AccountId
+order by L.AccountId
+
+--list table
+DECLARE @ALL TABLE(Id int, SumAll int, SumCheckInMonth int, FullMinCheckInMonth int)
+INSERT @All (Id,SumAll,SumCheckInMonth,FullMinCheckInMonth)
+select SA.Id,SA.SumAll,SC.SumCheckInMonth,FM.FullMinCheckInMonth from @SumAll as SA
+left join @SumCheckInMonth as SC on SC.Id=SA.Id
+left join @FullMinCheckInMonth as FM on FM.Id=SA.Id
+
+
+--phan trang
+DECLARE @UpperBand int, @LowerBand int
+
+SELECT @totalRow = COUNT(*) FROM @ALL				
+
+SET @LowerBand  = (@pageIndex - 1) * @PageSize
+SET @UpperBand  = (@pageIndex * @PageSize)
+SELECT * FROM (
+SELECT *,ROW_NUMBER() OVER(ORDER BY A.Id DESC) AS RowNumber 
+FROM @ALL A 
+) AS temp
+WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand

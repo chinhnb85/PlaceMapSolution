@@ -129,10 +129,7 @@ CmsShop.SchedulerCheckin.RegisterEvents = function() {
         scheduler.clearAll();
         var param = "userId=" + p.userId + "&startDate=" + p.startDate + "&endDate=" + p.endDate;
         scheduler.load("/SchedulerCheckin/GetListScheduleCheckinByUserId?"+param,"json");        
-    });    
-
-    $('#btnUpdateLocaltionByUser').off('click').on('click', function () {        
-    });    
+    });       
 };
 
 CmsShop.SchedulerCheckin.LoadAllLocaltionByUser = function (callback) {
