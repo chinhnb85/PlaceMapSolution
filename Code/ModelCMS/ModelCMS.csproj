@@ -58,6 +58,9 @@
     <Compile Include="Base\BaseIpl.cs" />
     <Compile Include="Base\UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistic\IplStatistic.cs" />
+    <Compile Include="Statistic\IStatistic.cs" />
+    <Compile Include="Statistic\StatisticEntity.cs" />
     <Compile Include="SchedulerCheckin\IplSchedulerCheckin.cs" />
     <Compile Include="SchedulerCheckin\ISchedulerCheckin.cs" />
     <Compile Include="SchedulerCheckin\SchedulerCheckinEntity.cs" />

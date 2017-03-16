@@ -786,3 +786,205 @@ left join @SumCheckInMonth as SC on SC.Id=SA.Id
 left join @FullMinCheckInMonth as FM on FM.Id=SA.Id
 where A.Status=1 and A.Type=2
 end
+
+go
+----alter 16/03/2017
+ALTER procedure [dbo].[Sp_Statistic_ListStatisticPaging]
+
+(
+@startDate datetime,
+@endDate datetime,
+@pageIndex int,
+@pageSize int,
+@totalRow int output
+)
+
+as
+begin
+set nocount on
+
+--get tống số khách hàng của từng user
+DECLARE @SumAll TABLE(Id int, SumAll int)
+INSERT @SumAll (Id,SumAll) 
+select AccountId,COUNT(AccountId) as SumAll 
+from Localtion
+where [Status]<>2
+group by AccountId
+
+--get tổng số checkin trong tháng của từng user
+DECLARE @SumCheckInMonth TABLE(Id int, SumCheckInMonth int)
+INSERT @SumCheckInMonth (Id,SumCheckInMonth)
+select LC.AccountId, COUNT(LC.AccountId) as SumCheckInMonth 
+from LocaltionAccountCheck LC
+inner join Localtion as L on L.Id=LC.LocaltionId
+where IsCheck=1 and LC.AccountId<>0 and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
+group by LC.AccountId
+
+--get những địa điểm đã check in đủ MinCheckIn/tháng
+DECLARE @MinCheckInTemp TABLE(Id int, MinCheckIn int)
+INSERT @MinCheckInTemp (Id,MinCheckIn)
+select LocaltionId, COUNT(LocaltionId) as MinCheckIn 
+from LocaltionAccountCheck
+inner join Localtion as L on L.Id=LocaltionId
+where IsCheck=1 and LocaltionId<>0 and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
+group by LocaltionId
+
+--so sánh >= MinCheckIn
+DECLARE @MinCheckIn TABLE(Id int, MinCheckIn int)
+INSERT @MinCheckIn (Id,MinCheckIn)
+select MC.* from @MinCheckInTemp as MC
+inner join Localtion as L on L.Id=MC.Id
+where MC.MinCheckIn>=L.MinCheckin
+
+--số lần user checin >=3/thang
+DECLARE @FullMinCheckInMonth TABLE(Id int, FullMinCheckInMonth int)
+INSERT @FullMinCheckInMonth (Id,FullMinCheckInMonth)
+select L.AccountId,COUNT(L.AccountId) as FullMinCheckInMonth 
+from @MinCheckIn as M
+left join Localtion as L on M.Id=L.Id
+where L.AccountId is not null
+group by L.AccountId
+
+--list table
+DECLARE @ALL TABLE(Id int,UserName varchar(50),FullName nvarchar(50), SumAll int, SumCheckInMonth int, FullMinCheckInMonth int)
+INSERT @All (Id,UserName,FullName,SumAll,SumCheckInMonth,FullMinCheckInMonth)
+select A.Id,A.UserName,A.DisplayName,SA.SumAll,SC.SumCheckInMonth,FM.FullMinCheckInMonth 
+from Account as A
+left join @SumAll as SA on SA.Id=A.Id
+left join @SumCheckInMonth as SC on SC.Id=SA.Id
+left join @FullMinCheckInMonth as FM on FM.Id=SA.Id
+where A.Status=1 and A.Type=2
+
+
+--phan trang
+DECLARE @UpperBand int, @LowerBand int
+
+SELECT @totalRow = COUNT(*) FROM @ALL				
+
+SET @LowerBand  = (@pageIndex - 1) * @PageSize
+SET @UpperBand  = (@pageIndex * @PageSize)
+SELECT * FROM (
+SELECT *,ROW_NUMBER() OVER(ORDER BY A.Id DESC) AS RowNumber 
+FROM @ALL A 
+) AS temp
+WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand
+end
+
+go
+GO
+ALTER procedure [dbo].[Sp_Statistic_GetExportData]
+
+(
+@startDate datetime,
+@endDate datetime
+)
+
+as
+begin
+set nocount on
+
+--get tống số khách hàng của từng user
+DECLARE @SumAll TABLE(Id int, SumAll int)
+INSERT @SumAll (Id,SumAll) 
+select AccountId,COUNT(AccountId) as SumAll 
+from Localtion
+where [Status]<>2
+group by AccountId
+
+--get tổng số checkin trong tháng của từng user
+DECLARE @SumCheckInMonth TABLE(Id int, SumCheckInMonth int)
+INSERT @SumCheckInMonth (Id,SumCheckInMonth)
+select LC.AccountId, COUNT(LC.AccountId) as SumCheckInMonth 
+from LocaltionAccountCheck LC
+inner join Localtion as L on L.Id=LC.LocaltionId
+where IsCheck=1 and LC.AccountId<>0 and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
+group by LC.AccountId
+
+--get những địa điểm đã check in đủ MinCheckIn/tháng
+DECLARE @MinCheckInTemp TABLE(Id int, MinCheckIn int)
+INSERT @MinCheckInTemp (Id,MinCheckIn)
+select LocaltionId, COUNT(LocaltionId) as MinCheckIn 
+from LocaltionAccountCheck
+inner join Localtion as L on L.Id=LocaltionId
+where IsCheck=1 and LocaltionId<>0 and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
+group by LocaltionId
+
+--so sánh >= MinCheckIn
+DECLARE @MinCheckIn TABLE(Id int, MinCheckIn int)
+INSERT @MinCheckIn (Id,MinCheckIn)
+select MC.* from @MinCheckInTemp as MC
+inner join Localtion as L on L.Id=MC.Id
+where MC.MinCheckIn>=L.MinCheckin
+
+--số lần user checin >=3/thang
+DECLARE @FullMinCheckInMonth TABLE(Id int, FullMinCheckInMonth int)
+INSERT @FullMinCheckInMonth (Id,FullMinCheckInMonth)
+select L.AccountId,COUNT(L.AccountId) as FullMinCheckInMonth 
+from @MinCheckIn as M
+left join Localtion as L on M.Id=L.Id
+where L.AccountId is not null
+group by L.AccountId
+
+--list table
+select A.Id,A.UserName,A.DisplayName as FullName,SA.SumAll,SC.SumCheckInMonth,FM.FullMinCheckInMonth 
+from Account as A
+left join @SumAll as SA on SA.Id=A.Id
+left join @SumCheckInMonth as SC on SC.Id=SA.Id
+left join @FullMinCheckInMonth as FM on FM.Id=SA.Id
+where A.Status=1 and A.Type=2
+order by A.Id DESC
+end
+
+GO
+ALTER PROCEDURE [dbo].[Sp_LocaltionAccountCheck_ListAllByAccountId]
+	@AccountId int,
+	@StartDate datetime,
+	@EndDate datetime,
+	@pageIndex int,
+	@pageSize int,	
+	@totalRow int output
+AS
+BEGIN	
+	SET NOCOUNT ON; 
+	DECLARE @UpperBand int, @LowerBand int
+
+SELECT @totalRow = COUNT(*) FROM LocaltionAccountCheck where (AccountId=@AccountId)and (LocaltionId<>0) and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))					
+
+SET @LowerBand  = (@pageIndex - 1) * @PageSize
+SET @UpperBand  = (@pageIndex * @PageSize)
+select * from(	
+	select AC.AccountId,AC.LocaltionId,AC.[Datetime] as CheckDate,AC.ImageCheckin,L.Name as Name,L.Phone as Phone,L.[Address] as [Address], ROW_NUMBER() OVER(ORDER BY AC.Id DESC) AS RowNumber 
+	from LocaltionAccountCheck as AC 
+	inner join Account as A on AC.AccountId=A.Id
+	inner join Localtion as L on AC.LocaltionId=L.Id
+	where (AC.AccountId=@AccountId) and (AC.LocaltionId<>0) and (cast(AC.[Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
+)AS temp
+WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand
+END
+
+GO
+ALTER PROCEDURE [dbo].[Sp_LocaltionAccountCheck_ListAllByLocaltionId]
+	@LocaltionId int,
+	@StartDate datetime,
+	@EndDate datetime,
+	@pageIndex int,
+	@pageSize int,	
+	@totalRow int output
+AS
+BEGIN	
+	SET NOCOUNT ON; 
+	DECLARE @UpperBand int, @LowerBand int
+
+SELECT @totalRow = COUNT(*) FROM LocaltionAccountCheck where (LocaltionId=@LocaltionId) and (cast([Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))					
+
+SET @LowerBand  = (@pageIndex - 1) * @PageSize
+SET @UpperBand  = (@pageIndex * @PageSize)
+select * from(	
+	select AC.AccountId,AC.LocaltionId,AC.[Datetime] as CheckDate,AC.ImageCheckin,A.DisplayName as Name,L.Phone as Phone,L.[Address] as [Address], ROW_NUMBER() OVER(ORDER BY AC.Id DESC) AS RowNumber 
+	from LocaltionAccountCheck as AC 
+	inner join Account as A on AC.AccountId=A.Id
+	inner join Localtion as L on AC.LocaltionId=L.Id
+	where (AC.LocaltionId=@LocaltionId) and (cast(AC.[Datetime] as date) between cast(@StartDate as date) and cast(@EndDate as date))
+)AS temp
+WHERE RowNumber > @LowerBand AND RowNumber <= @UpperBand
+END
