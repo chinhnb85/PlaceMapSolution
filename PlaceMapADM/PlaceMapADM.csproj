@@ -181,6 +181,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\Common.cs" />
     <Compile Include="Code\SessionUtility.cs" />
+    <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Controllers\SchedulerCheckinController.cs" />
     <Compile Include="Controllers\AccountTransferController.cs" />
     <Compile Include="Controllers\MapProvinceController.cs" />
@@ -275,6 +276,7 @@
     <Content Include="assets\img\temp1.png" />
     <Content Include="assets\img\tree-icons.png" />
     <Content Include="assets\img\w-loading.gif" />
+    <Content Include="assets\modules\statisticController.js" />
     <Content Include="assets\modules\schedulercheckinController.js" />
     <Content Include="assets\modules\accounttransferController.js" />
     <Content Include="assets\modules\localtionstatusController.js" />
@@ -1438,6 +1440,7 @@
     <Content Include="Views\LocaltionStatus\Index.cshtml" />
     <Content Include="Views\AccountTransfer\Index.cshtml" />
     <Content Include="Views\SchedulerCheckin\Index.cshtml" />
+    <Content Include="Views\Statistic\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Code\LibCore\LibCore.csproj">
