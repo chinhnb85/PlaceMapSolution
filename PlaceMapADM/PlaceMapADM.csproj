@@ -200,6 +200,7 @@
     <Compile Include="Controllers\Base\CultureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Excel\OfficeHelper.cs" />
     <Compile Include="Excel\ResponseEntity.cs" />
     <Compile Include="Global.asax.cs">
@@ -387,6 +388,7 @@
     <Content Include="assets\js\toastr\toastr.min.js" />
     <Content Include="assets\js\validation\bootstrapValidator.js" />
     <Content Include="assets\js\validation\bootstrapValidator.min.js" />
+    <Content Include="assets\modules\statisticController.js" />
     <Content Include="assets\plugins\chosen\css\chosen.css" />
     <Content Include="assets\plugins\chosen\images\chosen-sprite.png" />
     <Content Include="assets\plugins\chosen\js\chosen.jquery.min.js" />
@@ -1161,6 +1163,7 @@
     <Content Include="assets\swf\copy_csv_xls_pdf.swf" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -1405,6 +1408,7 @@
     <Content Include="assets\plugins\dhtmlxScheduler_v4.4.0\samples\common\connector\update.php" />
     <Content Include="assets\plugins\dhtmlxScheduler_v4.4.0\samples\common\connector\xss_filter.php" />
     <Content Include="assets\plugins\dhtmlxScheduler_v4.4.0\samples\common\database.sqlite" />
+    <Content Include="Excel\Temp\template_statistic.xlsx" />
     <None Include="Properties\PublishProfiles\PlaceMap.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

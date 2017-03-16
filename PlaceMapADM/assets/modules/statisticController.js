@@ -2,7 +2,7 @@
 if (typeof (CmsShop.Statistic) == "undefined") CmsShop.Statistic = {};
 
 CmsShop.Statistic = {
-    pageSize: 10,
+    pageSize: 20,
     pageIndex: 1,
     startDate: logisticJs.startDateNow(),
     endDate: logisticJs.endDateNow()
@@ -12,7 +12,8 @@ CmsShop.Statistic.Init = function () {
     var p = this;
 
     logisticJs.activeMenuSidebar('/Statistic');
-    
+
+    $("#sltPageSize").val(p.pageSize);
     $("#txtDatetimeStart").val(p.startDate).datepicker({ format: 'dd/mm/yyyy' });
     $("#txtDatetimeEnd").val(p.endDate).datepicker({ format: 'dd/mm/yyyy' });
 
@@ -39,7 +40,7 @@ CmsShop.Statistic.RegisterEvents = function () {
         p.endDate = $("#txtDatetimeEnd").val();
         p.pageIndex = 1;
 
-        p.LoadAllAccountChecked(function () {
+        p.LoadAllStatistic(function () {
             p.RegisterEvents();
         });
     });
@@ -103,7 +104,7 @@ CmsShop.Statistic.LoadAllStatistic = function (callback) {
 CmsShop.Statistic.ExportExcelAllStatistic = function (callback) {
     var p = this;
 
-    var dataparam = { accountId: p.currentUserId, parentId: p.parentId, provinceId: p.provinceId, keySearch: p.keySearch};
+    var dataparam = { startDate: p.startDate, endDate: p.endDate };
 
     $.ajax({
         type: "GET",

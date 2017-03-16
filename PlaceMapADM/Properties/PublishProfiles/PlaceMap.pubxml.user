@@ -13,7 +13,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:27</publishTime>
     </File>
     <File Include="appSettings.config">
-      <publishTime>03/10/2017 22:47:16</publishTime>
+      <publishTime>03/15/2017 22:50:43</publishTime>
     </File>
     <File Include="assets/css/4095-rtl.min.css">
       <publishTime>11/21/2016 21:51:29</publishTime>
@@ -607,10 +607,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/28/2017 23:32:54</publishTime>
     </File>
     <File Include="assets/modules/accounttransferController.js">
-      <publishTime>03/13/2017 00:15:43</publishTime>
+      <publishTime>03/13/2017 23:08:35</publishTime>
     </File>
     <File Include="assets/modules/base/common.js">
-      <publishTime>02/24/2017 21:34:14</publishTime>
+      <publishTime>03/15/2017 23:11:20</publishTime>
     </File>
     <File Include="assets/modules/homeController.js">
       <publishTime>02/28/2017 23:32:28</publishTime>
@@ -625,10 +625,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/28/2017 21:48:49</publishTime>
     </File>
     <File Include="assets/modules/loginController.js">
-      <publishTime>12/16/2016 23:07:02</publishTime>
+      <publishTime>03/13/2017 00:23:36</publishTime>
     </File>
     <File Include="assets/modules/mapprovinceController.js">
       <publishTime>02/28/2017 23:32:16</publishTime>
+    </File>
+    <File Include="assets/modules/schedulercheckinController.js">
+      <publishTime>03/15/2017 23:45:39</publishTime>
+    </File>
+    <File Include="assets/modules/statisticController.js">
+      <publishTime>03/15/2017 22:38:39</publishTime>
     </File>
     <File Include="assets/plugins/chosen/css/chosen.css">
       <publishTime>11/21/2016 21:51:34</publishTime>
@@ -638,6 +644,2790 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="assets/plugins/chosen/js/chosen.jquery.min.js">
       <publishTime>11/21/2016 21:51:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/base_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/chart_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/combo_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/convert.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/crosslink_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/dataprocessor.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/dataview_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/data_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_adodb.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_common.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_excel.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_filesystem.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_mssql.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_mysqli.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_oracle.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_pdo.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_phpcake.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_phpcake2.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_phpci.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_phpci2.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_phpyii.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_phpyii1.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_postgre.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_sasql.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_sqlite.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_sqlite3.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/db_sqlsrv.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/filesystem_item.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/form_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/gantt_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/grid_config.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/grid_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/keygrid_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/mixed_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/options_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/scheduler_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/strategy.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/tools.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/treedatagroup_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/treedatamultitable_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/treegridgroup_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/treegridmultitable_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/treegrid_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/treegroup_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/treemultitable_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/tree_connector.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/update.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/connector/xss_filter.php">
+      <publishTime>01/27/2017 19:07:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler.css">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler_classic.css">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler_contrast_black.css">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler_contrast_white.css">
+      <publishTime>01/31/2017 18:25:52</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler_flat.css">
+      <publishTime>01/31/2017 18:25:52</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/dhtmlxscheduler_glossy.css">
+      <publishTime>01/31/2017 18:25:52</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_active_links.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_agenda_view.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_all_timed.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_collision.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_container_autoresize.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_cookie.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_csp.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_editors.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_expand.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_html_templates.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_key_nav.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_layer.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_limit.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_map_view.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_minical.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_monthheight.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_multiselect.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_multisource.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_mvc.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_offline.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_outerdrag.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_pdf.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_quick_info.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_readonly.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_recurring.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_serialize.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_tooltip.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_url.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_wp.js">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/ext/dhtmlxscheduler_year_view.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/buttons.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/but_repeat.gif">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/calendar.gif">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/clock_big.gif">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/clock_small.gif">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/collapse_expand_icon.gif">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/controls.gif">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/databg.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/databg_now.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/export_ical.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/export_pdf.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/icon.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/images.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/loading.gif">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs/resize_dots.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/arrow_left.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/arrow_right.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/but_repeat.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/calendar.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/clock_big.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/clock_small.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/close_icon.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/collapse_expand_icon.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/controls.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/databg.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/export_ical.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/export_pdf.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/resize_dots.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_black/resizing.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/arrow_left.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/arrow_right.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/but_repeat.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/calendar.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/clock_big.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/clock_small.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/close_icon.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/collapse_expand_icon.gif">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/controls.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/databg.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/export_ical.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/export_pdf.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/quick_info_edit.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/resize_dots.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_contrast_white/resizing.png">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/arrow_left.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/arrow_right.png">
+      <publishTime>02/16/2015 17:09:22</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/but_repeat.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/calendar.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/clock_big.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/clock_small.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/close_icon.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/collapse_expand_icon.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/controls.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/databg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/databg_now.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/export_ical.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/export_pdf.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/resize_dots.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_dhx_terrace/resizing.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/agenda_bg.gif">
+      <publishTime>02/26/2016 19:47:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/arrow_left.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/arrow_right.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/but_repeat.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/calendar.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/clock.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/clock_big.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/clock_small.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/close_icon.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/collapse_expand_icon.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/controls.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/databg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/databg_now.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/export_ical.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/export_pdf.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/resize_dots.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_flat/resizing.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/blue_tab.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/blue_tab_wide.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/buttons.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/but_repeat.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/calendar.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/clock_big.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/clock_small.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/collapse_expand_icon.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/controlls5.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/databg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/databg_now.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/event-bg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/export_ical.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/export_pdf.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/icon.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/left-separator.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/left-time-bg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/lightbox.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/loading.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/move.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/multi-days-bg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/second-top-days-bg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/top-days-bg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/top-separator.gif">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/white_tab.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/imgs_glossy/white_tab_wide.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_ar.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_be.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_ca.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_cn.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_cs.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_da.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_de.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_el.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_en.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_es.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_fi.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_fr.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_he.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_hu.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_id.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_it.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_jp.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_nb.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_nl.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_no.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_pl.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_pt.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_ro.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_ru.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_si.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_sk.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_sv.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_tr.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/locale_ua.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_be.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_cn.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_cs.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_da.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_de.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_el.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_en.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_es.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_fi.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_fr.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_it.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_nb.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_nl.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_pl.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_pt.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_ro.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_ru.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_sk.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_sv.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/locale_recurring_ua.js">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_be.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_cn.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_de.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_el.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_en.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_es.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_fr.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_it.html">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_nl.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_ro.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_ru.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/locale/recurring/repeat_template_sk.html">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/dhtmlxscheduler.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/dhtmlxscheduler.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_active_links.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_active_links.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_agenda_view.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_agenda_view.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_all_timed.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_all_timed.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_collision.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_collision.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_container_autoresize.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_container_autoresize.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_cookie.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_cookie.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_csp.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_csp.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_editors.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_editors.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_expand.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_expand.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_html_templates.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_html_templates.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_key_nav.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_key_nav.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_layer.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_layer.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_limit.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_limit.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_map_view.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_map_view.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_minical.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_minical.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_monthheight.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_monthheight.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_multiselect.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_multiselect.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_multisource.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_multisource.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_mvc.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_mvc.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_offline.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_offline.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_outerdrag.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_outerdrag.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_pdf.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_pdf.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_quick_info.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_quick_info.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_readonly.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_readonly.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_recurring.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_recurring.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_serialize.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_serialize.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_tooltip.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_tooltip.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_url.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_url.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_wp.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_wp.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_year_view.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/ext/dhtmlxscheduler_year_view.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ar.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ar.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_be.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_be.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ca.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ca.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_cn.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_cn.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_cs.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_cs.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_da.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_da.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_de.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_de.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_el.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_el.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_en.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_en.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_es.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_es.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_fi.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_fi.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_fr.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_fr.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_he.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_he.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_hu.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_hu.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_id.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_id.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_it.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_it.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_jp.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_jp.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_nb.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_nb.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_nl.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_nl.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_no.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_no.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_pl.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_pl.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_pt.js">
+      <publishTime>01/31/2017 18:25:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_pt.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ro.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ro.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ru.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ru.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_si.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_si.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_sk.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_sk.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_sv.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_sv.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_tr.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_tr.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ua.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/locale_ua.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_be.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_be.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_cn.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_cn.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_cs.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_cs.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_da.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_da.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_de.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_de.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_el.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_el.js.map">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_en.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_en.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_es.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_es.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_fi.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_fi.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_fr.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_fr.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_it.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_it.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_nb.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_nb.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_nl.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_nl.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_pl.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_pl.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_pt.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_pt.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_ro.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_ro.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_ru.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_ru.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_sk.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_sk.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_sv.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_sv.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_ua.js">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/locale_recurring_ua.js.map">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_be.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_cn.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_de.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_el.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_en.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_es.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_fr.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_it.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_nl.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_ro.html">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_ru.html">
+      <publishTime>01/31/2017 18:25:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/locale/recurring/repeat_template_sk.html">
+      <publishTime>01/31/2017 18:25:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/skins/dhtmlxscheduler.css">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/skins/dhtmlxscheduler_classic.css">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/skins/dhtmlxscheduler_contrast_black.css">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/skins/dhtmlxscheduler_contrast_white.css">
+      <publishTime>01/31/2017 18:25:50</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/skins/dhtmlxscheduler_flat.css">
+      <publishTime>01/31/2017 18:25:52</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/codebase/sources/skins/dhtmlxscheduler_glossy.css">
+      <publishTime>01/31/2017 18:25:52</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/license.txt">
+      <publishTime>02/26/2016 19:47:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/readme.txt">
+      <publishTime>02/26/2016 19:47:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/01_basic_init.html">
+      <publishTime>01/31/2017 18:25:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/02_hour_scale_format.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/03_header_format.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/05_loading_database.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/06_multi_day_events.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/07_locale_usage.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/08_options.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/09_connector_options.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/10_loading_database_json.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/11_connector_options_json.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/12_block_csrf.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/13_touch_ui.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/data/events.php">
+      <publishTime>01/30/2017 17:46:30</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/data/events.xml">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/data/events_json.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/data/events_safe.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/data/types.php">
+      <publishTime>07/30/2015 14:47:18</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/data/types.xml">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/data/types_json.php">
+      <publishTime>08/13/2015 19:31:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/01_initialization_loading/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/01_events_coloring.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/02_days_coloring.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/03_hours_coloring.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/04_month_days_coloring.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/05_custom_editor.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/06_templates.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/07_custom_view.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/08_validation.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/09_timestep.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/10_without_toolbar.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/11_auto_end_date.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/12_full_day_event.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/13_single_checkbox_section.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/14_radio_buttons_section.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/15_combo_select.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/16_custom_form.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/17_lightbox_header.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/18_combo_select_from_db.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/20_multiline_event_bars.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/21_custom_hour_scale.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/22_opertions_with_lightbox.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/23_current_time.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/24_cascade_event_display.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/25_color_property.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/26_linked_selects_in_lightbox.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/27_custom_event_box.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/28_lightbox_default_value.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/29_changing_lightbox_configurations.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/30_lightbox_time_format.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/31_view_more.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/32_resizable_month_events.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/data/combo_select.php">
+      <publishTime>01/20/2016 13:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/data/events.xml">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/imgs/databg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/imgs/hour_bg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/imgs/week_bg.png">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/02_customization/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/01_recurring_events.html">
+      <publishTime>01/31/2017 13:16:40</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/03_agenda_view.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/04_year_view.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/05_expand_plugin.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/06_links_plugin.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/07_navigation_plugin.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/08_cookies_plugin.html">
+      <publishTime>01/31/2017 18:25:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/09_html_templates_plugin.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/10_url_date_plugin.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/11_pdf_plugin.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/12_readonly_form.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/13_multisource.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/14_readonly_event.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/15_collision.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/16_limitation.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/19_map_view.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/21_multiselect_options.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/22_multiselect_initial_loading.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/23_map_view_timeframes.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/26_multi_day_visible.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/data/events.xml">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/data/events_map_view.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/data/events_multiselect_options.php">
+      <publishTime>01/30/2017 16:58:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/data/events_multiselect_static.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/data/events_rec.php">
+      <publishTime>05/18/2015 20:17:36</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/data/types.php">
+      <publishTime>07/07/2016 17:45:16</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/data/units.xml">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/03_extensions/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/01_serialize_xml.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/02_serialize_json.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/03_serialize_ical.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/04_serialize_recurring.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/05_standalone_export.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/06_online_export.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/07_online_styles.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/data.ical">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/data.json">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/data.xml">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/data_r.xml">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/dummy.html">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/events.xml">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/ical_download.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/ical_mirror.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/ical_writer.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/json_download.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/json_writer.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/xml_download.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/xml_writer.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/data/xml_writer_r.php">
+      <publishTime>02/16/2015 17:09:24</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/04_export/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/05_calendar/01_select.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/05_calendar/02_without_scheduler.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/05_calendar/03_in_form.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/05_calendar/05_plain_structure.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/05_calendar/06_recurring_form.html">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/05_calendar/data/events.xml">
+      <publishTime>01/31/2017 13:16:42</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/05_calendar/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/01_default.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/02_glossy.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/03_classic.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/04_default_alt.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/05_glossy_alt.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/06_classic_alt.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/07_default_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/08_glossy_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/09_classic_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/10_default_alt_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/11_glossy_alt_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/12_classic_alt_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/13_flat.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/14_flat_alt.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/15_flat_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/16_flat_alt_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/17_contrast_black.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/18_contrast_black_alt.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/19_contrast_black_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/20_contrast_black_alt_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/21_contrast_white.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/22_contrast_white_alt.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/23_contrast_white_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/24_contrast_white_alt_rec.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/data/events.xml">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/07_skins/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/08_shared_events/combined.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/08_shared_events/events.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/08_shared_events/events_shared.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/08_shared_events/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/08_shared_events/user_1.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/08_shared_events/user_1_combined.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/08_shared_events/user_2.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/02_dhtmlx_message.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/05_mouse_over_highlight.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/06_hightlight_and_single_click_create.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/07_highlighted_timespans_month_view.html">
+      <publishTime>01/31/2017 16:16:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/08_show_event.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/09_filtering_events.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/10_custom_recurring_form.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/data/imgs/!_yellow.png">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/data/imgs/dots.png">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/data/imgs/fat_lines.png">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/data/imgs/medium_lines.png">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/data/imgs/small_lines.png">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/data/imgs/v_green.png">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/09_api/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/01_dhtmlxMenu.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/03_dhtmlxLayout.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/04_datastore.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/05_dhtmlxLayout_terrace.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/06_jquery.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/07_backbone.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/08_bootstrap.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/backbone.json">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/data.json">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/dhxmenu.xml">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/events.xml">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/about.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/about_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/bug_reporting.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/bug_reporting_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/close.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/close_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/copy.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/copy_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/cut.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/cut_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/help.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/help_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/new.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/new_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/open.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/open_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/page_setup.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/page_setup_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/paste.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/paste_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/print.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/print_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/redo.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/redo_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/save.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/save_as.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/save_as_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/save_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/select_all.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/select_all_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/undo.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/imgs/undo_dis.gif">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/data/tree.xml">
+      <publishTime>02/26/2016 19:47:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/10_integration/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/11_scales/01_month_ignore.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/11_scales/02_week_ignore.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/11_scales/03_two_work_weeks.html">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/11_scales/data/events.xml">
+      <publishTime>01/31/2017 13:16:44</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/11_scales/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/backbone/backbone.js">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/backbone/underscore.js">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/config.php">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/base_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/chart_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/combo_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/convert.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/crosslink_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/dataprocessor.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/dataview_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/data_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_adodb.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_common.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_excel.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_filesystem.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_mssql.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_mysqli.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_oracle.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_pdo.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_phpcake.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_phpci.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_phpyii.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_postgre.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_sasql.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_sqlite.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_sqlite3.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/db_sqlsrv.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/filesystem_item.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/form_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/grid_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/keygrid_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/mixed_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/options_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/scheduler_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/strategy.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/tools.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/treedatagroup_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/treedatamultitable_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/treegridgroup_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/treegridmultitable_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/treegrid_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/treegroup_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/treemultitable_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/tree_connector.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/update.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/connector/xss_filter.php">
+      <publishTime>02/16/2015 17:09:26</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/custom.css">
+      <publishTime>02/26/2016 19:47:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/database.sqlite">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/dhtmlxcombo.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/dhtmlxcombo_deprecated.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_material/dhxcombo_arrow_down.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_material/dhxcombo_arrow_down_dis.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_material/dhxcombo_chbx.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_skyblue/dhxcombo_arrow_down.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_skyblue/dhxcombo_arrow_down_dis.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_skyblue/dhxcombo_chbx.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_terrace/dhxcombo_arrow_down.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_terrace/dhxcombo_arrow_down_dis.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_terrace/dhxcombo_chbx.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_web/dhxcombo_arrow_down.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_web/dhxcombo_arrow_down_dis.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/imgs/dhxcombo_web/dhxcombo_chbx.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/skins/dhtmlxcombo_dhx_skyblue.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/skins/dhtmlxcombo_dhx_terrace.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/skins/dhtmlxcombo_dhx_web.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCombo/skins/dhtmlxcombo_material.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCommon/connector.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCommon/dhtmlxcommon.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCommon/dhtmlxcommon_deprecated.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCommon/dhtmlxcontainer.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCommon/dhtmlxcore.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxCommon/dhtmlxdataprocessor.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxDataStore/datastore.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/dhtmlxlayout.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/dhtmlxlayout_deprecated.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_material/dhxlayout_cell_btns.png">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_material/dhxlayout_cell_progress.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_material/dhxlayout_sep_hor.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_material/dhxlayout_sep_ver.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_skyblue/dhxlayout_cell_btns.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_skyblue/dhxlayout_cell_progress.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_skyblue/dhxlayout_sep_h.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_skyblue/dhxlayout_sep_v.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_terrace/dhxlayout_cell_btns.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_terrace/dhxlayout_cell_progress.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_terrace/dhxlayout_sep_h.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_terrace/dhxlayout_sep_v.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_web/dhxlayout_cell_btns.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_web/dhxlayout_cell_progress.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_web/dhxlayout_sep_h.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/imgs/dhxlayout_web/dhxlayout_sep_v.gif">
+      <publishTime>05/12/2016 11:40:38</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/skins/dhtmlxlayout_dhx_skyblue.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/skins/dhtmlxlayout_dhx_terrace.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/skins/dhtmlxlayout_dhx_web.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxLayout/skins/dhtmlxlayout_material.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/dhtmlxmenu.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/dhtmlxmenu_deprecated.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/ext/dhtmlxmenu_effects.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/ext/dhtmlxmenu_ext.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_material/dhxmenu_arrow_down.png">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_material/dhxmenu_arrow_down_dis.png">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_material/dhxmenu_arrow_up.png">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_material/dhxmenu_arrow_up_dis.png">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_material/dhxmenu_chrd.png">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_material/dhxmenu_loader.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_material/dhxmenu_subar.png">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_skyblue/dhxmenu_arrow_down.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_skyblue/dhxmenu_arrow_down_dis.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_skyblue/dhxmenu_arrow_up.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_skyblue/dhxmenu_arrow_up_dis.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_skyblue/dhxmenu_chrd.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_skyblue/dhxmenu_loader.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_skyblue/dhxmenu_subar.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_terrace/dhxmenu_arrow_down.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_terrace/dhxmenu_arrow_down_dis.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_terrace/dhxmenu_arrow_up.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_terrace/dhxmenu_arrow_up_dis.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_terrace/dhxmenu_chrd.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_terrace/dhxmenu_loader.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_terrace/dhxmenu_subar.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_web/dhxmenu_arrow_down.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_web/dhxmenu_arrow_down_dis.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_web/dhxmenu_arrow_up.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_web/dhxmenu_arrow_up_dis.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_web/dhxmenu_chrd.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_web/dhxmenu_loader.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/imgs/dhxmenu_web/dhxmenu_subar.gif">
+      <publishTime>05/12/2016 11:40:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/skins/dhtmlxmenu_dhx_skyblue.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/skins/dhtmlxmenu_dhx_terrace.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/skins/dhtmlxmenu_dhx_web.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxMenu/skins/dhtmlxmenu_material.css">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/dhtmlxtree.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/ext/dhtmlxtree_dragin.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/ext/dhtmlxtree_ed.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/ext/dhtmlxtree_json.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/ext/dhtmlxtree_path.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/ext/dhtmlxtree_srnd.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/ext/dhtmlxtree_start.js">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/blank.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/but_cut.gif">
+      <publishTime>01/31/2017 13:16:46</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/folderClosed.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/folderOpen.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/iconCheckAll.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/iconCheckDis.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/iconCheckGray.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/iconUncheckAll.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/iconUncheckDis.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/leaf.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/lock.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/minus.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/plus.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/radio_off.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_material/radio_on.gif">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/blank.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/but_cut.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/folderClosed.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/folderOpen.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/iconCheckAll.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/iconCheckDis.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/iconCheckGray.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/iconUncheckAll.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/iconUncheckDis.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/leaf.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/line.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/line1.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/line1_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/line2.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/line2_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/line3.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/line3_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/line4.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/line4_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/lock.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus1.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus2.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus2_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus3.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus3_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus4.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus4_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus5.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/minus5_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus1.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus2.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus2_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus3.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus3_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus4.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus4_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus5.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/plus5_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/radio_off.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_skyblue/radio_on.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/blank.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/but_cut.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/folderClosed.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/folderOpen.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/iconCheckAll.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/iconCheckDis.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/iconCheckGray.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/iconUncheckAll.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/iconUncheckDis.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/leaf.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/line.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/line1.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/line1_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/line2.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/line2_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/line3.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/line3_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/line4.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/line4_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/lock.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus1.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus2.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus2_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus3.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus3_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus4.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus4_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus5.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/minus5_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus1.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus2.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus2_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus3.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus3_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus4.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus4_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus5.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/plus5_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/radio_off.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_terrace/radio_on.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/blank.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/but_cut.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/folderClosed.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/folderOpen.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/iconCheckAll.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/iconCheckDis.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/iconCheckGray.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/iconUncheckAll.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/iconUncheckDis.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/leaf.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/line.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/line1.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/line1_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/line2.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/line2_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/line3.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/line3_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/line4.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/line4_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/lock.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus1.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus2.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus2_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus3.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus3_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus4.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus4_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus5.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/minus5_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus1.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus2.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus2_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus3.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus3_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus4.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus4_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus5.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/plus5_rtl.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/radio_off.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/imgs/dhxtree_web/radio_on.gif">
+      <publishTime>05/12/2016 11:40:34</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/skins/dhtmlxtree_dhx_skyblue.css">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/skins/dhtmlxtree_dhx_terrace.css">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/skins/dhtmlxtree_dhx_web.css">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dhtmlxTree/skins/dhtmlxtree_material.css">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/docs.css">
+      <publishTime>02/26/2016 19:47:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/dump.sql">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/common/testdata.js">
+      <publishTime>01/31/2017 13:16:48</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/index.html">
+      <publishTime>01/31/2017 18:25:54</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/samples/readme.txt">
+      <publishTime>02/16/2015 17:09:28</publishTime>
+    </File>
+    <File Include="assets/plugins/dhtmlxScheduler_v4.4.0/whatsnew.txt">
+      <publishTime>01/31/2017 13:33:56</publishTime>
     </File>
     <File Include="assets/plugins/jScrollPane/css/jquery.jscrollpane.css">
       <publishTime>11/21/2016 21:51:34</publishTime>
@@ -838,7 +3628,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:20</publishTime>
     </File>
     <File Include="bin/ModelCMS.dll">
-      <publishTime>03/13/2017 00:17:37</publishTime>
+      <publishTime>03/15/2017 23:47:42</publishTime>
     </File>
     <File Include="bin/MongoDB.Bson.dll">
       <publishTime>11/21/2016 21:51:21</publishTime>
@@ -856,7 +3646,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/26/2014 17:15:54</publishTime>
     </File>
     <File Include="bin/PlaceMapADM.dll">
-      <publishTime>03/13/2017 00:17:40</publishTime>
+      <publishTime>03/16/2017 00:15:18</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>11/21/2016 21:52:01</publishTime>
@@ -934,10 +3724,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:27</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>02/27/2017 23:49:55</publishTime>
+      <publishTime>03/14/2017 22:35:29</publishTime>
     </File>
     <File Include="Excel/Temp/template.xlsx">
       <publishTime>02/26/2017 00:29:28</publishTime>
+    </File>
+    <File Include="Excel/Temp/template_statistic.xlsx">
+      <publishTime>03/15/2017 22:58:17</publishTime>
+    </File>
+    <File Include="favicon.png">
+      <publishTime>12/16/2016 23:07:02</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>11/21/2016 21:51:38</publishTime>
@@ -991,7 +3787,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2016 21:51:28</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>03/10/2017 23:37:55</publishTime>
+      <publishTime>03/15/2017 21:31:30</publishTime>
     </File>
     <File Include="Views/Account/Index.cshtml">
       <publishTime>01/03/2017 00:01:22</publishTime>
@@ -1029,6 +3825,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Province/Index.cshtml">
       <publishTime>12/15/2016 15:38:08</publishTime>
     </File>
+    <File Include="Views/SchedulerCheckin/Index.cshtml">
+      <publishTime>03/16/2017 00:14:57</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/21/2016 21:51:28</publishTime>
     </File>
@@ -1036,13 +3835,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/16/2016 23:07:02</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/24/2017 21:34:27</publishTime>
+      <publishTime>03/13/2017 22:57:50</publishTime>
     </File>
     <File Include="Views/Shared/_PageBreadcrumb.cshtml">
       <publishTime>11/21/2016 21:51:28</publishTime>
     </File>
     <File Include="Views/Shared/_SlidebarMenu.cshtml">
-      <publishTime>03/10/2017 23:45:32</publishTime>
+      <publishTime>03/15/2017 22:02:31</publishTime>
+    </File>
+    <File Include="Views/Statistic/Index.cshtml">
+      <publishTime>03/15/2017 22:49:25</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/21/2016 21:51:28</publishTime>

@@ -56,6 +56,18 @@ CmsShop.SchedulerCheckin.Init = function () {
         { name: "description", height: 100, map_to: "text", type: "textarea", focus: true },
         { name: "time", height: 72, type: "time", map_to: "auto" }
     ];
+
+    scheduler.attachEvent("onEventAdded", function () {
+        if (p.userId == 0) {
+            logisticJs.msgWarning({
+                text: "Để lập lịch bạn phải chọn tài khoản.",
+                modal: true
+            });
+            return false;
+        }
+        return true;
+    });
+
     scheduler.attachEvent("onLightbox", function () {
         var section = scheduler.formSection("account");
         section.control.disabled = true;
@@ -70,12 +82,12 @@ CmsShop.SchedulerCheckin.Init = function () {
     //Saving data
     var dp = new dataProcessor("/SchedulerCheckin/UpdateData");
     dp.init(scheduler);
-    dp.attachEvent("onAfterUpdateFinish", function () {
+    dp.attachEvent("onAfterUpdateFinish", function() {
         //load data vào lịch    
         scheduler.clearAll();
         var param = "userId=" + p.userId + "&startDate=" + p.startDate + "&endDate=" + p.endDate;
         scheduler.load("/SchedulerCheckin/GetListScheduleCheckinByUserId?" + param, "json");
-    })
+    });    
    
     p.RegisterEvents();
 };
@@ -146,11 +158,15 @@ CmsShop.SchedulerCheckin.LoadAllLocaltionByUser = function (callback) {
             logisticJs.startLoading();
         },
         success: function (response) {
-            if (response.status == true && response.totalCount > 0) {                
+            if (response.status == true && response.totalCount > 0) {
                 p.localtions.length = 0;
-                $.each(response.Data, function (i, item) {                                        
-                    p.localtions.push({key: item.Id, label: item.Name});               
-                });                                              
+                if (p.userId != 0) {
+                    $.each(response.Data, function(i, item) {
+                        p.localtions.push({ key: item.Id, label: item.Name });
+                    });
+                }
+            } else {
+                p.localtions.length = 0;
             }
 
             logisticJs.stopLoading();
@@ -161,6 +177,7 @@ CmsShop.SchedulerCheckin.LoadAllLocaltionByUser = function (callback) {
         },
         error: function (status) {
             logisticJs.stopLoading();
+            p.localtions.length = 0;
         }
     });
 };
