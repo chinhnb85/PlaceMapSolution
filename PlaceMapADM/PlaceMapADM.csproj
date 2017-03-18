@@ -199,8 +199,7 @@
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\Base\CultureController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\StatisticController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />    
     <Compile Include="Excel\OfficeHelper.cs" />
     <Compile Include="Excel\ResponseEntity.cs" />
     <Compile Include="Global.asax.cs">
@@ -387,8 +386,7 @@
     <Content Include="assets\js\toastr\toastr.js" />
     <Content Include="assets\js\toastr\toastr.min.js" />
     <Content Include="assets\js\validation\bootstrapValidator.js" />
-    <Content Include="assets\js\validation\bootstrapValidator.min.js" />
-    <Content Include="assets\modules\statisticController.js" />
+    <Content Include="assets\js\validation\bootstrapValidator.min.js" />    
     <Content Include="assets\plugins\chosen\css\chosen.css" />
     <Content Include="assets\plugins\chosen\images\chosen-sprite.png" />
     <Content Include="assets\plugins\chosen\js\chosen.jquery.min.js" />
