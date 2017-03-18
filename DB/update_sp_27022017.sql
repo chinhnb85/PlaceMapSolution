@@ -996,7 +996,7 @@ GO
 -- Create date: 10/08/2016
 -- Description:	
 -- =============================================
-alter procedure [dbo].[Sp_Localtion_GetListSchedulerByAccountId] --2
+CREATE procedure [dbo].[Sp_Localtion_GetListSchedulerByAccountId] --2
 
 (
 @AccountId int,
@@ -1007,15 +1007,16 @@ as
 
 set nocount on
 
-SELECT @totalRow = COUNT(*) FROM Localtion where (AccountId=@AccountId)					
+SELECT @totalRow = COUNT(*) FROM SchedulerCheckin where (AccountId=@AccountId)	and (StartDate >= CAST(CURRENT_TIMESTAMP AS DATE) and  CAST(CURRENT_TIMESTAMP AS DATE)<=EndDate)				
 
-SELECT DISTINCT L.*,case when L.Avatar is null then '/assets/img/avatars/no-avatar.gif' else L.Avatar end as Avatar,A.UserName,C.IsCheck,LS.Name as StatusName
+SELECT L.*,case when L.Avatar is null then '/assets/img/avatars/no-avatar.gif' else L.Avatar end as Avatar,A.UserName,C.IsCheck,LS.Name as StatusName,SC.StartDate,SC.EndDate
 FROM SchedulerCheckin SC
 inner join Localtion L on L.Id=SC.LocaltionId
 left join Account A on L.AccountId=A.Id
 left join LocaltionStatus LS on L.Status=LS.Id
 left join LocaltionAccountCheck C on L.AccountId=C.AccountId and L.Id=C.LocaltionId and (C.Datetime >= CAST(CURRENT_TIMESTAMP AS DATE) and C.Datetime < DATEADD(DD, 1, CAST(CURRENT_TIMESTAMP AS DATE)))
 where (SC.AccountId=@AccountId) and (SC.StartDate >= CAST(CURRENT_TIMESTAMP AS DATE) and  CAST(CURRENT_TIMESTAMP AS DATE)<=SC.EndDate)
+order by SC.StartDate
 
 
 --declare @abc int
