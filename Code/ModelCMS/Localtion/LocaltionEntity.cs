@@ -60,6 +60,11 @@ namespace ModelCMS.Localtion
         public int? MinCheckin { get; set; }
 
         public bool? StatusEdit { get; set; }
+
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+
+        public string Note { get; set; }
         #endregion
     }
 }

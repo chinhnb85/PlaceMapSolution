@@ -81,7 +81,7 @@ var logisticJs = $.extend({
                         var $itemuser = $('.login-area.dropdown-toggle');
                         var $itemdropdown = $('.pull-right.dropdown-menu.dropdown-arrow.dropdown-login-area');
                         var avatar = "/assets/img/avatars/no-avatar.gif";
-                        if (url != null) {
+                        if (url != null && url != "") {
                             avatar = url;
                         }
                         $('.avatar img', $itemuser).attr('src', avatar);

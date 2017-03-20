@@ -996,7 +996,7 @@ GO
 -- Create date: 10/08/2016
 -- Description:	
 -- =============================================
-CREATE procedure [dbo].[Sp_Localtion_GetListSchedulerByAccountId] --2
+ALTER procedure [dbo].[Sp_Localtion_GetListSchedulerByAccountId] --2
 
 (
 @AccountId int,
@@ -1009,7 +1009,7 @@ set nocount on
 
 SELECT @totalRow = COUNT(*) FROM SchedulerCheckin where (AccountId=@AccountId)	and (StartDate >= CAST(CURRENT_TIMESTAMP AS DATE) and  CAST(CURRENT_TIMESTAMP AS DATE)<=EndDate)				
 
-SELECT L.*,case when L.Avatar is null then '/assets/img/avatars/no-avatar.gif' else L.Avatar end as Avatar,A.UserName,C.IsCheck,LS.Name as StatusName,SC.StartDate,SC.EndDate
+SELECT L.*,case when L.Avatar is null then '/assets/img/avatars/no-avatar.gif' else L.Avatar end as Avatar,A.UserName,C.IsCheck,LS.Name as StatusName,SC.StartDate,SC.EndDate,SC.Description as Note
 FROM SchedulerCheckin SC
 inner join Localtion L on L.Id=SC.LocaltionId
 left join Account A on L.AccountId=A.Id
