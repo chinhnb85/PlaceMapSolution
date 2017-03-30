@@ -24,41 +24,44 @@
             <div id="widget-body-map" class="widget-body no-padding">
                 <div class="task-container">
                     <fieldset class="fieldset" style="margin-bottom: 0!important;">
-                        <legend class="legend"></legend>
+                        <legend class="legend">Bộ lọc</legend>
                         <div class="row">
-                            <div class="col-sm-4 form-horizontal">
-                                <div class="form-group" style="margin-bottom: 0;">
-                                    <label class="col-sm-4 control-label no-padding-right">Chọn vùng / thành phố</label>
-                                    <div class="col-sm-8">
-                                        <select id="sltParentSearch" name="sltParentSearch" style="border-radius: 0; width: 100%">
-                                            <option value="0">--- Chọn Vùng/Miền ---</option>
-                                            <option value="1">Miền bắc</option>
-                                            <option value="2">Miền trung</option>
-                                            <option value="3">Miền nam</option>
-                                        </select>
-                                    </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">                                    
+                                    <select id="sltParentSearch" name="sltParentSearch" style="border-radius: 0; width: 100%">
+                                        <option value="0">--- Chọn Vùng/Miền ---</option>
+                                        <option value="1">Miền bắc</option>
+                                        <option value="2">Miền trung</option>
+                                        <option value="3">Miền nam</option>
+                                    </select>                                 
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <select id="sltProvinceSearch" name="sltProvinceSearch" style="border-radius: 0; width: 100%">
-                                            <option value="0">---Chọn tỉnh/thành phố---</option>
-                                            <script id="data-list-province" type="x-tmpl-mustache">
-                                                <option value="{{id}}">{{name}}</option>
-                                            </script>
-                                        </select>
-                                    </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">                                    
+                                    <select id="sltProvinceSearch" name="sltProvinceSearch" style="border-radius: 0; width: 100%">
+                                        <option value="0">---Chọn tỉnh/thành phố---</option>
+                                        <script id="data-list-province" type="x-tmpl-mustache">
+                                            <option value="{{id}}">{{name}}</option>
+                                        </script>
+                                    </select>                                   
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
+                                <div class="form-group">                                    
+                                    <span class="input-icon icon-right" style="width: 100%;">
+                                        <input type="text" id="txtSearchLocaltion" name="txtSearchLocaltion" class="form-control" placeholder="Tìm kiếm...">
+                                        <i class="glyphicon glyphicon-search circular"></i>
+                                    </span>                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
                                 <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <span class="input-icon icon-right" style="width:100%;">
-                                            <input type="text" id="txtSearchLocaltion" name="txtSearchLocaltion" class="form-control" placeholder="Tìm kiếm...">
-                                            <i class="glyphicon glyphicon-search circular"></i>
-                                        </span> 
-                                    </div>
+                                    <select id="sltAccount" name="sltAccount" style="border-radius: 0;width: 100%">
+                                        <option value="0">---Chọn tài khoản---</option>
+                                        <script id="data-list-account" type="x-tmpl-mustache">
+                                            <option value="{{id}}">{{displayName}}</option>
+                                        </script>
+                                    </select>
                                 </div>
                             </div>
                         </div>

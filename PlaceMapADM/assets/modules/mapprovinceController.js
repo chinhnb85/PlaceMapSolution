@@ -20,6 +20,10 @@ CmsShop.MapProvince.Init = function () {
     p.LoadAllProvince(function () {        
         $("#sltProvinceSearch").select2();
     });
+
+    p.LoadAllAccountByType(function () {
+        $("#sltAccount").select2();        
+    });
 };
 
 CmsShop.MapProvince.InitMap = function () {
@@ -296,6 +300,32 @@ CmsShop.MapProvince.RegisterEvents = function(map) {
             }, 500);
         });
     });
+    $("#sltAccount").off("change").on("change", function () {
+        p.currentUserId = $("#sltAccount").val();
+        p.pageIndex = 1;
+        p.SetMapOnAll(null);
+
+        p.LoadAllLocaltionByProvince(map, function (data) {
+            $.each(data, function (i, item) {
+                var myLatLng = { lat: parseFloat(item.Lag), lng: parseFloat(item.Lng) };
+                if (item.IsCheck) {
+                    p.AddMarker(myLatLng, item, 'checkedicon', map);
+                } else {
+                    if (item.CustomeType == 2) {
+                        p.AddMarker(myLatLng, item, 'default2', map);
+                    } else {
+                        p.AddMarker(myLatLng, item, 'default1', map);
+                    }
+                }
+            });
+            //move map to latlng
+            setTimeout(function () {
+                if (data.length > 0) {
+                    map.panTo(new google.maps.LatLng(parseFloat(data[0].Lag), parseFloat(data[0].Lng)));
+                }
+            }, 500);
+        });
+    });
     
     $("#txtSearchLocaltion").off("change keydown paste input").on("change keydown paste input", function () {
         p.keySearch = $("#txtSearchLocaltion").val();
@@ -545,6 +575,43 @@ CmsShop.MapProvince.LoadAllProvince = function (callback) {
                 });
                 if (render != undefined) {                    
                     $("#sltProvinceSearch").append(render);
+                }
+            }
+            //logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            //logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.MapProvince.LoadAllAccountByType = function (callback) {
+
+    var dataparam = { type: 2 };
+
+    $.ajax({
+        type: "GET",
+        url: "/Account/ListAllByType",
+        data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            //logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true && response.totalCount > 0) {
+                var template = $("#data-list-account").html();
+                var render = "";
+                $.each(response.Data, function (i, item) {
+                    render += Mustache.render(template, {
+                        id: item.Id, displayName: item.DisplayName
+                    });
+                });
+                if (render != undefined) {
+                    $("#sltAccount").append(render);                    
                 }
             }
             //logisticJs.stopLoading();

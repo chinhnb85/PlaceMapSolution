@@ -610,7 +610,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/13/2017 23:08:35</publishTime>
     </File>
     <File Include="assets/modules/base/common.js">
-      <publishTime>03/15/2017 23:11:20</publishTime>
+      <publishTime>03/20/2017 22:50:36</publishTime>
     </File>
     <File Include="assets/modules/homeController.js">
       <publishTime>02/28/2017 23:32:28</publishTime>
@@ -619,7 +619,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/11/2017 00:58:17</publishTime>
     </File>
     <File Include="assets/modules/localtionController.js">
-      <publishTime>03/07/2017 21:23:16</publishTime>
+      <publishTime>03/30/2017 21:56:00</publishTime>
     </File>
     <File Include="assets/modules/localtionstatusController.js">
       <publishTime>02/28/2017 21:48:49</publishTime>
@@ -628,7 +628,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/13/2017 00:23:36</publishTime>
     </File>
     <File Include="assets/modules/mapprovinceController.js">
-      <publishTime>02/28/2017 23:32:16</publishTime>
+      <publishTime>03/30/2017 22:17:27</publishTime>
     </File>
     <File Include="assets/modules/schedulercheckinController.js">
       <publishTime>03/15/2017 23:45:39</publishTime>
@@ -3805,7 +3805,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/24/2017 21:32:49</publishTime>
     </File>
     <File Include="Views/Localtion/Index.cshtml">
-      <publishTime>02/27/2017 23:20:03</publishTime>
+      <publishTime>03/30/2017 21:49:39</publishTime>
     </File>
     <File Include="Views/LocaltionCheckin/Index.cshtml">
       <publishTime>02/11/2017 00:42:39</publishTime>
@@ -3820,7 +3820,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/04/2016 21:56:59</publishTime>
     </File>
     <File Include="Views/MapProvince/Index.cshtml">
-      <publishTime>02/24/2017 21:48:44</publishTime>
+      <publishTime>03/30/2017 22:27:27</publishTime>
     </File>
     <File Include="Views/Province/Index.cshtml">
       <publishTime>12/15/2016 15:38:08</publishTime>

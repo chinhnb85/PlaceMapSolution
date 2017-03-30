@@ -46,6 +46,7 @@ CmsShop.Localtion.Init = function () {
 
     p.LoadAllAccountByType(function() {
         $("#sltAccount").select2();
+        $("#sltAccountSearch").select2();
     });
 
     p.LoadAllProvince(function () {        
@@ -142,6 +143,13 @@ CmsShop.Localtion.RegisterEvents = function () {
     });
     $("#sltProvinceSearch").off("change").on("change", function () {
         p.provinceId = $("#sltProvinceSearch").val();
+        p.pageIndex = 1;
+        p.LoadAllLocaltion(function () {
+            p.RegisterEvents();
+        });
+    });
+    $("#sltAccountSearch").off("change").on("change", function () {
+        p.currentUserId = $("#sltAccountSearch").val();
         p.pageIndex = 1;
         p.LoadAllLocaltion(function () {
             p.RegisterEvents();
@@ -519,6 +527,7 @@ CmsShop.Localtion.LoadAllAccountByType = function (callback) {
                 });
                 if (render != undefined) {
                     $("#sltAccount").append(render);
+                    $("#sltAccountSearch").append(render);
                 }                
             }
             //logisticJs.stopLoading();
