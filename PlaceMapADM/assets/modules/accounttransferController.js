@@ -83,6 +83,16 @@ CmsShop.AccountTransfer.RegisterEvents = function() {
         });
     });
 
+    $("#txtSearch").off("keydown paste input").on("keydown paste input", function () {
+        p.keySearchA = $("#txtSearch").val();
+        if (p.keySearchA == "" || p.keySearchA.length > 2) {
+            p.pageIndexA = 1;
+            p.LoadAllLocaltionByUserA(function () {
+                p.RegisterEvents();
+            });
+        }
+    });
+
     $("#sltAccountB").off("change").on("change", function () {
         p.userIdB = $("#sltAccountB").val();
         p.LoadAllLocaltionByUserB();
@@ -246,7 +256,7 @@ CmsShop.AccountTransfer.LoadAllLocaltionByUserA = function (callback) {
                         avatar = item.Avatar;
                     }
                     render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar
+                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar,address:item.Address
                     });                    
                 });
                 if (render != undefined) {
@@ -367,7 +377,7 @@ CmsShop.AccountTransfer.LoadAllLocaltionByUserB = function (callback) {
                         avatar = item.Avatar;
                     }
                     render += Mustache.render(template, {
-                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar
+                        stt: i + 1, id: item.Id, name: item.Name, avatar: avatar, address: item.Address
                     });
                 });
                 if (render != undefined) {

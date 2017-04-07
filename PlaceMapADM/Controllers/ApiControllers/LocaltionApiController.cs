@@ -91,10 +91,25 @@ namespace PlaceMapADM.Controllers.ApiControllers
             var locData = ipl.ViewDetail(loc.Id);
             if (locData != null)
             {
-                var ischeck = Common.DistanceBetweenPlaces(Double.Parse(loc.Lag), Double.Parse(loc.Lng), Double.Parse(locData.Lag), Double.Parse(locData.Lng));
-                if (ischeck < 100)
+                var countCheckIn = 0;
+                if (ipl.GetCountCheckIn(locData.Id, ref countCheckIn))
                 {
-                    loc.PlaceNumberWrong = (int)ischeck;
+                    if (locData.MinCheckin == countCheckIn)
+                    {
+                        return Json(new { status = true, message = "Địa điểm này đã checkin đủ.", Data = true });
+                    }
+                }
+                
+                var ischeck = Common.DistanceBetweenPlaces(Double.Parse(loc.Lag), Double.Parse(loc.Lng), Double.Parse(locData.Lag), Double.Parse(locData.Lng));
+                int radioCheckin;
+                if (!int.TryParse(System.Configuration.ConfigurationManager.AppSettings["RadioCheckin"], out radioCheckin))
+                {
+                    radioCheckin = 250;
+                }
+                                    
+                if (ischeck <= radioCheckin)
+                {
+                    loc.PlaceNumberWrong = ischeck;
                     var data = ipl.CheckedLocaltion(loc);
                     if (data)
                     {

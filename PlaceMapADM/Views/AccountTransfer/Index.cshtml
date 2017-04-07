@@ -22,14 +22,18 @@
         <div id="widget-body-map" class="widget-body no-padding">
             <div class="task-container">
                 <div class="col-lg-5 col-sm-5 col-xs-5" style="padding: 0; padding-right: 5px;">
-                    <div class="form-group text-align-center">
+                    <div class="form-group">
                         <span class="badge badge-azure graded">A</span>
                         <select id="sltAccountA" name="sltAccountA" style="border-radius: 0; width: 50%">
                             <option value="0">---Chọn tài khoản---</option>
                             <script id="data-list-account" type="x-tmpl-mustache">
                                 <option value="{{id}}">{{displayName}}</option>
                             </script>
-                        </select>
+                        </select>                        
+                        <span class="input-icon icon-right" style="width: 45%;">
+                            <input type="text" id="txtSearch" name="txtSearch" class="form-control" placeholder="Tìm kiếm...">
+                            <i class="glyphicon glyphicon-search circular"></i>
+                        </span>                        
                     </div>
                     <table class="table table-striped table-hover table-bordered">
                         <thead>
@@ -74,6 +78,8 @@
                                 </td>
                                 <td>
                                     {{name}}
+                                    <br />
+                                    <span style="font-size:12px;font-style:italic">Đ/c: {{address}}</span>
                                 </td>
                                 <td style="text-align:center;width:22%;">
                                     <a href="javascript:void(0)" class="btn btn-info btn-xs viewdetail" data-id="{{id}}"><i class="fa fa-eye"></i> Xem</a>
@@ -154,6 +160,8 @@
                                 </td>
                                 <td>
                                     {{name}}
+                                    <br />
+                                    <span style="font-size:12px;font-style:italic">Đ/c: {{address}}</span>
                                 </td>                                                                                                            
                                 <td style="text-align:center;width:22%;">
                                     <a href="javascript:void(0)" class="btn btn-info btn-xs viewdetail" data-id="{{id}}"><i class="fa fa-eye"></i> Xem</a>                                        
