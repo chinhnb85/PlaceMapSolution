@@ -102,7 +102,14 @@ CmsShop.AccountChecked.RegisterEvents = function () {
             p.RegisterEvents();
         });
     });
-       
+    
+    $("#btnExportCheckin").off("click").on("click", function () {
+        p.accountId = $("#sltAccountSearch").val();
+        p.startDate = $("#txtDatetimeStartSearch").val();
+        p.endDate = $("#txtDatetimeEndSearch").val();
+
+        p.ExportExcelAllAccountChecked();
+    });
 };
 
 CmsShop.AccountChecked.LoadAllAccountChecked = function (callback) {
@@ -151,6 +158,41 @@ CmsShop.AccountChecked.LoadAllAccountChecked = function (callback) {
         },
         error: function (status) {
             //logisticJs.stopLoading();
+        }
+    });
+};
+
+CmsShop.AccountChecked.ExportExcelAllAccountChecked = function (callback) {
+    var p = this;
+
+    var dataparam = { accountId: p.accountId, startDate: p.startDate, endDate: p.endDate };
+
+    $.ajax({
+        type: "GET",
+        url: "/AccountChecked/ExportExcelAllAccountChecked",
+        data: dataparam,
+        dataType: "json",
+        beforeSend: function () {
+            logisticJs.startLoading();
+        },
+        success: function (response) {
+            if (response.status == true) {
+                //logisticJs.msgShowSuccess({ titleHeader: 'Export excel thành công.' });
+                window.location.href = response.Data;
+            } else {
+                logisticJs.msgWarning({
+                    text: "Việc Export excel gặp lỗi.</br>" + response.Data,
+                    modal: true
+                });
+            }
+            logisticJs.stopLoading();
+
+            if (typeof (callback) == "function") {
+                callback();
+            }
+        },
+        error: function (status) {
+            logisticJs.stopLoading();
         }
     });
 };

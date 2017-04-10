@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using PlaceMapADM.Controllers.Base;
 using LibCore.EF;
 using ModelCMS.Localtion;
+using PlaceMapADM.Excel;
 
 namespace PlaceMapADM.Controllers
 {
@@ -64,8 +65,8 @@ namespace PlaceMapADM.Controllers
         {
             try
             {
-                DateTime sDate = DateTime.ParseExact(string.IsNullOrEmpty(startDate) ? DateTime.Now.ToString("dd/MM/yyyy") : startDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                DateTime eDate = DateTime.ParseExact(string.IsNullOrEmpty(endDate) ? DateTime.Now.ToString("dd/MM/yyyy") : endDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var sDate = DateTime.ParseExact(string.IsNullOrEmpty(startDate) ? DateTime.Now.ToString("dd/MM/yyyy") : startDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var eDate = DateTime.ParseExact(string.IsNullOrEmpty(endDate) ? DateTime.Now.ToString("dd/MM/yyyy") : endDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 var total = 0;
                 var ipl = SingletonIpl.GetInstance<IplLocaltion>();
                 var res = ipl.LocaltionAccountCheckListAllByLocaltionId(localtionId, sDate, eDate, pageIndex, pageSize, ref total);
@@ -85,6 +86,44 @@ namespace PlaceMapADM.Controllers
                 {
                     status = true,
                     Data = res,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json(new
+                {
+                    status = false,
+                    totalCount = 0,
+                    totalRow = 0
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult ExportExcelAllAccountChecked(int accountId, string startDate, string endDate)
+        {
+            try
+            {
+                var sDate = DateTime.ParseExact(string.IsNullOrEmpty(startDate) ? DateTime.Now.ToString("dd/MM/yyyy") : startDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var eDate = DateTime.ParseExact(string.IsNullOrEmpty(endDate) ? DateTime.Now.ToString("dd/MM/yyyy") : endDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                var res = OfficeHelper.CreateFileAccountCheckin(accountId, sDate, eDate);
+                if (res.Status)
+                {
+                    return Json(new
+                    {
+                        status = true,
+                        Data = res.Data,
+                        totalCount = 0,
+                        totalRow = 0
+                    }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new
+                {
+                    status = false,
+                    Data = res.Data,
                     totalCount = 0,
                     totalRow = 0
                 }, JsonRequestBehavior.AllowGet);

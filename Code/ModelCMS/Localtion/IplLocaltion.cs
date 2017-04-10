@@ -392,6 +392,23 @@ namespace ModelCMS.Localtion
                 throw;
             }
         }
+        public List<LocaltionEntity> GetExportDataAccountCheckin(int accountId, DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@AccountId", accountId);
+                p.Add("@StartDate", startDate);
+                p.Add("@EndDate", endDate);
+                var data = unitOfWork.Procedure<LocaltionEntity>("Sp_LocaltionAccountCheck_GetExportData", p);
+                return data.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                throw;
+            }
+        }
 
         public List<LocaltionEntity> LocaltionAccountCheckListAllByLocaltionId(int localtionId, DateTime startDate, DateTime endDate, int pageIndex, int pageSize, ref int totalRow)
         {
