@@ -113,12 +113,12 @@ namespace PlaceMapADM.Controllers.ApiControllers
                     var data = ipl.CheckedLocaltion(loc);
                     if (data)
                     {
-                        return Json(new {status = true, message = "Checked địa điểm thành công.", Data = data});
+                        return Json(new {status = true, message = "Checked địa điểm thành công.", Data = true});
                     }
                 }
                 return Json(new { status = false, message = "Vị trí của bạn quá xa không phù hợp.",Data= ischeck });
             }            
-            return Json(new { status = false, message = "Không có bản ghi nào." });
+            return Json(new { status = false, message = "Không có bản ghi nào.",Data=false });
         }
 
         // GET api/LocaltionApi/5
