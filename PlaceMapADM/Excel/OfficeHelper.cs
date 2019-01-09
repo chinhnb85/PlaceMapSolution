@@ -158,7 +158,7 @@ namespace PlaceMapADM.Excel
                     helper.CurrentPosition = new CellRef("A1");
                     helper.InsertRange("header");
 
-                    var sample1 = helper.CreateCellRangeTemplate("export", new List<string> { "stt", "username", "fullname", "name", "image", "phone","address","datetime" });
+                    var sample1 = helper.CreateCellRangeTemplate("export", new List<string> { "stt", "username", "fullname", "name", "image", "phone","address","datetime","code" });
                     helper.InsertRange(sample1, GetExportDataAccountCheckin(accountId, startDate, endDate));
 
                     helper.DeleteSheet("Sheet2");
@@ -190,7 +190,8 @@ namespace PlaceMapADM.Excel
                         item.ImageCheckin??"",
                         item.Phone??"",
                         item.Address??"",
-                        item.CheckDate.Value.ToString("dd/MM/yyyy")
+                        item.CheckDate.Value.ToString("dd/MM/yyyy"),
+                        item.Code??""
                     } : null));
                 }
                 return data;
